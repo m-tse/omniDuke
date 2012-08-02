@@ -1,0 +1,3 @@
+class Session < ActiveRecord::Base
+  attr_accessible :name, :season, :year
+end

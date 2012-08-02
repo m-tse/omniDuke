@@ -11,14 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120728205012) do
+ActiveRecord::Schema.define(:version => 20120801022804) do
+
+  create_table "areas_of_knowledges", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.string   "semester"
     t.text     "course_description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.decimal  "credits"
+  end
+
+  create_table "modes_of_inquiries", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "season"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teachers", :force => true do |t|
