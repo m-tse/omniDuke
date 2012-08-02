@@ -1,0 +1,5 @@
+class RemoveSessionsJoinTableAndAddSessionIdToCourse < ActiveRecord::Migration
+  def change
+    remove_
+  end
+end

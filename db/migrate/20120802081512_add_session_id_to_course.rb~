@@ -1,0 +1,4 @@
+class AddSessionIdToCourse < ActiveRecord::Migration
+  def change
+  end
+end

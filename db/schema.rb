@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802072432) do
+ActiveRecord::Schema.define(:version => 20120802081512) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -34,16 +34,12 @@ ActiveRecord::Schema.define(:version => 20120802072432) do
     t.integer  "old_number"
     t.integer  "new_number"
     t.string   "location"
+    t.integer  "session_id"
   end
 
   create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
     t.integer "course_id"
     t.integer "modes_of_inquiry_id"
-  end
-
-  create_table "courses_sessions", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "session_id"
   end
 
   create_table "courses_subjects", :id => false, :force => true do |t|
