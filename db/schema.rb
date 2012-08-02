@@ -11,14 +11,68 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120728205012) do
+ActiveRecord::Schema.define(:version => 20120802061638) do
+
+  create_table "areas_of_knowledges", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "areas_of_knowledges_courses", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "areas_of_knowledge_id"
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.string   "semester"
     t.text     "course_description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.decimal  "credits"
+  end
+
+  create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "modes_of_inquiry_id"
+  end
+
+  create_table "courses_sessions", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "session_id"
+  end
+
+  create_table "courses_subjects", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "subject_id"
+  end
+
+  create_table "courses_teachers", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "teacher_id"
+  end
+
+  create_table "modes_of_inquiries", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "season"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teachers", :force => true do |t|

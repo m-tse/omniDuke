@@ -1,0 +1,3 @@
+class ModesOfInquiry < ActiveRecord::Base
+  attr_accessible :abbr, :name
+end

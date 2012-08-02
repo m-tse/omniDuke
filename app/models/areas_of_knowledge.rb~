@@ -1,0 +1,3 @@
+class AreasOfKnowledge < ActiveRecord::Base
+  attr_accessible :abbr, :name
+end
