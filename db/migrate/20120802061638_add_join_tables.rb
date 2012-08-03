@@ -1,11 +1,5 @@
 class AddJoinTables < ActiveRecord::Migration
   def change 
-    create_table :courses_teachers, :id => false do |t|
-      t.integer :course_id
-      t.integer :teacher_id
-    end
-
-
     create_table :courses_modes_of_inquiries, :id => false do |t|
       t.integer :course_id
       t.integer :modes_of_inquiry_id
