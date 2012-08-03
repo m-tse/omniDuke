@@ -1,7 +1,7 @@
 OmniDuke::Application.routes.draw do
   root :to => 'static_pages#home'
   match '/home', to: 'static_pages#home'
-
+  resources :courses
 
 
 
