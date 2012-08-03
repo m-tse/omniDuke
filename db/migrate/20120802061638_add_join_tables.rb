@@ -10,10 +10,6 @@ class AddJoinTables < ActiveRecord::Migration
       t.integer :areas_of_knowledge_id
     end
 
-    create_table :courses_subjects, :id => false do |t|
-      t.integer :course_id
-      t.integer :subject_id
-    end
 
   end
 end

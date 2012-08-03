@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803050236) do
+ActiveRecord::Schema.define(:version => 20120803053712) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(:version => 20120803050236) do
     t.integer "areas_of_knowledge_id"
   end
 
-  create_table "course_instructor_relations", :force => true do |t|
-    t.string   "instructor_status"
-    t.integer  "instructor_id"
+  create_table "course_numberings", :force => true do |t|
     t.integer  "course_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.integer  "subject_id"
+    t.integer  "old_number"
+    t.integer  "new_number"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -39,8 +40,6 @@ ActiveRecord::Schema.define(:version => 20120803050236) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.decimal  "credits"
-    t.integer  "old_number"
-    t.integer  "new_number"
     t.string   "location"
     t.integer  "session_id"
   end
@@ -48,11 +47,6 @@ ActiveRecord::Schema.define(:version => 20120803050236) do
   create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
     t.integer "course_id"
     t.integer "modes_of_inquiry_id"
-  end
-
-  create_table "courses_subjects", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "subject_id"
   end
 
   create_table "instructors", :force => true do |t|
@@ -73,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20120803050236) do
     t.integer  "prerequisite_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "role"
+    t.integer  "instructor_id"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "sessions", :force => true do |t|
