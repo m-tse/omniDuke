@@ -1,4 +1,29 @@
 <div class="container">
-<h1><%= @course.name %></h1>
-<h4><%= @course.description %></h4>
+  <h1><%= @course.name %></h1>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active">
+	<a href="#tab1" data-toggle="tab">Overview</a>
+      </li>
+      <li>
+	<a href="#tab2" data-toggle="tab">Reviews</a>
+      </li>
+      <li>
+	<a href="#tab3" data-toggle="tab">Course Evaluations</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+	<%= render 'courses/overview'%>
+      </div>
+      <div class="tab-pane" id="tab2">
+	<%= render 'courses/reviews'%>
+      </div>
+      <div class="tab-pane" id="tab3">
+	<%= render 'courses/course_evals' %>
+
+      </div>
+    </div>
+  </div>
+
 </div>
