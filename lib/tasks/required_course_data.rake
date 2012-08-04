@@ -15,10 +15,10 @@ namespace :db do
       end
     end
 
-    SessionsHash = {"spr"=>"2013", "fall"=>"2012", "fall"=>"2013"}
+    SessionsHash = {"spring"=>"2013", "fall"=>"2012", "fall"=>"2013"}
     SessionsHash.each_pair do |k,v|
       if(Session.find_by_name(k+v)==nil)
-        Session.create!(season:k, year:v, name:(k+v))
+        Session.create!(season:k, year:v)
       end
     end
 

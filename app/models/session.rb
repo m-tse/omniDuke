@@ -5,7 +5,7 @@ class Session < ActiveRecord::Base
   has_many :courses, :inverse_of => :session
 
   before_validation do
-    self.season.downcase!
+    self.season=self.season.downcase
   end
 
   before_save do
