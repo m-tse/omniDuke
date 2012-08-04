@@ -4,8 +4,9 @@ class Course < ActiveRecord::Base
   has_many :prerequisites, :through => :prerequisite_relations
   belongs_to :advanced_course, :class_name => "Course"
 
-  has_many :roles
-  has_many :instructors, :through => :roles
+  has_many :sections
+  has_many :instructors, :through => :sections
+#just jizzed at how this ^ worked.. I have courses>sections>instructors_sections_join_table>instructors, and it assumed what to do correctly
 
   has_and_belongs_to_many :modes_of_inquiry
   has_and_belongs_to_many :areas_of_knowledge

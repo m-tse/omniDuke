@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804071010) do
+ActiveRecord::Schema.define(:version => 20120804081553) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -36,12 +36,19 @@ ActiveRecord::Schema.define(:version => 20120804071010) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.decimal  "credits"
     t.string   "location"
     t.integer  "session_id"
     t.text     "description"
+    t.text     "synopsis"
+    t.integer  "enrollment"
+    t.integer  "capacity"
+    t.integer  "waitlist_capacity"
+    t.integer  "waitlist_count"
+    t.boolean  "seminar"
+    t.integer  "class_number"
   end
 
   create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
@@ -53,6 +60,11 @@ ActiveRecord::Schema.define(:version => 20120804071010) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "instructors_sections", :id => false, :force => true do |t|
+    t.integer "instructor_id"
+    t.integer "section_id"
   end
 
   create_table "modes_of_inquiries", :force => true do |t|
@@ -70,13 +82,12 @@ ActiveRecord::Schema.define(:version => 20120804071010) do
   end
 
   create_table "sections", :force => true do |t|
-    t.string   "role"
     t.integer  "instructor_id"
     t.integer  "course_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "suffix"
-    t.string   "type"
+    t.string   "section_type"
   end
 
   create_table "sessions", :force => true do |t|
