@@ -8,7 +8,7 @@ gem 'faker'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite'
+  gem 'sqlite3'
 end
 
 group :development, :test do	
