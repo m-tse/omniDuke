@@ -20,17 +20,26 @@ namespace :db do
   end
 end
 
+def getCreateInstructor(name)
+    foundInstructor = Instructor.find_by_name(name.downcase)
+  if foundInstructor!=nil
+    return foundInstructor
+  else
+    return Instructor.create!(name: name.downcase)
+  end
+end
+
 def createfall2012
   Session.create!(year:2012, season:"fall")
 end
 def createDuvall
-  Instructor.create!(name:"Robert Duvall")
+  getCreateInstructor("Robert Duvall")
 end
 def createDepartmentStaff
-  Instructor.create!(name:"Departmental Staff")
+  getCreateInstructor("Departmental Staff")
 end
 def createAstrachan
-  Instructor.create!(name:"Owen Astrachan")
+  getCreateInstructor("Owen Astrachan")
 end
 
 def createcs6
@@ -41,7 +50,7 @@ def createcs6
                                location:"L.S.R.C. B101", enrollment:226,
                                capacity:240, waitlist_enrollment:4,
                              waitlist_capacity:200,  class_number:1703)
-  lec.instructors << Instructor.find_by_name("Owen Astrachan")
+  lec.instructors << getCreateInstructor("Owen Astrachan")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 1
   timeslot.days_of_week << 3
@@ -54,7 +63,7 @@ def createcs6
                              location:"Languages 109", enrollment:30, 
                              capacity:30, waitlist_enrollment:4, 
                              waitlist_capacity:25, class_number:1704)
-  lab.instructors << Instructor.find_by_name("Owen Astrachan")
+  lab.instructors << getCreateInstructor("Owen Astrachan")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 3
   timeslot.start_time=Time.new.change(hour:15, min:5)
@@ -87,7 +96,7 @@ def createcs100
                                location:"L.S.R.C. B101", enrollment:123,
                                capacity:180, waitlist_enrollment:0,
                                waitlist_capacity:180, class_number:1714)
-  lec.instructors << Instructor.find_by_name("Departmental Staff")
+  lec.instructors << getCreateInstructor("Departmental Staff")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 1
   timeslot.days_of_week << 3
@@ -100,7 +109,7 @@ def createcs100
                                location:"L.S.R.C. B101", enrollment:123,
                                capacity:180, waitlist_enrollment:0,
                                waitlist_capacity:180, class_number:1715)
-  rec.instructors << Instructor.find_by_name("Departmental Staff")
+  rec.instructors << getCreateInstructor("Departmental Staff")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 5
   timeslot.start_time=Time.new.change(hour:10, min:5)
@@ -131,7 +140,7 @@ def createcs108
                                location:"Soc Psy 126", enrollment:49,
                                capacity:60, waitlist_enrollment:0, 
                                waitlist_capacity:60,  class_number:1725)
-  lec.instructors << Instructor.find_by_name("Robert Duvall")
+  lec.instructors << getCreateInstructor("Robert Duvall")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 1
   timeslot.days_of_week << 3
@@ -144,7 +153,7 @@ def createcs108
                                location:"Soc Psy 126", enrollment:49,
                                capacity:60, waitlist_enrollment:0, 
                                waitlist_capacity:60 ,class_number:1726)
-  lec.instructors << Instructor.find_by_name("Robert Duvall")
+  lec.instructors << getCreateInstructor("Robert Duvall")
   timeslot = TimeSlot.new
   timeslot.days_of_week<< 5
   timeslot.start_time=Time.new.change(hour:13, min:25)
