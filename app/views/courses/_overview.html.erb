@@ -17,7 +17,8 @@
 <% end %>
 <h3>Prerequisites</h3>
 <% for prereq in @course.prerequisites %>
-<p><%= prereq.course_numberings.first.toString %></p>
+<%= link_to prereq.course_numberings.first.toString,
+    course_path(prereq.id) %>
 <% end %>
 
 <h3>Credits</h3>

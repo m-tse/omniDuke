@@ -3,6 +3,15 @@
 <ul>
   <% for section in @course.sections %>
   <li><h3><%= section.section_type + section.suffix %></h3>
+
+    <h4>Times</h4>
+    <% for day in section.time_slot.daysOfWeekToStringArray %>
+    <%= day %>
+    <% end %>
+    <br>
+    <%= section.time_slot.startTimeString + " - " + section.time_slot.endTimeString %>
+    
+
     <h4>Instructors</h4>
     <ul class="unstyled">
       <% for instructor in section.instructors %>
