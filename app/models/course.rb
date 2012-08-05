@@ -7,6 +7,8 @@ class Course < ActiveRecord::Base
   has_many :sections
   has_many :instructors, :through => :sections
 #just jizzed at how this ^ worked.. I have courses>sections>instructors_sections_join_table>instructors, and it assumed what to do correctly
+  has_many :time_slots, :through => :sections
+
 
   has_and_belongs_to_many :modes_of_inquiry
   has_and_belongs_to_many :areas_of_knowledge

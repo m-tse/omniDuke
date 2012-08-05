@@ -1,10 +1,12 @@
 <h1>Overview</h1>
-<h3>Course numbers</h3>
+<h3>Course numbers(old numbering in parenthesis)</h3>
 <% for courseNumber in @course.course_numberings %>
 <p><%= courseNumber.toString %></p>
 <% end %>
 <h3>Course Description</h3>
 <p><%= @course.description %></p>
+<h3>Session</h3>
+<p><%= @course.session.name %></p><!--eventually pull this out of course overview, and into a Session "mode", viewers will set session at start of course searching-->
 <h3>Areas of Knowledge</h3>
 <% for aok in @course.areas_of_knowledge %>
 <p><%= aok.abbr %></p>
@@ -13,4 +15,10 @@
 <% for moi in @course.modes_of_inquiry %>
 <p><%= moi.abbr %></p>
 <% end %>
+<h3>Prerequisites</h3>
+<% for prereq in @course.prerequisites %>
+<p><%= prereq.course_numberings.first.toString %></p>
+<% end %>
 
+<h3>Credits</h3>
+<%= @course.credits %>

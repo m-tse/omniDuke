@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804081553) do
+ActiveRecord::Schema.define(:version => 20120805193821) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -36,19 +36,13 @@ ActiveRecord::Schema.define(:version => 20120804081553) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.decimal  "credits"
-    t.string   "location"
     t.integer  "session_id"
     t.text     "description"
     t.text     "synopsis"
-    t.integer  "enrollment"
-    t.integer  "capacity"
-    t.integer  "waitlist_capacity"
-    t.integer  "waitlist_count"
     t.boolean  "seminar"
-    t.integer  "class_number"
   end
 
   create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
@@ -82,12 +76,18 @@ ActiveRecord::Schema.define(:version => 20120804081553) do
   end
 
   create_table "sections", :force => true do |t|
-    t.integer  "instructor_id"
     t.integer  "course_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "suffix"
     t.string   "section_type"
+    t.integer  "time_slot_id"
+    t.integer  "enrollment"
+    t.integer  "capacity"
+    t.integer  "waitlist_capacity"
+    t.integer  "waitlist_enrollment"
+    t.string   "location"
+    t.integer  "class_number"
   end
 
   create_table "sessions", :force => true do |t|
@@ -108,9 +108,9 @@ ActiveRecord::Schema.define(:version => 20120804081553) do
   create_table "time_slots", :force => true do |t|
     t.time     "start_time"
     t.time     "end_time"
-    t.integer  "day_of_week"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "days_of_week"
   end
 
 end

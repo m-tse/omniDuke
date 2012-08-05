@@ -1,3 +1,5 @@
 class TimeSlot < ActiveRecord::Base
-  attr_accessible :day_of_week, :end_time, :start_time
+  attr_accessible  :end_time, :start_time
+  serialize :days_of_week, Array
+  has_many :sections
 end
