@@ -13,6 +13,6 @@ class Course < ActiveRecord::Base
 
   belongs_to :session, :inverse_of => :courses
 
-  has_many :course_numberings
+  has_many :course_numberings, :inverse_of => :course
   has_many :subjects, :through => :course_numberings
 end

@@ -8,10 +8,10 @@ namespace :db do
       end
     end
 
-    MOIhash= {"CCI"=> "Cross-Cultural Inquiry", "EI"=>"Ethical Inquiry", "STS"=> "Science, Technology, and Society", "FL"=>"Foreign Language", "R"=>"Research", "W"=> "Writing"}
-    MOIhash.each_pair do |k,v|
-      if(ModesOfInquiry.find_by_name(v)==nil)
-        ModesOfInquiry.create!(abbr:k, name:v)
+    MOIarray= ["CCI", "EI", "STS", "FL", "R", "W"]
+    MOIarray.each do |k|
+      if(ModesOfInquiry.find_by_abbr(k)==nil)
+        ModesOfInquiry.create!(abbr:k)
       end
     end
 

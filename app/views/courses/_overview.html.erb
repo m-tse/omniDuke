@@ -1,2 +1,16 @@
 <h1>Overview</h1>
+<h3>Course numbers</h3>
+<% for courseNumber in @course.course_numberings %>
+<p><%= courseNumber.toString %></p>
+<% end %>
+<h3>Course Description</h3>
 <p><%= @course.description %></p>
+<h3>Areas of Knowledge</h3>
+<% for aok in @course.areas_of_knowledge %>
+<p><%= aok.abbr %></p>
+<% end %>
+<h3>Modes of Inquiry</h3>
+<% for moi in @course.modes_of_inquiry %>
+<p><%= moi.abbr %></p>
+<% end %>
+

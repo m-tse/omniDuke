@@ -1,5 +1,5 @@
 namespace :db do
-  desc "Fill course database with sample data, later on to be retrieved through       web scraping"	
+  desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
     subjectsHash = {"COMPSCI"=>"Computer Science", "CLST"=> "Classical Studies",      "CHINESE"=>"Chinese"}
     subjectsHash.each_pair do |k,v|
@@ -43,8 +43,11 @@ def createcs6
   cs6.areas_of_knowledge << AreasOfKnowledge.find_by_abbr("QS")
   cs6.subjects << Subject.find_by_abbr("COMPSCI")
   cs6.save
-  cs6.course_numberings.first.old_number = "6L"
-  cs6.course_numberings.first.new_number = "101L"
+  #for some reason, I must declare this second set of course numberings, or else it won't work
+  cn=cs6.course_numberings.first
+  cn.old_number = "6L"
+  cn.new_number = "101L"
+  cn.save
   cs6.session=Session.find_by_name("fall2012")
   cs6.save
 end
@@ -62,8 +65,10 @@ def createcs100
   cs100.save
   cs100.subjects << Subject.find_by_abbr("COMPSCI")
   cs100.save
-  cs100.course_numberings.first.old_number = "100"
-  cs100.course_numberings.first.new_number = "201"
+  cn = cs100.course_numberings.first
+  cn.old_number = "100"
+  cn.new_number = "201"
+  cn.save
   cs100.session = Session.find_by_name("fall2012")
   cs100.save
 end
@@ -81,7 +86,9 @@ def createcs108
   cs108.session = Session.find_by_name("fall2012")
   cs108.subjects << Subject.find_by_abbr("COMPSCI")
   cs108.save
-  cs108.course_numberings.first.old_number = "108"
-  cs108.course_numberings.first.new_number = "308"
+  cn = cs108.course_numberings.first
+  cn.old_number = "108"
+  cn.new_number = "308"
+  cn.save
   cs108.save
 end
