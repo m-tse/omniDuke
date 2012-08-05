@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805193821) do
+ActiveRecord::Schema.define(:version => 20120805214218) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "instructors", ["name"], :name => "index_instructors_on_name", :unique => true
 
   create_table "instructors_sections", :id => false, :force => true do |t|
     t.integer "instructor_id"
