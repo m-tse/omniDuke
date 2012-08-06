@@ -1,6 +1,6 @@
 class ModesOfInquiry < ActiveRecord::Base
   attr_accessible :abbr
-  validates :abbr, :presence => true
+  validates :abbr, presence:true, uniqueness: {case_sensitive: false }
   validates :abbr, :inclusion => { :in => ["W", "CCI", "EI", "STS", "FL", "R"]}
 
   before_save do

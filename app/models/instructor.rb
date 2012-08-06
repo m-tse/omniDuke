@@ -4,4 +4,13 @@ class Instructor < ActiveRecord::Base
   validates :name, presence:true, uniqueness: { case_sensitive: false }
 
   before_save { self.name = self.name.downcase }
+
+  def formatted_name
+    retstring = ""
+    for part in name.split
+      retstring=retstring+part.capitalize!+ " "
+    end
+    return retstring.strip
+  end
+
 end
