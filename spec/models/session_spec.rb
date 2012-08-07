@@ -10,6 +10,7 @@ describe Session do
   it {should respond_to(:season)}
   it { should respond_to(:name)}
   it { should respond_to(:year)}
+  it { should respond_to(:courses)}
   it { should be_valid}
 
   describe "when season is not present" do

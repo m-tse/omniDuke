@@ -3,7 +3,7 @@ class Instructor < ActiveRecord::Base
   has_and_belongs_to_many :sections
   validates :name, presence:true, uniqueness: { case_sensitive: false }
 
-  before_save { self.name = self.name.downcase }
+  before_validation { self.name = self.name.downcase }
 
   def formatted_name
     retstring = ""
