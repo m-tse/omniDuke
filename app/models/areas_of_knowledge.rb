@@ -7,7 +7,10 @@ class AreasOfKnowledge < ActiveRecord::Base
 
   before_save do
     aokHASH = { "NS"=>"Natural Sciences", "ALP"=>"Arts, Literatures, and Performance", "CZ"=>"Civilizations", "QS"=>"Quantitative Studies", "SS"=>"Social Sciences"}
-      self.name = aokHASH[self.abbr]
-    end
+    self.name = aokHASH[self.abbr]
+  end
+
+
+
 
 end

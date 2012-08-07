@@ -19,4 +19,11 @@ class Course < ActiveRecord::Base
 
   has_many :course_numberings, :inverse_of => :course
   has_many :subjects, :through => :course_numberings
+
+
+  searchable do
+    text :description, :name
+  end
+
+
 end
