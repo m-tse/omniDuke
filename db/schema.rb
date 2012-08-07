@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806000821) do
+ActiveRecord::Schema.define(:version => 20120807191146) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -104,12 +104,17 @@ ActiveRecord::Schema.define(:version => 20120806000821) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "sessions", ["name"], :name => "index_sessions_on_name", :unique => true
+
   create_table "subjects", :force => true do |t|
     t.string   "name"
     t.string   "abbr"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "subjects", ["abbr"], :name => "index_subjects_on_abbr", :unique => true
+  add_index "subjects", ["name"], :name => "index_subjects_on_name", :unique => true
 
   create_table "time_slots", :force => true do |t|
     t.time     "start_time"

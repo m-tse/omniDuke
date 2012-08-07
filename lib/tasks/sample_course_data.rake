@@ -1,15 +1,10 @@
+require_relative 'util'
+
 namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
-    subjectsHash = {"COMPSCI"=>"Computer Science", "CLST"=> "Classical Studies",      "CHINESE"=>"Chinese"}
-    subjectsHash.each_pair do |k,v|
-      if(Subject.find_by_name(v)==nil)
-        Subject.create!(abbr:k, name:v)
-      end
-    end
-    createDuvall
-    createDepartmentStaff
-    createAstrachan
+
+    createInstructors
     createfall2012
     createcs6	
     createcs100
@@ -20,27 +15,18 @@ namespace :db do
   end
 end
 
-def getCreateInstructor(name)
-    foundInstructor = Instructor.find_by_name(name.downcase)
-  if foundInstructor!=nil
-    return foundInstructor
-  else
-    return Instructor.create!(name: name.downcase)
+
+def createInstructors
+  instructorArray = ["Robert Duvall", "Departmental Staff", "Owen Astrachan"]
+  for instructor in instructorArray
+    getCreateInstructor(instructor)
   end
 end
 
 def createfall2012
   Session.create!(year:2012, season:"fall")
 end
-def createDuvall
-  getCreateInstructor("Robert Duvall")
-end
-def createDepartmentStaff
-  getCreateInstructor("Departmental Staff")
-end
-def createAstrachan
-  getCreateInstructor("Owen Astrachan")
-end
+
 
 def createcs6
   cs6 = Course.new(name:"Introduction to Computer Science", credits:1)
@@ -50,30 +36,24 @@ def createcs6
                                location:"L.S.R.C. B101", enrollment:226,
                                capacity:240, waitlist_enrollment:4,
                              waitlist_capacity:200,  class_number:1703)
+
   lec.instructors << getCreateInstructor("Owen Astrachan")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 1
-  timeslot.days_of_week << 3
-  timeslot.start_time=Time.new.change(hour:13, min:25)
-  timeslot.end_time = Time.new.change(hour:14, min:40)
-  timeslot.save
-  timeslot.sections<< lec
+
+  setSectionTimeSlot(lec, [1,3], "1:25PM", "2:40PM")
+
 
   lab = cs6.sections.create!(section_type:"LAB", suffix:"01L", 
                              location:"Languages 109", enrollment:30, 
                              capacity:30, waitlist_enrollment:4, 
                              waitlist_capacity:25, class_number:1704)
   lab.instructors << getCreateInstructor("Owen Astrachan")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 3
-  timeslot.start_time=Time.new.change(hour:15, min:5)
-  timeslot.end_time = Time.new.change(hour:16, min:20)
-  timeslot.save
-  timeslot.sections<< lab
+
+  setSectionTimeSlot(lab, [3], "3:05PM", "4:20PM")
+
 
 
   cs6.areas_of_knowledge << AreasOfKnowledge.find_by_abbr("QS")
-  cs6.subjects << Subject.find_by_abbr("COMPSCI")
+  cs6.subjects << getCreateSubject("Computer Science", "COMPSCI")
   cs6.save
   cn=cs6.course_numberings.first
   cn.old_number = "6L"
@@ -97,28 +77,20 @@ def createcs100
                                capacity:180, waitlist_enrollment:0,
                                waitlist_capacity:180, class_number:1714)
   lec.instructors << getCreateInstructor("Departmental Staff")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 1
-  timeslot.days_of_week << 3
-  timeslot.start_time=Time.new.change(hour:10, min:5)
-  timeslot.end_time = Time.new.change(hour:11, min:20)
-  timeslot.save
-  timeslot.sections<< lec
+
+  setSectionTimeSlot(lec, [1,3], "10:05AM", "11:20AM")
+
 
   rec = cs100.sections.create!(section_type:"REC", suffix:"01R",
                                location:"L.S.R.C. B101", enrollment:123,
                                capacity:180, waitlist_enrollment:0,
                                waitlist_capacity:180, class_number:1715)
   rec.instructors << getCreateInstructor("Departmental Staff")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 5
-  timeslot.start_time=Time.new.change(hour:10, min:5)
-  timeslot.end_time = Time.new.change(hour:11, min:20)
-  timeslot.save
-  timeslot.sections<< rec
+
+  setSectionTimeSlot(rec, [5], "10:05AM", "11:20AM")
 
   cs100.save
-  cs100.subjects << Subject.find_by_abbr("COMPSCI")
+  cs100.subjects << getCreateSubject("Computer Science", "COMPSCI")
   cs100.save
   cn = cs100.course_numberings.first
   cn.old_number = "100"
@@ -141,29 +113,20 @@ def createcs108
                                capacity:60, waitlist_enrollment:0, 
                                waitlist_capacity:60,  class_number:1725)
   lec.instructors << getCreateInstructor("Robert Duvall")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 1
-  timeslot.days_of_week << 3
-  timeslot.start_time=Time.new.change(hour:13, min:25)
-  timeslot.end_time = Time.new.change(hour:14, min:40)
-  timeslot.save
-  timeslot.sections<< lec
 
-  lec = cs108.sections.create!(section_type:"REC", suffix:"01R",
+  setSectionTimeSlot(lec, [1,3], "1:25PM", "2:40PM")
+
+  rec = cs108.sections.create!(section_type:"REC", suffix:"01R",
                                location:"Soc Psy 126", enrollment:49,
                                capacity:60, waitlist_enrollment:0, 
                                waitlist_capacity:60 ,class_number:1726)
-  lec.instructors << getCreateInstructor("Robert Duvall")
-  timeslot = TimeSlot.new
-  timeslot.days_of_week<< 5
-  timeslot.start_time=Time.new.change(hour:13, min:25)
-  timeslot.end_time = Time.new.change(hour:14, min:40)
-  timeslot.save
-  timeslot.sections<< lec
+  rec.instructors << getCreateInstructor("Robert Duvall")
+
+  setSectionTimeSlot(rec, [5], "1:25PM", "2:40PM")
 
   cs108.save
   cs108.session = Session.find_by_name("fall2012")
-  cs108.subjects << Subject.find_by_abbr("COMPSCI")
+  cs108.subjects << getCreateSubject("Computer Science", "COMPSCI")
   cs108.save
   cn = cs108.course_numberings.first
   cn.old_number = "108"

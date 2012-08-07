@@ -1,6 +1,6 @@
 <li>
 <h3><%= link_to course.name, course_path(course)  %></h3>
-<h4><%= course.instructors.first.name %></h4>
+<h4><%= course.instructors.first.formatted_name %></h4>
 <h5><%= course.description %></h5>
 
 </li>

@@ -16,7 +16,7 @@
     <ul class="unstyled">
       <% for instructor in section.instructors %>
       <li>
-	<%= link_to instructor.name, instructor_path(instructor.id) %>
+	<%= link_to instructor.formatted_name, instructor_path(instructor.id) %>
       </li>
       <% end %>
     </ul>

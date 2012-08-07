@@ -1,10 +1,10 @@
 namespace :db do
   desc "Fill database with required course data, i.e. modes of inquiry"	
   task populate: :environment do
-    AOKhash = { "NS" => "Natural Sciences", "ALP" => "Arts, Literatures, and Performance", "CZ"=>"Civilizations", "QS"=>"Quantitative Studies", "SS"=>"Social Sciences"}
-    AOKhash.each_pair do |k,v|
-      if(AreasOfKnowledge.find_by_name(v)==nil)
-        AreasOfKnowledge.create!(abbr:k, name:v)
+    AOKArray  = [ "NS", "ALP", "CZ", "QS", "SS"]
+    AOKArray.each do |k|
+      if(AreasOfKnowledge.find_by_abbr(k)==nil)
+        AreasOfKnowledge.create!(abbr:k)
       end
     end
 
