@@ -4,7 +4,10 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    @search = Course.search do
+      fulltext params[:search]
+    end
+    @courses = @search.results
   end
 end
 

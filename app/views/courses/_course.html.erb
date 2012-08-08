@@ -1,6 +1,22 @@
 <li>
 <h3><%= link_to course.name, course_path(course)  %></h3>
-<h4><%= course.instructors.first.formatted_name %></h4>
-<h5><%= course.description %></h5>
+<h4>Professor: <%= link_to course.instructors.first.formatted_name, instructor_path(course.instructors.first) %></h4>
+<h4>Prerequisites: 
+  <% for prereq in course.prerequisites %>
+  <%= link_to prereq.courseCodes[0], course_path(prereq) %>
+  <% end %>
+</h4>
+<h4>Areas Of Knowledge: 
+<% for aok in course.areas_of_knowledge %>
+<%= aok.abbr %>
+<% end %>
+</h4>
+<h4>Modes of Inquiry: 
+<% for moi in course.modes_of_inquiry %>
+<%= moi.abbr %>
+<% end %>
+</h4>
+
+<h5>Description: <%= truncate(course.description, length:300) %></h5>
 
 </li>

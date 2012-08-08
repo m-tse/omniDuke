@@ -6,7 +6,7 @@ class Course < ActiveRecord::Base
   belongs_to :advanced_course, :class_name => "Course"
 
   has_many :sections
-  has_many :instructors, :through => :sections
+  has_many :instructors, :through => :sections, :uniq => :true
 
 
   has_and_belongs_to_many :modes_of_inquiry
@@ -17,10 +17,17 @@ class Course < ActiveRecord::Base
   has_many :course_numberings, :inverse_of => :course
   has_many :subjects, :through => :course_numberings
 
-
- # searchable do
- #   text :description, :name
- # end
+  #array of course code strings, i.e. CS100
+  def courseCodes
+    retArray = []
+    for course_number in self.course_numberings
+      retArray << course_number.toString
+    end
+    return retArray
+  end
+  searchable do
+    text :description, :name
+  end
 
 
 end
