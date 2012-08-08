@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find_by_id(params[:id])
+    @reviews = Review.where("course_id = ?", params[:id])
   end
 
   def index
