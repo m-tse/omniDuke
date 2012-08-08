@@ -1,4 +1,4 @@
-require_relative 'util'
+require_relative "../../util/util"
 
 namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
@@ -59,7 +59,7 @@ def createcs6
   cn.old_number = "6L"
   cn.new_number = "101L"
   cn.save
-  cs6.session=Session.find_by_name("fall2012")
+  cs6.session=getCreateSession("fall", 2012)
   cs6.save
 end
 
@@ -96,7 +96,7 @@ def createcs100
   cn.old_number = "100"
   cn.new_number = "201"
   cn.save
-  cs100.session = Session.find_by_name("fall2012")
+  cs100.session = getCreateSession("fall", 2012)
   cs100.save
 end
 
@@ -125,7 +125,7 @@ def createcs108
   setSectionTimeSlot(rec, [5], "1:25PM", "2:40PM")
 
   cs108.save
-  cs108.session = Session.find_by_name("fall2012")
+  cs108.session = getCreateSession("fall", 2012)
   cs108.subjects << getCreateSubject("Computer Science", "COMPSCI")
   cs108.save
   cn = cs108.course_numberings.first

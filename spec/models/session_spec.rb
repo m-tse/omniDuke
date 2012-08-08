@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require_relative '../../util/util'
 describe Session do
 
   before do
@@ -55,6 +55,17 @@ describe Session do
     end
 
     its(:name) { should == @session.season+@session.year.to_s}
+  end
+
+  describe "created course should have correct pointers on both sides" do
+    before do
+      @session = getCreateSession("fall", 2015)
+      @course = FactoryGirl.create(:course)
+      @course.session=@session
+      @course.save
+    end
+
+    its(:courses) { should include(@course)}
   end
 
 end

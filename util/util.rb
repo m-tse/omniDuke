@@ -18,6 +18,14 @@ def getCreateSubject(nameString, abbrString)
   end
 end
 
+def getCreateSession(season, year)
+  foundSession = Session.find_by_season_and_year(season, year)
+  if(foundSession !=nil)
+    return foundSession
+  else
+    return Session.create!(season: season, year: year)
+  end
+end
 
 def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
   timeslot = TimeSlot.new
