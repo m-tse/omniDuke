@@ -16,3 +16,6 @@
 
 # Ignore wildcards
 *~
+
+# Ignore solr data
+/solr/data/development

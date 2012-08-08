@@ -17,6 +17,8 @@ class Course < ActiveRecord::Base
   has_many :course_numberings, :inverse_of => :course
   has_many :subjects, :through => :course_numberings
 
+  has_many :reviews
+
   #array of course code strings, i.e. CS100
   def courseCodes
     retArray = []

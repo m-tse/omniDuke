@@ -5,7 +5,7 @@ gem 'bootstrap-sass'
 gem 'faker'   
 gem 'sunspot_rails' #sunspot for searching
 gem 'sunspot_solr' 
-
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

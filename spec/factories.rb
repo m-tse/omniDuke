@@ -17,4 +17,15 @@ FactoryGirl.define do
     class_number 100
   end
 
+  factory :review do
+    assignment_easiness 7
+    test_easiness 6
+    helpfulness 5
+    clarity 7
+    enthusiasm 6
+    course_content 8
+    textbook_usefulness 10
+    review_content Faker::Lorem.paragraph
+
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807191146) do
+ActiveRecord::Schema.define(:version => 20120808190915) do
 
   create_table "areas_of_knowledges", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,21 @@ ActiveRecord::Schema.define(:version => 20120807191146) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "reviews", :force => true do |t|
+    t.integer  "assignment_easiness"
+    t.integer  "test_easiness"
+    t.integer  "helpfulness"
+    t.integer  "clarity"
+    t.integer  "enthusiasm"
+    t.integer  "course_content"
+    t.integer  "textbook_usefulness"
+    t.text     "review_content"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "course_id"
+    t.integer  "instructor_id"
+  end
+
   create_table "sections", :force => true do |t|
     t.integer  "course_id"
     t.datetime "created_at",          :null => false
@@ -123,5 +138,23 @@ ActiveRecord::Schema.define(:version => 20120807191146) do
     t.datetime "updated_at",   :null => false
     t.text     "days_of_week"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

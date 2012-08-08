@@ -8,6 +8,13 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+
+  <p class="notice"><%= notice %></p>
+  <!--p class="alert"><%= alert %> </p--><!--from devise -->
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+  <% end%>
+
   <div class="container">
     <%= yield %>
   </div>
