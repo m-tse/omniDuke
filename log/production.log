@@ -1,0 +1,333 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 02:47:19 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 251ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__868651304778460087_24297360'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 02:51:16 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (11.3ms)
+Completed 500 Internal Server Error in 153ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___4145344756484976075_28831040'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 02:52:16 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 69ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__1101056828631682427_23336140'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 02:53:44 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___945750260474753491_31053540'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 11:50:49 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (117.6ms)
+Completed 500 Internal Server Error in 327ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___3642688466297007288_23825900'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:29:45 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 80ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___3061301194921495255_38216740'
+
+
+Connecting to database specified by database.yml
+Compiled jquery.js  (1ms)  (pid 8404)
+Compiled jquery_ujs.js  (0ms)  (pid 8404)
+Compiled courses.js  (274ms)  (pid 8404)
+Compiled instructors.js  (0ms)  (pid 8404)
+Compiled reviews.js  (0ms)  (pid 8404)
+Compiled static_pages.js  (0ms)  (pid 8404)
+Compiled bootstrap-transition.js  (0ms)  (pid 8404)
+Compiled bootstrap-alert.js  (0ms)  (pid 8404)
+Compiled bootstrap-button.js  (0ms)  (pid 8404)
+Compiled bootstrap-carousel.js  (0ms)  (pid 8404)
+Compiled bootstrap-collapse.js  (0ms)  (pid 8404)
+Compiled bootstrap-dropdown.js  (0ms)  (pid 8404)
+Compiled bootstrap-modal.js  (0ms)  (pid 8404)
+Compiled bootstrap-scrollspy.js  (0ms)  (pid 8404)
+Compiled bootstrap-tab.js  (0ms)  (pid 8404)
+Compiled bootstrap-tooltip.js  (0ms)  (pid 8404)
+Compiled bootstrap-popover.js  (0ms)  (pid 8404)
+Compiled bootstrap-typeahead.js  (0ms)  (pid 8404)
+Compiled bootstrap.js  (110ms)  (pid 8404)
+Compiled application.js  (550ms)  (pid 8404)
+Compiled courses.css  (52ms)  (pid 8404)
+Compiled footer.css  (2ms)  (pid 8404)
+Compiled instructors.css  (0ms)  (pid 8404)
+Compiled reviews.css  (0ms)  (pid 8404)
+Compiled static_pages.css  (0ms)  (pid 8404)
+Compiled universal.css  (1455ms)  (pid 8404)
+Compiled application.css  (1583ms)  (pid 8404)
+Connecting to database specified by database.yml
+Compiled jquery.js  (1ms)  (pid 8404)
+Compiled jquery_ujs.js  (0ms)  (pid 8404)
+Compiled courses.js  (102ms)  (pid 8404)
+Compiled instructors.js  (0ms)  (pid 8404)
+Compiled reviews.js  (0ms)  (pid 8404)
+Compiled static_pages.js  (0ms)  (pid 8404)
+Compiled bootstrap-transition.js  (0ms)  (pid 8404)
+Compiled bootstrap-alert.js  (0ms)  (pid 8404)
+Compiled bootstrap-button.js  (0ms)  (pid 8404)
+Compiled bootstrap-carousel.js  (0ms)  (pid 8404)
+Compiled bootstrap-collapse.js  (0ms)  (pid 8404)
+Compiled bootstrap-dropdown.js  (0ms)  (pid 8404)
+Compiled bootstrap-modal.js  (0ms)  (pid 8404)
+Compiled bootstrap-scrollspy.js  (0ms)  (pid 8404)
+Compiled bootstrap-tab.js  (0ms)  (pid 8404)
+Compiled bootstrap-tooltip.js  (0ms)  (pid 8404)
+Compiled bootstrap-popover.js  (0ms)  (pid 8404)
+Compiled bootstrap-typeahead.js  (0ms)  (pid 8404)
+Compiled bootstrap.js  (81ms)  (pid 8404)
+Compiled application.js  (216ms)  (pid 8404)
+Compiled courses.css  (27ms)  (pid 8404)
+Compiled footer.css  (3ms)  (pid 8404)
+Compiled instructors.css  (0ms)  (pid 8404)
+Compiled reviews.css  (0ms)  (pid 8404)
+Compiled static_pages.css  (0ms)  (pid 8404)
+Compiled universal.css  (1299ms)  (pid 8404)
+Compiled application.css  (1385ms)  (pid 8404)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:39:42 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___3061301194921495255_38216740'
+
+
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:39:52 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___3061301194921495255_38216740'
+
+
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:39:54 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    2: <html>
+    3: <head>
+    4:   <title>OmniDUKE</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___3061301194921495255_38216740'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:40:10 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 97ms (Views: 95.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2012-08-09 12:40:13 -0400
+Processing by CoursesController#index as HTML
+Completed 500 Internal Server Error in 233ms
+
+ActiveRecord::StatementInvalid (Could not find table 'courses'):
+  app/controllers/courses_controller.rb:12:in `index'
+
+
+Connecting to database specified by database.yml
+Migrating to CreateCourses (20120728204645)
+Migrating to CreateTeachers (20120728205012)
+Migrating to AddCreditsToCourses (20120801021535)
+Migrating to CreateAreasOfKnowledges (20120801022602)
+Migrating to CreateModesOfInquiries (20120801022646)
+Migrating to CreateSubjects (20120801022707)
+Migrating to CreateSessions (20120801022804)
+Migrating to AddJoinTables (20120802061638)
+Migrating to AddCourseNumberToCourses (20120802070351)
+Migrating to CreatePrerequisiteRelations (20120802072432)
+Migrating to AddSessionIdToCourse (20120802081512)
+Migrating to RenameTeachersToInstructors (20120803043359)
+Migrating to CreateCourseInstructorRelations (20120803050236)
+Migrating to RemoveOldNumberAndNewNumberFromCourses (20120803053403)
+Migrating to CreateCourseNumberings (20120803053712)
+Migrating to ChangeCourseNumberingsToStrings (20120803063356)
+Migrating to RenameCourseDescriptionToDescription (20120803065436)
+Migrating to RemoveOldNumbersAndNewNumbers (20120803070724)
+Migrating to AddNumberingToCourseNumberings (20120803071030)
+Migrating to RenameRolesToSessions (20120804065752)
+Migrating to AddColumnsToSections (20120804070050)
+Migrating to CreateTimeSlots (20120804071010)
+Migrating to AddMoreColumnsToCourses (20120804074202)
+Migrating to RemoveRoleFromSection (20120804074518)
+Migrating to CreateInstructorSectionJoin (20120804075444)
+Migrating to RenameTypeOfSectionToSectionType (20120804080755)
+Migrating to RenameInstructorsSessionsJoinToInstructorsSections (20120804081228)
+Migrating to RenameSessionIdToSectionIdInInstructorsSections (20120804081553)
+Migrating to RemoveDaysOfWeekFromTimeSlots (20120805181011)
+Migrating to AddDaysOfWeekArrayToTimeSlot (20120805181503)
+Migrating to AddSectionIdToTimeSlot (20120805182408)
+Migrating to SwapIdFromTimeSlotToSection (20120805182909)
+Migrating to PluralizeTimeSlot (20120805183135)
+Migrating to RenameSectionIdToTimeslotId (20120805183410)
+Migrating to RemoveInstructorIdFromSections (20120805192045)
+Migrating to MoveFieldsFromCourseToSections (20120805192829)
+Migrating to RenameWaitListCountToWaitListEnrollment (20120805193821)
+Migrating to AddIndexToInstructorName (20120805214218)
+Migrating to AddIndexToAoKandMoi (20120806000821)
+Migrating to AddNameAndAbbrIndexToSubjects (20120807184953)
+Migrating to AddNameIndexToSessions (20120807191146)
+Migrating to CreateReviews (20120808183253)
+Migrating to AddIDsToReviews (20120808184247)
+Migrating to DeviseCreateUsers (20120808190915)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/courses" for 127.0.0.1 at 2012-08-09 12:42:59 -0400
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (227.2ms)
+  Rendered courses/index.html.erb within layouts/application (252.3ms)
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 405ms (Views: 314.5ms | ActiveRecord: 30.3ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2012-08-09 12:43:01 -0400
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (18.8ms)
+  Rendered courses/index.html.erb within layouts/application (19.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 1.9ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 127.0.0.1 at 2012-08-09 12:43:02 -0400
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (5.8ms)
+  Rendered instructors/index.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 55ms (Views: 53.2ms | ActiveRecord: 0.7ms | Solr: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:43:03 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-09 12:43:04 -0400
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
