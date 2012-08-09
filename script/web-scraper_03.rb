@@ -20,8 +20,8 @@ def main()
     browser = Watir::Browser.new :ff
     begin
         browser.goto "http://aces.duke.edu/"
-        browser.text_field(:id, "j_username").set("aks35")
-        browser.text_field(:id, "j_password").set("6EF81ba8c2")
+        browser.text_field(:id, "j_username").set("")
+        browser.text_field(:id, "j_password").set("")
         browser.button(:name, "Submit").click
         #browser.wait_until {browser.text.include? "Registration"}
         sleep 5
