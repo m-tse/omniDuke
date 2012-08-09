@@ -1,13 +1,13 @@
 OmniDuke::Application.routes.draw do
   devise_for :users
 
-
+  
   root :to => 'static_pages#home'
   match '/home', to: 'static_pages#home'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
-  resources :reviews
-
+  resources :reviews, only: [:new, :show, :create]
+  resources :subjects, only: [:show, :index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

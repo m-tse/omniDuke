@@ -1,4 +1,4 @@
-<h1><%= @instructor.formatted_name %></h1>
+<h1><%= capitalize(@instructor.name) %></h1>
 <h4>Courses Taught:
 <% for course in @instructor.courses %>
 <%= link_to course.name, course_path(course) %>

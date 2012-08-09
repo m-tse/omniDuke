@@ -1,6 +1,6 @@
 <li>
 <h3><%= link_to course.name, course_path(course)  %></h3>
-<h4>Professor: <%= link_to course.instructors.first.formatted_name, instructor_path(course.instructors.first) %></h4>
+<h4>Professor: <%= link_to capitalize(course.instructors.first.name), instructor_path(course.instructors.first) %></h4>
 <h4>Prerequisites: 
   <% for prereq in course.prerequisites %>
   <%= link_to prereq.courseCodes[0], course_path(prereq) %>
