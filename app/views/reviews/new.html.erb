@@ -1,5 +1,8 @@
 <h1>Review a course!</h1>
 
 <%= form_for(@review) do |f| %>
-<%= f.text_field :course_content, placeholder: "review content" %>
+<%= f.text_area :course_content, placeholder: "review content" %>
+
+
+<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 <% end %>
