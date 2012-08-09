@@ -27,9 +27,10 @@ class Course < ActiveRecord::Base
     end
     return retArray
   end
-  searchable do
-    text :description, :name
-  end
+
+#  searchable do
+#    text :description, :name
+#  end
 
 
 end
