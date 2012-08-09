@@ -10,7 +10,6 @@ class CoursesController < ApplicationController
 #    end
 #    @courses = @search.results
 
-    if @
 
     @subjects = Subject.all
   end
