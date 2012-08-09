@@ -1,10 +1,8 @@
 <li>
-<h3><%= link_to course.name, course_path(course)  %></h3>
-<h4>Professor: <%= link_to capitalize(course.instructors.first.name), instructor_path(course.instructors.first) %></h4>
-<h4>Prerequisites: 
-  <% for prereq in course.prerequisites %>
-  <%= link_to prereq.courseCodes[0], course_path(prereq) %>
-  <% end %>
+<h3><%= link_to course.toString(@subject.id), course_path(course)  %></h3>
+<h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
+<h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites, :subjectid => @subject.id } %>
+
 </h4>
 <h4>Areas Of Knowledge: 
 <% for aok in course.areas_of_knowledge %>

@@ -13,5 +13,8 @@ class Session < ActiveRecord::Base
     self.name = self.season+self.year.to_s
   end
 
+  def toString
+    capitalize(self.season)+" " +self.year.to_s+ " Term"
+  end
 
 end

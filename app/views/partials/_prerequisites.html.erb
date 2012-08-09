@@ -1,0 +1,3 @@
+<% for prereq in prerequisites %>
+<%= link_to prereq.toCode(subjectid), course_path(prereq) %>
+<% end %>

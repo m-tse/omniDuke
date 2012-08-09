@@ -16,7 +16,7 @@
     <ul class="unstyled">
       <% for instructor in section.instructors %>
       <li>
-	<%= link_to capitalize(instructor.name), instructor_path(instructor.id) %>
+	<%= link_to instructor.toString, instructor_path(instructor.id) %>
       </li>
       <% end %>
     </ul>

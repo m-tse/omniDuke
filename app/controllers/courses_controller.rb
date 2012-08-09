@@ -9,7 +9,11 @@ class CoursesController < ApplicationController
 #      fulltext params[:search]
 #    end
 #    @courses = @search.results
+
+    if @
+
     @subjects = Subject.all
   end
 end
+
 
