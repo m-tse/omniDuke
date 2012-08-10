@@ -38,7 +38,16 @@ class Course < ActiveRecord::Base
   end
 
   searchable do
-    text :description, :name
+    text :description
+    text :name, :boost => 5
+    text :course_numberings do
+      course_numberings.map(&:old_number)
+      course_numberings.map(&:new_number)
+    end
+    text :subjects do
+      subjects.map(&:abbr)
+      subjects.map(&:name)
+    end
   end
 
 

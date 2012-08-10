@@ -8,12 +8,7 @@
 
 <h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
 
-<% if @subject==nil %>
 <h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
-<% else %>
-<h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites, :subjectid => @subject.id } %>
-<% end %>
-
 </h4>
 <h4>Areas Of Knowledge: 
 <% for aok in course.areas_of_knowledge %>
