@@ -1,6 +1,7 @@
 class Subject < ActiveRecord::Base
   attr_accessible :abbr, :name
-
+  #aliases for this subject, i.e. "cs" for computer science
+  serialize :aliases, Array
   validates :abbr, presence:true, uniqueness: { case_sensitive: false}
   validates :name, presence:true, uniqueness: {case_sensitive: false}
 

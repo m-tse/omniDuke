@@ -5,12 +5,6 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @search = Course.search do
-      fulltext params[:search]
-    end
-    @courses = @search.results
-
-
     @subjects = Subject.all
   end
 
@@ -20,8 +14,6 @@ class CoursesController < ApplicationController
     end
     @courses = @search.results
 
-
-    @subjects = Subject.all
   end
 end
 

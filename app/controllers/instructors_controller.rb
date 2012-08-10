@@ -8,4 +8,10 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.find_by_id(params[:id])
   end
 
+  def results
+    @search = Instructor.search do
+      fulltext params[:search]
+    end
+    @instructors = @search.results
+  end
 end

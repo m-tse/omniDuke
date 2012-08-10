@@ -1,6 +1,11 @@
 <h1><%= @instructor.toString %></h1>
 <h4>Courses Taught:
 <% for course in @instructor.courses %>
-<%= link_to course.name, course_path(course) %>
+<%= link_to course.toDefaultCode, course_path(course) %>
+<% end %>
+</h4>
+<h4>Subjects Taught: 
+<% for subject in @instructor.subjects_by_count %>
+<%= link_to capitalize(subject.name), subject_path(subject) %>
 <% end %>
 </h4>

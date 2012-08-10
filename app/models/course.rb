@@ -40,13 +40,26 @@ class Course < ActiveRecord::Base
   searchable do
     text :description
     text :name, :boost => 5
+    # bug for some reason only the newer number gets mapped
     text :course_numberings do
-      course_numberings.map(&:old_number)
-      course_numberings.map(&:new_number)
+      course_numberings.map do |course_numbering|
+        course_numbering.new_number
+        course_numbering.old_number
+      end
     end
+
     text :subjects do
       subjects.map(&:abbr)
+    end
+    text :subjects do
       subjects.map(&:name)
+    end
+    #non functioning map by aliases
+ #   test :subjects do
+ #     subjects.map{|subject| subject.aliases.first}
+ #   end
+    text :instructors do
+      instructors.map(&:name)
     end
   end
 
