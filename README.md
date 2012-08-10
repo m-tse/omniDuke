@@ -13,6 +13,7 @@ In order to get it working
 - rake db:schema:load
 - bundle exec rake sunspot:solr:start
 - rake db:populate
+- rake sunspot:reindex
 - rails s
 
 - navigate to http://localhost:3000 to see the app running
