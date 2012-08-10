@@ -19,7 +19,6 @@
 
 # Ignore solr data
 
-/solr/pids/development/sunspot-solr-development.pid
 
 /solr/data/development/index
 
