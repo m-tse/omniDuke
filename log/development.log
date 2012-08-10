@@ -37096,3 +37096,318 @@ Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-09 03:24:32 -0400
 Served asset /application.js - 304 Not Modified (8ms)
+Connecting to database specified by database.yml
+  [1m[36m (42.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (33.5ms)[0m  CREATE TABLE "areas_of_knowledges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "abbr" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("areas_of_knowledges")[0m
+  [1m[35m (15.2ms)[0m  CREATE UNIQUE INDEX "index_areas_of_knowledges_on_abbr" ON "areas_of_knowledges" ("abbr")
+  [1m[36m (22.7ms)[0m  [1mCREATE TABLE "areas_of_knowledges_courses" ("course_id" integer, "areas_of_knowledge_id" integer) [0m
+  [1m[35m (14.4ms)[0m  CREATE TABLE "course_numberings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "subject_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "new_number" varchar(255), "old_number" varchar(255)) 
+  [1m[36m (18.2ms)[0m  [1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "credits" decimal, "session_id" integer, "description" text, "synopsis" text, "seminar" boolean) [0m
+  [1m[35m (16.0ms)[0m  CREATE TABLE "courses_modes_of_inquiries" ("course_id" integer, "modes_of_inquiry_id" integer) 
+  [1m[36m (15.2ms)[0m  [1mCREATE TABLE "instructors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("instructors")
+  [1m[36m (16.1ms)[0m  [1mCREATE UNIQUE INDEX "index_instructors_on_name" ON "instructors" ("name")[0m
+  [1m[35m (17.3ms)[0m  CREATE TABLE "instructors_sections" ("instructor_id" integer, "section_id" integer) 
+  [1m[36m (17.0ms)[0m  [1mCREATE TABLE "modes_of_inquiries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "abbr" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("modes_of_inquiries")
+  [1m[36m (15.4ms)[0m  [1mCREATE UNIQUE INDEX "index_modes_of_inquiries_on_abbr" ON "modes_of_inquiries" ("abbr")[0m
+  [1m[35m (17.6ms)[0m  CREATE TABLE "prerequisite_relations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "prerequisite_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (17.6ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "assignment_easiness" integer, "test_easiness" integer, "helpfulness" integer, "clarity" integer, "enthusiasm" integer, "course_content" integer, "textbook_usefulness" integer, "review_content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "course_id" integer, "instructor_id" integer) [0m
+  [1m[35m (17.2ms)[0m  CREATE TABLE "sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "suffix" varchar(255), "section_type" varchar(255), "time_slot_id" integer, "enrollment" integer, "capacity" integer, "waitlist_capacity" integer, "waitlist_enrollment" integer, "location" varchar(255), "class_number" integer) 
+  [1m[36m (24.4ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "year" integer, "season" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("sessions")
+  [1m[36m (15.8ms)[0m  [1mCREATE UNIQUE INDEX "index_sessions_on_name" ON "sessions" ("name")[0m
+  [1m[35m (14.9ms)[0m  CREATE TABLE "subjects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "abbr" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("subjects")[0m
+  [1m[35m (18.8ms)[0m  CREATE UNIQUE INDEX "index_subjects_on_abbr" ON "subjects" ("abbr")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("subjects")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_subjects_on_abbr')
+  [1m[36m (15.0ms)[0m  [1mCREATE UNIQUE INDEX "index_subjects_on_name" ON "subjects" ("name")[0m
+  [1m[35m (16.3ms)[0m  CREATE TABLE "time_slots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" time, "end_time" time, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "days_of_week" text) 
+  [1m[36m (17.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (16.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (14.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (18.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (16.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (14.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120808190915')[0m
+  [1m[35m (16.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120802070351')
+  [1m[36m (15.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805181011')[0m
+  [1m[35m (16.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120805182408')
+  [1m[36m (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120803053712')[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120805181503')
+  [1m[36m (15.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120806000821')[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120803070724')
+  [1m[36m (17.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805192045')[0m
+  [1m[35m (15.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120808184247')
+  [1m[36m (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120807191146')[0m
+  [1m[35m (17.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120804070050')
+  [1m[36m (15.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120803071030')[0m
+  [1m[35m (16.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120807184953')
+  [1m[36m (20.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120801022602')[0m
+  [1m[35m (18.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120803053403')
+  [1m[36m (16.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805183410')[0m
+  [1m[35m (16.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120802081512')
+  [1m[36m (15.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804080755')[0m
+  [1m[35m (15.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120802072432')
+  [1m[36m (17.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804075444')[0m
+  [1m[35m (14.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120808183253')
+  [1m[36m (18.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805193821')[0m
+  [1m[35m (20.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120803050236')
+  [1m[36m (18.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120728204645')[0m
+  [1m[35m (15.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120804081228')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804065752')[0m
+  [1m[35m (20.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120728205012')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120803043359')[0m
+  [1m[35m (16.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120803063356')
+  [1m[36m (16.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804071010')[0m
+  [1m[35m (16.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120805214218')
+  [1m[36m (15.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805182909')[0m
+  [1m[35m (18.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120801022707')
+  [1m[36m (22.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120805192829')[0m
+  [1m[35m (23.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120801022646')
+  [1m[36m (18.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120803065436')[0m
+  [1m[35m (20.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120804074518')
+  [1m[36m (22.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804074202')[0m
+  [1m[35m (19.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120801021535')
+  [1m[36m (14.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120804081553')[0m
+  [1m[35m (15.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120801022804')
+  [1m[36m (17.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120802061638')[0m
+  [1m[35m (14.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120805183135')
+Connecting to database specified by database.yml
+  [1m[36mAreasOfKnowledge Load (0.2ms)[0m  [1mSELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'NS' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAreasOfKnowledge Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "areas_of_knowledges" WHERE LOWER("areas_of_knowledges"."abbr") = LOWER('NS') LIMIT 1[0m
+  [1m[35mSQL (64.9ms)[0m  INSERT INTO "areas_of_knowledges" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "NS"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Natural Sciences"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (29.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mAreasOfKnowledge Load (0.2ms)[0m  SELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'ALP' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mAreasOfKnowledge Exists (0.1ms)[0m  SELECT 1 AS one FROM "areas_of_knowledges" WHERE LOWER("areas_of_knowledges"."abbr") = LOWER('ALP') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas_of_knowledges" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "ALP"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Arts, Literatures, and Performance"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[35m (13.2ms)[0m  commit transaction
+  [1m[36mAreasOfKnowledge Load (0.1ms)[0m  [1mSELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'CZ' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAreasOfKnowledge Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "areas_of_knowledges" WHERE LOWER("areas_of_knowledges"."abbr") = LOWER('CZ') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "areas_of_knowledges" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "CZ"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Civilizations"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (48.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mAreasOfKnowledge Load (0.1ms)[0m  SELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'QS' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mAreasOfKnowledge Exists (0.1ms)[0m  SELECT 1 AS one FROM "areas_of_knowledges" WHERE LOWER("areas_of_knowledges"."abbr") = LOWER('QS') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas_of_knowledges" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "QS"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Quantitative Studies"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[35m (36.5ms)[0m  commit transaction
+  [1m[36mAreasOfKnowledge Load (0.2ms)[0m  [1mSELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'SS' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAreasOfKnowledge Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "areas_of_knowledges" WHERE LOWER("areas_of_knowledges"."abbr") = LOWER('SS') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "areas_of_knowledges" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "SS"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Social Sciences"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (15.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mModesOfInquiry Load (0.1ms)[0m  SELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'CCI' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mModesOfInquiry Exists (0.2ms)[0m  SELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('CCI') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "CCI"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Cross-Cultural Inquiry"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[35m (39.5ms)[0m  commit transaction
+  [1m[36mModesOfInquiry Load (0.2ms)[0m  [1mSELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'EI' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mModesOfInquiry Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('EI') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "EI"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Ethical Inquiry"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (47.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mModesOfInquiry Load (0.1ms)[0m  SELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'STS' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mModesOfInquiry Exists (0.1ms)[0m  SELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('STS') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "STS"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Science, Technology, and Society"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[35m (39.6ms)[0m  commit transaction
+  [1m[36mModesOfInquiry Load (0.1ms)[0m  [1mSELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'FL' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mModesOfInquiry Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('FL') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "FL"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Foreign Language"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (14.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mModesOfInquiry Load (0.1ms)[0m  SELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'R' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mModesOfInquiry Exists (0.1ms)[0m  SELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('R') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "R"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Research"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[35m (36.2ms)[0m  commit transaction
+  [1m[36mModesOfInquiry Load (0.1ms)[0m  [1mSELECT "modes_of_inquiries".* FROM "modes_of_inquiries" WHERE "modes_of_inquiries"."abbr" = 'W' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mModesOfInquiry Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "modes_of_inquiries" WHERE LOWER("modes_of_inquiries"."abbr") = LOWER('W') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "modes_of_inquiries" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["abbr", "W"], ["created_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00], ["name", "Writing"], ["updated_at", Thu, 09 Aug 2012 17:57:35 UTC +00:00]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mInstructor Load (0.1ms)[0m  SELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'robert duvall' LIMIT 1
+  [1m[36m (108.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mInstructor Exists (0.2ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('robert duvall') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00], ["name", "robert duvall"], ["updated_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00]]
+  [1m[35m (54.0ms)[0m  commit transaction
+  [1m[36mInstructor Load (0.2ms)[0m  [1mSELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'departmental staff' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('departmental staff') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00], ["name", "departmental staff"], ["updated_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00]]
+  [1m[36m (42.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mInstructor Load (0.2ms)[0m  SELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'owen astrachan' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('owen astrachan') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00], ["name", "owen astrachan"], ["updated_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00]]
+  [1m[35m (41.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.2ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('fall2012') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00], ["name", "fall2012"], ["season", "fall"], ["updated_at", Thu, 09 Aug 2012 17:57:36 UTC +00:00], ["year", 2012]]
+  [1m[35m (116.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 17:57:37 UTC +00:00], ["credits", #<BigDecimal:3dc0458,'0.1E1',9(36)>], ["description", "Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required."], ["name", "Introduction to Computer Science"], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 17:57:37 UTC +00:00]]
+  [1m[36m (53.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 240], ["class_number", 1703], ["course_id", 1], ["created_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["enrollment", 226], ["location", "L.S.R.C. B101"], ["section_type", "LEC"], ["suffix", "001"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["waitlist_capacity", 200], ["waitlist_enrollment", 4]]
+  [1m[35m (73.5ms)[0m  commit transaction
+  [1m[36mInstructor Load (0.3ms)[0m  [1mSELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'owen astrachan' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (1, 3)[0m
+  [1m[35m (44.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["days_of_week", "---\n- 1\n- 3\n"], ["end_time", 2012-08-09 14:40:00 +0000], ["start_time", 2012-08-09 13:25:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00]]
+  [1m[36m (41.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "sections" SET "time_slot_id" = 1, "updated_at" = '2012-08-09 17:57:38.786312' WHERE "sections"."id" = 1[0m
+  [1m[35m (62.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 30], ["class_number", 1704], ["course_id", 1], ["created_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["enrollment", 30], ["location", "Languages 109"], ["section_type", "LAB"], ["suffix", "01L"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["waitlist_capacity", 25], ["waitlist_enrollment", 4]]
+  [1m[36m (15.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mInstructor Load (0.2ms)[0m  SELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'owen astrachan' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (2, 3)
+  [1m[36m (36.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00], ["days_of_week", "---\n- 3\n"], ["end_time", 2012-08-09 16:20:00 +0000], ["start_time", 2012-08-09 15:05:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:38 UTC +00:00]]
+  [1m[35m (17.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "sections" SET "time_slot_id" = 2, "updated_at" = '2012-08-09 17:57:38.927924' WHERE "sections"."id" = 2
+  [1m[36m (17.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mAreasOfKnowledge Load (0.2ms)[0m  SELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'QS' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "areas_of_knowledges_courses" ("course_id", "areas_of_knowledge_id") VALUES (1, 4)
+  [1m[36m (49.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mSubject Load (0.1ms)[0m  SELECT "subjects".* FROM "subjects" WHERE "subjects"."name" = 'computer science' LIMIT 1
+  [1m[36mSubject Load (0.1ms)[0m  [1mSELECT "subjects".* FROM "subjects" WHERE "subjects"."abbr" = 'COMPSCI' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSubject Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "subjects" WHERE LOWER("subjects"."abbr") = LOWER('COMPSCI') LIMIT 1[0m
+  [1m[35mSubject Exists (0.1ms)[0m  SELECT 1 AS one FROM "subjects" WHERE LOWER("subjects"."name") = LOWER('Computer Science') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "subjects" ("abbr", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["abbr", "COMPSCI"], ["created_at", Thu, 09 Aug 2012 17:57:39 UTC +00:00], ["name", "computer science"], ["updated_at", Thu, 09 Aug 2012 17:57:39 UTC +00:00]]
+  [1m[35m (19.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "course_numberings" ("course_id", "created_at", "new_number", "old_number", "subject_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["course_id", 1], ["created_at", Thu, 09 Aug 2012 17:57:39 UTC +00:00], ["new_number", nil], ["old_number", nil], ["subject_id", 1], ["updated_at", Thu, 09 Aug 2012 17:57:39 UTC +00:00]]
+  [1m[36m (16.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCourseNumbering Load (0.2ms)[0m  SELECT "course_numberings".* FROM "course_numberings" WHERE "course_numberings"."course_id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "course_numberings" SET "old_number" = '6L', "new_number" = '101L', "updated_at" = '2012-08-09 17:57:39.937669' WHERE "course_numberings"."id" = 1
+  [1m[36m (50.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mSession Load (0.2ms)[0m  SELECT "sessions".* FROM "sessions" WHERE "sessions"."season" = 'fall' AND "sessions"."year" = 2012 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "courses" SET "session_id" = 1, "updated_at" = '2012-08-09 17:57:39.992875' WHERE "courses"."id" = 1
+  [1m[36m (52.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."name" = 'Introduction to Computer Science' LIMIT 1
+  [1m[36mAreasOfKnowledge Load (0.2ms)[0m  [1mSELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'QS' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["credits", #<BigDecimal:43dcbc0,'0.1E1',9(36)>], ["description", "Analysis, use, and design of data structures and algorithms using an object-oriented language like Java to solve computational problems. Emphasis on abstraction including interfaces and abstract data types for lists, trees, sets, tables/maps, and graphs. Implementation and evaluation of programming techniques including recursion. Intuitive and rigorous analysis of algorithms."], ["name", "Data Structures and Algorithms"], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "prerequisite_relations" ("course_id", "created_at", "prerequisite_id", "updated_at") VALUES (?, ?, ?, ?)  [["course_id", 2], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["prerequisite_id", 1], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "areas_of_knowledges_courses" ("course_id", "areas_of_knowledge_id") VALUES (2, 4)[0m
+  [1m[35m (100.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 180], ["class_number", 1714], ["course_id", 2], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["enrollment", 123], ["location", "L.S.R.C. B101"], ["section_type", "LEC"], ["suffix", "001"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["waitlist_capacity", 180], ["waitlist_enrollment", 0]]
+  [1m[36m (41.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mInstructor Load (0.2ms)[0m  SELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'departmental staff' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (3, 2)
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["days_of_week", "---\n- 1\n- 3\n"], ["end_time", 2012-08-09 11:20:00 +0000], ["start_time", 2012-08-09 10:05:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[35m (14.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "sections" SET "time_slot_id" = 3, "updated_at" = '2012-08-09 17:57:40.384179' WHERE "sections"."id" = 3
+  [1m[36m (39.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 180], ["class_number", 1715], ["course_id", 2], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["enrollment", 123], ["location", "L.S.R.C. B101"], ["section_type", "REC"], ["suffix", "01R"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["waitlist_capacity", 180], ["waitlist_enrollment", 0]]
+  [1m[35m (18.0ms)[0m  commit transaction
+  [1m[36mInstructor Load (0.2ms)[0m  [1mSELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'departmental staff' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (4, 2)[0m
+  [1m[35m (18.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["days_of_week", "---\n- 5\n"], ["end_time", 2012-08-09 11:20:00 +0000], ["start_time", 2012-08-09 10:05:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[36m (40.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "sections" SET "time_slot_id" = 4, "updated_at" = '2012-08-09 17:57:40.507889' WHERE "sections"."id" = 4[0m
+  [1m[35m (14.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36mSubject Load (0.2ms)[0m  [1mSELECT "subjects".* FROM "subjects" WHERE "subjects"."name" = 'computer science' LIMIT 1[0m
+  [1m[35mSubject Load (0.2ms)[0m  SELECT "subjects".* FROM "subjects" WHERE "subjects"."abbr" = 'COMPSCI' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "course_numberings" ("course_id", "created_at", "new_number", "old_number", "subject_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["course_id", 2], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["new_number", nil], ["old_number", nil], ["subject_id", 1], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[36m (75.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCourseNumbering Load (0.2ms)[0m  SELECT "course_numberings".* FROM "course_numberings" WHERE "course_numberings"."course_id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "course_numberings" SET "old_number" = '100', "new_number" = '201', "updated_at" = '2012-08-09 17:57:40.609260' WHERE "course_numberings"."id" = 2
+  [1m[36m (49.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mSession Load (0.2ms)[0m  SELECT "sessions".* FROM "sessions" WHERE "sessions"."season" = 'fall' AND "sessions"."year" = 2012 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "courses" SET "session_id" = 1, "updated_at" = '2012-08-09 17:57:40.662028' WHERE "courses"."id" = 2
+  [1m[36m (42.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."name" = 'Data Structures and Algorithms' LIMIT 1
+  [1m[36mAreasOfKnowledge Load (0.1ms)[0m  [1mSELECT "areas_of_knowledges".* FROM "areas_of_knowledges" WHERE "areas_of_knowledges"."abbr" = 'QS' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["credits", #<BigDecimal:4730c40,'0.1E1',9(36)>], ["description", "Techniques for design and construction of reliable, maintainable and useful software systems. Programming paradigms and tools for medium to large projects: revision control, UNIX tools, performance analysis, GUI, software engineering, testing, documentation."], ["name", "Software Design and Implementation"], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "prerequisite_relations" ("course_id", "created_at", "prerequisite_id", "updated_at") VALUES (?, ?, ?, ?)  [["course_id", 3], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["prerequisite_id", 2], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "areas_of_knowledges_courses" ("course_id", "areas_of_knowledge_id") VALUES (3, 4)[0m
+  [1m[35m (29.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 60], ["class_number", 1725], ["course_id", 3], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["enrollment", 49], ["location", "Soc Psy 126"], ["section_type", "LEC"], ["suffix", "001"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["waitlist_capacity", 60], ["waitlist_enrollment", 0]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mInstructor Load (0.2ms)[0m  SELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'robert duvall' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (5, 1)
+  [1m[36m (14.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["days_of_week", "---\n- 1\n- 3\n"], ["end_time", 2012-08-09 14:40:00 +0000], ["start_time", 2012-08-09 13:25:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[35m (49.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "sections" SET "time_slot_id" = 5, "updated_at" = '2012-08-09 17:57:40.863537' WHERE "sections"."id" = 5
+  [1m[36m (14.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 60], ["class_number", 1726], ["course_id", 3], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["enrollment", 49], ["location", "Soc Psy 126"], ["section_type", "REC"], ["suffix", "01R"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["waitlist_capacity", 60], ["waitlist_enrollment", 0]]
+  [1m[35m (14.1ms)[0m  commit transaction
+  [1m[36mInstructor Load (0.2ms)[0m  [1mSELECT "instructors".* FROM "instructors" WHERE "instructors"."name" = 'robert duvall' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "instructors_sections" ("section_id", "instructor_id") VALUES (6, 1)[0m
+  [1m[35m (38.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "time_slots" ("created_at", "days_of_week", "end_time", "start_time", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["days_of_week", "---\n- 5\n"], ["end_time", 2012-08-09 14:40:00 +0000], ["start_time", 2012-08-09 13:25:00 +0000], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[36m (14.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "sections" SET "time_slot_id" = 6, "updated_at" = '2012-08-09 17:57:40.951711' WHERE "sections"."id" = 6[0m
+  [1m[35m (14.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mSession Load (0.2ms)[0m  [1mSELECT "sessions".* FROM "sessions" WHERE "sessions"."season" = 'fall' AND "sessions"."year" = 2012 LIMIT 1[0m
+  [1m[35mSubject Load (0.1ms)[0m  SELECT "subjects".* FROM "subjects" WHERE "subjects"."name" = 'computer science' LIMIT 1
+  [1m[36mSubject Load (0.1ms)[0m  [1mSELECT "subjects".* FROM "subjects" WHERE "subjects"."abbr" = 'COMPSCI' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "course_numberings" ("course_id", "created_at", "new_number", "old_number", "subject_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["course_id", 3], ["created_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00], ["new_number", nil], ["old_number", nil], ["subject_id", 1], ["updated_at", Thu, 09 Aug 2012 17:57:40 UTC +00:00]]
+  [1m[35m (74.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "courses" SET "session_id" = 1, "updated_at" = '2012-08-09 17:57:41.048007' WHERE "courses"."id" = 3
+  [1m[36m (14.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mCourseNumbering Load (0.2ms)[0m  SELECT "course_numberings".* FROM "course_numberings" WHERE "course_numberings"."course_id" = 3 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  UPDATE "course_numberings" SET "old_number" = '108', "new_number" = '308', "updated_at" = '2012-08-09 17:57:41.375780' WHERE "course_numberings"."id" = 3
+  [1m[36m (87.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

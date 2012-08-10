@@ -331,3 +331,589 @@ Processing by StaticPagesController#home as HTML
   Rendered layouts/_header.html.erb (0.8ms)
   Rendered layouts/_footer.html.erb (0.0ms)
 Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 17:59:14 +0000
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 17:59:15 +0000
+Processing by StaticPagesController#home as HTML
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (118.4ms)
+  Rendered static_pages/home.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_header.html.erb (6.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 2624ms (Views: 2623.2ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+  Rendered layouts/_header.html.erb (98.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2016ms (Views: 2015.0ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 17:59:25 +0000
+Processing by CoursesController#index as HTML
+Completed 500 Internal Server Error in 1077ms
+
+ActiveRecord::StatementInvalid (Could not find table 'courses'):
+  app/controllers/courses_controller.rb:12:in `index'
+
+
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:01:17 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.3ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:01:19 +0000
+Processing by CoursesController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (Could not find table 'courses'):
+  app/controllers/courses_controller.rb:12:in `index'
+
+
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:01:38 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 106ms (Views: 104.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:01:43 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (323.0ms)
+  Rendered courses/index.html.erb within layouts/application (324.6ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 458ms (Views: 332.2ms | ActiveRecord: 9.3ms | Solr: 0.0ms)
+
+
+Started GET "/courses/1" for 74.105.215.199 at 2012-08-09 18:01:45 +0000
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered courses/_overview.html.erb (15.9ms)
+  Rendered courses/_sections.html.erb (42.6ms)
+  Rendered collection (0.0ms)
+  Rendered courses/_reviews.html.erb (2.9ms)
+  Rendered courses/_course_evals.html.erb (0.3ms)
+  Rendered courses/show.html.erb within layouts/application (65.7ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 118ms (Views: 109.6ms | ActiveRecord: 3.2ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:01:46 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (17.6ms)
+  Rendered courses/index.html.erb within layouts/application (17.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:01:49 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:01:59 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:02:03 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.6ms)
+  Rendered courses/index.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 17.8ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:02:04 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (7.3ms)
+  Rendered instructors/index.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:02:05 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:02:06 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.8ms)
+  Rendered instructors/index.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:02:07 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (17.6ms)
+  Rendered courses/index.html.erb within layouts/application (18.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 2.4ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:02:29 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:02:31 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (18.4ms)
+  Rendered courses/index.html.erb within layouts/application (18.8ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 71ms (Views: 67.8ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:02:41 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (17.6ms)
+  Rendered courses/index.html.erb within layouts/application (18.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:02:42 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:02:43 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.8ms)
+  Rendered courses/index.html.erb within layouts/application (17.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:02:44 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 18:04:11 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.5ms)
+  Rendered courses/index.html.erb within layouts/application (16.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 17.7ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:04:14 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:09:08 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:09:10 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/" for 50.135.68.125 at 2012-08-09 18:12:04 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses?utf8=%E2%9C%93&search=compsci" for 50.135.68.125 at 2012-08-09 18:12:10 +0000
+Processing by CoursesController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"compsci"}
+  Rendered courses/_course.html.erb (16.5ms)
+  Rendered courses/index.html.erb within layouts/application (16.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 17.8ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 50.135.68.125 at 2012-08-09 18:12:13 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (53.1ms)
+  Rendered courses/index.html.erb within layouts/application (53.5ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 105.6ms | ActiveRecord: 2.6ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 50.135.68.125 at 2012-08-09 18:12:14 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (5.0ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/instructors/3" for 50.135.68.125 at 2012-08-09 18:12:17 +0000
+Processing by InstructorsController#show as HTML
+  Parameters: {"id"=>"3"}
+  Rendered instructors/show.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 0.5ms | Solr: 0.0ms)
+
+
+Started GET "/" for 50.135.68.125 at 2012-08-09 18:12:19 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 50.135.68.125 at 2012-08-09 18:12:20 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 50.135.68.125 at 2012-08-09 18:12:22 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 50.135.68.125 at 2012-08-09 18:12:23 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (17.1ms)
+  Rendered courses/index.html.erb within layouts/application (17.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 18.3ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:56:58 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 18:57:03 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 18:57:04 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 166.248.9.214 at 2012-08-09 18:57:22 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 64.102.249.6 at 2012-08-09 18:58:27 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 50.135.68.125 at 2012-08-09 18:59:44 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 50.135.68.125 at 2012-08-09 18:59:46 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.9ms)
+  Rendered instructors/index.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/" for 50.135.68.125 at 2012-08-09 18:59:49 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (48.8ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 52ms (Views: 51.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 64.202.160.161 at 2012-08-09 19:04:33 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 64.202.160.161 at 2012-08-09 19:04:35 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses?utf8=%E2%9C%93&search=what+is+this%3F" for 64.202.160.161 at 2012-08-09 19:04:44 +0000
+Processing by CoursesController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"what is this?"}
+  Rendered courses/_course.html.erb (31.9ms)
+  Rendered courses/index.html.erb within layouts/application (32.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 37ms (Views: 33.0ms | ActiveRecord: 2.9ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 19:29:20 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 19:29:24 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.6ms)
+  Rendered courses/index.html.erb within layouts/application (17.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 17.9ms | ActiveRecord: 2.5ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 19:29:26 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.8ms)
+  Rendered instructors/index.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 19:29:26 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 19:29:28 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.8ms)
+  Rendered instructors/index.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 19:29:28 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.5ms)
+  Rendered courses/index.html.erb within layouts/application (16.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 17.7ms | ActiveRecord: 2.4ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 19:29:52 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 19:39:25 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 22:50:34 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 22:50:40 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (65.8ms)
+  Rendered courses/index.html.erb within layouts/application (66.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 70ms (Views: 66.7ms | ActiveRecord: 2.9ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 22:50:41 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (5.0ms)
+  Rendered instructors/index.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-09 22:50:42 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-09 22:50:44 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.8ms)
+  Rendered instructors/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-09 22:50:49 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (16.7ms)
+  Rendered courses/index.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 2.4ms | Solr: 0.0ms)
+
+
+Started GET "/" for 166.248.7.247 at 2012-08-10 01:26:07 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-10 06:04:38 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-10 06:04:41 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (17.9ms)
+  Rendered courses/index.html.erb within layouts/application (18.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 2.7ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-10 06:04:41 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (4.8ms)
+  Rendered instructors/index.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/instructors" for 74.105.215.199 at 2012-08-10 06:04:43 +0000
+Processing by InstructorsController#index as HTML
+  Rendered instructors/_instructor.html.erb (7.5ms)
+  Rendered instructors/index.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.9ms | Solr: 0.0ms)
+
+
+Started GET "/courses" for 74.105.215.199 at 2012-08-10 06:04:43 +0000
+Processing by CoursesController#index as HTML
+  Rendered courses/_course.html.erb (19.2ms)
+  Rendered courses/index.html.erb within layouts/application (19.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 24ms (Views: 20.1ms | ActiveRecord: 3.0ms | Solr: 0.0ms)
+
+
+Started GET "/" for 74.105.215.199 at 2012-08-10 06:04:48 +0000
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 4.2ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
