@@ -22,16 +22,24 @@ class Course < ActiveRecord::Base
 
   #toString with the course code followed by course name
   def toString(subjectID)
-    self.toCode(subjectID) +  " - " + self.name
+      self.toCode(subjectID) +  " - " + self.name
   end
 
   def toCode(subjectID)
     self.course_numberings.find_by_subject_id(subjectID).toString
   end
 
-#  searchable do
-#    text :description, :name
-#  end
+  def toDefaultCode
+    self.course_numberings.first.toString
+  end
+
+  def toDefaultString
+    self.toDefaultCode+ " - " + self.name
+  end
+
+  searchable do
+    text :description, :name
+  end
 
 
 end

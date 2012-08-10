@@ -1,3 +1,8 @@
 <% for prereq in prerequisites %>
+<% if subjectid == nil %>
+       <%= link_to prereq.toDefaultCode, course_path(prereq) %>
+       <% else %>
 <%= link_to prereq.toCode(subjectid), course_path(prereq) %>
+       <% end %>
 <% end %>
+  

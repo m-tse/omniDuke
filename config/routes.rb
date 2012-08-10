@@ -4,6 +4,7 @@ OmniDuke::Application.routes.draw do
   
   root :to => 'static_pages#home'
   match '/home', to: 'static_pages#home'
+  match '/courses/results', to: 'courses#results'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :reviews, only: [:new, :show, :create]
