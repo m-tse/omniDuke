@@ -19,18 +19,36 @@ class Course < ActiveRecord::Base
 
   has_many :reviews
 
-  #array of course code strings, i.e. CS100
-  def courseCodes
-    retArray = []
-    for course_number in self.course_numberings
-      retArray << course_number.toString
-    end
-    return retArray
+
+  #toString with the course code followed by course name
+  def toString(subjectID)
+      self.toCode(subjectID) +  " - " + self.name
   end
 
-#  searchable do
-#    text :description, :name
-#  end
+  def toCode(subjectID)
+    self.course_numberings.find_by_subject_id(subjectID).toString
+  end
+
+  def toDefaultCode
+    self.course_numberings.first.toString
+  end
+
+  def toDefaultString
+    self.toDefaultCode+ " - " + self.name
+  end
+
+  searchable do
+    text :description
+    text :name, :boost => 5
+    text :course_numberings do
+      course_numberings.map(&:old_number)
+      course_numberings.map(&:new_number)
+    end
+    text :subjects do
+      subjects.map(&:abbr)
+      subjects.map(&:name)
+    end
+  end
 
 
 end

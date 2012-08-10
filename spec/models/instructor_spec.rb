@@ -9,7 +9,7 @@ describe Instructor do
   subject { @instructor }
   it { should respond_to(:name)}
   it { should respond_to(:sections)}
-  it { should respond_to(:formatted_name)}
+  it { should respond_to(:toString)}
   it { should be_valid }
 
   describe "when name is not present" do
@@ -31,7 +31,7 @@ describe Instructor do
       @instructor=Instructor.create!(name:"asdf gfsd")
     end
 
-    its(:formatted_name) {should == "Asdf Gfsd"}
+    its(:toString) {should == "Asdf Gfsd"}
   end
 
   describe "should not allow duplicate instructors with the same name" do

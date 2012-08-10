@@ -6927,3 +6927,405 @@ Connecting to database specified by database.yml
   [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
   [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 1 LIMIT 1[0m
   [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (35.4ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["credits", #<BigDecimal:3fbb938,'0.1E1',9(36)>], ["description", ["Id sunt rem illum aut atque. Eum ut et suscipit ab sint in. Accusantium dolor neque maxime. Officia et architecto ea.", "Repudiandae repellendus dolor voluptatem molestiae velit numquam doloribus. Reiciendis qui nihil. Possimus sapiente minima non sint et natus voluptas.", "Magni aliquam temporibus dolor error deserunt cumque. Commodi magnam illo voluptas ut sint ab fugiat. Repellat odit corporis voluptas autem molestias. Velit assumenda temporibus. Esse maiores est optio quis."]], ["name", "Similique id ut repellendus tempore omnis rerum aliquam pariatur."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:15:30.694391' WHERE "sections"."id" = 2
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSection Load (0.2ms)[0m  SELECT "sections".* FROM "sections" WHERE "sections"."course_id" = 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["credits", #<BigDecimal:3b57cc0,'0.1E1',9(36)>], ["description", ["Id sunt rem illum aut atque. Eum ut et suscipit ab sint in. Accusantium dolor neque maxime. Officia et architecto ea.", "Repudiandae repellendus dolor voluptatem molestiae velit numquam doloribus. Reiciendis qui nihil. Possimus sapiente minima non sint et natus voluptas.", "Magni aliquam temporibus dolor error deserunt cumque. Commodi magnam illo voluptas ut sint ab fugiat. Repellat odit corporis voluptas autem molestias. Velit assumenda temporibus. Esse maiores est optio quis."]], ["name", "Similique id ut repellendus tempore omnis rerum aliquam pariatur."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:15:30.799014' WHERE "sections"."id" = 2[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["credits", #<BigDecimal:3d65210,'0.1E1',9(36)>], ["description", ["Id sunt rem illum aut atque. Eum ut et suscipit ab sint in. Accusantium dolor neque maxime. Officia et architecto ea.", "Repudiandae repellendus dolor voluptatem molestiae velit numquam doloribus. Reiciendis qui nihil. Possimus sapiente minima non sint et natus voluptas.", "Magni aliquam temporibus dolor error deserunt cumque. Commodi magnam illo voluptas ut sint ab fugiat. Repellat odit corporis voluptas autem molestias. Velit assumenda temporibus. Esse maiores est optio quis."]], ["name", "Similique id ut repellendus tempore omnis rerum aliquam pariatur."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:15:30.807146' WHERE "sections"."id" = 2[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSection Load (0.1ms)[0m  [1mSELECT "sections".* FROM "sections" WHERE "sections"."course_id" = 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["credits", #<BigDecimal:3eb9738,'0.1E1',9(36)>], ["description", ["Id sunt rem illum aut atque. Eum ut et suscipit ab sint in. Accusantium dolor neque maxime. Officia et architecto ea.", "Repudiandae repellendus dolor voluptatem molestiae velit numquam doloribus. Reiciendis qui nihil. Possimus sapiente minima non sint et natus voluptas.", "Magni aliquam temporibus dolor error deserunt cumque. Commodi magnam illo voluptas ut sint ab fugiat. Repellat odit corporis voluptas autem molestias. Velit assumenda temporibus. Esse maiores est optio quis."]], ["name", "Similique id ut repellendus tempore omnis rerum aliquam pariatur."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enrollment", 15], ["location", "Apt. 192"], ["section_type", "possimus"], ["suffix", "autem"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:15:30.816726' WHERE "sections"."id" = 2
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mInstructor Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('owen astrachan') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('asdf gfsd') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["name", "asdf gfsd"], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER(' ') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('owen astrachan') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('qwer') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["name", "qwer"], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('qwer') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reviews" ("assignment_easiness", "clarity", "course_content", "course_id", "created_at", "enthusiasm", "helpfulness", "instructor_id", "review_content", "test_easiness", "textbook_usefulness", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["assignment_easiness", 7], ["clarity", 7], ["course_content", 8], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enthusiasm", 6], ["helpfulness", 5], ["instructor_id", nil], ["review_content", "Dolor et tenetur voluptas eum consectetur dolores accusamus. Illo delectus ea quisquam reprehenderit quibusdam error sed. Doloribus minima assumenda accusantium mollitia. Aut qui ut sint. Tempore commodi quia illum voluptatum ut."], ["test_easiness", 6], ["textbook_usefulness", 10], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "reviews" ("assignment_easiness", "clarity", "course_content", "course_id", "created_at", "enthusiasm", "helpfulness", "instructor_id", "review_content", "test_easiness", "textbook_usefulness", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["assignment_easiness", 7], ["clarity", 7], ["course_content", 8], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["enthusiasm", 6], ["helpfulness", 5], ["instructor_id", nil], ["review_content", "Dolor et tenetur voluptas eum consectetur dolores accusamus. Illo delectus ea quisquam reprehenderit quibusdam error sed. Doloribus minima assumenda accusantium mollitia. Aut qui ut sint. Tempore commodi quia illum voluptatum ut."], ["test_easiness", 6], ["textbook_usefulness", 10], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Load (0.1ms)[0m  SELECT "sessions".* FROM "sessions" WHERE "sessions"."season" = 'fall' AND "sessions"."year" = 2015 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('fall2015') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["name", "fall2015"], ["season", "fall"], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["year", 2015]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["credits", #<BigDecimal:4172948,'0.1E1',9(36)>], ["description", ["Id sunt rem illum aut atque. Eum ut et suscipit ab sint in. Accusantium dolor neque maxime. Officia et architecto ea.", "Repudiandae repellendus dolor voluptatem molestiae velit numquam doloribus. Reiciendis qui nihil. Possimus sapiente minima non sint et natus voluptas.", "Magni aliquam temporibus dolor error deserunt cumque. Commodi magnam illo voluptas ut sint ab fugiat. Repellat odit corporis voluptas autem molestias. Velit assumenda temporibus. Esse maiores est optio quis."]], ["name", "Similique id ut repellendus tempore omnis rerum aliquam pariatur."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "courses" SET "session_id" = 1, "updated_at" = '2012-08-09 21:15:30.939169' WHERE "courses"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."session_id" = 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2012') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["name", "spring2012"], ["season", "spring"], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["year", 2012]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('fall2012') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["name", "spring2013"], ["season", "spring"], ["updated_at", Thu, 09 Aug 2012 21:15:30 UTC +00:00], ["year", 2013]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER(' asdfasdf2013') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER(' 2013') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.3ms)[0m  [1mINSERT INTO "reviews" ("assignment_easiness", "clarity", "course_content", "course_id", "created_at", "enthusiasm", "helpfulness", "instructor_id", "review_content", "test_easiness", "textbook_usefulness", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["assignment_easiness", 7], ["clarity", 7], ["course_content", 8], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enthusiasm", 6], ["helpfulness", 5], ["instructor_id", nil], ["review_content", "Est voluptatibus sint ut iste aut voluptas enim. Quam dicta non reiciendis omnis. Vero dolore totam aliquid. Doloremque quasi quod."], ["test_easiness", 6], ["textbook_usefulness", 10], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reviews" ("assignment_easiness", "clarity", "course_content", "course_id", "created_at", "enthusiasm", "helpfulness", "instructor_id", "review_content", "test_easiness", "textbook_usefulness", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["assignment_easiness", 7], ["clarity", 7], ["course_content", 8], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enthusiasm", 6], ["helpfulness", 5], ["instructor_id", nil], ["review_content", "Est voluptatibus sint ut iste aut voluptas enim. Quam dicta non reiciendis omnis. Vero dolore totam aliquid. Doloremque quasi quod."], ["test_easiness", 6], ["textbook_usefulness", 10], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["credits", #<BigDecimal:53963b8,'0.1E1',9(36)>], ["description", ["Expedita quia incidunt deserunt. Qui blanditiis quia temporibus. Aut et sapiente.", "Nemo sint aut dolor eligendi esse consequuntur totam. Modi eum numquam quia cumque veritatis. Nobis aut et consequatur. Nam eius et ut voluptatem illum quaerat. Odio reprehenderit iusto repellendus.", "Voluptatem voluptatem maxime. Expedita beatae autem culpa eos. Mollitia reiciendis at qui nobis. Id reiciendis et reprehenderit voluptatem eligendi sint. Quo harum aut suscipit consequuntur omnis incidunt aut."]], ["name", "Omnis repudiandae consequatur ut."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:16:21.455763' WHERE "sections"."id" = 2
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSection Load (0.2ms)[0m  SELECT "sections".* FROM "sections" WHERE "sections"."course_id" = 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["credits", #<BigDecimal:46621d8,'0.1E1',9(36)>], ["description", ["Expedita quia incidunt deserunt. Qui blanditiis quia temporibus. Aut et sapiente.", "Nemo sint aut dolor eligendi esse consequuntur totam. Modi eum numquam quia cumque veritatis. Nobis aut et consequatur. Nam eius et ut voluptatem illum quaerat. Odio reprehenderit iusto repellendus.", "Voluptatem voluptatem maxime. Expedita beatae autem culpa eos. Mollitia reiciendis at qui nobis. Id reiciendis et reprehenderit voluptatem eligendi sint. Quo harum aut suscipit consequuntur omnis incidunt aut."]], ["name", "Omnis repudiandae consequatur ut."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:16:21.504889' WHERE "sections"."id" = 2[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["credits", #<BigDecimal:57054b8,'0.1E1',9(36)>], ["description", ["Expedita quia incidunt deserunt. Qui blanditiis quia temporibus. Aut et sapiente.", "Nemo sint aut dolor eligendi esse consequuntur totam. Modi eum numquam quia cumque veritatis. Nobis aut et consequatur. Nam eius et ut voluptatem illum quaerat. Odio reprehenderit iusto repellendus.", "Voluptatem voluptatem maxime. Expedita beatae autem culpa eos. Mollitia reiciendis at qui nobis. Id reiciendis et reprehenderit voluptatem eligendi sint. Quo harum aut suscipit consequuntur omnis incidunt aut."]], ["name", "Omnis repudiandae consequatur ut."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:16:21.521308' WHERE "sections"."id" = 2
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSection Load (0.1ms)[0m  SELECT "sections".* FROM "sections" WHERE "sections"."course_id" = 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["credits", #<BigDecimal:56ba530,'0.1E1',9(36)>], ["description", ["Expedita quia incidunt deserunt. Qui blanditiis quia temporibus. Aut et sapiente.", "Nemo sint aut dolor eligendi esse consequuntur totam. Modi eum numquam quia cumque veritatis. Nobis aut et consequatur. Nam eius et ut voluptatem illum quaerat. Odio reprehenderit iusto repellendus.", "Voluptatem voluptatem maxime. Expedita beatae autem culpa eos. Mollitia reiciendis at qui nobis. Id reiciendis et reprehenderit voluptatem eligendi sint. Quo harum aut suscipit consequuntur omnis incidunt aut."]], ["name", "Omnis repudiandae consequatur ut."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sections" ("capacity", "class_number", "course_id", "created_at", "enrollment", "location", "section_type", "suffix", "time_slot_id", "updated_at", "waitlist_capacity", "waitlist_enrollment") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["capacity", 100], ["class_number", 100], ["course_id", nil], ["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["enrollment", 15], ["location", "Apt. 147"], ["section_type", "qui"], ["suffix", "reiciendis"], ["time_slot_id", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["waitlist_capacity", 50], ["waitlist_enrollment", 0]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mUPDATE "sections" SET "course_id" = 1, "updated_at" = '2012-08-09 21:16:21.530721' WHERE "sections"."id" = 2[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('owen astrachan') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('qwer') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["name", "qwer"], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('qwer') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('asdf gfsd') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "instructors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["name", "asdf gfsd"], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mInstructor Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER(' ') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mInstructor Exists (0.1ms)[0m  SELECT 1 AS one FROM "instructors" WHERE LOWER("instructors"."name") = LOWER('owen astrachan') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Load (0.1ms)[0m  SELECT "sessions".* FROM "sessions" WHERE "sessions"."season" = 'fall' AND "sessions"."year" = 2015 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('fall2015') LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["name", "fall2015"], ["season", "fall"], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["year", 2015]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "courses" ("created_at", "credits", "description", "name", "seminar", "session_id", "synopsis", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["credits", #<BigDecimal:57d73f0,'0.1E1',9(36)>], ["description", ["Expedita quia incidunt deserunt. Qui blanditiis quia temporibus. Aut et sapiente.", "Nemo sint aut dolor eligendi esse consequuntur totam. Modi eum numquam quia cumque veritatis. Nobis aut et consequatur. Nam eius et ut voluptatem illum quaerat. Odio reprehenderit iusto repellendus.", "Voluptatem voluptatem maxime. Expedita beatae autem culpa eos. Mollitia reiciendis at qui nobis. Id reiciendis et reprehenderit voluptatem eligendi sint. Quo harum aut suscipit consequuntur omnis incidunt aut."]], ["name", "Omnis repudiandae consequatur ut."], ["seminar", nil], ["session_id", nil], ["synopsis", nil], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "courses" SET "session_id" = 1, "updated_at" = '2012-08-09 21:16:21.626980' WHERE "courses"."id" = 1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."session_id" = 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["name", "spring2013"], ["season", "spring"], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["year", 2013]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER(' 2013') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2013') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring2012') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sessions" ("created_at", "name", "season", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["name", "spring2012"], ["season", "spring"], ["updated_at", Thu, 09 Aug 2012 21:16:21 UTC +00:00], ["year", 2012]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('fall2012') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSession Exists (0.1ms)[0m  SELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER(' asdfasdf2013') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSession Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "sessions" WHERE LOWER("sessions"."name") = LOWER('spring') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
