@@ -3,11 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.7'
 gem 'bootstrap-sass'
 gem 'faker'   
-gem 'sunspot_rails' #sunspot for searching
-gem 'sunspot_solr' 
 gem 'devise'
 gem 'execjs'
-
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

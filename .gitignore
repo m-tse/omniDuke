@@ -17,8 +17,7 @@
 # Ignore wildcards
 *~
 
-# Ignore solr data
-
-
-/solr/data/development/index
-
+# Ignore sunspot and solr files
+/solr
+/config/sunspot.yml
+/log/sunspot*
