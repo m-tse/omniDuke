@@ -22,5 +22,4 @@
 
 # Ignore sunspot and solr files
 /solr
-/config/sunspot.yml
 /log/sunspot*
