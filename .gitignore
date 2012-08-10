@@ -18,4 +18,4 @@
 *~
 
 # Ignore solr data
-/solr/data/development
+/solr/data/development/index
