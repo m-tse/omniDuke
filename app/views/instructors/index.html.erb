@@ -1,10 +1,7 @@
 <h1>Explore Instructors</h1>
 <h3>Search by Instructor Name and/or Instructor Subject</h3>
-<%= form_tag instructors_results_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "Search", :name => nil %>
-<% end %>
-<h3>Advanced Search</h3>
+
+<%= render partial:"partials/two_button_search_bar", locals:{redirect:instructors_results_path} %>
 
 <h3>Browse by Last Name</h3>
 <ul>

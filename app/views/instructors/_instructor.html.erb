@@ -1,6 +1,8 @@
+<li>
 <h3><%= link_to instructor.toString, instructor_path(instructor) %></h3>
 <h4>Courses Taught:
 <% for course in instructor.courses %>
 <%= link_to course.name, course_path(course) %>
 <% end %>
 </h4>
+</li>

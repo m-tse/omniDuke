@@ -1,8 +1,4 @@
-<h1 class="center">OmniDUKE</h1>
 
-<%= form_tag courses_path, :method => :get do %>
-<p class="center">
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :name => nil %>
-</p>
-<% end %>
+<h1 class="center">OmniDUKE</h1>
+<%= render partial:"partials/one_button_search_bar", locals:{redirect:omni_results_path} %>
+
