@@ -17,8 +17,9 @@
 # Ignore for Mac OS X
 .DS_Store
 
-# Ignore wildcards
+# Ignore wildcards and temp files
 *~
+*#
 
 # Ignore sunspot and solr files
 /solr

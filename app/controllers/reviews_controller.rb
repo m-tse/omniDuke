@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @fieldsHash = {course_content:"Course Content", assignment_easiness:"Assignment Easiness", test_easiness:"Test Easiness", clarity:"Instructor Clarity", helpfulness:"Instructor Helpfulness", enthusiasm:"Instructor Enthusiasm", textbook_usefulness:"Textbook Usefulness"}
     @review = Review.new
   end
 
