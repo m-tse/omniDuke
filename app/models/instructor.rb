@@ -36,10 +36,10 @@ class Instructor < ActiveRecord::Base
 
   searchable do
     text :name
-    text :subjects_by_count do
+    text :subjects_by_count_abbr do
       subjects_by_count.map(&:abbr)
     end
-    text :subjects_by_count do
+    text :subjects_by_count_name do
       subjects_by_count.map(&:name)
     end
   end

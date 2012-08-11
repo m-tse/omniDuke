@@ -9,12 +9,18 @@ namespace :db do
     createcs6	
     createcs100
     createcs108
+    addcsAlias	
 
 
 
   end
 end
 
+def addcsAlias
+    cs = Subject.find_by_abbr("COMPSCI")
+    cs.alias="cs"
+    cs.save	 
+end
 
 def createInstructors
   instructorArray = ["Robert Duvall", "Departmental Staff", "Owen Astrachan"]
