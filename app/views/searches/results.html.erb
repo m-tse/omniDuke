@@ -1,6 +1,7 @@
-<h1>Search</h1>
-<%= render partial:"partials/one_button_search_bar", locals:{redirect:omni_results_path} %>
 
+<div class="center">
+<%= render partial:"partials/one_button_search_bar", locals:{redirect:omni_results_path} %>
+</div>
 <div class="row">
 
   <div class="span2">
@@ -9,20 +10,20 @@
 	<a href="#tab1" data-toggle="pill">Courses</a>
       </li>
       <li>
-	<a href="#tab2" data-toggle="pill">Instructors</a>
+	<a href="#tab2" data-toggle="pill">Professors</a>
       </li>
     </ul>
   </div>
   
-  <div class="span8">
+  <div class="span10">
     <div class="tab-content">
       <div class="tab-pane fade active in" id="tab1">
-	<ul>
+
 	  <%= render @course_results%>
-	</ul>
+
       </div>
       <div class="tab-pane fade in" id="tab2">
-	<ul><%= render @instructor_results%></ul>
+	<%= render @instructor_results%>
       </div>
     </div>
   </div>
