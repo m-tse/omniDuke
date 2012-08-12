@@ -4,11 +4,12 @@ namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
 
-    createInstructors
+
     createfall2012
     createcs6	
     createcs100
     createcs108
+    createmath103
     addcsAlias	
 
 
@@ -22,12 +23,7 @@ def addcsAlias
     cs.save	 
 end
 
-def createInstructors
-  instructorArray = ["Robert Duvall", "Departmental Staff", "Owen Astrachan"]
-  for instructor in instructorArray
-    getCreateInstructor(instructor)
-  end
-end
+
 
 def createfall2012
   Session.create!(year:2012, season:"fall")
@@ -139,4 +135,29 @@ def createcs108
   cn.new_number = "308"
   cn.save
   cs108.save
+end
+
+def createmath103
+  math103 = Course.new(name:"Multivariable Calculus", credits:1)
+  math103.description = "Partial differentiation, multiple integrals, and topics in differential and integral vector calculus, including Green's theorem, the divergence theorem, and Stokes's theorem. Not open to students who have taken Mathematics 202.  Prerequisite: Mathematics 122, 112L, or 122L. Instructor: Staff"
+  math103.save
+  lec = math103.sections.create!(section_type:"LEC", suffix:"01",
+                                 location:"Physics 047", enrollment:31,
+                                 capacity:30, waitlist_enrollment:0, 
+                                 waitlist_capacity:10, class_number:3424)
+  lec.instructors << getCreateInstructor("Xin Zhou")
+  setSectionTimeSlot(lec, [2,4], "11:45AM", "1:00PM")
+  lec2 = math103.sections.create!(section_type:"LEC", suffix:"02", location:"Physics 235", enrollment:30, capacity:30, waitlist_enrollment:1, waitlist_capacity:30, class_number:3425)
+  lec2.instructors << getCreateInstructor("Christopher Cornwell")
+  setSectionTimeSlot(lec2, [1,3,5], "12:00PM", "12:50PM")
+  math103.areas_of_knowledge << AreasOfKnowledge.find_by_abbr("QS")
+  math103.subjects << getCreateSubject("Mathematics", "MATH")
+  math103.save
+  cn=math103.course_numberings.first
+  cn.old_number = "103"
+  cn.new_number = "212"
+  cn.save
+  math103.session = getCreateSession("fall", 2012)
+  math103.save
+
 end

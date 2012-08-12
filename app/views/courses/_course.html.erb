@@ -4,6 +4,7 @@
     <% if @subject==nil %>
     <h3><%= link_to course.toDefaultString, course_path(course)  %></h3>
     <% else %>
+
     <h3><%= link_to course.toString(@subject.id), course_path(course)  %></h3>
     <% end %>
     
