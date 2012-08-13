@@ -24,3 +24,6 @@
 # Ignore sunspot and solr files
 /solr
 /log/sunspot*
+
+# ignore precompiled files, only compile them in production server
+/public/assets
