@@ -1,26 +1,33 @@
-<li>
 
-<% if @subject==nil %>
-<h3><%= link_to course.toDefaultString, course_path(course)  %></h3>
-<% else %>
-<h3><%= link_to course.toString(@subject.id), course_path(course)  %></h3>
-<% end %>
+<div class="row">
+  <div class="span8">
+    <% if @subject==nil %>
+    <h3><%= link_to course.toDefaultString, course_path(course)  %></h3>
+    <% else %>
 
-<h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
+    <h3><%= link_to course.toString(@subject.id), course_path(course)  %></h3>
+    <% end %>
+    
+    <h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
+    
+    <h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
+    </h4>
+    <h4>Areas Of Knowledge: 
+      <% for aok in course.areas_of_knowledge %>
+      <%= aok.abbr %>
+      <% end %>
+    </h4>
+    <h4>Modes of Inquiry: 
+      <% for moi in course.modes_of_inquiry %>
+      <%= moi.abbr %>
+      <% end %>
+    </h4>
+    <h5>Description: <%= truncate(course.description, length:300) %></h5>
+  </div>
+  
+  <div class="span2">
+    <h3>Times</h3>
+  </div>
+  
+</div>
 
-<h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
-</h4>
-<h4>Areas Of Knowledge: 
-<% for aok in course.areas_of_knowledge %>
-<%= aok.abbr %>
-<% end %>
-</h4>
-<h4>Modes of Inquiry: 
-<% for moi in course.modes_of_inquiry %>
-<%= moi.abbr %>
-<% end %>
-</h4>
-
-<h5>Description: <%= truncate(course.description, length:300) %></h5>
-
-</li>

@@ -1,11 +1,17 @@
-@import "bootstrap";
+
 
 /* universal styling */
 
 body{
-  padding-top: 40px;
+  padding-top: 50px;
+  font-size:100%;
 }
 
 .center{
 text-align: center;
+}
+
+.searchbar{
+padding-top: 15px;
+
 }

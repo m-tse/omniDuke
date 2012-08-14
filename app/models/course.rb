@@ -41,23 +41,25 @@ class Course < ActiveRecord::Base
     text :description
     text :name, :boost => 5
     # bug for some reason only the newer number gets mapped
-    text :course_numberings do
-      course_numberings.map do |course_numbering|
-        course_numbering.new_number
-        course_numbering.old_number
-      end
+    text :course_number_new do
+      course_numberings.map(&:new_number)
     end
-
-    text :subjects do
+    text :course_number_old do
+      course_numberings.map(&:old_number)
+    end
+    text :subjects_abbr do
       subjects.map(&:abbr)
     end
-    text :subjects do
+    text :subjects_name do
       subjects.map(&:name)
     end
+    text :subject_alias do
+      subjects.map(&:alias)
+    end
     #non functioning map by aliases
- #   test :subjects do
- #     subjects.map{|subject| subject.aliases.first}
- #   end
+#    test :subjects, :multiple => true  do
+#      subjects.map{|subject| subject.aliases}
+#    end
     text :instructors do
       instructors.map(&:name)
     end

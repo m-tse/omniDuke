@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20120810222922) do
     t.string   "abbr"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "aliases"
+    t.string   "alias"
   end
 
   add_index "subjects", ["abbr"], :name => "index_subjects_on_abbr", :unique => true
