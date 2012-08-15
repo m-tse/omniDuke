@@ -2,7 +2,7 @@
 
 <ul>
   <% for section in @course.sections %>
-  <li><h3><%= section.section_type + section.suffix %></h3>
+  <li><h3><%= section.suffix %></h3>
 
     <h4>Times</h4>
     <% for day in section.time_slot.daysOfWeekToStringArray %>

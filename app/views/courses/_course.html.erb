@@ -12,17 +12,7 @@
     
     <h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
     </h4>
-    <h4>Areas Of Knowledge: 
-      <% for aok in course.areas_of_knowledge %>
-      <%= aok.abbr %>
-      <% end %>
-    </h4>
-    <h4>Modes of Inquiry: 
-      <% for moi in course.modes_of_inquiry %>
-      <%= moi.abbr %>
-      <% end %>
-    </h4>
-    <h5>Description: <%= truncate(course.description, length:300) %></h5>
+    
   </div>
   
   <div class="span2">
