@@ -6,7 +6,7 @@ namespace :db do
 
 
     #works!
-    createcs6	
+#    createcs6	
    # createcs100 broken
    # createcs108 broken
    # createmath103 broken
