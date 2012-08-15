@@ -40,3 +40,4 @@ def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
   timeslot.save
   timeslot.sections << section
 end
+

@@ -225,10 +225,11 @@ module Spider
         
         find("iframe#ptifrmtgtframe")
         page.driver.browser.switch_to.frame 'ptifrmtgtframe'
+        sleep(2)
           find_link(letter).click   
  
 
-          sleep(2)
+          find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
 
 
           subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
@@ -239,11 +240,11 @@ module Spider
 
           for subjectid in subjectids
 
- 
+            sleep(1)
             click_link(subjectid)
  
-            sleep(2)
 
+            find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
    
             courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
             courseids = Array.new
@@ -254,7 +255,9 @@ module Spider
             for courseid in courseids
               click_link(courseid)
               sleep(2)
-              
+
+
+
               sectionElements = page.all("a[id^='CLASS_DETAIL$']")
               sectionids = Array.new
               for element in sectionElements
@@ -268,16 +271,19 @@ module Spider
                 page.driver.browser.switch_to.frame 'TargetContent'
                 
 
-
+                p find("span#DERIVED_CLSRCH_DESCRLONG").text
                 #######################################
                 #INSERT PARSING LOGIC HERE #
-                ###############################3
+                ###############################
 
 
                 click_link('Return to Search By Subject')
-                
 
-              end         
+                page.driver.browser.switch_to.default_content
+                page.driver.browser.switch_to.frame 'TargetContent'
+                sleep(5)
+              end        
+ 
             end
             click_link(subjectid)
             sleep(2)

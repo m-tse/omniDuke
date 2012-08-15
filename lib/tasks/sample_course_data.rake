@@ -5,12 +5,12 @@ namespace :db do
   task populate: :environment do
 
 
-    createfall2012
-    createcs6	
-    createcs100
-    createcs108
-    createmath103
-    addcsAlias	
+   # createfall2012
+   # createcs6	
+   # createcs100
+   # createcs108
+   # createmath103
+   # addcsAlias	
 
 
 
