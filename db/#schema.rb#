@@ -11,19 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805193821) do
+ActiveRecord::Schema.define(:version => 20120815084404) do
 
-  create_table "areas_of_knowledges", :force => true do |t|
-    t.string   "name"
-    t.string   "abbr"
+  create_table "attributes", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "abbr"
+    t.string   "name"
   end
 
-  create_table "areas_of_knowledges_courses", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "areas_of_knowledge_id"
+  create_table "attributes_sections", :id => false, :force => true do |t|
+    t.integer "attribute_id"
+    t.integer "section_id"
   end
+
 
   create_table "course_numberings", :force => true do |t|
     t.integer  "course_id"
@@ -36,18 +37,9 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.decimal  "credits"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "session_id"
-    t.text     "description"
-    t.text     "synopsis"
-    t.boolean  "seminar"
-  end
-
-  create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "modes_of_inquiry_id"
   end
 
   create_table "instructors", :force => true do |t|
@@ -56,16 +48,11 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "instructors", ["name"], :name => "index_instructors_on_name", :unique => true
+
   create_table "instructors_sections", :id => false, :force => true do |t|
     t.integer "instructor_id"
     t.integer "section_id"
-  end
-
-  create_table "modes_of_inquiries", :force => true do |t|
-    t.string   "name"
-    t.string   "abbr"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "prerequisite_relations", :force => true do |t|
@@ -75,10 +62,25 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "sections", :force => true do |t|
-    t.integer  "course_id"
+  create_table "reviews", :force => true do |t|
+    t.integer  "assignment_easiness"
+    t.integer  "test_easiness"
+    t.integer  "helpfulness"
+    t.integer  "clarity"
+    t.integer  "enthusiasm"
+    t.integer  "course_content"
+    t.integer  "textbook_usefulness"
+    t.text     "review_content"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "course_id"
+    t.integer  "instructor_id"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.integer  "course_id"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "suffix"
     t.string   "section_type"
     t.integer  "time_slot_id"
@@ -88,6 +90,9 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.integer  "waitlist_enrollment"
     t.string   "location"
     t.integer  "class_number"
+    t.text     "description"
+    t.text     "synopsis"
+    t.decimal  "credits",             :precision => 10, :scale => 0
   end
 
   create_table "sessions", :force => true do |t|
@@ -98,12 +103,18 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "sessions", ["name"], :name => "index_sessions_on_name", :unique => true
+
   create_table "subjects", :force => true do |t|
     t.string   "name"
     t.string   "abbr"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "alias"
   end
+
+  add_index "subjects", ["abbr"], :name => "index_subjects_on_abbr", :unique => true
+  add_index "subjects", ["name"], :name => "index_subjects_on_name", :unique => true
 
   create_table "time_slots", :force => true do |t|
     t.time     "start_time"
@@ -112,5 +123,23 @@ ActiveRecord::Schema.define(:version => 20120805193821) do
     t.datetime "updated_at",   :null => false
     t.text     "days_of_week"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

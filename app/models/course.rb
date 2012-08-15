@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
-  attr_accessible :description, :name, :credits
- # validates :name, :description, :credits, :presence => true
+  attr_accessible :name
+ # validates :name,  :presence => true
   has_many :prerequisite_relations, :foreign_key => "course_id", :class_name=>"PrerequisiteRelation"
   has_many :prerequisites, :through => :prerequisite_relations
   belongs_to :advanced_course, :class_name => "Course"
@@ -9,8 +9,7 @@ class Course < ActiveRecord::Base
   has_many :instructors, :through => :sections, :uniq => :true
 
 
-  has_and_belongs_to_many :modes_of_inquiry
-  has_and_belongs_to_many :areas_of_knowledge
+
 
   belongs_to :session, :inverse_of => :courses
 
@@ -38,7 +37,6 @@ class Course < ActiveRecord::Base
   end
 
   searchable do
-    text :description
     text :name, :boost => 5
     # bug for some reason only the newer number gets mapped
     text :course_number_new do
@@ -56,10 +54,6 @@ class Course < ActiveRecord::Base
     text :subject_alias do
       subjects.map(&:alias)
     end
-    #non functioning map by aliases
-#    test :subjects, :multiple => true  do
-#      subjects.map{|subject| subject.aliases}
-#    end
     text :instructors do
       instructors.map(&:name)
     end

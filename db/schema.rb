@@ -11,20 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810222922) do
+ActiveRecord::Schema.define(:version => 20120815162557) do
 
-  create_table "areas_of_knowledges", :force => true do |t|
+  create_table "course_attributes", :force => true do |t|
     t.string   "name"
     t.string   "abbr"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "areas_of_knowledges", ["abbr"], :name => "index_areas_of_knowledges_on_abbr", :unique => true
-
-  create_table "areas_of_knowledges_courses", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "areas_of_knowledge_id"
+  create_table "course_attributes_sections", :id => false, :force => true do |t|
+    t.integer "course_attribute_id"
+    t.integer "section_id"
   end
 
   create_table "course_numberings", :force => true do |t|
@@ -38,18 +36,9 @@ ActiveRecord::Schema.define(:version => 20120810222922) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.decimal  "credits"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "session_id"
-    t.text     "description"
-    t.text     "synopsis"
-    t.boolean  "seminar"
-  end
-
-  create_table "courses_modes_of_inquiries", :id => false, :force => true do |t|
-    t.integer "course_id"
-    t.integer "modes_of_inquiry_id"
   end
 
   create_table "instructors", :force => true do |t|
@@ -64,15 +53,6 @@ ActiveRecord::Schema.define(:version => 20120810222922) do
     t.integer "instructor_id"
     t.integer "section_id"
   end
-
-  create_table "modes_of_inquiries", :force => true do |t|
-    t.string   "name"
-    t.string   "abbr"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "modes_of_inquiries", ["abbr"], :name => "index_modes_of_inquiries_on_abbr", :unique => true
 
   create_table "prerequisite_relations", :force => true do |t|
     t.integer  "course_id"
@@ -98,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20120810222922) do
 
   create_table "sections", :force => true do |t|
     t.integer  "course_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "suffix"
     t.string   "section_type"
     t.integer  "time_slot_id"
@@ -109,6 +89,9 @@ ActiveRecord::Schema.define(:version => 20120810222922) do
     t.integer  "waitlist_enrollment"
     t.string   "location"
     t.integer  "class_number"
+    t.text     "description"
+    t.text     "synopsis"
+    t.decimal  "credits",             :precision => 10, :scale => 0
   end
 
   create_table "sessions", :force => true do |t|
