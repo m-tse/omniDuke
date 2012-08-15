@@ -6,21 +6,15 @@ namespace :db do
 
 
     #works!
-#    createcs6	
+    createcs6	
+    createFakeClasses
    # createcs100 broken
    # createcs108 broken
-   # createmath103 broken
-   # addcsAlias	
+   # createmath103 broken	
 
 
 
   end
-end
-
-def addcsAlias
-    cs = Subject.find_by_abbr("COMPSCI")
-    cs.alias="cs"
-    cs.save	 
 end
 
 
@@ -30,7 +24,7 @@ end
 def createcs6
   cs6 = Course.create!(name:"INTRO TO COMPUTER SCIENCE")
   
-  lec = cs6.sections.create!( suffix:"001", list_name:"COMPSCI 101L-001 LEC (1703)", location:"L.S.R.C. B101", enrollment:226, capacity:240, waitlist_enrollment:4,  waitlist_capacity:200,  class_number:1703, name:"COMPSCI 101L-001 Introduction to Computer Science", description:"Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required. Instructor: Astrachan, Duvall, Forbes, or Rodger")
+  lec = cs6.sections.create!(list_name:"COMPSCI 101L-001 LEC (1703)", location:"Durham", room:"L.S.R.C. B101", enrollment:226, capacity:240, waitlist_enrollment:4,  waitlist_capacity:200,  class_number:1703, name:"COMPSCI 101L-001 Introduction to Computer Science", description:"Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required. Instructor: Astrachan, Duvall, Forbes, or Rodger", units:1, career:"Undergraduate", grading:"Graded", campus:"Duke University")
 
   lec.instructors << getCreateInstructor("Owen Astrachan")
   setSectionTimeSlot(lec, [1,3], "1:25PM", "2:40PM")
@@ -47,6 +41,75 @@ def createcs6
   cs6.session=getCreateSession("fall", 2012)
   cs6.save
 end
+
+
+def createFakeClasses
+  #create subjects
+  20.times do |n|
+    abbr =  Faker::Lorem.words(1).first+n.to_s
+    name = Faker::Lorem.words(1).first+n.to_s
+
+    Subject.create!(abbr:abbr, name:name)
+  end
+
+  #createInstructors
+  30.times do |n|
+    Instructor.create!(name: Faker::Name.name+n.to_s)
+  end
+
+
+
+  #create courses
+  80.times do |n|
+    course = Course.create!(name:Faker::Lorem.sentence+n.to_s)
+    course.session= getCreateSession("fall", 2012)
+
+    aSubject = Subject.all.sample
+    course.subjects<< aSubject
+    cn=course.course_numberings.find_by_subject_id(aSubject.id)
+    cn.new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
+    cn.old_number = (rand(200)+1).to_s+(65+rand(25)).chr
+    cn.save
+    
+    2.times do |i|
+      sec = Section.create!
+      course.sections << sec
+      course.save
+      sec.instructors << Instructor.all.sample
+      sec.list_name = Faker::Lorem.sentence+n.to_s
+      sec.location = "Durham"
+      sec.room = Faker::Address.secondary_address
+      sec.capacity = rand(250)
+      sec.enrollment = rand(sec.capacity)
+      sec.waitlist_capacity = rand(100)
+      sec.waitlist_enrollment = rand(sec.waitlist_capacity)
+      sec.class_number = rand(10000)
+      sec.name = Faker::Lorem.sentence+n.to_s
+      sec.description = Faker::Lorem.paragraphs(4)
+      sec.units = rand(2)+1
+      sec.career = "Undergraduate"
+      sec.campus = "Duke University"
+      sec.grading = "Graded"
+      sec.save
+
+    end
+
+
+  end
+  
+    
+
+
+
+
+
+
+
+end
+
+
+
+
 
 
 def createcs100

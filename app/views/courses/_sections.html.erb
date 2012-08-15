@@ -2,14 +2,11 @@
 
 <ul>
   <% for section in @course.sections %>
-  <li><h3><%= section.suffix %></h3>
+  <li>
 
     <h4>Times</h4>
-    <% for day in section.time_slot.daysOfWeekToStringArray %>
-    <%= day %>
-    <% end %>
-    <br>
-    <%= section.time_slot.startTimeString + " - " + section.time_slot.endTimeString %>
+  
+  
     
 
     <h4>Instructors</h4>
