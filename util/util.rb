@@ -41,3 +41,11 @@ def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
   timeslot.sections << section
 end
 
+def getCreateCourseAttribute(scrapedvalue)
+  foundAttribute = CourseAttribute.find_by_scrape_value(scrapedvalue)
+  if(foundAttribute != nil)
+    return foundAttribute
+  else
+    return CourseAttribute.create!(scrape_value:scrapedvalue)
+  end
+end

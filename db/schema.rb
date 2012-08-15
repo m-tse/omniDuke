@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815162557) do
+ActiveRecord::Schema.define(:version => 20120815164957) do
 
   create_table "course_attributes", :force => true do |t|
     t.string   "name"
     t.string   "abbr"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "scrape_value"
   end
 
   create_table "course_attributes_sections", :id => false, :force => true do |t|
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20120815162557) do
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
     t.string   "suffix"
-    t.string   "section_type"
     t.integer  "time_slot_id"
     t.integer  "enrollment"
     t.integer  "capacity"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20120815162557) do
     t.text     "description"
     t.text     "synopsis"
     t.decimal  "credits",             :precision => 10, :scale => 0
+    t.string   "name"
+    t.string   "list_name"
   end
 
   create_table "sessions", :force => true do |t|

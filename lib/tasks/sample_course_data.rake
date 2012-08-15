@@ -5,11 +5,11 @@ namespace :db do
   task populate: :environment do
 
 
-   # createfall2012
-   # createcs6	
-   # createcs100
-   # createcs108
-   # createmath103
+    #works!
+    createcs6	
+   # createcs100 broken
+   # createcs108 broken
+   # createmath103 broken
    # addcsAlias	
 
 
@@ -25,39 +25,22 @@ end
 
 
 
-def createfall2012
-  Session.create!(year:2012, season:"fall")
-end
 
-
+##Ideal way to write a course to database
 def createcs6
-  cs6 = Course.new(name:"Introduction to Computer Science", credits:1)
-  cs6.description = "Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required."
-  cs6.save
-  lec = cs6.sections.create!(section_type:"LEC", suffix:"001",
-                               location:"L.S.R.C. B101", enrollment:226,
-                               capacity:240, waitlist_enrollment:4,
-                             waitlist_capacity:200,  class_number:1703)
+  cs6 = Course.create!(name:"INTRO TO COMPUTER SCIENCE")
+  
+  lec = cs6.sections.create!( suffix:"001", list_name:"COMPSCI 101L-001 LEC (1703)", location:"L.S.R.C. B101", enrollment:226, capacity:240, waitlist_enrollment:4,  waitlist_capacity:200,  class_number:1703, name:"COMPSCI 101L-001 Introduction to Computer Science", description:"Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required. Instructor: Astrachan, Duvall, Forbes, or Rodger")
 
   lec.instructors << getCreateInstructor("Owen Astrachan")
-
   setSectionTimeSlot(lec, [1,3], "1:25PM", "2:40PM")
+  lec.course_attributes << getCreateCourseAttribute("(NS) Natural Sciences")
+  lec.save
 
-
-  lab = cs6.sections.create!(section_type:"LAB", suffix:"01L", 
-                             location:"Languages 109", enrollment:30, 
-                             capacity:30, waitlist_enrollment:4, 
-                             waitlist_capacity:25, class_number:1704)
-  lab.instructors << getCreateInstructor("Owen Astrachan")
-
-  setSectionTimeSlot(lab, [3], "3:05PM", "4:20PM")
-
-
-
-  cs6.areas_of_knowledge << AreasOfKnowledge.find_by_abbr("QS")
-  cs6.subjects << getCreateSubject("Computer Science", "COMPSCI")
-  cs6.save
-  cn=cs6.course_numberings.first
+  csSubject = getCreateSubject("Computer Science", "COMPSCI")
+  cs6.subjects << csSubject
+ 
+  cn=cs6.course_numberings.find_by_subject_id(csSubject.id)
   cn.old_number = "6L"
   cn.new_number = "101L"
   cn.save
