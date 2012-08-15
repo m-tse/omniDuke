@@ -4,7 +4,6 @@
     <% if @subject==nil %>
     <h3><%= link_to course.toDefaultString, course_path(course)  %></h3>
     <% else %>
-
     <h3><%= link_to course.toString(@subject.id), course_path(course)  %></h3>
     <% end %>
     
@@ -13,6 +12,15 @@
     <h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
     </h4>
     
+    <h4>Description:</h4>
+    <% for description in course.descriptions %>
+    <p><%= description.truncate(250) %></p>
+    <% end %>
+
+
+
+
+
   </div>
   
   <div class="span2">

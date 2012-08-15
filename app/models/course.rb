@@ -36,6 +36,15 @@ class Course < ActiveRecord::Base
     self.toDefaultCode+ " - " + self.name
   end
 
+  def descriptions
+    set = Set.new []
+    for section in self.sections
+      set << section.description
+    end
+    return set.to_a
+  end
+
+
   searchable do
     text :name, :boost => 5
     # bug for some reason only the newer number gets mapped

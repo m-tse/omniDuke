@@ -8,13 +8,13 @@ namespace :db do
   desc "Scrape data from ACES and enter it into the database"
   task populate: :environment do
 
-    spider = Spider::Google.new
-    spider.search
+#    spider = Spider::Google.new
+#    spider.search
   end
 end
 
-Capybara.run_server = false
-Capybara.current_driver = :selenium
+#Capybara.run_server = false
+Capybara.default_driver = :selenium
 Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 60
 

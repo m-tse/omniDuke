@@ -7,6 +7,8 @@ gem 'execjs'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'mysql'
+gem "capybara"
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,7 +19,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+
   gem 'factory_girl_rails'
 end
 

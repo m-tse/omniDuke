@@ -7,10 +7,10 @@ class Instructor < ActiveRecord::Base
 
   has_many :reviews
 
-  before_validation { self.name = self.name.downcase }
+
 
   def toString
-    capitalize(self.name)
+    self.name
   end
 
   #has not been tested, waiting on sample data
