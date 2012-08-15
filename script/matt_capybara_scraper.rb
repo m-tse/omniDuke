@@ -223,7 +223,7 @@ module Spider
       letters.each do |letter|
         
         
-
+        find("iframe#ptifrmtgtframe")
         page.driver.browser.switch_to.frame 'ptifrmtgtframe'
           find_link(letter).click   
  
