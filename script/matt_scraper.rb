@@ -207,6 +207,7 @@ def main()
 
   for letter in letters
     @frame = browser.frame(:name, "TargetContent")
+    Watir::Wait.until {@frame.link(:text, letter).exists?}
     @frame.link(:text, letter).click
 
     Watir::Wait.until {@frame.link(:xpath, "//a[starts-with(@id, 'DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$')]").exists?}
