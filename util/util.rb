@@ -49,3 +49,12 @@ def getCreateCourseAttribute(scrapedvalue)
     return CourseAttribute.create!(scrape_value:scrapedvalue)
   end
 end
+
+def getCreateTimeSlot(scrapedACESValue)
+  foundTimeSlot = TimeSlot.find_by_aces_value(scrapedACESValue)
+  if(foundTimeSlot !=nil)
+    return foundTimeSlot
+  else 
+    return TimeSlot.create!(aces_value:scrapedACESValue)
+  end
+end

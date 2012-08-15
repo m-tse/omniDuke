@@ -8,8 +8,8 @@ namespace :db do
   desc "Scrape data from ACES and enter it into the database"
   task populate: :environment do
 
-#    spider = Spider::Google.new
-#    spider.search
+    spider = Spider::Google.new
+    spider.search
   end
 end
 
@@ -210,6 +210,9 @@ def createSectionInListScreen(course, sectionNum)
   section.room = find(secRoomCSS).text
   secInstructorCSS = createCSSExp("DU_DERIVED_SS_DESCR100_2$", sectionNum)
   
+  timeslotCSS = createCSSExp("DERIVED_AA2_REQDESCRA$", sectionNum)
+  timeslot = getCreateTimeSlot(find(timeslotCSS).text)
+  section.time_slot = timeslot
   section.instructors << getCreateInstructor(find(secInstructorCSS).text)
   section.save
   course.sections<< section

@@ -6,8 +6,8 @@ namespace :db do
 
 
     #works!
-    createcs6	
-    createFakeClasses
+#    createcs6	
+#    createFakeClasses
    # createcs100 broken
    # createcs108 broken
    # createmath103 broken	
