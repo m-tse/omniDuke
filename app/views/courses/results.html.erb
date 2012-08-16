@@ -1,4 +1,6 @@
 <h1>Search Results</h1>
-<ul>
+
+<%= render partial:"partials/courses/course_search_bar", locals:{redirect:courses_results_path} %>
+
 <%= render @courses %>
-</ul>
+

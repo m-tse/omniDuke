@@ -76,6 +76,18 @@ class Course < ActiveRecord::Base
     text :instructors do
       instructors.map(&:name)
     end
+    text :descriptions
+    string :attributes, :multiple => true do
+      stringarray = []
+      for attribute in course_attributes
+        if attribute.abbr!=nil
+          stringarray << attribute.abbr
+        else
+          stringarray << attribute.scrape_value
+        end
+      end
+      stringarray
+    end
   end
 
 

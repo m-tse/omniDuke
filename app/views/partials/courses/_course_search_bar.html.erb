@@ -1,0 +1,17 @@
+<%= form_tag redirect, :method => :get, :class => "form-horizontal" do %>
+
+<div class="input-append searchbar">
+  <%= text_field_tag :search, params[:search], :class=>"span4" %>
+  <%= button_tag "Search",  :class => "btn" %>
+  
+</div>
+
+<div id="myCollapsibleExample"><a href="#demo" data-toggle="collapse">Advanced Search</a></div>  
+<div id="demo" class="collapse"> 
+<%= render partial:"partials/courses/areas_of_knowledge" %>
+<%= render partial:"partials/courses/modes_of_inquiry" %>
+
+
+</div>
+
+<% end %>

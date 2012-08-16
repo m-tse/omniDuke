@@ -9,8 +9,16 @@ class CoursesController < ApplicationController
   end
 
   def results
-    @search = Course.search do
-      fulltext params[:search]
+    @search = Course.search do |q|
+
+      q.fulltext params[:search]
+      params[:attributes].each_pair do |k,v|
+        if v=="1"
+          q.with(:attributes, k)
+        end
+      end
+
+
     end
     @courses = @search.results
 

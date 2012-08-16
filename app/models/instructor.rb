@@ -9,6 +9,8 @@ class Instructor < ActiveRecord::Base
 
 
 
+
+
   def toString
     self.name
   end
