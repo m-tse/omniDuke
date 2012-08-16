@@ -44,6 +44,17 @@ class Course < ActiveRecord::Base
     return set.to_a
   end
 
+  #hacky, think about this
+  def attributes
+    set = Set.new []
+    for section in self.sections
+      for attribute in section.course_attributes
+        set << attribute
+      end
+    end
+    return set.to_a
+    
+  end
 
   searchable do
     text :name, :boost => 5

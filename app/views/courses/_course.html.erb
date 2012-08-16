@@ -11,6 +11,12 @@
     
     <h4>Prerequisites: <%= render :partial => "partials/prerequisites", :locals => { :prerequisites => course.prerequisites} %>
     </h4>
+
+    <h4>Attributes: 
+      <% for attribute in course.attributes %>
+      <%= attribute.toString %>,
+      <% end %>
+    </h4>
     
     <h4>Description:</h4>
     <% for description in course.descriptions %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815204928) do
+ActiveRecord::Schema.define(:version => 20120816011356) do
 
   create_table "course_attributes", :force => true do |t|
     t.string   "name"
@@ -122,12 +122,18 @@ ActiveRecord::Schema.define(:version => 20120815204928) do
   add_index "subjects", ["abbr"], :name => "index_subjects_on_abbr", :unique => true
   add_index "subjects", ["name"], :name => "index_subjects_on_name", :unique => true
 
-  create_table "time_slots", :force => true do |t|
+  create_table "time_periods", :force => true do |t|
     t.time     "start_time"
     t.time     "end_time"
+    t.integer  "time_slot_id"
+    t.integer  "day"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.text     "days_of_week"
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "aces_value"
   end
 
