@@ -52,7 +52,7 @@ def createFakeClasses
   end
 
   #createCourseAttributes
-  attArray = ["Seminar", "(CCI) Cross Cultural Inquiry", "First Year Students Only", "(SS) Social Sciences", "(ALP) Arts, Literature & Performance", "(CZ) Civilizations", "(NS) Natural Sciences", "(QS) Quantitative Studies", "(EI) Ethical Inquiry", "(STS) Science, Technology, and Society", "(FL) Foreign Language", "(R) Research", "(W) Writing"]
+  attArray = ["Seminar", "(CCI) Cross Cultural Inquiry", "First Year Students Only", "(SS) Social Sciences", "(ALP) Arts, Literature & Performance", "(CZ) Civilizations", "(NS) Natural Sciences", "(QS) Quantitative Studies", "(EI) Ethical Inquiry", "(STS) Science, Technology, and Society", "(FL) Foreign Language", "(R) Research", "(W) Writing", "Service Learning Course", "Seminar"]
   for att in attArray
     getCreateCourseAttribute(att)
   end

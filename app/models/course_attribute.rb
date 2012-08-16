@@ -10,9 +10,9 @@ class CourseAttribute < ActiveRecord::Base
   }
 
   def validateKnownAttributes
-    hash = {"QS"=>"Quantitative Studies", "NS"=>"Natural Sciences", "ALP"=>"Arts, Literature & Performance", "CZ"=>"Civilizations", "SS"=>"Social Sciences", "CCI"=>"Cross Cultural Inquiry", "EI"=> "Ethical Inquiry", "STS"=>"Science, Technology, and Society", "FL"=>"Foreign Language", "R"=>"Research", "W"=>"Writing"}
+    hash = {"QS"=>"Quantitative Studies", "NS"=>"Natural Sciences", "ALP"=>"Arts, Literature & Performance", "CZ"=>"Civilizations", "SS"=>"Social Sciences", "CCI"=>"Cross Cultural Inquiry", "EI"=> "Ethical Inquiry", "STS"=>"Science, Technology, and Society", "FL"=>"Foreign Language", "R"=>"Research", "W"=>"Writing", "SLC" => "Service Learning Course"}
     hash.each {|key, value|
-      if self.scrape_value.include? key and self.scrape_value.include? value
+      if self.scrape_value.include? key or self.scrape_value.include? value
         self.abbr = key
         self.name = value
       end

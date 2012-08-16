@@ -10,11 +10,11 @@ class CoursesController < ApplicationController
 
   def results
     @search = Course.search do |q|
-
+      p params
       q.fulltext params[:search]
       params[:attributes].each_pair do |k,v|
         if v=="1"
-          q.with(:attributes, k)
+      q.with(:attributes, [k])
         end
       end
 
