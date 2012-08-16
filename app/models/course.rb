@@ -58,7 +58,6 @@ class Course < ActiveRecord::Base
 
   searchable do
     text :name, :boost => 5
-    # bug for some reason only the newer number gets mapped
     text :course_number_new do
       course_numberings.map(&:new_number)
     end

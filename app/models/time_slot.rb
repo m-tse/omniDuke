@@ -1,6 +1,6 @@
 class TimeSlot < ActiveRecord::Base
   attr_accessible   :aces_value
-  
+  validates :aces_value, presence:true
   #values 1-5, with 1 being monday, 5 being friday
   has_many :sections
   has_many :time_periods
