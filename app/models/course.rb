@@ -45,7 +45,7 @@ class Course < ActiveRecord::Base
   end
 
   #hacky, think about this
-  def attributes
+  def course_attributes
     set = Set.new []
     for section in self.sections
       for attribute in section.course_attributes
