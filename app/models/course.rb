@@ -77,6 +77,7 @@ class Course < ActiveRecord::Base
       instructors.map(&:name)
     end
     text :descriptions
+
     string :attributes, :multiple => true do
       stringarray = []
       for attribute in course_attributes

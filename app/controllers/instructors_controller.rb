@@ -14,4 +14,7 @@ class InstructorsController < ApplicationController
     end
     @instructors = @search.results
   end
+
+
+  
 end
