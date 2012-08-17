@@ -9,23 +9,8 @@ namespace :db do
   task populate: :environment do
 
     spider = Spider::Google.new
-    spider.letter_id = 0
-    spider.subject_id = 0
-    spider.course_id = 0
-    spider.section_id = 0
     spider.login()
-    begin
-        spider.search()
-    rescue => e
-        puts e.inspect
-        puts e.backtrace
-        puts 'Retrying'
-        puts spider.letter_id
-        puts spider.subject_id
-        puts spider.course_id
-        puts spider.section_id
-        retry
-    end
+    spider.search()
   end
 end
 
@@ -41,12 +26,9 @@ $password = '6EF81ba8c2'
 
 
 
-
 module Spider
   class Google
     include Capybara::DSL
-
-    attr_accessor  :letter_id, :subject_id, :course_id, :section_id
 
     def login()
 
@@ -66,6 +48,26 @@ module Spider
       courseId = 0
       sectionId = 0
 
+      previousLetterId = 0
+      previousSubjectId = 0
+      previousCourseId = 0
+      previousSectionId = 0
+ 
+      if File.exists? "/home/aks/projects/omniDuke/elementIds.temp"
+        lines = File.open('/home/aks/projects/omniDuke/elementIds.temp').readlines
+
+        previousLetterId = Integer(lines[0].delete("\n"))
+        previousSubjectId = Integer(lines[1].delete("\n"))
+        previousCourseId = Integer(lines[2].delete("\n"))
+        previousSectionId = Integer(lines[3].delete("\n"))
+        File.delete('/home/aks/projects/omniDuke/elementIds.temp')
+      end
+      puts previousLetterId
+      puts previousSubjectId
+      puts previousCourseId
+      puts previousSectionId
+
+
       find_link('Registration').click
       
       alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -81,10 +83,14 @@ module Spider
       begin
         letterCount = 0
         # Loop through A - Z
+
         letters.each do |letter|
-    
-          if letterCount < self.letter_id
+   
+          ind = false
+
+          if letterCount < previousLetterId
               letterCount += 1
+              letterId += 1
               next 
           end            
 
@@ -103,22 +109,22 @@ module Spider
             subjectids << element[:id]
           end
 
-          subjectId = 0
           subjectCount = 0
           for subjectid in subjectids
-            if subjectCount < self.subject_id
+            if subjectCount < previousSubjectId
                 subjectCount += 1
+                subjectId += 1
                 next 
             end            
 
 
             ##set current subject
-            subjectNum = subjectid.split('').last
-            subjectAbbrCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
-            subjectAbbr = find(subjectAbbrCSSTagger).text
-            subjectNameCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
-            subjectName = find(subjectNameCSSTagger).text
-            currentSubject = getCreateSubject(subjectName, subjectAbbr)
+            subjectNum = subjectid.split('$').last
+            subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
+            subjectAbrv = find(subjectAbrvCSSTagger).text
+            subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
+            subjectNames = find(subjectNamesCSSTagger).text
+            currentSubject = getCreateSubject(subjectNames, subjectAbrv)
 
 
 
@@ -134,11 +140,11 @@ module Spider
               courseids << element[:id]
             end
 
-            courseId = 0
             courseCount = 0
             for courseid in courseids
-              if courseCount < self.course_id
+              if courseCount < previousCourseId
                   courseCount += 1
+                  courseId += 1
                   next 
               end            
                
@@ -159,20 +165,25 @@ module Spider
                 sectionids << element[:id]
               end
 
-              sectionId = 0
               sectionCount = 0
               for sectionid in sectionids
-                if sectionCount < self.section_id
-                    sectionCount += 1
-                    next 
-                end            
+
                 puts letterId
                 puts subjectId
                 puts courseId
                 puts sectionId 
-
-                sectionNum = sectionid.split('').last
+=begin
+                click_link(courseids[0])
+                sleep(2)
+                click_link('CLASS_DETAIL$0')
+                sleep(2)
+                click_link('Return to Search By Subject')
+ 
+                sleep(2)
+                click_link(courseid)
                 
+=end
+                sectionNum = sectionid.split('$').last
                 section = createSectionInListScreen(course, sectionNum)
 
 
@@ -180,8 +191,6 @@ module Spider
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
                 
-
-
                 parseCourseInDetailScreen(section)
                 
 
@@ -206,10 +215,12 @@ module Spider
 #        sleep(9000)
 
       rescue
-        puts self.letter_id = letterId
-        puts self.subject_id = subjectId
-        puts self.course_id = courseId
-        puts self.section_id = sectionId
+        File.open('elementIds.temp','w') do |f|
+            f.puts letterId 
+            f.puts subjectId
+            f.puts courseId
+            f.puts sectionId
+        end
         raise
       end
     end
@@ -228,29 +239,37 @@ end
 
 
 def parseCourseInDetailScreen(section)
-  section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
-  section.name = find("span#DERIVED_CLSRCH_DESCR200").text
-  section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
-  section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
-  section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
-  section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
+  begin
+          section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
+          section.name = find("span#DERIVED_CLSRCH_DESCR200").text
+          section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
+          section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
+          section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
+          section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
 
-  section.career = find("span#PSXLATITEM_XLATLONGNAME").text
-  section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
-  section.location = find("span#CAMPUS_LOC_VW_DESCR").text
-  section.campus = find("span#CAMPUS_TBL_DESCR").text
-  section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
-  #fix this eventually?
-  section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
+          section.career = find("span#PSXLATITEM_XLATLONGNAME").text
+          section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
+          section.location = find("span#CAMPUS_LOC_VW_DESCR").text
+          section.campus = find("span#CAMPUS_TBL_DESCR").text
+          section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
+          #fix this eventually?
+          section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
 
-  attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
-  attributes.each_line { |l|
-    section.course_attributes << getCreateCourseAttribute(l)
-  }
+          attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
+          puts "HERE"
+          puts attributes
+          puts "HERE"
 
 
-  section.save
-  p section
+          attributes.each_line { |l|
+            section.course_attributes << getCreateCourseAttribute(l)
+          }
+
+  rescue
+  ensure
+    section.save
+    p section
+  end
 end
 
 
