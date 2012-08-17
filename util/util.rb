@@ -42,6 +42,8 @@ def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
 end
 
 def getCreateCourseAttribute(scrapedvalue)
+  scrapedvalue = scrapedvalue.strip
+  puts scrapedvalue
   foundAttribute = CourseAttribute.find_by_scrape_value(scrapedvalue)
   if(foundAttribute != nil)
     return foundAttribute
