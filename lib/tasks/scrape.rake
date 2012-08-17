@@ -21,8 +21,8 @@ Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 5
 
 
-$username = 'mst17'
-$password = 'I1lg83b5x8'
+$username = ''
+$password = ''
 $projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
@@ -131,7 +131,7 @@ module Spider
 
             sleep(1)
             click_link(subjectid)
-
+            sleep(1)
 
             find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
    
