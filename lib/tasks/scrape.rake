@@ -21,8 +21,8 @@ Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 5
 
 
-$username = 'aks35'
-$password = '6EF81ba8c2'
+$username = ''
+$password = ''
 
 
 
