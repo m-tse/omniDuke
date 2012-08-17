@@ -39,7 +39,7 @@ end
 
 def createFakeClasses
   #create subjects
-  20.times do |n|
+  50.times do |n|
     abbr =  Faker::Lorem.words(1).first+n.to_s
     name = Faker::Lorem.words(1).first+n.to_s
 
@@ -47,7 +47,7 @@ def createFakeClasses
   end
 
   #createInstructors
-  30.times do |n|
+  50.times do |n|
     Instructor.create!(name: Faker::Name.name+n.to_s)
   end
 
@@ -77,7 +77,7 @@ def createFakeClasses
 
 
   #create courses
-  80.times do |n|
+  120.times do |n|
     course = Course.create!(name:Faker::Lorem.sentence+n.to_s)
     course.session= getCreateSession("fall", 2012)
 
