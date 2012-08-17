@@ -97,7 +97,7 @@ module Spider
 
           find("iframe#ptifrmtgtframe")
           page.driver.browser.switch_to.frame 'ptifrmtgtframe'
-          sleep(2)
+          sleep(1)
           find_link(letter).click   
           sleep(1)
 
@@ -175,17 +175,7 @@ module Spider
                 puts subjectId
                 puts courseId
                 puts sectionId 
-=begin
-                click_link(courseids[0])
-                sleep(2)
-                click_link('CLASS_DETAIL$0')
-                sleep(2)
-                click_link('Return to Search By Subject')
- 
-                sleep(2)
-                click_link(courseid)
-                
-=end
+
                 sectionNum = sectionid.split('$').last
                 section = createSectionInListScreen(course, sectionNum)
 
@@ -283,9 +273,14 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
 
 
   oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
-  old_number = find(oldNumberCSSTag).text
+  if page.has_css?(oldNumberCSSTag)
+    old_number = find(oldNumberCSSTag).text
+  end
   newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
   new_number = find(newNumberCSSTag).text
+  if old_number == nil
+    old_number = "none"
+  end
   cn=course.course_numberings.build(old_number:old_number, new_number:new_number)
   cn.subject = currentSubject
   cn.save

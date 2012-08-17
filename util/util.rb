@@ -42,7 +42,7 @@ def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
 end
 
 def getCreateCourseAttribute(scrapedvalue)
-
+  scrapedvalue = scrapedvalue.strip
   foundAttribute = CourseAttribute.find_by_scrape_value(scrapedvalue)
   if(foundAttribute != nil)
     return foundAttribute
@@ -61,14 +61,14 @@ def getCreateTimeSlot(scrapedACESValue)
 end
 
 def getCreateCourse(nameString, currentSession)
-  sessionID = currentSession.id
-  foundCourse = Course.find_by_name_and_session_id(nameString, sessionID)
-  if foundCourse !=nil
-    return foundCourse
-  else
+#  sessionID = currentSession.id
+#  foundCourse = Course.find_by_name_and_session_id(nameString, sessionID)
+#  if foundCourse !=nil
+#    return foundCourse
+#  else
     newCourse =  Course.create!(name:nameString)
     newCourse.session=currentSession
     newCourse.save
     return newCourse
-  end
+#  end
 end
