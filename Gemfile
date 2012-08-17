@@ -9,6 +9,8 @@ gem 'sunspot_solr'
 gem 'mysql'
 gem "capybara"
 
+ gem 'capistrano'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -50,8 +52,7 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+
 
 # To use debugger
 # gem 'debugger'
