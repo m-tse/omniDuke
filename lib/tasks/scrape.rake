@@ -9,19 +9,35 @@ namespace :db do
   task populate: :environment do
 
     spider = Spider::Google.new
-    spider.search
+    spider.letter_id = 0
+    spider.subject_id = 0
+    spider.course_id = 0
+    spider.section_id = 0
+    spider.login()
+    begin
+        spider.search()
+    rescue => e
+        puts e.inspect
+        puts e.backtrace
+        puts 'Retrying'
+        puts spider.letter_id
+        puts spider.subject_id
+        puts spider.course_id
+        puts spider.section_id
+        retry
+    end
   end
 end
+
 
 Capybara.run_server = false
 Capybara.current_driver = :selenium
 Capybara.app_host = "http://aces.duke.edu/"
-Capybara.default_wait_time = 60
+Capybara.default_wait_time = 5
 
 
-
-$username = ''
-$password = ''
+$username = 'aks35'
+$password = '6EF81ba8c2'
 
 
 
@@ -29,15 +45,26 @@ $password = ''
 module Spider
   class Google
     include Capybara::DSL
-    
-    def search()
-      
+
+    attr_accessor  :letter_id, :subject_id, :course_id, :section_id
+
+    def login()
 
       visit ('/')
       find_field('j_username')
       fill_in("j_username", :with => $username)
       fill_in('j_password', :with => $password)
       click_button('Enter')
+
+    end
+
+
+    def search()
+
+      letterId = 0
+      subjectId = 0
+      courseId = 0
+      sectionId = 0
 
       find_link('Registration').click
       
@@ -51,16 +78,21 @@ module Spider
       #fix this eventually
       currentSession = getCreateSession("fall", 2012)
 
+      begin
+        letterCount = 0
+        # Loop through A - Z
+        letters.each do |letter|
+    
+          if letterCount < self.letter_id
+              letterCount += 1
+              next 
+          end            
 
-      # Loop through A - Z
-      letters.each do |letter|
-        
-        
-        find("iframe#ptifrmtgtframe")
-        page.driver.browser.switch_to.frame 'ptifrmtgtframe'
-        sleep(2)
-        find_link(letter).click   
-        sleep(1)
+          find("iframe#ptifrmtgtframe")
+          page.driver.browser.switch_to.frame 'ptifrmtgtframe'
+          sleep(2)
+          find_link(letter).click   
+          sleep(1)
 
           find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
 
@@ -71,7 +103,14 @@ module Spider
             subjectids << element[:id]
           end
 
+          subjectId = 0
+          subjectCount = 0
           for subjectid in subjectids
+            if subjectCount < self.subject_id
+                subjectCount += 1
+                next 
+            end            
+
 
             ##set current subject
             subjectNum = subjectid.split('').last
@@ -94,8 +133,16 @@ module Spider
             for element in courseElements
               courseids << element[:id]
             end
-            
+
+            courseId = 0
+            courseCount = 0
             for courseid in courseids
+              if courseCount < self.course_id
+                  courseCount += 1
+                  next 
+              end            
+               
+
               courseNUM = courseid.split('').last
               click_link(courseid)
               sleep(2)
@@ -111,8 +158,19 @@ module Spider
               for element in sectionElements
                 sectionids << element[:id]
               end
-              
+
+              sectionId = 0
+              sectionCount = 0
               for sectionid in sectionids
+                if sectionCount < self.section_id
+                    sectionCount += 1
+                    next 
+                end            
+                puts letterId
+                puts subjectId
+                puts courseId
+                puts sectionId 
+
                 sectionNum = sectionid.split('').last
                 
                 section = createSectionInListScreen(course, sectionNum)
@@ -133,20 +191,32 @@ module Spider
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
                 sleep(5)
+                sectionId += 1
               end        
               p course
+              courseId += 1  
             end
             click_link(subjectid)
             sleep(2)
+            subjectId += 1
           end
           sleep(2)    
+          letterId += 1
+        end 
+#        sleep(9000)
 
-      end 
-      sleep(9000)
+      rescue
+        puts self.letter_id = letterId
+        puts self.subject_id = subjectId
+        puts self.course_id = courseId
+        puts self.section_id = sectionId
+        raise
+      end
     end
   end
   
 end
+
 
 
 
