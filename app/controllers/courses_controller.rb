@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.all.sort_by &:name
   end
 
   def results

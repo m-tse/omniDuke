@@ -1,4 +1,4 @@
-<h3>Search by Instructor Name and/or Instructor Subject</h3>
+<h1>Explore Professors</h1>
 
 <%= render partial:"partials/instructors/instructor_search_bar", locals:{redirect:instructors_results_path} %>
 
@@ -6,19 +6,24 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-pills">
     <li class="active">
-      <a href="#tab1" data-toggle="tab">Last Name</a>
+      <a href="#tab1" data-toggle="tab">First Name</a>
     </li>
     <li>
-      <a href="#tab2" data-toggle="tab">Subjects</a>
+      <a href="#tab2" data-toggle="tab">Last Name</a>
+    </li>
+    <li>
+      <a href="#tab3" data-toggle="tab">Subjects</a>
     </li>
   </ul>
   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="tab1">
-
       <%= render partial:"partials/alpha_list", locals:{list:@instructors} %>
     </div>
     <div class = "tab-pane fade in" id="tab2">
+      <%= render @instructors %>
+    </div>
+    <div class = "tab-pane fade in" id="tab3">
       <%= render @instructors %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 class InstructorsController < ApplicationController
 
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.all.sort_by &:name
   end
 
   def show
