@@ -6,6 +6,6 @@
 </h4>
 <h4>Subjects Taught: 
 <% for subject in @instructor.subjects_by_count %>
-<%= link_to capitalize(subject.name), subject_path(subject) %>
+<%= link_to subject.name, subject_path(subject) %>
 <% end %>
 </h4>

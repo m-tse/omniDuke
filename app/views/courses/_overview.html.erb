@@ -3,8 +3,18 @@
 <% for courseNumber in @course.course_numberings %>
 <p><%= courseNumber.toString %></p>
 <% end %>
+
+<h3>Description</h3>
+<% if @course.descriptions.size==1 %>
+<%= @course.descriptions.first %>
+<% else %>
+<p>Find the different descriptions in each section.</p>
+<% end %>
+
+
+
 <h3>Session</h3>
-<p><%= @course.session.name %></p><!--eventually pull this out of course overview, and into a Session "mode", viewers will set session at start of course searching-->
+<p><%= @course.session.name %></p>
 
 <h3>Prerequisites</h3>
 <% for prereq in @course.prerequisites %>

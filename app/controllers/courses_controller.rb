@@ -5,12 +5,20 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.all.sort_by &:name
   end
 
   def results
-    @search = Course.search do
-      fulltext params[:search]
+    @search = Course.search do |q|
+      p params
+      q.fulltext params[:search]
+      params[:attributes].each_pair do |k,v|
+        if v=="1"
+      q.with(:attributes, [k])
+        end
+      end
+
+
     end
     @courses = @search.results
 

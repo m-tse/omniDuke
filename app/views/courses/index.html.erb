@@ -1,12 +1,12 @@
 <h1>Explore Courses</h1>
-<h3>Search by Keyword and/or Course Number</h3>
-<%= render partial:"partials/search_bar", locals:{redirect:courses_results_path} %>
 
+<%= render partial:"partials/courses/course_search_bar", locals:{redirect:courses_results_path} %>
+ 
 
 
 
 <h3>Browse by Subject</h3>
 
-<ul>
-<%= render @subjects %>
-</ul>
+
+<%= render partial:"partials/alpha_list", locals:{list:@subjects} %>
+

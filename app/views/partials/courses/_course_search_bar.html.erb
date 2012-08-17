@@ -1,0 +1,21 @@
+<%= form_tag redirect, :method => :get, :class => "form-horizontal" do %>
+
+<div class="input-append searchbar">
+  <%= text_field_tag :search, params[:search], :class=>"span4" %>
+  <%= button_tag "Search",  :class => "btn" %>
+  <a href='#' id="courseSearchBarHelp" class="btn btn-info" rel="popover" data-content="Find your course by searching its title, number(old or new), subject, description keywords, or professor that teaches it.  Click Advanced Options for ways to filter results." data-original-title="Confused?">?</a>
+</div>
+<script type="text/javascript">
+  $("#courseSearchBarHelp").popover({placement: "bottom"});
+</script>
+
+
+<div id="myCollapsibleExample"><a href="#demo" data-toggle="collapse">Advanced Options</a></div>  
+<div id="demo" class="collapse"> 
+<%= render partial:"partials/courses/areas_of_knowledge" %>
+<%= render partial:"partials/courses/modes_of_inquiry" %>
+<%= render partial:"partials/courses/miscellaneous_fields" %>
+
+</div>
+
+<% end %>

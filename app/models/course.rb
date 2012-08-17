@@ -36,9 +36,28 @@ class Course < ActiveRecord::Base
     self.toDefaultCode+ " - " + self.name
   end
 
+  def descriptions
+    set = Set.new []
+    for section in self.sections
+      set << section.description
+    end
+    return set.to_a
+  end
+
+  #hacky, think about this
+  def course_attributes
+    set = Set.new []
+    for section in self.sections
+      for attribute in section.course_attributes
+        set << attribute
+      end
+    end
+    return set.to_a
+    
+  end
+
   searchable do
     text :name, :boost => 5
-    # bug for some reason only the newer number gets mapped
     text :course_number_new do
       course_numberings.map(&:new_number)
     end
@@ -56,6 +75,27 @@ class Course < ActiveRecord::Base
     end
     text :instructors do
       instructors.map(&:name)
+    end
+    text :descriptions, :boost => 4
+    text :attribute_abbreviations do
+      course_attributes.map(&:abbr)
+    end
+    text :attribute_names do
+      course_attributes.map(&:name)
+    end
+    text :attribute_scrape_value do
+      course_attributes.map(&:scrape_value)
+    end
+    string :attributes, :multiple => true do
+      stringarray = []
+      for attribute in course_attributes
+        if attribute.abbr!=nil
+          stringarray << attribute.abbr
+        else
+          stringarray << attribute.scrape_value
+        end
+      end
+      stringarray
     end
   end
 

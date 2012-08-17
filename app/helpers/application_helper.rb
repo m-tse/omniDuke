@@ -6,4 +6,6 @@ module ApplicationHelper
     end
     return retstring.strip
   end
+
+
 end

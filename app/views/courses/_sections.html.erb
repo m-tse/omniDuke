@@ -5,7 +5,7 @@
   <li>
 
     <h4>Times</h4>
-  
+    <%= section.time_slot.aces_value %>
   
     
 
@@ -17,14 +17,19 @@
       </li>
       <% end %>
     </ul>
-    <h4>Location</h4>
-    <%= section.location %>
+
+    <h4>Room</h4>
+    <%= section.room %>
     <h4>Enrollment</h4>
     <%= section.enrollment.to_s + "/" +section.capacity.to_s %>
     <h4>Waitlist</h4>
     <%= section.waitlist_enrollment.to_s+"/" + section.waitlist_capacity.to_s %>
+   
+
     <h4>Class Number</h4>
     <%= section.class_number %>
+    <h4>Location</h4>
+    <%= section.location %>
   </li>
 
   <% end %>
