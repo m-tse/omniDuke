@@ -1,0 +1,15 @@
+<%= form_tag redirect, :method => :get do %>
+
+<div class="input-append searchbar">
+  <%= text_field_tag :search, params[:search], :class=>"span4" %>
+  <%= button_tag "Search",  :class => "btn" %>
+  <a href='#' id="instructorSearchBarHelp" class="btn btn-info" rel="popover" data-content="Search for your professor by name, subjects taught, courses taught, etc." data-original-title="Confused?">?</a>
+</div>
+<script type="text/javascript">
+  $("#instructorSearchBarHelp").popover({placement: "bottom"});
+</script>
+ 
+
+<% end %>
+
+
