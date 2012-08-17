@@ -4,8 +4,8 @@ namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
 
-    createcs6	
-    createFakeClasses
+#    createcs6	
+#    createFakeClasses
 
   end
 end

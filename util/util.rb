@@ -1,10 +1,10 @@
 #Gets the pre-existing instructor with the name, or creates a new one if that instructor does not yet exist
 def getCreateInstructor(name)
-    foundInstructor = Instructor.find_by_name(name.downcase)
+    foundInstructor = Instructor.find_by_name(name)
   if foundInstructor!=nil
     return foundInstructor
   else
-    return Instructor.create!(name: name.downcase)
+    return Instructor.create!(name: name)
   end
 end
 
@@ -42,8 +42,7 @@ def setSectionTimeSlot(section, dayArray, startTimeString, endTimeString)
 end
 
 def getCreateCourseAttribute(scrapedvalue)
-  scrapedvalue = scrapedvalue.strip
-  puts scrapedvalue
+
   foundAttribute = CourseAttribute.find_by_scrape_value(scrapedvalue)
   if(foundAttribute != nil)
     return foundAttribute
@@ -58,5 +57,18 @@ def getCreateTimeSlot(scrapedACESValue)
     return foundTimeSlot
   else 
     return TimeSlot.create!(aces_value:scrapedACESValue)
+  end
+end
+
+def getCreateCourse(nameString, currentSession)
+  sessionID = currentSession.id
+  foundCourse = Course.find_by_name_and_session_id(nameString, sessionID)
+  if foundCourse !=nil
+    return foundCourse
+  else
+    newCourse =  Course.create!(name:nameString)
+    newCourse.session=currentSession
+    newCourse.save
+    return newCourse
   end
 end

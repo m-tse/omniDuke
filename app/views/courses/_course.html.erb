@@ -19,9 +19,12 @@
     </h4>
     
     <h4>Description:</h4>
+ 
     <% for description in course.descriptions %>
+    <% if description!=nil %>
     <p><%= description.truncate(250) %></p>
-    <% end %>
+    <% end %><% end %>
+
 
 
 

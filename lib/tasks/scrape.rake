@@ -21,9 +21,9 @@ Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 5
 
 
-$username = ''
-$password = ''
-
+$username = 'mst17'
+$password = 'I1lg83b5x8'
+$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
 module Spider
@@ -53,14 +53,15 @@ module Spider
       previousCourseId = 0
       previousSectionId = 0
  
-      if File.exists? "/home/aks/projects/omniDuke/elementIds.temp"
-        lines = File.open('/home/aks/projects/omniDuke/elementIds.temp').readlines
+      #edit these lines to your project path
+      if File.exists? $projectPath
+        lines = File.open($projectPath).readlines
 
         previousLetterId = Integer(lines[0].delete("\n"))
         previousSubjectId = Integer(lines[1].delete("\n"))
         previousCourseId = Integer(lines[2].delete("\n"))
         previousSectionId = Integer(lines[3].delete("\n"))
-        File.delete('/home/aks/projects/omniDuke/elementIds.temp')
+        File.delete($projectPath)
       end
       puts previousLetterId
       puts previousSubjectId
@@ -149,15 +150,15 @@ module Spider
               end            
                
 
-              courseNUM = courseid.split('').last
+              courseNUM = courseid.split('$').last
+
               click_link(courseid)
-              sleep(2)
+              sleep(1)
 
               #set current Course
-              course = createCourseInListScreen(courseNUM, currentSubject)
+              course = createCourseInListScreen(courseNUM, currentSubject, currentSession)
 
-              course.session=currentSession
-              course.save
+
 
               sectionElements = page.all("a[id^='CLASS_DETAIL$']")
               sectionids = Array.new
@@ -167,7 +168,9 @@ module Spider
 
               sectionCount = 0
               for sectionid in sectionids
-
+                
+                sectionCSSTag = "a[id='"+sectionid+"']"
+                find(sectionCSSTag)
                 puts letterId
                 puts subjectId
                 puts courseId
@@ -199,17 +202,17 @@ module Spider
 
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
-                sleep(5)
+                sleep(1)
                 sectionId += 1
               end        
               p course
               courseId += 1  
             end
             click_link(subjectid)
-            sleep(2)
+            sleep(1)
             subjectId += 1
           end
-          sleep(2)    
+          sleep(1)    
           letterId += 1
         end 
 #        sleep(9000)
@@ -256,9 +259,7 @@ def parseCourseInDetailScreen(section)
           section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
 
           attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
-          puts "HERE"
-          puts attributes
-          puts "HERE"
+ 
 
 
           attributes.each_line { |l|
@@ -273,18 +274,21 @@ def parseCourseInDetailScreen(section)
 end
 
 
-def createCourseInListScreen(courseNUM, currentSubject)
-  course = Course.create!
-  courseCSSTag = createCSSExp("DU_SS_SUBJ_CAT_DESCR$",courseNUM)
-  course.name= find(courseCSSTag).text
-  course.subjects << currentSubject
-  cn=course.course_numberings.find_by_subject_id(currentSubject.id)
-  oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
-  cn.old_number = find(oldNumberCSSTag).text
-  newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
-  cn.new_number = find(newNumberCSSTag).text
-  cn.save
+def createCourseInListScreen(courseNUM, currentSubject, currentSession)
   
+  courseCSSTag = createCSSExp("DU_SS_SUBJ_CAT_DESCR$",courseNUM)
+
+  courseName= find(courseCSSTag).text
+  course = getCreateCourse(courseName, currentSession)
+
+
+  oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
+  old_number = find(oldNumberCSSTag).text
+  newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
+  new_number = find(newNumberCSSTag).text
+  cn=course.course_numberings.build(old_number:old_number, new_number:new_number)
+  cn.subject = currentSubject
+  cn.save
   course.save
   return course
 end
@@ -300,9 +304,13 @@ def createSectionInListScreen(course, sectionNum)
   secInstructorCSS = createCSSExp("DU_DERIVED_SS_DESCR100_2$", sectionNum)
   
   timeslotCSS = createCSSExp("DERIVED_AA2_REQDESCRA$", sectionNum)
-  timeslot = getCreateTimeSlot(find(timeslotCSS).text)
-  section.time_slot = timeslot
-  section.instructors << getCreateInstructor(find(secInstructorCSS).text)
+  timeslottext = find(timeslotCSS).text 
+  if timeslottext != " "
+    timeslot = getCreateTimeSlot(timeslottext)
+  
+    section.time_slot = timeslot
+    section.instructors << getCreateInstructor(find(secInstructorCSS).text)
+  end
   section.save
   course.sections<< section
   return section

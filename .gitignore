@@ -27,3 +27,6 @@
 
 # ignore precompiled files, only compile them in production server
 /public/assets
+
+#ignore scrape tempfile
+elementIds.temp
