@@ -2,22 +2,22 @@
   <label class="control-label">Modes of Inquiry</label>
   <div class="controls">
     <label class="checkbox inline">
-      <%= check_box( :attributes, :CCI) %> CCI
+      <%= check_box_tag "attributes[CCI]", true, @attributes[:CCI] %> CCI
     </label>
     <label class="checkbox inline">
-      <%= check_box(:attributes, :EI) %> EI
+      <%= check_box_tag "attributes[EI]", true, @attributes[:EI]%> EI
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :STS) %> STS
+      <%= check_box_tag "attributes[STS]", true, @attributes[:STS] %> STS
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :FL) %> FL
+      <%= check_box_tag "attributes[FL]", true, @attributes[:FL] %> FL
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :R) %> R
+      <%= check_box_tag "attributes[R]", true, @attributes[:R] %> R
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :W) %> W
+      <%= check_box_tag "attributes[W]", true, @attributes[:W] %> W
     </label>
   </div>
 </div>

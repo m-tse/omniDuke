@@ -6,19 +6,19 @@ class CoursesController < ApplicationController
 
   def index
     @subjects = Subject.all.sort_by &:name
+    #here so the check boxes work
+    @attributes = {"hidden"=>"true"}
   end
 
   def results
+    @attributes = params[:attributes]
     @search = Course.search do |q|
-      p params
       q.fulltext params[:search]
       params[:attributes].each_pair do |k,v|
-        if v=="1"
+        if v=="true" and k!="hidden"
       q.with(:attributes, [k])
         end
       end
-
-
     end
     @courses = @search.results
 

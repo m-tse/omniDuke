@@ -8,9 +8,9 @@ namespace :db do
   desc "Scrape data from ACES and enter it into the database"
   task populate: :environment do
 
-    spider = Spider::Google.new
-    spider.login()
-    spider.search()
+#    spider = Spider::Google.new
+#    spider.login()
+#    spider.search()
   end
 end
 

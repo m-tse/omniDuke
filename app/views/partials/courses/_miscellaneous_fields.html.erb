@@ -1,11 +1,11 @@
 <div class="control-group">
-  <label class="control-label">Areas of Knowledge</label>
+  <label class="control-label">Misc.</label>
   <div class="controls">
     <label class="checkbox inline">
-      <%= check_box( :attributes, :Seminar) %> Seminar
+      <%= check_box_tag "attributes[Seminar]", true, @attributes[:Seminar] %> Seminar
     </label>
     <label class="checkbox inline">
-      <%= check_box( :attributes, :SLC) %> Service Learning Course
+      <%= check_box_tag "attributes[SLC]", true, @attributes[:SLC] %> Service Learning Course
     </label>
   </div>
 </div>

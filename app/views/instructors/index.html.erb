@@ -6,14 +6,12 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-pills">
     <li class="active">
-      <a href="#tab1" data-toggle="tab">First Name</a>
+      <a href="#tab1" data-toggle="tab">Name</a>
     </li>
     <li>
-      <a href="#tab2" data-toggle="tab">Last Name</a>
+      <a href="#tab2" data-toggle="tab">Subjects</a>
     </li>
-    <li>
-      <a href="#tab3" data-toggle="tab">Subjects</a>
-    </li>
+
   </ul>
   
   <div class="tab-content">
@@ -23,9 +21,7 @@
     <div class = "tab-pane fade in" id="tab2">
       <%= render @instructors %>
     </div>
-    <div class = "tab-pane fade in" id="tab3">
-      <%= render @instructors %>
-    </div>
+
   </div>
 </div>
 
