@@ -8,9 +8,9 @@ namespace :db do
   desc "Scrape data from ACES and enter it into the database"
   task populate: :environment do
 
-#    spider = Spider::Google.new
-#    spider.login()
-#    spider.search()
+    spider = Spider::Google.new
+    spider.login()
+    spider.search()
   end
 end
 
@@ -42,11 +42,6 @@ module Spider
 
 
     def search()
-
-      letterId = 0
-      subjectId = 0
-      courseId = 0
-      sectionId = 0
 
       previousLetterId = 0
       previousSubjectId = 0
@@ -84,9 +79,16 @@ module Spider
       begin
         letterCount = 0
         # Loop through A - Z
+        letterId = 0
+        subjectId = 0
+        courseId = 0
+        sectionId = 0
 
+
+        find("iframe#ptifrmtgtframe")
+        page.driver.browser.switch_to.frame 'ptifrmtgtframe'
         letters.each do |letter|
-
+          puts letter
           if letterCount < previousLetterId
               puts "TRUE"
               letterCount += 1
@@ -96,8 +98,6 @@ module Spider
               previousLetterId = 0
           end
 
-          find("iframe#ptifrmtgtframe")
-          page.driver.browser.switch_to.frame 'ptifrmtgtframe'
           sleep(1)
           find_link(letter).click   
           sleep(1)
@@ -110,15 +110,10 @@ module Spider
           for element in subjectElements
             subjectids << element[:id]
           end
-
+          puts subjectids.length
           subjectId = 0
           subjectCount = 0
           for subjectid in subjectids
-            if previousSubjectId > subjectids.length
-                previousSubjectId = 0
-                letterId += 1
-                break
-            end
             if subjectCount < previousSubjectId
                 puts "TRUE"
                 subjectCount += 1
@@ -187,7 +182,7 @@ module Spider
 
               sectionCount = 0
               for sectionid in sectionids
-                
+                puts sectionid 
                 sectionCSSTag = "a[id='"+sectionid+"']"
                 find(sectionCSSTag)
 
@@ -224,6 +219,17 @@ module Spider
           end
           sleep(1)    
           letterId += 1
+          previousLetterId = 0
+          previousSubjectId = 0
+          previousCourseId = 0
+          previousSectionId = 0
+          File.open($projectPath,'w') do |f|
+              f.puts letterId
+              f.puts "0"
+              f.puts "0"
+              f.puts "0"
+          end
+ 
         end 
 #        sleep(9000)
 
