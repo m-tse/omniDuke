@@ -1,6 +1,12 @@
 require_relative "../../util/util"
 require 'capybara'
 require 'capybara/dsl'
+require 'logging'
+
+Logging.logger.root.level = :debug
+Logging.logger.root.appenders = Logging.appenders.file('scrape-out.log')
+
+$logger = Logging.logger['scrape-logger'] #any name can go in here
 
 
 
@@ -43,6 +49,8 @@ module Spider
 
     def search()
 
+      $logger.debug "BEGIN SCRAPING"
+
       previousLetterId = 0
       previousSubjectId = 0
       previousCourseId = 0
@@ -61,6 +69,10 @@ module Spider
       puts previousSubjectId
       puts previousCourseId
       puts previousSectionId
+      $logger.debug "Previous letter id: #{previousLetterId}"
+      $logger.debug "Previous subject id: #{previousSubjectId}"
+      $logger.debug "Previous course id: #{previousCourseId}"
+      $logger.debug "Previous section id: #{previousSectionId}"
 
 
       find_link('Registration').click
@@ -80,24 +92,22 @@ module Spider
         letterCount = 0
         # Loop through A - Z
         letterId = previousLetterId
-        subjectId = 0
-        courseId = 0
-        sectionId = 0
+        subjectId = previousSubjectId
+        courseId = previousCourseId
+        sectionId = previousSectionId
 
 
         find("iframe#ptifrmtgtframe")
         page.driver.browser.switch_to.frame 'ptifrmtgtframe'
         letters.each do |letter|
-          puts letter
-          if letterCount < previousLetterId
-              puts "TRUE"
-              letterCount += 1
-              next
-          elsif letterCount == previousLetterId
-              puts "FALSE"
-              previousLetterId = 0
+          $logger.debug "Starting letter: #{letter}"
+          if ind 
+            if letterCount < previousLetterId
+                letterCount += 1
+                next
+            elsif letterCount == previousLetterId
+            end
           end
-
           sleep(1)
           find_link(letter).click   
           sleep(1)
@@ -111,18 +121,16 @@ module Spider
             subjectids << element[:id]
           end
           puts subjectids.length
-          subjectId = 0
           subjectCount = 0
           for subjectid in subjectids
-            if subjectCount < previousSubjectId
-                puts "TRUE"
-                subjectCount += 1
-                next
-            elsif subjectCount == previousSubjectId
-                puts "FALSE"
-                previouSubjectId = 0
-            end
-            
+            $logger.debug "Starting subject: #{subjectid}"
+            if ind
+              if subjectCount < previousSubjectId
+                  subjectCount += 1
+                  next
+              elsif subjectCount == previousSubjectId  
+              end
+            end   
 
             ##set current subject
             subjectNum = subjectid.split('$').last
@@ -145,23 +153,20 @@ module Spider
             for element in courseElements
               courseids << element[:id]
             end
-            courseId = 0
             courseCount = 0
             for courseid in courseids
-              if previousCourseId >= courseids.length
-                  previousCourseId = 0
-                  subjectId += 1
-                  break
+#              if previousCourseId >= courseids.length
+#                  previousCourseId = 0
+#                  break
+#              end
+              $logger.debug "Starting course: #{courseid}"
+              if ind
+                if courseCount < previousCourseId
+                    courseCount += 1
+                    next
+                elsif courseCount == previousCourseId
+                end
               end
-              if courseCount < previousCourseId
-                  puts "TRUE"
-                  courseCount += 1
-                  next
-              elsif courseCount == previousCourseId
-                  puts "FALSE"
-                  previousCourseId = 0
-              end
-
 
 
               courseNUM = courseid.split('$').last
@@ -172,17 +177,30 @@ module Spider
               #set current Course
               course = createCourseInListScreen(courseNUM, currentSubject, currentSession)
 
-
-
               sectionElements = page.all("a[id^='CLASS_DETAIL$']")
               sectionids = Array.new
               for element in sectionElements
                 sectionids << element[:id]
               end
-
+              
               sectionCount = 0
               for sectionid in sectionids
                 puts sectionid 
+#                if previousSectionId >= sectionids.length
+#                    previousSectionId = 0
+#                    break
+#                end
+                $logger.debug "Current section: #{sectionid}"
+                if ind
+                  if sectionCount < previousSectionId
+                      sectionCount += 1
+                      next
+                  elsif sectionCount == previousSectionId
+                      $logger.debug "Indicator turned OFF"
+                      ind = false
+                  end
+                end
+
                 sectionCSSTag = "a[id='"+sectionid+"']"
                 find(sectionCSSTag)
 
@@ -200,53 +218,46 @@ module Spider
                 page.driver.browser.switch_to.frame 'TargetContent'
                 
                 parseCourseInDetailScreen(section)
-                
-
-
                 click_link('Return to Search By Subject')
 
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
                 sleep(1)
                 sectionId += 1
+                writeSectionId(sectionId)
               end        
+              sectionId = 0
               p course
               courseId += 1  
+              writeCourseId(courseId)
             end
+            courseId = 0
             click_link(subjectid)
             sleep(1)
             subjectId += 1
+            writeSubjectId(subjectId)
           end
+          subjectId = 0
           sleep(1)    
           letterId += 1
+          puts "OVERWRITING PREVIOUS"
+          puts "OVERWRITING PREVIOUS"
           previousLetterId = 0
           previousSubjectId = 0
           previousCourseId = 0
           previousSectionId = 0
-          File.open($projectPath,'w') do |f|
-              f.puts letterId
-              f.puts "0"
-              f.puts "0"
-              f.puts "0"
-          end
+
+          writeLetterId(letterId)
  
         end 
 #        sleep(9000)
 
-      rescue
-        if File.exists? $projectPath
-          lines = File.open($projectPath,).readlines
-
-          previousLetterId = Integer(lines[0].delete("\n"))
-          previousSubjectId = Integer(lines[1].delete("\n"))
-          previousCourseId = Integer(lines[2].delete("\n"))
-          previousSectionId = Integer(lines[3].delete("\n"))
-        end
- 
+      rescue e
+        $logger.debug "BROKEN"
+        $logger.debug "ERROR: #{e.inspect}"
+        $logger.debug "BROKEN"
+        $logger.debug "BROKEN"
         File.open($projectPath,'w') do |f|
-            subjectId += previousSubjectId
-            courseId += previousCourseId
-            sectionId += previousSectionId
             f.puts letterId 
             f.puts subjectId
             f.puts courseId
@@ -261,17 +272,88 @@ end
 
 
 
-def previousIdIsGreater(previousId, currentId)
-    puts "Previous #{previousId}, current #{currentId}"
-    if currentId < previousId
-        puts "TRUE"
-        return true
-    elsif currentId == previousId
-        puts "FALSE"
-        return false
-    end
-    puts "FALSE"
-    return false
+def writeLetterId(letterId)
+  File.open($projectPath,'w') do |f|
+      f.puts letterId
+      f.puts "0"
+      f.puts "0"
+      f.puts "0"
+  end
+end
+
+def writeSubjectId(subjectId)
+ 
+  previousLetterId = 0
+  previousSubjectId = 0
+  previousCourseId = 0
+  previousSectionId = 0
+
+  if File.exists? $projectPath
+    lines = File.open($projectPath,).readlines
+
+    previousLetterId = Integer(lines[0].delete("\n"))
+    previousSubjectId = Integer(lines[1].delete("\n"))
+    previousCourseId = Integer(lines[2].delete("\n"))
+    previousSectionId = Integer(lines[3].delete("\n"))
+  end
+
+
+  File.open($projectPath,'w') do |f|
+      f.puts previousLetterId
+      f.puts subjectId
+      f.puts previousCourseId
+      f.puts previousSectionId
+  end
+end
+
+def writeCourseId(courseId)
+ 
+  previousLetterId = 0
+  previousSubjectId = 0
+  previousCourseId = 0
+  previousSectionId = 0
+
+  if File.exists? $projectPath
+    lines = File.open($projectPath,).readlines
+
+    previousLetterId = Integer(lines[0].delete("\n"))
+    previousSubjectId = Integer(lines[1].delete("\n"))
+    previousCourseId = Integer(lines[2].delete("\n"))
+    previousSectionId = Integer(lines[3].delete("\n"))
+  end
+
+
+  File.open($projectPath,'w') do |f|
+      f.puts previousLetterId
+      f.puts previousSubjectId
+      f.puts courseId
+      f.puts previousSectionId
+  end
+end
+
+def writeSectionId(sectionId)
+ 
+  previousLetterId = 0
+  previousSubjectId = 0
+  previousCourseId = 0
+  previousSectionId = 0
+
+  if File.exists? $projectPath
+    lines = File.open($projectPath,).readlines
+
+    previousLetterId = Integer(lines[0].delete("\n"))
+    previousSubjectId = Integer(lines[1].delete("\n"))
+    previousCourseId = Integer(lines[2].delete("\n"))
+    previousSectionId = Integer(lines[3].delete("\n"))
+  end
+
+
+  File.open($projectPath,'w') do |f|
+      f.puts previousLetterId
+      f.puts previousSubjectId
+      f.puts previousCourseId
+      f.puts sectionId
+  end
 end
 
 
