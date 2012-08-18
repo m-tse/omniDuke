@@ -1,20 +1,24 @@
 <div class="control-group">
   <label class="control-label">Areas of Knowledge</label>
   <div class="controls">
+    <!-- hidden_field required so checkbox hash shows up -->
+      <%= hidden_field "attributes[hidden]", "true" %>
     <label class="checkbox inline">
-      <%= check_box( :attributes, :ALP) %> ALP
+      <%= check_box_tag "attributes[ALP]", true, @attributes[:ALP] %> ALP
     </label>
     <label class="checkbox inline">
-      <%= check_box(:attributes, :CZ) %> CZ
+      <%= check_box_tag("attributes[CZ]", true, @attributes[:CZ]) %> CZ
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :NS) %> NS
+      <%= check_box_tag("attributes[NS]", true, @attributes[:NS]) %> NS
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :SS) %> SS
+      <%= check_box_tag("attributes[SS]", true, @attributes[:SS]) %> SS
     </label>
    <label class="checkbox inline">
-      <%= check_box(:attributes, :QS) %> QS
+      <%= check_box_tag("attributes[QS]", true, @attributes[:QS]) %> QS
     </label>
+
+
   </div>
 </div>

@@ -4,8 +4,8 @@ namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
 
-#    createcs6	
-#    createFakeClasses
+    createcs6	
+    createFakeClasses
 
   end
 end
@@ -26,11 +26,12 @@ def createcs6
   lec.save
 
   csSubject = getCreateSubject("Computer Science", "COMPSCI")
-  cs6.subjects << csSubject
  
-  cn=cs6.course_numberings.find_by_subject_id(csSubject.id)
-  cn.old_number = "6L"
-  cn.new_number = "101L"
+
+  old_number = "6L"
+  new_number = "101L"
+  cn=cs6.course_numberings.build(old_number:old_number, new_number:new_number)
+  cn.subject = csSubject
   cn.save
   cs6.session=getCreateSession("fall", 2012)
   cs6.save
@@ -82,10 +83,13 @@ def createFakeClasses
     course.session= getCreateSession("fall", 2012)
 
     aSubject = Subject.all.sample
-    course.subjects<< aSubject
-    cn=course.course_numberings.find_by_subject_id(aSubject.id)
-    cn.new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
-    cn.old_number = (rand(200)+1).to_s+(65+rand(25)).chr
+
+    new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
+    old_number = (rand(200)+1).to_s+(65+rand(25)).chr
+    cn=course.course_numberings.build(old_number:old_number, new_number:new_number)
+    cn.subject = aSubject
+    cn.save
+
     cn.save
     
     description = Faker::Lorem.paragraphs(5)
