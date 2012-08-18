@@ -21,9 +21,9 @@ Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 5
 
 
-$username = ''
-$password = ''
-$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
+$username = 'aks35'
+$password = '6EF81ba8c2'
+$projectPath = '/home/aks/projects/omniDuke/elementIds.temp'
 
 
 module Spider
@@ -61,7 +61,6 @@ module Spider
         previousSubjectId = Integer(lines[1].delete("\n"))
         previousCourseId = Integer(lines[2].delete("\n"))
         previousSectionId = Integer(lines[3].delete("\n"))
-        File.delete($projectPath)
       end
       puts previousLetterId
       puts previousSubjectId
@@ -81,19 +80,21 @@ module Spider
       #fix this eventually
       currentSession = getCreateSession("fall", 2012)
 
+      ind = true
       begin
         letterCount = 0
         # Loop through A - Z
 
         letters.each do |letter|
-   
-          ind = false
 
           if letterCount < previousLetterId
+              puts "TRUE"
               letterCount += 1
-              letterId += 1
-              next 
-          end            
+              next
+          elsif letterCount == previousLetterId
+              puts "FALSE"
+              previousLetterId = 0
+          end
 
           find("iframe#ptifrmtgtframe")
           page.driver.browser.switch_to.frame 'ptifrmtgtframe'
@@ -110,14 +111,23 @@ module Spider
             subjectids << element[:id]
           end
 
+          subjectId = 0
           subjectCount = 0
           for subjectid in subjectids
+            if previousSubjectId > subjectids.length
+                previousSubjectId = 0
+                letterId += 1
+                break
+            end
             if subjectCount < previousSubjectId
+                puts "TRUE"
                 subjectCount += 1
-                subjectId += 1
-                next 
-            end            
-
+                next
+            elsif subjectCount == previousSubjectId
+                puts "FALSE"
+                previouSubjectId = 0
+            end
+            
 
             ##set current subject
             subjectNum = subjectid.split('$').last
@@ -140,15 +150,24 @@ module Spider
             for element in courseElements
               courseids << element[:id]
             end
-
+            courseId = 0
             courseCount = 0
             for courseid in courseids
+              if previousCourseId >= courseids.length
+                  previousCourseId = 0
+                  subjectId += 1
+                  break
+              end
               if courseCount < previousCourseId
+                  puts "TRUE"
                   courseCount += 1
-                  courseId += 1
-                  next 
-              end            
-               
+                  next
+              elsif courseCount == previousCourseId
+                  puts "FALSE"
+                  previousCourseId = 0
+              end
+
+
 
               courseNUM = courseid.split('$').last
 
@@ -171,6 +190,7 @@ module Spider
                 
                 sectionCSSTag = "a[id='"+sectionid+"']"
                 find(sectionCSSTag)
+
                 puts letterId
                 puts subjectId
                 puts courseId
@@ -208,7 +228,19 @@ module Spider
 #        sleep(9000)
 
       rescue
-        File.open('elementIds.temp','w') do |f|
+        if File.exists? $projectPath
+          lines = File.open($projectPath,).readlines
+
+          previousLetterId = Integer(lines[0].delete("\n"))
+          previousSubjectId = Integer(lines[1].delete("\n"))
+          previousCourseId = Integer(lines[2].delete("\n"))
+          previousSectionId = Integer(lines[3].delete("\n"))
+        end
+ 
+        File.open($projectPath,'w') do |f|
+            subjectId += previousSubjectId
+            courseId += previousCourseId
+            sectionId += previousSectionId
             f.puts letterId 
             f.puts subjectId
             f.puts courseId
@@ -221,6 +253,20 @@ module Spider
   
 end
 
+
+
+def previousIdIsGreater(previousId, currentId)
+    puts "Previous #{previousId}, current #{currentId}"
+    if currentId < previousId
+        puts "TRUE"
+        return true
+    elsif currentId == previousId
+        puts "FALSE"
+        return false
+    end
+    puts "FALSE"
+    return false
+end
 
 
 
