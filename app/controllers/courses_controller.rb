@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def results
+    #for check boxes
     @attributes = params[:attributes]
     @search = Course.search do |q|
       q.fulltext params[:search]
