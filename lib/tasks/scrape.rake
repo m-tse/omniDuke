@@ -79,6 +79,7 @@ module Spider
       begin
         letterCount = 0
         # Loop through A - Z
+        letterId = previousLetterId
         subjectId = 0
         courseId = 0
         sectionId = 0
