@@ -14,13 +14,7 @@ class Course < ActiveRecord::Base
 
 
   #toString with the course code followed by course name
-  def toDefaultCode
-    self.subject.abbr + self.new_number
-  end
 
-  def toDefaultString
-    self.toDefaultCode+ " - " + self.name
-  end
 
   def descriptions
     set = Set.new []

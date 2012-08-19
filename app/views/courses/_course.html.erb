@@ -2,13 +2,13 @@
 <div class="row">
   <div class="span9">
 
-    <h3><%= link_to course.toDefaultString, course_path(course)  %></h3>
+    <h3><%= link_to courseToString(course), course_path(course)  %></h3>
     
     <h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
     
     <h4>Attributes: 
       <% for attribute in course.course_attributes %>
-      <%= attribute.toString %>,
+      <%= attribute.toString %>
       <% end %>
     </h4>
     
@@ -16,7 +16,7 @@
  
     <% for description in course.descriptions %>
     <% if description!=nil %>
-    <p><%= description.truncate(250) %></p>
+    <p><%= description.truncate(300) %></p>
     <% end %><% end %>
 
 
