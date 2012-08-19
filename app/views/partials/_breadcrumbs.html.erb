@@ -1,0 +1,10 @@
+<ul class="breadcrumb">
+<% breadCrumbHash.each_pair do |k,v| %>
+<li>
+<%= link_to(k, v) %>
+<span class="divider">/</span>
+</li>
+<% end %>
+
+
+</ul>

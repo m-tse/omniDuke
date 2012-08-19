@@ -14,7 +14,13 @@ class Course < ActiveRecord::Base
 
 
 
-
+  def toSingleCode
+    if self.new_number!=nil
+      return self.new_number
+    else
+      return self.old_number
+    end
+  end
 
   def descriptions
     set = Set.new []

@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all.sort_by &:name
+    @subjects = Subject.all.sort_by &:abbr
     #here so the check boxes work
     @attributes = {"hidden"=>"true"}
   end
