@@ -1,5 +1,5 @@
-<h1>Overview</h1>
-<h3>Course numbers(old numbering in parenthesis)</h3>
+
+<h3>Course numbers</h3>
 <p><%= courseToCode(@course) %></p>
 
 
@@ -10,12 +10,47 @@
 <p>Find the different descriptions in each section.</p>
 <% end %>
 
+<h3>Attributes</h3>
+ 
+      <% for attribute in @course.course_attributes %>
+      <%= attribute.toString %>
+      <% end %>
+<h3>Enrollment Requirements</h3>
+<%= @course.sections.first.enrollment_requirements %>
 
-
+<h3>Units</h3>
+<%= @course.sections.first.units %>
 <h3>Session</h3>
 <% if @course.session!=nil %>
 <p><%= @course.session.name %></p>
 <% end %>
 
 
-
+<h3>Sections</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Times</th>
+      <th>Instructor(s)</th>
+      <th>Room</th>
+      <th>Enrollment</th>
+      <th>Waitlist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for section in @course.sections %>
+    <tr>
+      <td><%= section.list_name %></td>
+      <td><%= section.time_slot.aces_value %></td>
+      <td>
+	<% instructor = section.instructors.first %>
+	<%= link_to instructor.toString, instructor_path(instructor.id) %>
+      </td>
+      <td><%= section.room %></td>
+      <td><%= section.enrollment.to_s + "/" +section.capacity.to_s %></td>
+      <td><%= section.waitlist_enrollment.to_s+"/" + section.waitlist_capacity.to_s %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

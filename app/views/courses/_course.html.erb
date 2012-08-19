@@ -1,29 +1,24 @@
 
-<div class="row">
+<div class="row class_in_list">
   <div class="span9">
-
+    
     <h3><%= link_to courseToString(course), course_path(course)  %></h3>
     
-    <h4>Professors: <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %></h4>
+    <strong>Professors:</strong> <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
     
-    <h4>Attributes: 
-      <% for attribute in course.course_attributes %>
-      <%= attribute.toString %>
-      <% end %>
-    </h4>
+    <br>
     
-    <h4>Description:</h4>
- 
-    <% for description in course.descriptions %>
+    <strong>Attributes:</strong>
+    <% for attribute in course.course_attributes %>
+    <%= attribute.toString %>
+    <% end %>
+    <br>
+    
+    <strong>Description:</strong> <% for description in course.descriptions %>
     <% if description!=nil %>
-    <p><%= description.truncate(300) %></p>
+    <%= description.truncate(250) %>
     <% end %><% end %>
-
-
-
-
-
-
+    
   </div>
   
   <div class="span3">

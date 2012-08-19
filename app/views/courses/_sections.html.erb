@@ -1,31 +1,44 @@
-<h1>Sections</h1>
+
+
+<table class="table table-bordered">
+<thead>asdf
+</thead>
+</table>
+
+
+
+
+
+
+
+
 
 
 <% for section in @course.sections %>
 
-<h3>
+<h2>
 <%= section.name %>
-</h3>
 <% if section.topic!="n/a" %>
 <h4>Topic</h4>
-<%= capitalize(section.topic) %>
+<%= section.topic %>
+<% end %>
+<h4>Instructors</h4>
+<% for instructor in section.instructors %>
+<%= link_to instructor.toString, instructor_path(instructor.id) %>
 <% end %>
 <h4>Times</h4>
 <%= section.time_slot.aces_value %>
+</h2>
+
+
+
 <% if @course.descriptions.size > 1 %>
 <h4>Description</h4>
 <%= section.description %>
 <% end %>
 
 
-<h4>Instructors</h4>
-<ul class="unstyled">
-  <% for instructor in section.instructors %>
-  <li>
-    <%= link_to instructor.toString, instructor_path(instructor.id) %>
-  </li>
-  <% end %>
-</ul>
+
 
 <h4>Room</h4>
 <%= section.room %>

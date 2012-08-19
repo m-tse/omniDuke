@@ -21,12 +21,13 @@ namespace :db do
   end
 end
 
+$wait_time = 5
 
 Capybara.run_server = false
 Capybara.current_driver = :selenium
 Capybara.app_host = "http://aces.duke.edu/"
-Capybara.default_wait_time = 5
-
+Capybara.default_wait_time = $wait_time
+Capybara.automatic_reload = false
 
 $username = 'mst17'
 $password = ''
@@ -377,32 +378,45 @@ end
 def parseCourseInDetailScreen(section)
   begin
     
+
+    section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
+    section.name = find("span#DERIVED_CLSRCH_DESCR200").text
+    section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
+    section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
+    section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
+    section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
+    
+    section.career = find("span#PSXLATITEM_XLATLONGNAME").text
+    section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
+    section.location = find("span#CAMPUS_LOC_VW_DESCR").text
+    section.campus = find("span#CAMPUS_TBL_DESCR").text
+    section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
+    #fix this eventually?
+    section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
+    
+    # so it doesn't wait looking for these potentially missing elements
+    Capybara.default_wait_time = 0
     topicCSS = "span#CRSE_TOPICS_DESCR"
     if page.has_css?(topicCSS)
       section.topic = find(topicCSS).text
     else
       section.topic = "n/a"
     end
-          section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
-          section.name = find("span#DERIVED_CLSRCH_DESCR200").text
-          section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
-          section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
-          section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
-          section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
+    enrollmentReqsCSS = "span#SSR_CLS_DTL_WRK_SSR_REQUISITE_LONG"
+    if page.has_css?(enrollmentReqsCSS)
+      section.enrollment_requirements = find(enrollmentReqsCSS).text
+    else
+      section.enrollment_requirements = "n/a"
+    end
+    # sets wait time back to normal
+    Capybara.default_wait_time = $wait_time
 
-          section.career = find("span#PSXLATITEM_XLATLONGNAME").text
-          section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
-          section.location = find("span#CAMPUS_LOC_VW_DESCR").text
-          section.campus = find("span#CAMPUS_TBL_DESCR").text
-          section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
-          #fix this eventually?
-          section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
 
-          attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
+    attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
     attributes.each_line { |l|
-            section.course_attributes << getCreateCourseAttribute(l)
-          }
-
+      section.course_attributes << getCreateCourseAttribute(l)
+    }
+    
   rescue
   ensure
     section.save
@@ -415,7 +429,7 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
 
 
 
-
+  Capybara.default_wait_time = 0
   oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
   if page.has_css?(oldNumberCSSTag)
     old_number = find(oldNumberCSSTag).text
@@ -423,6 +437,7 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
   if old_number == nil
     old_number = "n/a"
   end
+  Capybara.default_wait_time = $wait_time
   newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
   new_number = find(newNumberCSSTag).text
 
@@ -448,11 +463,13 @@ def createSectionInListScreen(course, sectionNum)
   timeslotCSS = createCSSExp("DERIVED_AA2_REQDESCRA$", sectionNum)
   timeslottext = find(timeslotCSS).text 
   if timeslottext != " "
-    timeslot = getCreateTimeSlot(timeslottext)
-  
-    section.time_slot = timeslot
-    section.instructors << getCreateInstructor(find(secInstructorCSS).text)
+    timeslottext = "n/a"
   end
+  timeslot = getCreateTimeSlot(timeslottext)
+  
+  section.time_slot = timeslot
+  section.instructors << getCreateInstructor(find(secInstructorCSS).text)
+
   course.sections<< section
   section.save
   return section
