@@ -7,6 +7,6 @@ class Subject < ActiveRecord::Base
 
 
 #  has_and_belongs_to_many :courses
-  has_many :course_numberings
-  has_many :courses, :through => :course_numberings
+  has_many :courses
+
 end

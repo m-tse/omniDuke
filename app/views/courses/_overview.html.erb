@@ -1,10 +1,7 @@
 <h1>Overview</h1>
 <h3>Course numbers(old numbering in parenthesis)</h3>
-<% for courseNumber in @course.course_numberings %>
+<p><%= @course.toDefaultCode %></p>
 
-<p><%= courseNumber.toString %></p>
-
-<% end %>
 
 <h3>Description</h3>
 <% if @course.descriptions.size==1 %>
@@ -16,12 +13,9 @@
 
 
 <h3>Session</h3>
+<% if @course.session!=nil %>
 <p><%= @course.session.name %></p>
-
-<h3>Prerequisites</h3>
-<% for prereq in @course.prerequisites %>
-<%= link_to prereq.course_numberings.first.toString,
-    course_path(prereq.id) %>
 <% end %>
+
 
 

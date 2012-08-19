@@ -1,7 +1,8 @@
 require_relative "../../util/util"
 require 'capybara'
 require 'capybara/dsl'
-require 'logging'
+
+
 
 Logging.logger.root.level = :debug
 Logging.logger.root.appenders = Logging.appenders.file('scrape-out.log')
@@ -29,7 +30,8 @@ Capybara.default_wait_time = 5
 
 $username = ''
 $password = ''
-$projectPath = ''
+#put the path of the elementsIds.temp file here
+$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
 module Spider
@@ -56,7 +58,6 @@ module Spider
       previousCourseId = 0
       previousSectionId = 0
  
-      #edit these lines to your project path
       if File.exists? $projectPath
         lines = File.open($projectPath).readlines
 
@@ -412,12 +413,15 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
   end
   newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
   new_number = find(newNumberCSSTag).text
+
   if old_number == nil
     old_number = "none"
   end
-  cn=course.course_numberings.build(old_number:old_number, new_number:new_number)
-  cn.subject = currentSubject
-  cn.save
+  course.new_number= new_number
+  course.old_number = old_number
+
+  course.subject = currentSubject
+
   course.save
   return course
 end

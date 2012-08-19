@@ -8,7 +8,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'mysql'
 gem "capybara"
-
+gem 'logging'
  gem 'capistrano'
 
 

@@ -21,14 +21,13 @@ class Instructor < ActiveRecord::Base
     retarray = []
     courseHash = {}
     for course in self.courses
-      for subject in course.subjects
-        if courseHash.has_key? subject
-          courseHash[subject] = courseHash[subject]+1
-        else
-          courseHash[subject] = 0
-        end
+      subject = course.subject
+      if courseHash.has_key? subject
+        courseHash[subject] = courseHash[subject]+1
+      else
+        courseHash[subject] = 0
       end
-    end
+     end
     
     courseHash.sort_by {|k,v| v}
     courseHash.each_key {|key| retarray << key}
