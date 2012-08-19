@@ -60,15 +60,14 @@ def getCreateTimeSlot(scrapedACESValue)
   end
 end
 
-def getCreateCourse(nameString, currentSession)
-#  sessionID = currentSession.id
-#  foundCourse = Course.find_by_name_and_session_id(nameString, sessionID)
-#  if foundCourse !=nil
-#    return foundCourse
-#  else
-    newCourse =  Course.create!(name:nameString)
+def getBuildCourse(currentSubject, currentSession, new_number, old_number)
+  foundCourse = Course.find_by_subject_id_and_session_id_and_new_number_and_old_number(currentSubject.id, currentSession.id, new_number, old_number)
+  if foundCourse !=nil
+    return foundCourse
+  else
+    newCourse =  Course.new(new_number:new_number, old_number:old_number)
     newCourse.session=currentSession
-    newCourse.save
+    newCourse.subject=currentSubject
     return newCourse
-#  end
+  end
 end

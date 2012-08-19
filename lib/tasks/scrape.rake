@@ -28,7 +28,7 @@ Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = 5
 
 
-$username = ''
+$username = 'mst17'
 $password = ''
 #put the path of the elementsIds.temp file here
 $projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
@@ -376,6 +376,13 @@ end
 
 def parseCourseInDetailScreen(section)
   begin
+    
+    topicCSS = "span#CRSE_TOPICS_DESCR"
+    if page.has_css?(topicCSS)
+      section.topic = find(topicCSS).text
+    else
+      section.topic = "n/a"
+    end
           section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
           section.name = find("span#DERIVED_CLSRCH_DESCR200").text
           section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
@@ -408,27 +415,24 @@ end
 
 
 def createCourseInListScreen(courseNUM, currentSubject, currentSession)
-  
-  courseCSSTag = createCSSExp("DU_SS_SUBJ_CAT_DESCR$",courseNUM)
 
-  courseName= find(courseCSSTag).text
-  course = getCreateCourse(courseName, currentSession)
+
 
 
   oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
   if page.has_css?(oldNumberCSSTag)
     old_number = find(oldNumberCSSTag).text
   end
+  if old_number == nil
+    old_number = "n/a"
+  end
   newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
   new_number = find(newNumberCSSTag).text
 
-  if old_number == nil
-    old_number = "none"
-  end
-  course.new_number= new_number
-  course.old_number = old_number
+  course = getBuildCourse(currentSubject, currentSession, new_number, old_number)  
 
-  course.subject = currentSubject
+  courseCSSTag = createCSSExp("DU_SS_SUBJ_CAT_DESCR$",courseNUM)
+  course.name = find(courseCSSTag).text
 
   course.save
   return course
@@ -436,7 +440,7 @@ end
 
 
 def createSectionInListScreen(course, sectionNum)
-  section = Section.create!
+  section = Section.new
 
   secListNameCSS = createCSSExp("DU_DERIVED_SS_DESCR100$",sectionNum)
   section.list_name = find(secListNameCSS).text
@@ -452,7 +456,7 @@ def createSectionInListScreen(course, sectionNum)
     section.time_slot = timeslot
     section.instructors << getCreateInstructor(find(secInstructorCSS).text)
   end
-  section.save
   course.sections<< section
+  section.save
   return section
 end
