@@ -462,7 +462,7 @@ def createSectionInListScreen(course, sectionNum)
   
   timeslotCSS = createCSSExp("DERIVED_AA2_REQDESCRA$", sectionNum)
   timeslottext = find(timeslotCSS).text 
-  if timeslottext != " "
+  if timeslottext == " "
     timeslottext = "n/a"
   end
   timeslot = getCreateTimeSlot(timeslottext)
