@@ -12,8 +12,10 @@
 <% end %>
 <h4>Times</h4>
 <%= section.time_slot.aces_value %>
+<% if @course.descriptions.size > 1 %>
 <h4>Description</h4>
 <%= section.description %>
+<% end %>
 
 
 <h4>Instructors</h4>

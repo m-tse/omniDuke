@@ -13,7 +13,7 @@ class Course < ActiveRecord::Base
   has_many :reviews
 
 
-  #toString with the course code followed by course name
+
 
 
   def descriptions
