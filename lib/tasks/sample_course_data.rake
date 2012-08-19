@@ -4,8 +4,8 @@ namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
 
-    createcs6	
-    createFakeClasses
+#    createcs6	
+#    createFakeClasses
 
   end
 end
@@ -15,10 +15,10 @@ end
 
 ##Ideal way to write a course to database
 def createcs6
-  cs6 = Course.create!(name:"INTRO TO COMPUTER SCIENCE")
+  cs6 = Course.create!(name:"INTRO TO COMPUTER SCIENCE", new_number:"101L", old_number:"6L")
   
   lec = cs6.sections.create!(list_name:"COMPSCI 101L-001 LEC (1703)", location:"Durham", room:"L.S.R.C. B101", enrollment:226, capacity:240, waitlist_enrollment:4,  waitlist_capacity:200,  class_number:1703, name:"COMPSCI 101L-001 Introduction to Computer Science", description:"Introduction practices and principles of computer science and programming and their impact on and potential to change the world. Algorithmic, problem-solving, and programming techniques in domains such as art, data visualization, mathematics, natural and social sciences. Programming using high-level languages and design techniques emphasizing abstraction, encapsulation, and problem decomposition. Design, implementation, testing, and analysis of algorithms and programs. No previous programming experience required. Instructor: Astrachan, Duvall, Forbes, or Rodger", units:1, career:"Undergraduate", grading:"Graded", campus:"Duke University")
-
+  
   lec.instructors << getCreateInstructor("Owen Astrachan")
   ts = TimeSlot.create!(aces_value:"MW 1:25PM - 2:40PM")
   lec.time_slot = ts
@@ -26,13 +26,8 @@ def createcs6
   lec.save
 
   csSubject = getCreateSubject("Computer Science", "COMPSCI")
- 
+  cs6.subject = csSubject
 
-  old_number = "6L"
-  new_number = "101L"
-  cn=cs6.course_numberings.build(old_number:old_number, new_number:new_number)
-  cn.subject = csSubject
-  cn.save
   cs6.session=getCreateSession("fall", 2012)
   cs6.save
 end
@@ -84,13 +79,11 @@ def createFakeClasses
 
     aSubject = Subject.all.sample
 
-    new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
-    old_number = (rand(200)+1).to_s+(65+rand(25)).chr
-    cn=course.course_numberings.build(old_number:old_number, new_number:new_number)
-    cn.subject = aSubject
-    cn.save
+    course.new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
+    course.old_number = (rand(200)+1).to_s+(65+rand(25)).chr
 
-    cn.save
+    course.subject = aSubject
+    course.save
     
     description = Faker::Lorem.paragraphs(5)
     2.times do |i|

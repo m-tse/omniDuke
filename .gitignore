@@ -31,3 +31,6 @@
 
 #ignore scrape tempfile
 elementIds.temp
+
+#ignore scrapelog
+scrape-out.log

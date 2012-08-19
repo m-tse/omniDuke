@@ -207,7 +207,7 @@ DEPENDENCIES
   faker
   jquery-rails
   less-rails-bootstrap
-  logging (= 1.7.2)
+  logging
   mysql
   rails (= 3.2.7)
   rspec-rails

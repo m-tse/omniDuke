@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :old_number, :new_number
  # validates :name,  :presence => true
   has_many :prerequisite_relations, :foreign_key => "course_id", :class_name=>"PrerequisiteRelation"
   has_many :prerequisites, :through => :prerequisite_relations
@@ -8,28 +8,14 @@ class Course < ActiveRecord::Base
   has_many :sections
   has_many :instructors, :through => :sections, :uniq => :true
 
-
-
-
   belongs_to :session, :inverse_of => :courses
-
-  has_many :course_numberings, :inverse_of => :course
-  has_many :subjects, :through => :course_numberings
-
+  belongs_to :subject
   has_many :reviews
 
 
   #toString with the course code followed by course name
-  def toString(subjectID)
-      self.toCode(subjectID) +  " - " + self.name
-  end
-
-  def toCode(subjectID)
-    self.course_numberings.find_by_subject_id(subjectID).toString
-  end
-
   def toDefaultCode
-    self.course_numberings.first.toString
+    self.subject.abbr + self.new_number
   end
 
   def toDefaultString
@@ -58,20 +44,22 @@ class Course < ActiveRecord::Base
 
   searchable do
     text :name, :boost => 5
-    text :course_number_new do
-      course_numberings.map(&:new_number)
+    text :old_number
+    text :new_number
+    text :subject_abbr do
+      if subject!=nil
+        subject.abbr
+      end
     end
-    text :course_number_old do
-      course_numberings.map(&:old_number)
-    end
-    text :subjects_abbr do
-      subjects.map(&:abbr)
-    end
-    text :subjects_name do
-      subjects.map(&:name)
+    text :subject_name do
+      if subject!=nil
+        subject.name
+      end
     end
     text :subject_alias do
-      subjects.map(&:alias)
+      if subject!=nil
+        subject.alias
+      end
     end
     text :instructors do
       instructors.map(&:name)
@@ -91,8 +79,12 @@ class Course < ActiveRecord::Base
       for attribute in course_attributes
         if attribute.abbr!=nil
           stringarray << attribute.abbr
-        else
+        end
+        if attribute.scrape_value!=nil
           stringarray << attribute.scrape_value
+        end
+        if attribute.name!=nil
+          stringarray << attribute.name
         end
       end
       stringarray
