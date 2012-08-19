@@ -70,6 +70,7 @@ module Spider
       puts previousSubjectId
       puts previousCourseId
       puts previousSectionId
+
       $logger.debug "Previous letter id: #{previousLetterId}"
       $logger.debug "Previous subject id: #{previousSubjectId}"
       $logger.debug "Previous course id: #{previousCourseId}"
@@ -90,23 +91,28 @@ module Spider
 
       ind = true
       begin
-        letterCount = 0
+#        letterCount = 0
         # Loop through A - Z
-        letterId = previousLetterId
-        subjectId = previousSubjectId
-        courseId = previousCourseId
-        sectionId = previousSectionId
-
+#        letterId = previousLetterId
+#        subjectId = previousSubjectId
+#        courseId = previousCourseId
+#        sectionId = previousSectionId
+        letterId = 0
+        subjectId = 0
+        courseId = 0
+        sectionId = 0
 
         find("iframe#ptifrmtgtframe")
         page.driver.browser.switch_to.frame 'ptifrmtgtframe'
         letters.each do |letter|
           $logger.debug "Starting letter: #{letter}"
           if ind 
-            if letterCount < previousLetterId
-                letterCount += 1
+            if letterId < previousLetterId
+                letterId += 1
                 next
-            elsif letterCount == previousLetterId
+            elsif letterId == previousLetterId
+                $logger.debug "Current letter id #{letterId} = 
+                    previous letter id #{previousLetterId}"
             end
           end
           sleep(1)
@@ -121,15 +127,15 @@ module Spider
           for element in subjectElements
             subjectids << element[:id]
           end
-          puts subjectids.length
-          subjectCount = 0
           for subjectid in subjectids
             $logger.debug "Starting subject: #{subjectid}"
             if ind
-              if subjectCount < previousSubjectId
-                  subjectCount += 1
+              if subjectId < previousSubjectId
+                  subjectId += 1
                   next
-              elsif subjectCount == previousSubjectId  
+              elsif subjectId == previousSubjectId  
+                $logger.debug "Current section id #{sectionId} = 
+                    previous section id #{previousSectionId}"
               end
             end   
 
@@ -154,7 +160,7 @@ module Spider
             for element in courseElements
               courseids << element[:id]
             end
-            courseCount = 0
+         
             for courseid in courseids
 #              if previousCourseId >= courseids.length
 #                  previousCourseId = 0
@@ -162,10 +168,12 @@ module Spider
 #              end
               $logger.debug "Starting course: #{courseid}"
               if ind
-                if courseCount < previousCourseId
-                    courseCount += 1
+                if courseId < previousCourseId
+                    courseId += 1
                     next
-                elsif courseCount == previousCourseId
+                elsif courseId == previousCourseId
+                  $logger.debug "Current course id #{courseId} = 
+                      previous course id #{previousCourseId}"
                 end
               end
 
@@ -184,19 +192,19 @@ module Spider
                 sectionids << element[:id]
               end
               
-              sectionCount = 0
               for sectionid in sectionids
-                puts sectionid 
 #                if previousSectionId >= sectionids.length
 #                    previousSectionId = 0
 #                    break
 #                end
                 $logger.debug "Current section: #{sectionid}"
                 if ind
-                  if sectionCount < previousSectionId
-                      sectionCount += 1
+                  if sectionId < previousSectionId
+                      sectionId += 1
                       next
-                  elsif sectionCount == previousSectionId
+                  elsif sectionId == previousSectionId
+                      $logger.debug "Current section id #{sectionId} = 
+                        previous section id #{previousSectionId}"
                       $logger.debug "Indicator turned OFF"
                       ind = false
                   end
@@ -243,17 +251,17 @@ module Spider
           letterId += 1
           puts "OVERWRITING PREVIOUS"
           puts "OVERWRITING PREVIOUS"
-          previousLetterId = 0
-          previousSubjectId = 0
-          previousCourseId = 0
-          previousSectionId = 0
+#          previousLetterId = 0
+#          previousSubjectId = 0
+#          previousCourseId = 0
+#          previousSectionId = 0
 
           writeLetterId(letterId)
  
         end 
 #        sleep(9000)
 
-      rescue e
+      rescue => e
         $logger.debug "BROKEN"
         $logger.debug "ERROR: #{e.inspect}"
         $logger.debug "BROKEN"
@@ -272,7 +280,8 @@ module Spider
 end
 
 
-
+# all other variables are set to 0 once it gets
+# to this point, so just used '0' instead of names
 def writeLetterId(letterId)
   File.open($projectPath,'w') do |f|
       f.puts letterId
@@ -283,7 +292,6 @@ def writeLetterId(letterId)
 end
 
 def writeSubjectId(subjectId)
- 
   previousLetterId = 0
   previousSubjectId = 0
   previousCourseId = 0
