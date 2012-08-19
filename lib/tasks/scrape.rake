@@ -399,10 +399,7 @@ def parseCourseInDetailScreen(section)
           section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
 
           attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
- 
-
-
-          attributes.each_line { |l|
+    attributes.each_line { |l|
             section.course_attributes << getCreateCourseAttribute(l)
           }
 
