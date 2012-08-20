@@ -22,17 +22,17 @@ namespace :db do
 end
 
 $wait_time = 5
+$username = 'mst17'
+$password = ''
+#put the path of the elementsIds.temp file here
+$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
+
 
 Capybara.run_server = false
 Capybara.current_driver = :selenium
 Capybara.app_host = "http://aces.duke.edu/"
 Capybara.default_wait_time = $wait_time
 Capybara.automatic_reload = false
-
-$username = 'mst17'
-$password = ''
-#put the path of the elementsIds.temp file here
-$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
 module Spider
