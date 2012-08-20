@@ -3,7 +3,7 @@
 <div class="input-append searchbar">
   <%= text_field_tag :search, params[:search], :class=>"span4" %>
   <%= button_tag "Search",  :class => "btn" %>
-  <a href='#' id="omniSearchBarHelp" class="btn btn-info" rel="popover" data-content="Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you." data-original-title="Confused?">?</a>
+  <a href='#' id="omniSearchBarHelp" class="btn btn-info" rel="popover" data-content="Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you." data-original-title="Confused?"><i class="icon-info-sign icon-white"></i></a>
 </div>
 <script type="text/javascript">
   $("#omniSearchBarHelp").popover({placement: "bottom"});
