@@ -1,10 +1,10 @@
 <!-- pass in a local variable "list", as well as a unique string to prevent conflicts when generating link ids, and a controller, and an action.  list element must have a .name class to alphabetize -->
 <ul class="nav nav-pills">
-  <li>
+  <li class="alpha_button">
     <%= link_to "#", '#all'+unique, {'data-toggle'=>'tab'} %>
   </li>
   <% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".each_char %>
-  <li>
+  <li class="alpha_button">
     <%= link_to letter, ('#'+letter+unique), {'data-toggle'=>'tab'} %>
   </li>
   <% end %>
