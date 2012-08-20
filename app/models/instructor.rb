@@ -8,9 +8,6 @@ class Instructor < ActiveRecord::Base
   has_many :reviews
 
 
-
-
-
   def toString
     self.name
   end
@@ -25,7 +22,7 @@ class Instructor < ActiveRecord::Base
       if courseHash.has_key? subject
         courseHash[subject] = courseHash[subject]+1
       else
-        courseHash[subject] = 0
+        courseHash[subject] = 1
       end
      end
     
