@@ -1,7 +1,9 @@
 <%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Courses"=>courses_path, (@course.subject.abbr+@course.toSingleCode)=>'#'}} %>
 
 <div class="container">
-  <h1 class="non_home_title"><%= @course.name %></h1>
+  <div class="page-header">
+  <h1><%= @course.name %></h1>
+  </div>
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-pills">
       <li class="active">

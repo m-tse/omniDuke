@@ -1,5 +1,7 @@
 <%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Professors"=>instructors_path, @instructor.toString=>'#'}} %>
-<h1 class="non_home_title"><%= @instructor.toString %></h1>
+<div class="page-header">
+<h1><%= @instructor.toString %></h1>
+</div>
 <h4>Courses Taught:
 <% for course in @instructor.courses %>
 <%= link_to courseToCode(course), course_path(course) %>
