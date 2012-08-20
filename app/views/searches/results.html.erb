@@ -1,10 +1,11 @@
 <%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "OmniSearch"=> "#"}} %>
-<div class="center">
+<h1 class="non_home_title">OmniSearch Results</h1>
 <%= render partial:"partials/omni_search_bar", locals:{redirect:omni_results_path} %>
 
-</div>
-<div class="row">
+
+
+
 
   <%= render @omni_results%>
 
-</div>
+
