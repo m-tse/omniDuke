@@ -1,4 +1,4 @@
-<!-- pass in a local variable "list", as well as a unique string to prevent conflicts when generating link ids -->
+<!-- pass in a local variable "list", as well as a unique string to prevent conflicts when generating link ids, and a controller, and an action.  list element must have a .name class to alphabetize -->
 <ul class="nav nav-pills">
   <li>
     <%= link_to "#", '#all'+unique, {'data-toggle'=>'tab'} %>
@@ -13,12 +13,17 @@
 
 <div class="tab-content">
   <%= content_tag :div, {:class=>'tab-pane fade in active', :id=>('all'+unique)} do -%>
+  <% for element in list %>
+  <h3><%= link_to element.toString, :controller => controller, :action=> action, :id => element.id%></h3>
 
-    <%= render list %>
+  <% end %>
 <% end -%>
   <% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".each_char %>
   <%= content_tag :div, {:class=>'tab-pane fade in', :id=>(letter+unique)} do -%>
-  <%= render list.select {|i| i.name.starts_with?(letter) or i.name.starts_with?(letter.downcase)} %>
+  <% for element in list.select {|i| i.name.starts_with?(letter) or i.name.starts_with?(letter.downcase)} %>
+  <h3><%= link_to element.toString, :controller => controller, :action=> action, :id => element.id%></h3>
+  
+  <% end %>
   <% end -%>
   
   <% end %>

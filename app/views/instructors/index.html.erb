@@ -17,10 +17,10 @@
   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="tab1">
-      <%= render partial:"partials/alpha_list", locals:{list:@instructors, unique:"instructor"} %>
+      <%= render partial:"partials/alpha_list", locals:{list:@instructors, unique:"instructor", controller:"instructors", action:"show"} %>
     </div>
     <div class="tab-pane fade in" id="tab2">
-      <%= render partial:"partials/alpha_list_subjects_instructors", locals:{list:@subjects, unique:"subject"} %>
+      <%= render partial:"partials/alpha_list", locals:{list:@subjects, unique:"subject", controller:"subjects", action:"show_instructors"} %>
     </div>
 
   </div>

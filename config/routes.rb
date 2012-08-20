@@ -7,7 +7,8 @@ OmniDuke::Application.routes.draw do
   match '/courses/results', to: 'courses#results'
   match '/instructors/results', to: 'instructors#results'
   match '/omni_results', to: 'searches#results'
-  match '/subjects/instructors', to: 'subjects#show_subjects_instructors'
+  match '/subjects/instructors', to: 'subjects#show_instructors'
+  match '/subjects/courses', to: 'subjects#show_courses'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :reviews, only: [:new, :show, :create]
