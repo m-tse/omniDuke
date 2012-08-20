@@ -1,23 +1,23 @@
-<!-- pass in a local varible "list" -->
-
+<!-- pass in a local variable "list", as well as a unique string to prevent conflicts when generating link ids -->
 <ul class="nav nav-pills">
   <li>
-    <%= link_to "#", '#all', {'data-toggle'=>'tab'} %>
+    <%= link_to "#", '#all'+unique, {'data-toggle'=>'tab'} %>
   </li>
   <% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".each_char %>
   <li>
-    <%= link_to letter, ('#'+letter), {'data-toggle'=>'tab'} %>
+    <%= link_to letter, ('#'+letter+unique), {'data-toggle'=>'tab'} %>
   </li>
   <% end %>
 </ul>
 
 
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="all">
+  <%= content_tag :div, {:class=>'tab-pane fade in active', :id=>('all'+unique)} do -%>
+
     <%= render list %>
-  </div>
+<% end -%>
   <% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".each_char %>
-  <%= content_tag :div, {:class=>'tab-pane fade in', :id=>letter} do -%>
+  <%= content_tag :div, {:class=>'tab-pane fade in', :id=>(letter+unique)} do -%>
   <%= render list.select {|i| i.name.starts_with?(letter) or i.name.starts_with?(letter.downcase)} %>
   <% end -%>
   
