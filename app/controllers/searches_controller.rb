@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
 
   def results
 
-    @omni_search = Sunspot.search Course, Instructor do
+    @omni_search = Sunspot.search Course, Instructor, Subject do
       keywords params[:search]
 
 

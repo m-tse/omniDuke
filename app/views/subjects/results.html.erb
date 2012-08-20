@@ -1,0 +1,8 @@
+<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Subjects"=>subjects_path, "Results"=>'#'}} %>
+
+
+<h1>Search Results</h1>
+<%= render partial:"partials/subjects/subject_search_bar", locals:{redirect:subjects_results_path} %>
+
+<%= render @subjects %>
+

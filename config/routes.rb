@@ -6,6 +6,7 @@ OmniDuke::Application.routes.draw do
   match '/home', to: 'static_pages#home'
   match '/courses/results', to: 'courses#results'
   match '/instructors/results', to: 'instructors#results'
+  match '/subjects/results', to: 'subjects#results'
   match '/omni_results', to: 'searches#results'
   match '/subjects/instructors', to: 'subjects#show_instructors'
   match '/subjects/courses', to: 'subjects#show_courses'
