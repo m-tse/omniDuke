@@ -2,7 +2,7 @@
 
 
 <h1>Search Results</h1>
-<%= render partial:"partials/subjects/subject_search_bar", locals:{redirect:subjects_results_path} %>
+<%= render partial:"partials/search_bar/search_bar", locals:{redirect:subjects_results_path, help_text:subject_search_help_text, advanced_options_partial:"partials/null"} %>
 
 <%= render @subjects %>
 
