@@ -1,8 +1,11 @@
 
 <h3><%= link_to instructor.toString, instructor_path(instructor) %></h3>
-<h4>Courses Taught:
+<strong>Courses Taught:</strong>
 <% for course in instructor.courses %>
 <%= link_to course.name, course_path(course) %>
 <% end %>
-</h4>
-
+<br>
+<strong>Subjects Taught:</strong>
+<% for subject in instructor.subjects_by_count %>
+<%= link_to subject.name, subject_path(subject) %>
+<% end %>

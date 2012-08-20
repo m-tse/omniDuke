@@ -1,0 +1,5 @@
+<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Subjects"=>subjects_path}} %>
+
+<h1>Explore Subjects</h1>
+
+<%= render partial:"partials/alpha_list", locals:{list:@subjects, unique:"subjects", controller:"subjects", action:"show"} %>

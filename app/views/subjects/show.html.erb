@@ -1,0 +1,31 @@
+<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Subjects"=>subjects_path, @subject.abbr=>'#'}} %>
+
+<h1><%= @subject.name %></h1>
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-pills">
+      <li class="active">
+	<a href="#tab1" data-toggle="tab">Overview</a>
+      </li>
+      <li>
+	<a href="#tab2" data-toggle="tab">Courses</a>
+      </li>
+     <li>
+	<a href="#tab3" data-toggle="tab">Professors</a>
+      </li>
+ 
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+	<%= render partial:"partials/subjects/overview" %>
+      </div>
+      <div class = "tab-pane fade in" id="tab2">
+	<%= render @courses %>
+      </div>
+      <div class = "tab-pane fade in" id="tab3">
+	<%= render @instructors %>
+      </div>
+
+    </div>
+  </div>
+

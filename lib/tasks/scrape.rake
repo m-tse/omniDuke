@@ -399,15 +399,15 @@ def parseCourseInDetailScreen(section)
     topicCSS = "span#CRSE_TOPICS_DESCR"
     if page.has_css?(topicCSS)
       section.topic = find(topicCSS).text
-    else
-      section.topic = "n/a"
     end
+    section.topic ||= "n/a"
+
     enrollmentReqsCSS = "span#SSR_CLS_DTL_WRK_SSR_REQUISITE_LONG"
     if page.has_css?(enrollmentReqsCSS)
       section.enrollment_requirements = find(enrollmentReqsCSS).text
-    else
-      section.enrollment_requirements = "n/a"
     end
+    section.enrollment_requirements ||= "n/a"
+
     # sets wait time back to normal
     Capybara.default_wait_time = $wait_time
 
@@ -433,10 +433,11 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
   oldNumberCSSTag = createCSSExp("DERIVED_SSS_BCC_DESCR$",courseNUM)
   if page.has_css?(oldNumberCSSTag)
     old_number = find(oldNumberCSSTag).text
+    old_number = cleanUpOldNumber(old_number)
   end
-  if old_number == nil
-    old_number = "n/a"
-  end
+  old_number ||= 'n/a'
+
+
   Capybara.default_wait_time = $wait_time
   newNumberCSSTag = createCSSExp("DU_SS_SUBJ_CAT_CATALOG_NBR$",courseNUM)
   new_number = find(newNumberCSSTag).text
@@ -473,4 +474,8 @@ def createSectionInListScreen(course, sectionNum)
   course.sections<< section
   section.save
   return section
+end
+
+def cleanUpOldNumber(old_number)
+  old_number.split(' ')[1]
 end

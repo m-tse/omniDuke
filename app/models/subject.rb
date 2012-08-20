@@ -13,4 +13,23 @@ class Subject < ActiveRecord::Base
     self.abbr + " - " + self.name
   end
 
+  def instructors_by_count
+    retarray = []
+    instructorHash = {}
+    for course in self.courses
+      for section in course.sections
+        for instructor in section.instructors
+          if instructorHash.has_key? instructor
+            instructorHash[instructor] += 1
+          else
+            instructorHash[instructor] = 1
+          end
+        end
+      end
+    end
+    
+    instructorHash.sort_by{|k,v| v}
+    instructorHash.each_key {|key| retarray << key }
+    return retarray
+  end
 end
