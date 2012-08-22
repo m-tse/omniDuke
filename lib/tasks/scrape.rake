@@ -127,12 +127,20 @@ module Spider
 
           find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
 
-
-          subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
-          subjectids = Array.new
-          for element in subjectElements
-            subjectids << element[:id]
+          begin
+            subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
+            subjectids = Array.new
+            for element in subjectElements
+                subjectids << element[:id]
+            end
+            if subjectids.length == 0
+                raise
+            end
+          rescue
+            puts "Retrying subject"
+            retry
           end
+          puts subjectids.length
           for subjectid in subjectids
             $logger.debug "Starting subject: #{subjectid}"
             if ind
@@ -150,18 +158,26 @@ module Spider
               end
             end   
 
-            ##set current subject
-            subjectNum = subjectid.split('$').last
-            subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
-            subjectAbrv = find(subjectAbrvCSSTagger).text
-            subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
-            subjectNames = find(subjectNamesCSSTagger).text
-            currentSubject = getCreateSubject(subjectNames, subjectAbrv)
+            tries = 0
+            begin
+              ##set current subject
+              subjectNum = subjectid.split('$').last
+              subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
+              subjectAbrv = find(subjectAbrvCSSTagger).text
+              subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
+              subjectNames = find(subjectNamesCSSTagger).text
+              currentSubject = getCreateSubject(subjectNames, subjectAbrv)
 
-
-
-            sleep(1)
-            click_link(subjectid)
+              sleep(1)
+              click_link(subjectid)
+            rescue
+              if tries > 5
+                  next
+              end
+              tries += 1
+              puts "Retrying click subject link #{subjectid}"
+              retry
+            end
             sleep(1)
             
             tries = 0
@@ -176,13 +192,20 @@ module Spider
                 puts "Trying #{tries}"
                 retry
             end
-
-            courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
-            courseids = Array.new
-            for element in courseElements
-              courseids << element[:id]
+            
+            begin
+                courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
+                courseids = Array.new
+                for element in courseElements
+                 courseids << element[:id]
+                end
+                if courseids.length == 0
+                    raise
+                end
+            rescue
+                puts "Retrying course"
+                retry
             end
-         
             for courseid in courseids
 #              if previousCourseId >= courseids.length
 #                  previousCourseId = 0
