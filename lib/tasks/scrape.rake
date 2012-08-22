@@ -15,13 +15,13 @@ namespace :db do
   desc "Scrape data from ACES and enter it into the database"
   task populate: :environment do
 
-#    spider = Spider::Google.new
-#    spider.login()
-#    spider.search()
+    spider = Spider::Google.new
+    spider.login()
+    spider.search()
   end
 end
 
-$wait_time = 5
+$wait_time = 10
 $username = 'mst17'
 $password = ''
 #put the path of the elementsIds.temp file here
@@ -220,19 +220,22 @@ module Spider
                 puts sectionId 
 
                 sectionNum = sectionid.split('$').last
-                section = createSectionInListScreen(course, sectionNum)
+                section = buildSectionInListScreen(course, sectionNum)
 
 
                 click_link(sectionid)
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
                 
-                parseCourseInDetailScreen(section)
+                section = parseCourseInDetailScreen(section)
                 click_link('Return to Search By Subject')
 
                 page.driver.browser.switch_to.default_content
                 page.driver.browser.switch_to.frame 'TargetContent'
                 sleep(1)
+                p section
+                course.sections<< section
+                section.save
                 sectionId += 1
                 writeSectionId(sectionId)
               end        
@@ -260,7 +263,6 @@ module Spider
           writeLetterId(letterId)
  
         end 
-#        sleep(9000)
 
       rescue => e
         $logger.debug "BROKEN"
@@ -376,52 +378,57 @@ end
 
 
 def parseCourseInDetailScreen(section)
-  begin
+#  begin
     
 
-    section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
-    section.name = find("span#DERIVED_CLSRCH_DESCR200").text
-    section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
-    section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
-    section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
-    section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
-    
-    section.career = find("span#PSXLATITEM_XLATLONGNAME").text
-    section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
-    section.location = find("span#CAMPUS_LOC_VW_DESCR").text
-    section.campus = find("span#CAMPUS_TBL_DESCR").text
-    section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
+  section.description = find("span#DERIVED_CLSRCH_DESCRLONG").text
+  section.name = find("span#DERIVED_CLSRCH_DESCR200").text
+  section.enrollment = find("span#SSR_CLS_DTL_WRK_ENRL_TOT").text.to_i
+  section.capacity = find("span#SSR_CLS_DTL_WRK_ENRL_CAP").text.to_i
+  section.waitlist_enrollment = find("span#SSR_CLS_DTL_WRK_WAIT_TOT").text.to_i
+  section.waitlist_capacity = find("span#SSR_CLS_DTL_WRK_WAIT_CAP").text.to_i
+  
+  section.career = find("span#PSXLATITEM_XLATLONGNAME").text
+  section.grading = find("span#GRADE_BASIS_TBL_DESCRFORMAL").text
+  section.location = find("span#CAMPUS_LOC_VW_DESCR").text
+  section.campus = find("span#CAMPUS_TBL_DESCR").text
+  section.class_number = find("span#SSR_CLS_DTL_WRK_CLASS_NBR").text.to_i
     #fix this eventually?
-    section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
-    
-    # so it doesn't wait looking for these potentially missing elements
-    Capybara.default_wait_time = 0
-    topicCSS = "span#CRSE_TOPICS_DESCR"
-    if page.has_css?(topicCSS)
-      section.topic = find(topicCSS).text
-    end
-    section.topic ||= "n/a"
+  section.units = find("span#SSR_CLS_DTL_WRK_UNITS_RANGE").text.to_f
+  
+  # so it doesn't wait looking for these potentially missing elements
+  Capybara.default_wait_time = 0
+  topicCSS = "span#CRSE_TOPICS_DESCR"
+  if page.has_css?(topicCSS)
+    section.topic = find(topicCSS).text
+  end
+  section.topic ||= "n/a"
+  
+  enrollmentReqsCSS = "span#SSR_CLS_DTL_WRK_SSR_REQUISITE_LONG"
+  if page.has_css?(enrollmentReqsCSS)
+    section.enrollment_requirements = find(enrollmentReqsCSS).text
+  end
+  section.enrollment_requirements ||= "n/a"
+  
+  # sets wait time back to normal
 
-    enrollmentReqsCSS = "span#SSR_CLS_DTL_WRK_SSR_REQUISITE_LONG"
-    if page.has_css?(enrollmentReqsCSS)
-      section.enrollment_requirements = find(enrollmentReqsCSS).text
-    end
-    section.enrollment_requirements ||= "n/a"
-
-    # sets wait time back to normal
-    Capybara.default_wait_time = $wait_time
-
-
-    attributes = find("span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG").text
+  
+  attrCSS = "span#SSR_CLS_DTL_WRK_SSR_CRSE_ATTR_LONG"
+  if page.has_css?(attrCSS)
+    attributes = find(attrCSS).text
     attributes.each_line { |l|
       section.course_attributes << getCreateCourseAttribute(l)
     }
-    
-  rescue
-  ensure
-    section.save
-    p section
   end
+
+  Capybara.default_wait_time = $wait_time
+  
+  return section
+  #  rescue
+  #  ensure
+  #    section.save
+  #    p section
+  #  end
 end
 
 
@@ -452,7 +459,7 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
 end
 
 
-def createSectionInListScreen(course, sectionNum)
+def buildSectionInListScreen(course, sectionNum)
   section = Section.new
 
   secListNameCSS = createCSSExp("DU_DERIVED_SS_DESCR100$",sectionNum)
@@ -471,8 +478,8 @@ def createSectionInListScreen(course, sectionNum)
   section.time_slot = timeslot
   section.instructors << getCreateInstructor(find(secInstructorCSS).text)
 
-  course.sections<< section
-  section.save
+
+#  section.save
   return section
 end
 
