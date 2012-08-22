@@ -22,8 +22,8 @@ namespace :db do
 end
 
 $wait_time = 5
-$username = 'aks35'
-$password = '6EF81ba8c2'
+$username = ''
+$password = ''
 #put the path of the elementsIds.temp file here
 $projectPath = '/home/aks/projects/omniDuke/elementIds.temp'
 
