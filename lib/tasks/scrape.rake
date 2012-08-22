@@ -124,8 +124,18 @@ module Spider
           sleep(1)
           find_link(letter).click   
           sleep(1)
-
-          find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
+          tries = 0
+          begin
+              find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
+          rescue
+              if tries >= 3
+                  next
+              end
+              tries += 1
+              puts "Trying #{tries}, letter: #{letter}"
+              sleep(1)
+              retry
+          end
 
           begin
             subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
@@ -189,7 +199,8 @@ module Spider
                     next
                 end
                 tries += 1
-                puts "Trying #{tries}"
+                puts "Trying #{tries}, subject: #{subjectid}"
+                sleep(1)
                 retry
             end
             
