@@ -3,9 +3,9 @@ require_relative "../../util/util"
 namespace :db do
   desc "Fill course database with sample data, later on to be retrieved through       web scraping, serves as a model for how to fill out the data"	
   task populate: :environment do
-
+    require 'factory_girl'
 #    createcs6	
-#    createFakeClasses
+#   createFakeClasses
 
   end
 end
@@ -36,15 +36,12 @@ end
 def createFakeClasses
   #create subjects
   50.times do |n|
-    abbr =  Faker::Lorem.words(1).first+n.to_s
-    name = Faker::Lorem.words(1).first+n.to_s
-
-    Subject.create!(abbr:abbr, name:name)
+    FactoryGirl.create(:subject)
   end
 
   #createInstructors
   50.times do |n|
-    Instructor.create!(name: Faker::Name.name+n.to_s)
+    FactoryGirl.create(:instructor)
   end
 
   #createCourseAttributes
@@ -74,7 +71,7 @@ def createFakeClasses
 
   #create courses
   120.times do |n|
-    course = Course.create!(name:Faker::Lorem.sentence+n.to_s)
+    course = FactoryGirl.create(:course)
     course.session= getCreateSession("fall", 2012)
 
     aSubject = Subject.all.sample

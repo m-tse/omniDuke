@@ -12,7 +12,8 @@ describe Course do
   it {should respond_to(:prerequisites)}
   it { should respond_to(:sections)}
   it { should respond_to(:instructors)}
-  it { should respond_to(:course_numberings)}
-  it { should respond_to(:subjects)}
+  it { should respond_to(:subject)}
+  it {should resopnd_to(:old_number)}
+  it { should respond_to(:new_number)}
   it { should be_valid}
 end
