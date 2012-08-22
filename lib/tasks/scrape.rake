@@ -212,12 +212,18 @@ module Spider
 
               #set current Course
               course = createCourseInListScreen(courseNUM, currentSubject, currentSession)
-              p course
-              sleep(1)
-              sectionElements = page.all("a[id^='CLASS_DETAIL$']")
-              sectionids = Array.new
-              for element in sectionElements
-                sectionids << element[:id]
+              begin
+                sectionElements = page.all("a[id^='CLASS_DETAIL$']")
+                sectionids = Array.new
+                for element in sectionElements
+                    sectionids << element[:id]
+                end
+                if sectionids.length == 0
+                    raise
+                end
+              rescue 
+                puts "RETRYING"
+                retry
               end
               puts "HERE"
               puts sectionids 
@@ -274,6 +280,7 @@ module Spider
               end        
               sectionId = 0
               courseId += 1  
+              p course
               writeCourseId(courseId)
             end
             courseId = 0
