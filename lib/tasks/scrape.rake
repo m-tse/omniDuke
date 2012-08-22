@@ -22,10 +22,10 @@ namespace :db do
 end
 
 $wait_time = 5
-$username = 'mst17'
-$password = ''
+$username = 'aks35'
+$password = '6EF81ba8c2'
 #put the path of the elementsIds.temp file here
-$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
+$projectPath = '/home/aks/projects/omniDuke/elementIds.temp'
 
 
 Capybara.run_server = false
@@ -153,9 +153,20 @@ module Spider
             sleep(1)
             click_link(subjectid)
             sleep(1)
+            
+            tries = 0
+            begin
+                find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
+            rescue
+                if tries >= 3
+                    click_link(subjectid)
+                    next
+                end
+                tries += 1
+                puts tries
+                retry
+            end
 
-            find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
-   
             courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
             courseids = Array.new
             for element in courseElements
