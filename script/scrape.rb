@@ -10,7 +10,7 @@ begin
         raise
     end
 rescue
-    if count >= 10
+    if count >= 4
         exit
     end
     count += 1

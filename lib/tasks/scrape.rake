@@ -22,8 +22,8 @@ namespace :db do
 end
 
 $wait_time = 5
-$username = ''
-$password = ''
+$username = 'aks35'
+$password = '6EF81ba8c2'
 #put the path of the elementsIds.temp file here
 $projectPath = '/home/aks/projects/omniDuke/elementIds.temp'
 
@@ -92,12 +92,7 @@ module Spider
 
       ind = true
       begin
-#        letterCount = 0
         # Loop through A - Z
-#        letterId = previousLetterId
-#        subjectId = previousSubjectId
-#        courseId = previousCourseId
-#        sectionId = previousSectionId
         letterId = 0
         subjectId = 0
         courseId = 0
@@ -129,6 +124,7 @@ module Spider
               find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
           rescue
               if tries >= 3
+                  $logger.debug "Could not find subjects for letter #{letterId}, skipping this letter"
                   next
               end
               tries += 1
@@ -137,6 +133,8 @@ module Spider
               retry
           end
 
+          # If it gets to this point then it means that it MUST have subjects
+          # so it should NOT run into an infinite loop, hopefully
           begin
             subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
             subjectids = Array.new
@@ -169,33 +167,30 @@ module Spider
             end   
 
             tries = 0
-            begin
+ 
               ##set current subject
+            begin
               subjectNum = subjectid.split('$').last
               subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
               subjectAbrv = find(subjectAbrvCSSTagger).text
               subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
               subjectNames = find(subjectNamesCSSTagger).text
               currentSubject = getCreateSubject(subjectNames, subjectAbrv)
-
               sleep(1)
               click_link(subjectid)
+
             rescue
-              if tries > 5
-                  next
-              end
-              tries += 1
-              puts "Retrying click subject link #{subjectid}"
               retry
+              puts "Retrying click subject link #{subjectid}"
             end
-            sleep(1)
-            
+
             tries = 0
             begin
                 find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
             rescue
                 if tries >= 3
                     click_link(subjectid)
+                    $logger.debug "Could not find courses for subject #{subjectId}, skipping"
                     next
                 end
                 tries += 1
@@ -218,10 +213,6 @@ module Spider
                 retry
             end
             for courseid in courseids
-#              if previousCourseId >= courseids.length
-#                  previousCourseId = 0
-#                  break
-#              end
               $logger.debug "Starting course: #{courseid}"
               if ind
                 if previousCourseId >= courseids.length
@@ -256,16 +247,10 @@ module Spider
                     raise
                 end
               rescue 
-                puts "RETRYING"
                 retry
               end
-              puts "HERE"
               puts sectionids 
               for sectionid in sectionids
-#                if previousSectionId >= sectionids.length
-#                    previousSectionId = 0
-#                    break
-#                end
                 $logger.debug "Current section: #{sectionid}"
                 if ind
                   if previousSectionId >= sectionids.length
@@ -310,44 +295,38 @@ module Spider
                 course.sections<< section
                 section.save
                 sectionId += 1
-                writeSectionId(sectionId)
+                writeId(section: sectionId)
               end        
               sectionId = 0
+              writeId(section: sectionId)
               courseId += 1  
               p course
-              writeCourseId(courseId)
+              writeId(course: courseId)
             end
             courseId = 0
+            writeId(course: courseId)
             click_link(subjectid)
             sleep(1)
             subjectId += 1
-            writeSubjectId(subjectId)
+            writeId(subject: subjectId)
           end
           subjectId = 0
+          writeId(subject: subjectId)
           sleep(1)    
           letterId += 1
           puts "OVERWRITING PREVIOUS"
           puts "OVERWRITING PREVIOUS"
-#          previousLetterId = 0
-#          previousSubjectId = 0
-#          previousCourseId = 0
-#          previousSectionId = 0
-
-          writeLetterId(letterId)
+          writeId(letter: letterId)
  
         end 
 
       rescue => e
         $logger.debug "BROKEN"
+        $logger.debug "BROKEN"
         $logger.debug "ERROR: #{e.inspect}"
         $logger.debug "BROKEN"
         $logger.debug "BROKEN"
-        File.open($projectPath,'w') do |f|
-            f.puts letterId 
-            f.puts subjectId
-            f.puts courseId
-            f.puts sectionId
-        end
+        writeId(letter: letterId, subject: subjectId, course: courseId, section: sectionId)
         raise
       end
     end
@@ -356,89 +335,42 @@ module Spider
 end
 
 
-# all other variables are set to 0 once it gets
-# to this point, so just used '0' instead of names
-def writeLetterId(letterId)
-  File.open($projectPath,'w') do |f|
-      f.puts letterId
-      f.puts "0"
-      f.puts "0"
-      f.puts "0"
-  end
-end
+def writeId(options = {letter: nil, subject: nil, course: nil, section: nil})
 
-def writeSubjectId(subjectId)
-  previousLetterId = 0
-  previousSubjectId = 0
-  previousCourseId = 0
-  previousSectionId = 0
+  previousIds = [0,0,0,0]
 
   if File.exists? $projectPath
-    lines = File.open($projectPath,).readlines
-
-    previousLetterId = Integer(lines[0].delete("\n"))
-    previousSubjectId = Integer(lines[1].delete("\n"))
-    previousCourseId = Integer(lines[2].delete("\n"))
-    previousSectionId = Integer(lines[3].delete("\n"))
+    lines = File.open($projectPath).readlines
+    for i in (0..3)
+        previousIds[i] = Integer(lines[i].delete("\n"))
+    end
   end
 
-
+  writtenIds = [0,0,0,0]
+  keys = [:letter, :subject, :course, :section]
   File.open($projectPath,'w') do |f|
-      f.puts previousLetterId
-      f.puts subjectId
-      f.puts previousCourseId
-      f.puts previousSectionId
+      for i in (0..3)
+        value = options[keys[i]]
+        if value.nil?
+          f.puts previousIds[i]
+          writtenIds[i] = previousIds[i]
+        else
+          f.puts value
+          writtenIds[i] = value
+        end
+      end
   end
-end
-
-def writeCourseId(courseId)
  
-  previousLetterId = 0
-  previousSubjectId = 0
-  previousCourseId = 0
-  previousSectionId = 0
+  p options
+  p previousIds
 
-  if File.exists? $projectPath
-    lines = File.open($projectPath,).readlines
+  $logger.debug "Wrote ids to elementsIds.temp
+    letter:     #{writtenIds[0]}
+    subject:    #{writtenIds[1]}
+    course:     #{writtenIds[2]}
+    section:    #{writtenIds[3]}
+  "
 
-    previousLetterId = Integer(lines[0].delete("\n"))
-    previousSubjectId = Integer(lines[1].delete("\n"))
-    previousCourseId = Integer(lines[2].delete("\n"))
-    previousSectionId = Integer(lines[3].delete("\n"))
-  end
-
-
-  File.open($projectPath,'w') do |f|
-      f.puts previousLetterId
-      f.puts previousSubjectId
-      f.puts courseId
-      f.puts previousSectionId
-  end
-end
-
-def writeSectionId(sectionId)
- 
-  previousLetterId = 0
-  previousSubjectId = 0
-  previousCourseId = 0
-  previousSectionId = 0
-
-  if File.exists? $projectPath
-    lines = File.open($projectPath,).readlines
-
-    previousLetterId = Integer(lines[0].delete("\n"))
-    previousSubjectId = Integer(lines[1].delete("\n"))
-    previousCourseId = Integer(lines[2].delete("\n"))
-    previousSectionId = Integer(lines[3].delete("\n"))
-  end
-
-
-  File.open($projectPath,'w') do |f|
-      f.puts previousLetterId
-      f.puts previousSubjectId
-      f.puts previousCourseId
-      f.puts sectionId
-  end
 end
 
 
