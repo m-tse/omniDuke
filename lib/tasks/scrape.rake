@@ -536,7 +536,7 @@ def buildSectionInListScreen(course, sectionNum)
   section = Section.new
 
   secListNameCSS = createCSSExp("DU_DERIVED_SS_DESCR100$",sectionNum)
-  section.list_name = find(secListNameCSS).text
+  section.list_description = find(secListNameCSS).text
   secRoomCSS = createCSSExp("DERIVED_AA2_REQDESCRB$", sectionNum)
   section.room = find(secRoomCSS).text
   secInstructorCSS = createCSSExp("DU_DERIVED_SS_DESCR100_2$", sectionNum)
