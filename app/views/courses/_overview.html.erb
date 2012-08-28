@@ -41,7 +41,7 @@
   <tbody>
     <% for section in @course.sections %>
     <tr>
-      <td><%= section.list_name %></td>
+      <td><%= section.list_description %></td>
       <td><%= section.time_slot.aces_value %></td>
       <td>
 	<% instructor = section.instructors.first %>

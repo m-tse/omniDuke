@@ -22,10 +22,10 @@ namespace :db do
 end
 
 $wait_time = 5
-$username = 'aks35'
-$password = '6EF81ba8c2'
+$username = ''
+$password = ''
 #put the path of the elementsIds.temp file here
-$projectPath = '/home/aks/projects/omniDuke/elementIds.temp'
+$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
 Capybara.run_server = false
@@ -468,7 +468,7 @@ def buildSectionInListScreen(course, sectionNum)
   section = Section.new
 
   secListNameCSS = createCSSExp("DU_DERIVED_SS_DESCR100$",sectionNum)
-  section.list_name = find(secListNameCSS).text
+  section.list_description = find(secListNameCSS).text
   secRoomCSS = createCSSExp("DERIVED_AA2_REQDESCRB$", sectionNum)
   section.room = find(secRoomCSS).text
   secInstructorCSS = createCSSExp("DU_DERIVED_SS_DESCR100_2$", sectionNum)
@@ -483,6 +483,13 @@ def buildSectionInListScreen(course, sectionNum)
   section.time_slot = timeslot
   section.instructors << getCreateInstructor(find(secInstructorCSS).text)
 
+  secReqSectionsCSS = createCSSExp("DU_DERIVED_SS_CRSE_ATTR_VALUE$", sectionNum)
+  reqSectionsText = find(secReqSectionsCSS).text
+  if reqSectionsText == " "
+    reqSectionsText = "n/a"
+  end
+  section.required_sections = reqSectionsText
+  
 
 #  section.save
   return section
