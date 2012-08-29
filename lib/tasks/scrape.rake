@@ -25,7 +25,7 @@ $wait_time = 5
 $username = ''
 $password = ''
 #put the path of the elementsIds.temp file here
-$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
+$projectPath = ''
 
 
 Capybara.run_server = false
@@ -135,25 +135,20 @@ module Spider
 
           # If it gets to this point then it means that it MUST have subjects
           # so it should NOT run into an infinite loop, hopefully
-          begin
-            subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
-            subjectids = Array.new
-            for element in subjectElements
-                subjectids << element[:id]
-            end
-            if subjectids.length == 0
-                raise
-            end
-          rescue
-            puts "Retrying subject"
-            retry
+          subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
+          subjectids = Array.new
+          for element in subjectElements
+            subjectids << element[:id]
+          end
+          if subjectids.length == 0
+            raise
           end
           puts subjectids.length
           for subjectid in subjectids
             $logger.debug "Starting subject: #{subjectid}"
             if ind
               if previousSubjectId >= subjectids.length
-                $Logger.debug "Previous section id too big, continuing"
+                $logger.debug "Previous section id too big, continuing"
                 ind = false
                 break
               end
@@ -166,23 +161,16 @@ module Spider
               end
             end   
 
-            tries = 0
  
-              ##set current subject
-            begin
-              subjectNum = subjectid.split('$').last
-              subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
-              subjectAbrv = find(subjectAbrvCSSTagger).text
-              subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
-              subjectNames = find(subjectNamesCSSTagger).text
-              currentSubject = getCreateSubject(subjectNames, subjectAbrv)
-              sleep(1)
-              click_link(subjectid)
-
-            rescue
-              retry
-              puts "Retrying click subject link #{subjectid}"
-            end
+            ##set current subject
+            subjectNum = subjectid.split('$').last
+            subjectAbrvCSSTagger =  createCSSExp("SSR_CLSRCH_SUBJ_SUBJECT$",subjectNum)
+            subjectAbrv = find(subjectAbrvCSSTagger).text
+            subjectNamesCSSTagger = createCSSExp("SSR_CLSRCH_SUBJ_DESCR$",subjectNum)
+            subjectNames = find(subjectNamesCSSTagger).text
+            currentSubject = getCreateSubject(subjectNames, subjectAbrv)
+            sleep(1)
+            click_link(subjectid)
 
             tries = 0
             begin
@@ -199,18 +187,13 @@ module Spider
                 retry
             end
             
-            begin
-                courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
-                courseids = Array.new
-                for element in courseElements
-                 courseids << element[:id]
-                end
-                if courseids.length == 0
-                    raise
-                end
-            rescue
-                puts "Retrying course"
-                retry
+            courseElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
+            courseids = Array.new
+            for element in courseElements
+              courseids << element[:id]
+            end
+            if courseids.length == 0
+              raise
             end
             for courseid in courseids
               $logger.debug "Starting course: #{courseid}"
@@ -237,17 +220,13 @@ module Spider
 
               #set current Course
               course = createCourseInListScreen(courseNUM, currentSubject, currentSession)
-              begin
-                sectionElements = page.all("a[id^='CLASS_DETAIL$']")
-                sectionids = Array.new
-                for element in sectionElements
-                    sectionids << element[:id]
-                end
-                if sectionids.length == 0
-                    raise
-                end
-              rescue 
-                retry
+              sectionElements = page.all("a[id^='CLASS_DETAIL$']")
+              sectionids = Array.new
+              for element in sectionElements
+                  sectionids << element[:id]
+              end
+              if sectionids.length == 0
+                  raise
               end
               puts sectionids 
               for sectionid in sectionids
