@@ -141,6 +141,7 @@ module Spider
             subjectids << element[:id]
           end
           if subjectids.length == 0
+            puts "RAISE ERROR: Subject length is 0"
             raise
           end
           puts subjectids.length
@@ -193,6 +194,7 @@ module Spider
               courseids << element[:id]
             end
             if courseids.length == 0
+              puts "RAISE ERROR: Courses length is 0"
               raise
             end
             for courseid in courseids
@@ -226,6 +228,7 @@ module Spider
                   sectionids << element[:id]
               end
               if sectionids.length == 0
+                  puts "RAISE ERROR: Sections length is 0"
                   raise
               end
               puts sectionids 
