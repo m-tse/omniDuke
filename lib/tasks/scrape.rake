@@ -21,11 +21,11 @@ namespace :db do
   end
 end
 
-$wait_time = 5
-$username = ''
+$wait_time = 10
+$username = 'mst17'
 $password = ''
 #put the path of the elementsIds.temp file here
-$projectPath = ''
+$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
 
 
 Capybara.run_server = false
@@ -222,6 +222,7 @@ module Spider
 
               #set current Course
               course = createCourseInListScreen(courseNUM, currentSubject, currentSession)
+              find("a[id^='CLASS_DETAIL$']")
               sectionElements = page.all("a[id^='CLASS_DETAIL$']")
               sectionids = Array.new
               for element in sectionElements
