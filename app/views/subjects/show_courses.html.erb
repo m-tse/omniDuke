@@ -1,7 +1,8 @@
 
 <%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Courses"=>courses_path, @subject.abbr => '#'}} %>
 
-
+<div class="page-header">
 <h1><%= (@subject.name)+" ("+@subject.abbr+")"%></h1>
+</div>
 <%= render @courses %>
 <%= will_paginate @courses %>
