@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828050511) do
+ActiveRecord::Schema.define(:version => 20120830051116) do
 
   create_table "course_attributes", :force => true do |t|
     t.string   "name"
@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(:version => 20120828050511) do
   end
 
   add_index "subjects", ["abbr"], :name => "index_subjects_on_abbr", :unique => true
-  add_index "subjects", ["name"], :name => "index_subjects_on_name", :unique => true
 
   create_table "time_periods", :force => true do |t|
     t.time     "start_time"
