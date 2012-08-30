@@ -22,10 +22,10 @@ namespace :db do
 end
 
 $wait_time = 10
-$username = 'mst17'
+$username = ''
 $password = ''
 #put the path of the elementsIds.temp file here
-$projectPath = '/home/ts3m/Development/omniDuke/elementIds.temp'
+$projectPath = ''
 
 
 Capybara.run_server = false
@@ -132,9 +132,7 @@ module Spider
               sleep(1)
               retry
           end
-
-          # If it gets to this point then it means that it MUST have subjects
-          # so it should NOT run into an infinite loop, hopefully
+          sleep(5)
           subjectElements = page.all("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
           subjectids = Array.new
           for element in subjectElements
@@ -145,6 +143,8 @@ module Spider
             raise
           end
           puts subjectids.length
+          p letter
+          puts "HERE"
           for subjectid in subjectids
             $logger.debug "Starting subject: #{subjectid}"
             if ind
@@ -178,8 +178,8 @@ module Spider
                 find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAPS$']")
             rescue
                 if tries >= 3
-                    click_link(subjectid)
                     $logger.debug "Could not find courses for subject #{subjectId}, skipping"
+                    click_link(subjectid)
                     next
                 end
                 tries += 1
