@@ -74,6 +74,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    fattr (2.2.1)
     ffi (1.1.4)
     ffi (1.1.4-x86-mingw32)
     highline (1.6.13)
@@ -114,9 +115,14 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
+    options (2.3.0)
+      fattr
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
+    progress_bar (0.4.0)
+      highline (~> 1.6.1)
+      options (~> 2.3.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -213,6 +219,7 @@ DEPENDENCIES
   less-rails-bootstrap
   logging
   mysql
+  progress_bar
   rails (= 3.2.7)
   rspec-rails
   sass-rails (~> 3.2.3)

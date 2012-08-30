@@ -13,7 +13,7 @@ gem 'capistrano'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'factory_girl_rails'	
-
+gem 'progress_bar'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
