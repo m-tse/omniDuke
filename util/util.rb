@@ -9,10 +9,9 @@ def getCreateInstructor(name)
 end
 
 def getCreateSubject(nameString, abbrString)
-  foundSubjectByName = Subject.find_by_name(nameString)
-  foundSubjectByAbbr = Subject.find_by_abbr(abbrString)
-  if (foundSubjectByName != nil and foundSubjectByAbbr != nil and foundSubjectByName==foundSubjectByAbbr)
-    return foundSubjectByName
+  foundSubject = Subject.find_by_name_and_abbr(nameString, abbrString)
+  if (foundSubject!=nil)
+    return foundSubject
   else
     return Subject.create!(name: nameString, abbr: abbrString)
   end
