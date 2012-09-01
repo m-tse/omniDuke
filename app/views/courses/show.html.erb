@@ -1,4 +1,4 @@
-<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Courses"=>courses_path, @course.subject.name=>subjects_courses_path(@course.subject), (@course.subject.abbr+@course.toSingleCode)=>'#'}} %>
+<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Courses"=>courses_path, (@course.subject.abbr+@course.toSingleCode)=>'#'}} %>
 
 <div class="container">
   <div class="page-header">

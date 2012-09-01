@@ -1,8 +1,8 @@
 
-<div class="row list_courses">
-  <div class="span9">
+
+<div class = "list_courses">
     
-    <h3 class="list_course_title"><%= link_to courseToString(course), course_path(course)  %></h3>
+    <h3 class="list_course_title course_link"><%= link_to courseToString(course), course_path(course)  %></h3>
     <div class="list_course_content">
     <strong>Professors:</strong> <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
     
@@ -19,11 +19,7 @@
     <%= description.truncate(250) %>
     <% end %><% end %>
     </div>
-  </div>
-  
-  <div class="span3">
-    <h3>Times</h3>
-  </div>
-  
-</div>
+
+</div>  
+
 

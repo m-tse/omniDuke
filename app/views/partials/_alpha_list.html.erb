@@ -14,14 +14,14 @@
 <div class="tab-content">
   <%= content_tag :div, {:class=>'tab-pane fade in active', :id=>('all'+unique)} do -%>
   <% for element in list %>
-  <h3><%= link_to element.toString, :controller => controller, :action=> action, :id => element.id%></h3>
+  <h3><%= link_to element.toString, { :controller => controller, :action=> action, :id => element.id, }, :class => class_name%></h3>
 
   <% end %>
 <% end -%>
   <% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".each_char %>
   <%= content_tag :div, {:class=>'tab-pane fade in', :id=>(letter+unique)} do -%>
   <% for element in list.select {|i| i.name.starts_with?(letter) or i.name.starts_with?(letter.downcase)} %>
-  <h3><%= link_to element.toString, :controller => controller, :action=> action, :id => element.id%></h3>
+  <h3><%= link_to element.toString, { :controller => controller, :action=> action, :id => element.id}, :class => class_name%></h3>
   
   <% end %>
   <% end -%>

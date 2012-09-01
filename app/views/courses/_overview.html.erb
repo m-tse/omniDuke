@@ -45,7 +45,7 @@
       <td><%= section.time_slot.aces_value %></td>
       <td>
 	<% instructor = section.instructors.first %>
-	<%= link_to instructor.toString, instructor_path(instructor.id) %>
+	<%= link_to instructor.toString, instructor_path(instructor.id), class:"instructor_link" %>
       </td>
       <td><%= section.room %></td>
       <td><%= section.enrollment.to_s + "/" +section.capacity.to_s %></td>

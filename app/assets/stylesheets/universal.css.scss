@@ -1,4 +1,6 @@
-
+$course_link_color: red;
+$instructor_link_color: green;
+$subject_link_color: blue;
 
 /* universal styling */
 
@@ -24,5 +26,38 @@ margin-right: 0px;
 }
 
 h1.non_home_title{
+
+}
+
+.course_link{
+a{
+color:$course_link_color;
+}
+}
+
+a.course_link{
+color:$course_link_color;
+}
+
+#course_navbar_button{
+color:$course_link_color;
+}
+
+#instructor_navbar_button{
+color:$instructor_link_color;
+}
+
+#subject_navbar_button{
+color:$subject_link_color;
+}
+
+a.instructor_link{
+color:$instructor_link_color;
+}
+
+a.subject_link{
+
+color:$subject_link_color;
+
 
 }
