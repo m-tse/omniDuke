@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 gem 'faker'   
 gem 'devise'
 gem 'execjs'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'mysql'
+gem 'mysql2'
 gem "capybara"
 gem 'logging'
 gem 'capistrano'	
