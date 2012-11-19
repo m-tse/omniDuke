@@ -71,8 +71,13 @@ def createFakeClasses
 
   #create courses
   120.times do |n|
-    course = FactoryGirl.create(:course)
-    course.session= getCreateSession("fall", 2012)
+        course = FactoryGirl.create(:course)
+        year = rand(2)+2012
+        season = "fall"
+        if rand(2) == 1
+            season="spring"
+        end
+        course.session= getCreateSession(season, year)
 
     aSubject = Subject.all.sample
 

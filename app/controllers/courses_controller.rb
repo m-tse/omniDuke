@@ -5,9 +5,14 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all.sort_by &:abbr
-    #here so the check boxes work
-    @attributes = {"hidden"=>"true"}
+      defaultSession=Session.find_by_name("fall2012")
+      if(params[:currentSession]!=nil) 
+          defaultSession=Session.find_by_name(params[:currentSession])
+      end
+      @current_session = defaultSession
+      @subjects = Subject.all.sort_by &:abbr
+      #here so the check boxes work
+      @attributes = {"hidden"=>"true"}
   end
 
   def results
