@@ -2,22 +2,28 @@
   <label class="control-label">Modes of Inquiry</label>
   <div class="controls">
     <label class="checkbox inline">
-      <%= check_box_tag "attributes[CCI]", true, @attributes[:CCI] %> CCI
+      <%= check_box_tag "attributes[CCI]", true, @attributes[:CCI] %>
+      <abbr title="Cross-Cultural Inquiry">CCI</abbr>
     </label>
     <label class="checkbox inline">
-      <%= check_box_tag "attributes[EI]", true, @attributes[:EI]%> EI
+      <%= check_box_tag "attributes[EI]", true, @attributes[:EI]%>
+      <abbr title="Ethical Inquiry">EI</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag "attributes[STS]", true, @attributes[:STS] %> STS
+      <%= check_box_tag "attributes[STS]", true, @attributes[:STS] %>
+      <abbr title="Science, Technology, and Society">STS</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag "attributes[FL]", true, @attributes[:FL] %> FL
+      <%= check_box_tag "attributes[FL]", true, @attributes[:FL] %>
+      <abbr title="Foreign Language">FL</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag "attributes[R]", true, @attributes[:R] %> R
+      <%= check_box_tag "attributes[R]", true, @attributes[:R] %>
+      <abbr title="Research">R</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag "attributes[W]", true, @attributes[:W] %> W
+      <%= check_box_tag "attributes[W]", true, @attributes[:W] %>
+      <abbr title="Writing">W</abbr>
     </label>
   </div>
 </div>

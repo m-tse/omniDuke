@@ -4,19 +4,24 @@
     <!-- hidden_field required so checkbox hash shows up -->
       <%= hidden_field "attributes[hidden]", "true" %>
     <label class="checkbox inline">
-      <%= check_box_tag "attributes[ALP]", true, @attributes[:ALP] %> ALP
+      <%= check_box_tag "attributes[ALP]", true, @attributes[:ALP] %>
+      <abbr title="Arts, Literatures, and Performance">ALP</abbr>
     </label>
     <label class="checkbox inline">
-      <%= check_box_tag("attributes[CZ]", true, @attributes[:CZ]) %> CZ
+      <%= check_box_tag("attributes[CZ]", true, @attributes[:CZ]) %>
+      <abbr title="Civilizations">CZ</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag("attributes[NS]", true, @attributes[:NS]) %> NS
+      <%= check_box_tag("attributes[NS]", true, @attributes[:NS]) %>
+      <abbr title="Natural Sciences">NS</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag("attributes[SS]", true, @attributes[:SS]) %> SS
+      <%= check_box_tag("attributes[SS]", true, @attributes[:SS]) %>
+      <abbr title="Social Sciences">SS</abbr>
     </label>
    <label class="checkbox inline">
-      <%= check_box_tag("attributes[QS]", true, @attributes[:QS]) %> QS
+      <%= check_box_tag("attributes[QS]", true, @attributes[:QS]) %>
+      <abbr title="Quantitative Studies">QS</abbr>
     </label>
 
 
