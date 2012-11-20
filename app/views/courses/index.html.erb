@@ -5,18 +5,8 @@
 
 <%= render partial:"partials/search_bar/search_bar", locals:{redirect:courses_results_path, help_text:course_search_help_text, advanced_options_partial:"partials/search_bar/course_advanced_options"} %>
 
+<%= render partial:"partials/session_selector", locals:{path:"courses_path"} %>
 
-<div class="dropdown">
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Session: <%= @current_session.name%></a>
-<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-  
-  <li><%= link_to "Spring2012", courses_path(:currentSession=> "spring2012") %></li>
-  <li><%= link_to "Fall2012", courses_path(:currentSession=> "fall2012") %></li>
-  <li><%= link_to "Spring2013", courses_path(:currentSession=> "spring2013") %></li>
-  <li><%= link_to "Fall2013", courses_path(:currentSession=> "fall2013") %></li>
-
-</ul>
-</div>
 
 
 

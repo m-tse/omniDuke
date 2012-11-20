@@ -7,7 +7,13 @@ class SubjectsController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all
+    currentUser = current_or_guest_user
+    if(params[:currentSession]!=nil) 
+      currentUser.session=Session.find_by_name(params[:currentSession])
+      currentUser.save
+    end
+
+    @subjects = Subject.includes(:courses).where("courses.session_id IN(?)", currentUser.session.id)
   end
 
   def results

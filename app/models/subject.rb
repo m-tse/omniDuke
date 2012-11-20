@@ -3,10 +3,7 @@ class Subject < ActiveRecord::Base
   #alias for this subject, i.e. "cs" for computer science
 
   validates :abbr, presence:true, uniqueness: { case_sensitive: false}
-
-
-
-#  has_and_belongs_to_many :courses
+  has_many :sessions, :through => :courses
   has_many :courses
 
   def toString

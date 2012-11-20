@@ -11,8 +11,8 @@ class CoursesController < ApplicationController
       currentUser.save
     end
 
-    @current_session = currentUser.session
-    @subjects = Subject.all.sort_by &:abbr
+
+    @subjects = Subject.includes(:courses).where("courses.session_id IN(?)", currentUser.session.id).sort_by &:abbr
     #here so the check boxes work
     @attributes = {"hidden"=>"true"}
   end

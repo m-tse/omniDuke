@@ -5,7 +5,7 @@ class Session < ActiveRecord::Base
   validates :name, uniqueness: { case_sensitive: false }
 
 
-
+  has_many :subjects, :through => :courses
   has_many :courses, :inverse_of => :session
 
   before_validation do

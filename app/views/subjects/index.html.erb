@@ -3,6 +3,7 @@
 <div class="page-header"><h1>Explore Subjects</h1></div>
 <%= render partial:"partials/search_bar/search_bar", locals:{redirect:subjects_results_path, help_text:subject_search_help_text, advanced_options_partial:"partials/null"} %>
 
+<%= render partial:"partials/session_selector", locals:{path:"subjects_path"} %>
 
 
 <%= render partial:"partials/alpha_list", locals:{list:@subjects, unique:"subjects", controller:"subjects", action:"show", class_name:"subject_link"} %>
