@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
-    @courses = @subject.courses
+    @courses = @subject.courses.where(:session_id=>current_or_guest_user.session)
     @instructors = @subject.instructors_by_count
   end
 
@@ -19,7 +19,7 @@ class SubjectsController < ApplicationController
 
   def show_courses
     @subject = Subject.find(params[:id])
-    @courses = @subject.courses.paginate(:page => params[:page], :per_page => 15)
+    @courses = @subject.courses.where(:session_id=>current_or_guest_user.session).paginate(:page => params[:page], :per_page => 15)
   end
 
   def show_instructors
