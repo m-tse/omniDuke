@@ -7,7 +7,7 @@
 
 
 <div class="dropdown">
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Session: <%=@current_session.name%></a>
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Session: <%= @current_session.name%></a>
 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
   
   <li><%= link_to "Spring2012", courses_path(:currentSession=> "spring2012") %></li>

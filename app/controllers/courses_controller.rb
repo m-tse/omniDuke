@@ -5,14 +5,16 @@ class CoursesController < ApplicationController
   end
 
   def index
-      defaultSession=Session.find_by_name("fall2012")
-      if(params[:currentSession]!=nil) 
-          defaultSession=Session.find_by_name(params[:currentSession])
-      end
-      @current_session = defaultSession
-      @subjects = Subject.all.sort_by &:abbr
-      #here so the check boxes work
-      @attributes = {"hidden"=>"true"}
+    currentUser = current_or_guest_user
+    if(params[:currentSession]!=nil) 
+      currentUser.session=Session.find_by_name(params[:currentSession])
+      currentUser.save
+    end
+
+    @current_session = currentUser.session
+    @subjects = Subject.all.sort_by &:abbr
+    #here so the check boxes work
+    @attributes = {"hidden"=>"true"}
   end
 
   def results
