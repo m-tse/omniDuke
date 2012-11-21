@@ -1,0 +1,21 @@
+<!-- must pass in a local variable pill_id -->
+<ul class="nav nav-pills" id=<%=pill_id%>>
+<% active="" %>
+<% if request.fullpath.start_with?("/courses") %>
+<% active="courses" %>
+<% elsif request.fullpath.start_with?("/instructors") %>
+<% active="instructors" %>
+<% elsif request.fullpath.start_with?("/subjects") %>
+<% active="subjects" %>
+<% elsif request.fullpath==("/")||request.fullpath==("/home") %>
+<% active="home" %>
+<% end %>
+  <li class=<%=active=="home" ? "active" : "" %>>
+    <a href="home">OmniSearch</a>
+  </li>
+  <li class=<%=active=="courses" ? "active" : ""%>>
+    <%= link_to "Courses", courses_path %></li>
+  <li class=<%=active=="instructors" ? "active" : ""%>><%= link_to "Instructors", instructors_path %></li>
+  <li class=<%=active=="subjects" ? "active" : ""%>><%= link_to "Subjects", subjects_path %></li>
+</ul>
+

@@ -15,7 +15,13 @@ text-align: center;
 
 .searchbar{
 padding-top: 15px;
+}
 
+/* needed for some reason for nav pills to center */
+#home_page_pills{
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
 }
 
 li.alpha_button{
