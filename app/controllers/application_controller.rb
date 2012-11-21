@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #exposes methods as helper methods to controllers and views
   helper_method :current_or_guest_user
   protect_from_forgery
  # if user is logged in, return current_user, else return guest_user

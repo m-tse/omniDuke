@@ -3,11 +3,13 @@
 <h1>Explore Courses</h1>
 </div>
 
-<%= render partial:"partials/search_bar/search_bar", locals:{redirect:courses_results_path, help_text:course_search_help_text, advanced_options_partial:"partials/search_bar/course_advanced_options"} %>
+<%= render partial:"partials/search_bar/search_bar", locals:{redirect:courses_results_path, help_text:course_search_help_text} %>
 
+<div class="btn-group">
 <%= render partial:"partials/session_selector", locals:{path:"courses_path"} %>
+<%= render partial:"partials/search_bar/course_advanced_options" %> 
 
-
+</div>
 
 
 <h3>Browse by Subject</h3>
