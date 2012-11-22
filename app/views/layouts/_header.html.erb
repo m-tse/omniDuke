@@ -11,18 +11,12 @@
 	<%= link_to "OmniDUKE", root_path, :class=>"brand" %>
         <ul class="nav pull-right">
 
-	  <!--li><%= link_to "Courses", courses_path, id:"course_navbar_button" %></li>
-	  <li><%= link_to "Professors", instructors_path, id:"instructor_navbar_button" %></li>
-	  <li><%= link_to "Subjects", subjects_path, id:"subject_navbar_button" %></li-->
-
-	  <% if(request.fullpath=="/" || request.fullpath=="/home") %>
-	  <%  li_active_status="active"; %>
-	  <% end %>
-          <li class=<%=li_active_status %>><%= link_to( root_path) do -%><i class="icon-home icon-white"></i> Home<% end -%></li>
+          <li class=<%=request.fullpath=="/" || request.fullpath=="/home" ? "active" : ""%>>
+<%= link_to( root_path) do -%><i class="icon-home icon-white"></i> Home<% end -%></li>
 	  <% if !user_signed_in? %>
 	  <li><%= link_to "Sign In", new_user_session_path %></li>
 	  <% else %>
-	  <li><%= link_to "Account Settings", edit_user_registration_path%></li>
+	  <li class=<%=request.fullpath.start_with?("/users") ? "active" : ""%>><%= link_to "Account Settings", edit_user_registration_path%></li>
 	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 	  <% end %>
 

@@ -22,9 +22,11 @@ class CoursesController < ApplicationController
     @attributes = params[:attributes]
     @search = Course.search do |q|
       q.fulltext params[:search]
-      params[:attributes].each_pair do |k,v|
-        if v=="true" and k!="hidden"
-      q.with(:attributes, [k])
+      if params[:attributes]!=nil
+        params[:attributes].each_pair do |k,v|
+          if v=="true" and k!="hidden"
+            q.with(:attributes, [k])
+          end
         end
       end
     end

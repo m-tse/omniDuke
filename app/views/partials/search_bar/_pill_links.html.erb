@@ -7,7 +7,7 @@
 <% active="instructors" %>
 <% elsif request.fullpath.start_with?("/subjects") %>
 <% active="subjects" %>
-<% elsif request.fullpath==("/")||request.fullpath==("/home") %>
+<% elsif request.fullpath==("/")||request.fullpath==("/home")||request.fullpath.start_with?("/omni_results") %>
 <% active="home" %>
 <% end %>
   <li class=<%=active=="home" ? "active" : "" %>>
