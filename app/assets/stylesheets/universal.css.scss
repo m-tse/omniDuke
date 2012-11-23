@@ -8,7 +8,11 @@ body{
   padding-top: 50px;
   font-size:100%;
 }
-
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
 .center{
 text-align: center;
 }
