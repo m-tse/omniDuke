@@ -14,19 +14,24 @@
     </div>
   </div>
 
-  <% if devise_mapping.rememberable? -%>
+
     <div class="control-group">
-      <div class="controls">
+      <div class="controls">  
+	<% if devise_mapping.rememberable? -%>
 	<label class="checkbox">
 	<%= f.check_box :remember_me %>Remember me
 	</label>
-
+	<% end -%>
       <%= f.submit "Sign in", :class=>"btn"%>
-      <br><br>
-      <%= render "devise/shared/links" %>
       </div>
     </div>
-  <% end -%>
-<% end %>
+    
+    <div class="control-group">
+      <div class="controls">
+	<%= render "devise/shared/links" %>
+      </div>
+    </div>
+
+    <% end %>
 
 
