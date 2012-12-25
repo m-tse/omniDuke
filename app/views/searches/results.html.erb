@@ -3,7 +3,9 @@
 
 <%= render partial:"partials/search_bar/search_bar", locals:{redirect:omni_results_path, help_text:omni_search_help_text, advanced_options_partial:"partials/null"} %>
 <%= render partial:"partials/search_bar/pill_links", locals:{pill_id:"omni_pills"} %>
-
+<% if @omni_results.size>0 %>
   <%= render @omni_results%>
-
+<% else %>
+	<%= render partial:"partials/static_pages/no_search_results" %>
+<% end %>
 
