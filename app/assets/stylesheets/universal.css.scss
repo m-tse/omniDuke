@@ -39,6 +39,11 @@ padding-top: 15px;
     width: 400px;
 }
 
+
+.title_of_horizontal_form{
+margin-left: 180px;
+}
+
 li.alpha_button{
 a{
 font-size: 95%;
@@ -91,4 +96,7 @@ a.subject_link{
 color:$subject_link_color;
 &:hover{color: lighten($subject_link_color, 20%);}
 }
+
+
+
 */
