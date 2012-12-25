@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120014136) do
+ActiveRecord::Schema.define(:version => 20121224013542) do
+
+  create_table "bookbag_relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "section_id"
+  end
 
   create_table "course_attributes", :force => true do |t|
     t.string   "name"
@@ -45,6 +52,13 @@ ActiveRecord::Schema.define(:version => 20121120014136) do
     t.integer  "subject_id"
   end
 
+  create_table "download_relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "note_id"
+    t.integer  "user_id"
+  end
+
   create_table "instructors", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -56,6 +70,28 @@ ActiveRecord::Schema.define(:version => 20121120014136) do
   create_table "instructors_sections", :id => false, :force => true do |t|
     t.integer "instructor_id"
     t.integer "section_id"
+  end
+
+  create_table "note_booked_relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "course_id"
+  end
+
+  create_table "note_upload_relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "course_id"
+    t.integer  "note_id"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "user_id",    :default => -1, :null => false
+    t.string   "file"
+    t.integer  "course_id"
   end
 
   create_table "prerequisite_relations", :force => true do |t|
@@ -78,6 +114,18 @@ ActiveRecord::Schema.define(:version => 20121120014136) do
     t.datetime "updated_at",          :null => false
     t.integer  "course_id"
     t.integer  "instructor_id"
+  end
+
+  create_table "schedulators", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "schedule_relationships", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "schedulator_id"
+    t.integer  "section_id"
   end
 
   create_table "sections", :force => true do |t|

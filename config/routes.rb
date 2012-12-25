@@ -1,6 +1,9 @@
 OmniDuke::Application.routes.draw do
-  devise_for :users
 
+  get "schedulator/schedule"
+  get "schedulator/unschedule"
+
+  devise_for :users
   
   root :to => 'static_pages#home'
   match '/home', to: 'static_pages#home'
@@ -14,6 +17,10 @@ OmniDuke::Application.routes.draw do
   resources :instructors, only: [:index, :show]
   resources :reviews, only: [:new, :show, :create]
   resources :subjects, only: [:show, :index]
+  resources :schedulator
+  resources :bookbag_relationship, only: [:create, :destroy]
+  resources :schedule_relationship, only: [:create, :destroy]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,27 @@
+<% if !current_user.sections.include?(section) %>
+	<%= link_to raw("<i class='right icon-plus'></i>"), {
+			controller: "bookbag_relationship",
+			action: "create",
+			user: current_user.id,
+			section: section.id, 
+			course: params[:id]
+		}, {
+			method: :post,
+			remote: true,
+			id: "section-#{section.id}"
+		} 
+	%>
+<% else %>
+	<%= link_to raw("<i class='right icon-remove'></i>"), {
+			controller: "bookbag_relationship",
+			action: "destroy",
+			user: current_user.id,
+			section: section.id, 
+			course: params[:id]
+		}, {
+			method: :delete,
+			remote: true,
+			id: "section-#{section.id}"
+		} 
+	%>
+<% end %>
