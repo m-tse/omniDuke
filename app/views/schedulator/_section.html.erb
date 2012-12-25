@@ -1,0 +1,14 @@
+<%= link_to raw('
+        <div class="click-section">' +
+            section.name + 
+        '</div>
+        <br />
+    '), {
+        controller: "schedule_relationship",
+        action: "create",
+        section: section.id
+    }, {
+        method: "post",
+        remote: true
+    }
+%>

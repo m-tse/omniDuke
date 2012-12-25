@@ -4,6 +4,8 @@ class Section < ActiveRecord::Base
 
   has_and_belongs_to_many :course_attributes
   has_and_belongs_to_many :instructors
+  has_many :bookbag_relationship
+  has_many :schedulator_relationship
   belongs_to :course
   belongs_to :time_slot
 

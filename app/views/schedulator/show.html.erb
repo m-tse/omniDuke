@@ -1,0 +1,45 @@
+<title>OmniDuke Schedulator</title>
+
+<div class="container">
+
+<div class="row">
+	<div class="classList span2">
+		<!-- FILL WITH SECTIONS -->
+		<% current_user.sections.each do |section| %>
+			<%= render partial: 'schedulator/section',
+				locals: { section: section }
+			%>
+		<% end %>
+	</div>
+	<div class="schedule span10">
+		<div class="timeSlots">
+			<table>
+				<thead>
+					<th class="pad-left-small">|</th>
+					<th>8AM</th><th>|</th>
+					<th>9AM</th><th>|</th>
+					<th>10AM</th><th>|</th>
+					<th>11AM</th><th>|</th>
+					<th>12PM</th><th>|</th>
+					<th>1PM</th><th>|</th>
+					<th>2PM</th><th>|</th>
+					<th>3PM</th><th>|</th>
+					<th>4PM</th><th>|</th>
+					<th>5PM</th><th>|</th>
+					<th>6PM</th><th>|</th>
+					<th>7PM</th><th>|</th>
+					<th>8PM</th><th>|</th>
+					<th>9PM</th><th>|</th>
+					<th>10PM</th><th>|</th>
+				</thead>
+			</table>
+		</div>
+		<% @days.each do |day| %>
+			<div class="daySlot <%= day %>">
+				<div class="dayName <%= day %>"><%= day %></div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+</div>

@@ -1,0 +1,19 @@
+/* Test CSS for Schedulator */
+
+/* Schedulator Main Container */
+#schedulatorMainContainer {
+	float: left;
+	position: relative;
+	background-color: #99FFFF;
+	width: 70%;
+	height: 80%;
+}
+
+/* Classes Main Container */
+#classesMainContainer {
+	float: right;
+	position: relative;
+	background-color: #99FFFF;
+	width: 20%;
+	height: 80%;
+}

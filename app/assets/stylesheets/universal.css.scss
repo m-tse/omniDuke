@@ -21,6 +21,17 @@ text-align: center;
 padding-top: 15px;
 }
 
+.right {
+	position: relative;
+	float: right;
+	margin-right: 15px;
+}
+
+.pad-left-small {
+  padding-left: 50px
+}
+
+
 /* needed for some reason for nav pills to center */
 #home_page_pills{
     margin: 0 auto;

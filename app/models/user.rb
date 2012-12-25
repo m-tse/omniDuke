@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
-    belongs_to :session
+  belongs_to :session
+  has_many :bookbag_relationship
+  has_many :sections, through: :bookbag_relationship, uniq: :true
+  has_one :schedulator
+  # Need to have way to create schedulator with user
 end

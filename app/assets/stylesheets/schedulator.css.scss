@@ -1,0 +1,179 @@
+
+table thead th {
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.red {
+	background-color: red;
+}
+
+/* CLASS LIST STYLING */
+
+.classList {
+	background-color:#99FFFF;
+	height:400px;
+	overflow: scroll;
+}
+
+div .click-section {
+	cursor: pointer;
+	border: dotted;
+	border-width: 1px;
+	border-color: red;
+}
+
+/* SCHEDULATOR STYLING */
+
+
+.schedule {
+	background-color:#33FFFF;
+	height:320px;
+}
+
+.daySlot {
+	position: relative;
+	background-color:#FFFFFF;
+	height:35px;
+	top:10px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-color: black;
+}
+
+.dayName {
+	
+}
+
+.Sun {
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+
+/*
+.Mon {
+	top:20px;
+}
+
+.Tue {
+	top:30px;
+}
+
+.Wed {
+	top:40px;
+}
+
+.Thu {
+	top:50px;
+}
+
+.Fri {
+	top:60px;
+}
+
+.Sat {
+	top:70px;
+}
+*/
+
+
+
+.test1 { /* 8AM */
+	position:absolute;
+	color: red;	
+	margin-left:50px;
+}
+
+.test2 { /* 8AM to 9AM */
+	position:absolute;
+	color: red;	
+	margin-left:108px;
+}
+
+.test3 { /* 9AM to 10AM */
+	position:absolute;
+	color: red;	
+	margin-left:165px;
+}
+
+.test4 { /* 10AM to 11AM */
+	position:absolute;
+	color: red;	
+	margin-left:231px;
+}
+
+.test5 { /* 11AM to 12PM */
+	position:absolute;
+	color: red;	
+	margin-left:297px;
+}
+
+.test6 { /* 12PM to 1PM */	
+	position:absolute;
+	color: red;	
+	margin-left:363px;
+}
+
+.test7 { /* 1PM to 2PM */
+	position:absolute;
+	color: red;	
+	margin-left:420px;
+}
+
+.test8 { /* 2PM to 3PM */
+	position:absolute;
+	color: red;	
+	margin-left:477px;
+}
+
+.test9 { /* 3PM to 4PM */
+	position:absolute;
+	color: red;	
+	margin-left:534px;
+}
+
+.test10 { /* 4PM to 5PM */
+	position:absolute;
+	color: red;	
+	margin-left:591px;
+}
+
+.test11 { /* 5PM to 6PM */
+	position:absolute;
+	color: red;	
+	margin-left:648px;
+}
+
+.test12 { /* 6PM to 7PM */
+	position:absolute;
+	color: red;	
+	margin-left:705px;
+}
+
+.test13 { /* 7PM to 8PM */
+	position:absolute;
+	color: red;	
+	margin-left:762px;
+}
+
+.test14 { /* 8PM to 9PM */
+	position:absolute;
+	color: red;	
+	margin-left:819px;
+}
+
+.test15 { /* 9PM to 10PM */
+	position:absolute;
+	color: red;	
+	margin-left:876px;
+}
+
+.test16 { /* 10PM */
+	position:absolute;
+	color: red;	
+	margin-left:942px;
+}
+
+
