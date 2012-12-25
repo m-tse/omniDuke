@@ -37,18 +37,19 @@ def writeToCSS(tinfo)
     eightam = 50
     nineam = 108
     tenam = 165
-    elevenam = 297
-    twelvepm = 363
-    onepm = 420
-    twopm = 477
-    threepm = 534
-    fourpm = 591
-    fivepm = 648
-    sixpm = 705
-    sevenpm = 762
-    eightpm = 819
-    ninepm = 876
-    tenpm = 942
+    elevenam = 231
+    twelvepm = 297
+    onepm = 363
+    twopm = 420
+    threepm = 477
+    fourpm = 534
+    fivepm = 591
+    sixpm = 648
+    sevenpm = 705
+    eightpm = 762
+    ninepm = 819
+    tenpm = 876
+    elevenpm = 942
     timeMap = {}
     timeMap['8A'] = eightam
     timeMap['9A'] = nineam
@@ -98,6 +99,9 @@ def writeToCSS(tinfo)
             pix -= offs
             positionOffset = timeMap[timeKeys[rng]] + offs
         else
+            if timeKeys[rng] == '11A'
+                p pix,offset,hourDiff
+            end
             pix += (hourDiff * offset/60)
         end
     end 
