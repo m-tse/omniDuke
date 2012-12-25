@@ -60,7 +60,12 @@
                 <div class="daySlot <%= day %>">
                     <div class="dayName <%= day %>"><%= day %></div>
                     <div>
-                        <%= raw(produceSectionDivs(current_user.sections, day)) %>
+                        <% current_user.sections.each do |section| %>
+                            <% if section.hasDay?(day) %> 
+                                <div class="redBack ts<%= section.getTimeSlotStr() %>">
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             <% end %>

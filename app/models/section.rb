@@ -13,4 +13,33 @@ class Section < ActiveRecord::Base
     self.required_sections=="n/a"
   end
 
+  def hasDay?(day)
+      days = self.time_slot.aces_value.split(" ",2)[0]
+      return days.include?(dayToAbbr(day)) 
+  end
+
+
+  def getTimeSlotStr
+      times = self.time_slot.aces_value.split(" ",2)[1]
+      return timeSlotToStr(times) 
+  end
+
+
+  def dayToAbbr(dayName)
+      if dayName.start_with?("T")
+          return dayName[0..1]
+      else
+          return dayName[0]
+      end
+  end
+
+  def timeSlotToStr(timeInfo) 
+      timeInfoCopy = String.new(timeInfo)
+      timeInfoCopy.slice!(':')
+      timeInfoCopy.slice!(':')
+      return timeInfoCopy.split('-').join("to").gsub(/\s+/, "")
+  end
+
+
+
 end
