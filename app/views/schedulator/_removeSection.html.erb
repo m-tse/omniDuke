@@ -6,7 +6,7 @@
         '), {
             controller: "schedule_relationship",
             action: "destroy",
-            id: getRelationshipId(current_user.schedulator, section),
+            id: getRelationshipId(current_or_guest_user.schedulator, section),
             section: section.id
         }, {
             id: "section-slot-" + section.id.to_s,

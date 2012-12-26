@@ -1,4 +1,4 @@
-<% if !current_user.schedulator.sections.include?(section) %>
+<% if !current_or_guest_user.schedulator.sections.include?(section) %>
     <%= render partial: "schedulator/addSection",
         locals: { section: section }
     %> 

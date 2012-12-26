@@ -2,10 +2,10 @@ class SchedulatorController < ApplicationController
 
     def index
         @days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        if current_user_or_guest_user.schedulator.nil?
-            current_user_or_guest_user.create_schedulator
+        if current_or_guest_user.schedulator.nil?
+            current_or_guest_user.create_schedulator
         end
-        @schedulator = current_user_or_guest_user.schedulator 
+        @schedulator = current_or_guest_user.schedulator 
     end
 
     def show

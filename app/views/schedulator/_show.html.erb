@@ -28,7 +28,7 @@
                 <div class="daySlot <%= day %>">
                     <div class="dayName"><%= day %></div>
                     <div class="timeSlots">
-                        <% current_user.schedulator.sections.each do |section| %>
+                        <% current_or_guest_user.schedulator.sections.each do |section| %>
                             <% if section.hasDay?(day) %> 
                                 <%= render partial: 'schedulator/timeslot', 
                                 locals: { section: section }

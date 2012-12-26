@@ -1,4 +1,4 @@
-<% if !current_user.sections.include?(section) %>
+<% if !current_or_guest_user.sections.include?(section) %>
 	<%= link_to raw("<i class='right icon-plus'></i>"), {
 			controller: "bookbag_relationship",
 			action: "create",
