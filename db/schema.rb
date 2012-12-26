@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226200527) do
+ActiveRecord::Schema.define(:version => 20121226214239) do
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20121226200527) do
 
   create_table "course_meta", :force => true do |t|
     t.string   "course_name"
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
-    t.decimal  "overall_quality",    :precision => 10, :scale => 0
-    t.decimal  "overall_difficulty", :precision => 10, :scale => 0
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.float    "overall_quality"
+    t.float    "overall_difficulty"
   end
 
   create_table "course_numberings", :force => true do |t|
@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(:version => 20121226200527) do
 
   create_table "instructors", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-    t.decimal  "overall_quality", :precision => 10, :scale => 0
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.float    "overall_quality"
   end
 
   add_index "instructors", ["name"], :name => "index_instructors_on_name", :unique => true
