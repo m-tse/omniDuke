@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
 
   belongs_to :session, :inverse_of => :courses
   belongs_to :subject
-  has_many :reviews
+  belongs_to :course_meta
 
 
 

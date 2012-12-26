@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225201412) do
+ActiveRecord::Schema.define(:version => 20121226063122) do
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(:version => 20121225201412) do
     t.integer "section_id"
   end
 
+  create_table "course_meta", :force => true do |t|
+    t.string   "course_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "course_numberings", :force => true do |t|
     t.integer  "course_id"
     t.integer  "subject_id"
@@ -42,14 +48,45 @@ ActiveRecord::Schema.define(:version => 20121225201412) do
     t.string   "old_number"
   end
 
+  create_table "course_reviews", :force => true do |t|
+    t.text     "review_content"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.integer  "course_id"
+    t.integer  "instructor_id"
+    t.integer  "final_difficulty"
+    t.integer  "lab_difficulty"
+    t.integer  "midterm_difficulty"
+    t.integer  "homework_difficulty"
+    t.integer  "out_of_class_work_hours"
+    t.integer  "stimulating"
+    t.integer  "usefulness"
+    t.integer  "overall_quality"
+    t.integer  "overall_difficulty"
+    t.integer  "content_quality"
+    t.integer  "course_meta_id"
+  end
+
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "session_id"
     t.string   "old_number"
     t.string   "new_number"
     t.integer  "subject_id"
+    t.integer  "course_meta_id"
+  end
+
+  create_table "instructor_reviews", :force => true do |t|
+    t.integer  "overall_quality"
+    t.integer  "helpfulness"
+    t.integer  "accessbility"
+    t.integer  "clarity"
+    t.integer  "fairness"
+    t.integer  "instructor_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "instructors", :force => true do |t|
@@ -70,21 +107,6 @@ ActiveRecord::Schema.define(:version => 20121225201412) do
     t.integer  "prerequisite_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-  end
-
-  create_table "reviews", :force => true do |t|
-    t.integer  "assignment_easiness"
-    t.integer  "test_easiness"
-    t.integer  "helpfulness"
-    t.integer  "clarity"
-    t.integer  "enthusiasm"
-    t.integer  "course_content"
-    t.integer  "textbook_usefulness"
-    t.text     "review_content"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "course_id"
-    t.integer  "instructor_id"
   end
 
   create_table "schedulators", :force => true do |t|
