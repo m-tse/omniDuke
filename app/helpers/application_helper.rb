@@ -8,12 +8,27 @@ module ApplicationHelper
   end
 
   def courseToString(course)
-    courseToCode(course)+" "+course.name
+    course.subject.abbr+" "+courseToCode(course)+" "+course.name
   end
 
   def courseToCode(course)
-    course.subject.abbr+course.new_number+"/"+course.old_number
+    retString = ""
+    if course.new_number != nil
+      retString+=course.new_number
+    end
+    if(course.old_number!=nil)
+      if(course.new_number!=nil)
+        retString+="/"
+      end
+      retString+=course.old_number
+    end
+    retString
   end
+
+  def courseToStringWithoutSubject(course)
+    courseToCode(course)+" "+course.name
+  end
+
   def omni_search_help_text
     "Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you."
   end
