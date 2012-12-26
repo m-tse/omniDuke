@@ -5,6 +5,10 @@ class ScheduleRelationshipController < ApplicationController
             @section = Section.find(params[:section])
             @schedulator = current_or_guest_user.schedulator
             if !@schedulator.sections.include?(@section)
+                if @schedulator.conflictWith?(@section) # check for time conflict
+                    # CONFLICT RESOLUTION
+                    raise "CONFLICT RESOLUTION TIME"
+                end
                 @schedulator.sections << @section
             end
             @days = @section.getDaysAsStrArray
