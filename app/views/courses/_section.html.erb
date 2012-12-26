@@ -2,7 +2,6 @@
 	<%= link_to raw("<i class='right icon-plus'></i>"), {
 			controller: "bookbag_relationship",
 			action: "create",
-			user: current_user.id,
 			section: section.id, 
 			course: params[:id]
 		}, {
@@ -15,7 +14,6 @@
 	<%= link_to raw("<i class='right icon-remove'></i>"), {
 			controller: "bookbag_relationship",
 			action: "destroy",
-			user: current_user.id,
 			section: section.id, 
 			course: params[:id]
 		}, {

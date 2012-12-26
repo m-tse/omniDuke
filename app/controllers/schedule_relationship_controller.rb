@@ -3,7 +3,7 @@ class ScheduleRelationshipController < ApplicationController
     def create
         if !params[:section].blank?
             @section = Section.find(params[:section])
-            @schedulator = current_user.schedulator
+            @schedulator = current_user_or_guest_user.schedulator
             if !@schedulator.sections.include?(@section)
                 @schedulator.sections << @section
             end

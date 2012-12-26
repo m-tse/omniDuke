@@ -1,11 +1,10 @@
 class BookbagRelationshipController < ApplicationController
 
   def create
-  	if !params[:user].blank? and !params[:section].blank?
-  	  @user = User.find(params[:user])
+  	if !params[:section].blank?
   	  @section = Section.find(params[:section])
-  	  if !@user.sections.include?(@section)
-  	  	@user.sections << @section
+  	  if !current_user_or_guest_user.sections.include?(@section)
+  	  	current_user_or_guest_user.sections << @section
   	  end
   	end
     if !params[:course].blank?
@@ -18,11 +17,10 @@ class BookbagRelationshipController < ApplicationController
   end
 
   def destroy 
-    if !params[:user].blank? and !params[:section].blank?
-      @user = User.find(params[:user])
+    if !params[:section].blank?
       @section = Section.find(params[:section])
-      if @user.sections.include?(@section)
-        @user.sections.delete(@section)
+      if current_user_or_guest_user.sections.include?(@section)
+        current_user_or_guest_user.sections.delete(@section)
       end
     end
     if !params[:course].blank?
