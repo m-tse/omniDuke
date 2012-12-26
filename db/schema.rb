@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226214239) do
+ActiveRecord::Schema.define(:version => 20121226225656) do
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(:version => 20121226214239) do
     t.text     "review_content"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.integer  "course_id"
-    t.integer  "instructor_id"
     t.integer  "final_difficulty"
     t.integer  "lab_difficulty"
     t.integer  "midterm_difficulty"

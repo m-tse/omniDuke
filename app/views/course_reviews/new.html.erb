@@ -1,0 +1,10 @@
+<h1>Review this course!</h1>
+<%= form_for @review do |f| %>
+  <%= f.label :first_name %>:
+  <%= f.text_field :first_name %><br />
+
+  <%= f.label :last_name %>:
+  <%= f.text_field :last_name %><br />
+
+  <%= f.submit %>
+<% end %>
