@@ -1,14 +1,9 @@
-<%= link_to raw('
-        <div class="click-section">' +
-            section.name + 
-        '</div>
-        <br />
-    '), {
-        controller: "schedule_relationship",
-        action: "create",
-        section: section.id
-    }, {
-        method: "post",
-        remote: true
-    }
-%>
+<% if !current_user.schedulator.sections.include?(section) %>
+    <%= render partial: "schedulator/addSection",
+        locals: { section: section }
+    %> 
+<% else %> 
+    <%= render partial: "schedulator/removeSection",
+        locals: { section: section }
+    %> 
+<% end %>

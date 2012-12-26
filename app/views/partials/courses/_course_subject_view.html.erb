@@ -5,13 +5,13 @@
 
 
             <div class="row">
-                <div class="span5">
+                <div class="span4">
                     <strong>Professors:</strong> 
                         <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
                 </div>
 
 
-                <div class="span4">
+                <div class="span6">
                     <strong>Attributes:</strong>
                         <% for attribute in course.course_attributes %>
                         <%= attribute.toString %>

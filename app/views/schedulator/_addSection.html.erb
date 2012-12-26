@@ -1,0 +1,18 @@
+    <%= link_to raw('
+            <div class="click-section">' +
+                section.name + section.time_slot.aces_value + 
+            '</div>
+            <br />
+        '), {
+            controller: "schedule_relationship",
+            action: "create",
+            section: section.id
+        }, {
+            id: "section-slot-" + section.id.to_s,
+            method: "post",
+            remote: true,
+            data: { days: section.getDaysAsStrArray.to_json.to_s,
+                timeslot: section.getTimeSlotStr 
+            }
+        }
+    %>
