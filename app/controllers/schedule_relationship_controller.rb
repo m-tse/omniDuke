@@ -10,6 +10,7 @@ class ScheduleRelationshipController < ApplicationController
             @days = @section.getDaysAsStrArray
             respond_to do |format|
                 format.html { redirect_to schedulator_index_path }
+                format.js
             end
         else 
             flash[:error] = "ERROR in ScheduleRelationshipController.create"
@@ -26,6 +27,7 @@ class ScheduleRelationshipController < ApplicationController
             end
             respond_to do |format|
                 format.html { redirect_to schedulator_index_path }
+                format.js
             end
         else
             flash[:error] = "ERROR in ScheduleRelationshipController.destroy"

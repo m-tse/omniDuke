@@ -1,14 +1,13 @@
 var day, days, section, _i, _len;
 section = $("#section-slot-<%= j(params[:section]) %>");
 days = section.data("days");
-
 for (_i = 0, _len = days.length; _i < _len; _i++) {
   day = days[_i];
   var divArr, divClass, timeslot;
   divClass = ['.', day, ' .timeSlots'].join("");
   timeslot = section.data("timeslot");
-  divArr = ['<div class="redBack ts', timeslot, '"></div>'];
-  $(divClass).append(divArr.join(""));
+  timeDiv = [divClass, ' .ts', timeslot].join("");
+  $(timeDiv).remove();
 }
 
-section.replaceWith("<%= j(render partial: 'schedulator/removeSection', locals: { section: @section }) %>")
+section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { section: @section }) %>")

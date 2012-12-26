@@ -1,32 +1,9 @@
 <% if !current_user.schedulator.sections.include?(section) %>
-    <%= link_to raw('
-            <div class="click-section">' +
-                section.name + section.time_slot.aces_value + 
-            '</div>
-            <br />
-        '), {
-            controller: "schedule_relationship",
-            action: "create",
-            section: section.id
-        }, {
-            method: "post",
-            remote: true
-        }
-    %>
+    <%= render partial: "schedulator/addSection",
+        locals: { section: section }
+    %> 
 <% else %> 
-    <%= link_to raw('
-            <div class="click-section bg-light-green">' +
-                section.name + section.time_slot.aces_value + 
-            '</div>
-            <br />
-        '), {
-            controller: "schedule_relationship",
-            action: "destroy",
-            id: getRelationshipId(current_user.schedulator, section),
-            section: section.id
-        }, {
-            method: "delete",
-            remote: true
-        }
-    %>
+    <%= render partial: "schedulator/removeSection",
+        locals: { section: section }
+    %> 
 <% end %>
