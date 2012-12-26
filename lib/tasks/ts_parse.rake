@@ -15,20 +15,19 @@ def parseTimeSlots
         count = 0
         timeStr = Array.new
         time.aces_value.split(' ').each do |tinfo|
-            if count == 2
-                count = 0
-                timeSlots.add(timeStr.join("-"))
-                timeStr = Array.new
-            end
             if tinfo.include?("AM") || tinfo.include?("PM")
-                p tinfo
                 timeStr << tinfo
                 count += 1
+                if count == 2
+                    count = 0
+                    timeSlots.add(timeStr.join("-"))
+                    timeStr = Array.new
+                end
             end
         end
     end
     timeSlots.each do |t|
-        p t, writeToCSS(t)
+        p t,writeToCSS(t)
     end
 end
 
@@ -71,6 +70,7 @@ def writeToCSS(tinfo)
     timeMap.keys.each do |key|
         timeKeys << key
     end
+    # e.g. range: [1: '8A']
     range = Array.new # Indexes for time keys
     offsets = Array.new
     tinfo.split('-').each do |info|
@@ -86,6 +86,13 @@ def writeToCSS(tinfo)
         end
         range << timeKeys.index(timeKey.join())
     end
+
+    # YOU CAN MAKE AN EQUIVALENT CHECK EALIER AND
+    # SAVE COMPUTATION, but too lazy right now
+    if range[0].nil? || range[1].nil? || range[0] < 0 || range[0] > 13 || range[1] < 0 || range[1] > 13
+        return 0
+    end
+
     pix = timeMap[timeKeys[range[1]]]-timeMap[timeKeys[range[0]]]
 
     # Calculate offset i.e. 3:40PM
