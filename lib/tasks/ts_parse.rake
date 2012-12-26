@@ -1,14 +1,18 @@
 
 
+puts "Parsing time slot information..."
 namespace :ts do 
     desc "Parse time slots into information that can be used in views"
     task parse: :environment do
         parseTimeSlots()
+        puts "COMPLETE: timeslot.css.scss generated in assets/stylesheets"
     end
 end
 
 
 def parseTimeSlots
+    filename = "#{Rails.root}/app/assets/stylesheets/timeslot.css.scss"
+    removeFileIfExists(filename)
     timeSlots = Set.new
     times = TimeSlot.all
     times.each do |time| 
@@ -27,12 +31,12 @@ def parseTimeSlots
         end
     end
     timeSlots.each do |t|
-        p t,writeToCSS(t)
+        writeToCSS(filename, t)
     end
 end
 
 
-def writeToCSS(tinfo)
+def writeToCSS(filename, tinfo)
     eightam = 50
     nineam = 108
     tenam = 165
@@ -66,7 +70,7 @@ def writeToCSS(tinfo)
     timeMap['9P'] = ninepm
     timeMap['10P'] = tenpm
     timeKeys = Array.new
-    filename = '/home/ark5/projects/omniDuke/test.css.scss'
+
     timeMap.keys.each do |key|
         timeKeys << key
     end
@@ -106,9 +110,6 @@ def writeToCSS(tinfo)
             pix -= offs
             positionOffset = timeMap[timeKeys[rng]] + offs
         else
-            if timeKeys[rng] == '11A'
-                p pix,offset,hourDiff
-            end
             pix += (hourDiff * offset/60)
         end
     end 
@@ -128,6 +129,14 @@ def writeToCSS(tinfo)
     end 
     return pix
 end
+
+def removeFileIfExists(filename)
+    if File.exists? filename
+        File.delete(filename)
+        puts "Overwriting previous timeslot.css.scss"
+    end
+end
+
 
 def timeSlotToStr(timeInfo) 
     timeInfoCopy = String.new(timeInfo)
