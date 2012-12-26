@@ -40,12 +40,12 @@ end
 
 def createFakeClasses
   #create subjects
-  20.times do |n|
+  10.times do |n|
     FactoryGirl.create(:subject)
   end
 
   #createInstructors
-  50.times do |n|
+  20.times do |n|
     FactoryGirl.create(:instructor)
   end
 
@@ -75,7 +75,7 @@ def createFakeClasses
 
 
   #create courses
-  140.times do |n|
+  100.times do |n|
     course = FactoryGirl.create(:course)
     year = rand(2)+2011
     season = "fall"
@@ -86,7 +86,6 @@ def createFakeClasses
 
     aSubject = Subject.all.sample
     courseMeta = getCreateCourseMeta(course.name)
-    print course.name
     course.course_meta=courseMeta
     course.new_number = (rand(1000)+1).to_s+(65+rand(25)).chr
     course.old_number = (rand(200)+1).to_s+(65+rand(25)).chr

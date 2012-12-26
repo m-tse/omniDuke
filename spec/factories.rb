@@ -17,7 +17,7 @@ FactoryGirl.define do
     year {rand(10)+2000}
   end
   factory :course do
-    name Faker::Lorem.sentence
+    name ["Advanced Compsci", "Music for Excellent people", "Biology of Aids", "orgo", "multivariable calculus", "linear algebra"].sample
     new_number {rand(100)+1}
     old_number {rand(300)+1}
   end

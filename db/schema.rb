@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226063122) do
+ActiveRecord::Schema.define(:version => 20121226200527) do
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(:version => 20121226063122) do
 
   create_table "course_meta", :force => true do |t|
     t.string   "course_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.decimal  "overall_quality",    :precision => 10, :scale => 0
+    t.decimal  "overall_difficulty", :precision => 10, :scale => 0
   end
 
   create_table "course_numberings", :force => true do |t|
@@ -61,8 +63,6 @@ ActiveRecord::Schema.define(:version => 20121226063122) do
     t.integer  "out_of_class_work_hours"
     t.integer  "stimulating"
     t.integer  "usefulness"
-    t.integer  "overall_quality"
-    t.integer  "overall_difficulty"
     t.integer  "content_quality"
     t.integer  "course_meta_id"
   end
@@ -79,20 +79,20 @@ ActiveRecord::Schema.define(:version => 20121226063122) do
   end
 
   create_table "instructor_reviews", :force => true do |t|
-    t.integer  "overall_quality"
     t.integer  "helpfulness"
     t.integer  "accessbility"
     t.integer  "clarity"
     t.integer  "fairness"
     t.integer  "instructor_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "instructors", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.decimal  "overall_quality", :precision => 10, :scale => 0
   end
 
   add_index "instructors", ["name"], :name => "index_instructors_on_name", :unique => true
