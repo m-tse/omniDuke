@@ -7,7 +7,7 @@ class CourseMeta < ActiveRecord::Base
   has_many :course_reviews
 
   def update_overall_scores
-  	courseSum = 0.0
+  	overallQualitySum = 0.0
   	difficultySum = 0.0
   	numReviews = 0.0
   	for review in self.course_reviews(true)
@@ -26,7 +26,7 @@ class CourseMeta < ActiveRecord::Base
   	  if courseQualityCounter == 0.0
   	  	courseQualitycounter+=1.0
   	  end
-  	  courseSum+=(courseQualitySum/courseQualityCounter).to_f
+  	  overallQualitySum+=(courseQualitySum/courseQualityCounter).to_f
 
   	  diffSum = 0.0
   	  diffCounter = 0.0
@@ -40,14 +40,12 @@ class CourseMeta < ActiveRecord::Base
   	  	diffCounter = 1
   	  end
   	  difficultySum+=(diffSum/diffCounter).to_f
-  	  p difficultyCriteria
-  	  p courseCriteria
   	end
   	if numReviews ==0.0
   	  numReviews += 1
   	end
 
-  	self.overall_quality=(courseSum/numReviews).to_f
+  	self.overall_quality=(overallQualitySum/numReviews).to_f
   	self.overall_difficulty=(difficultySum/numReviews).to_f
   end
 end

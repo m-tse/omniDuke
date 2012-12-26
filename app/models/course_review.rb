@@ -3,7 +3,6 @@ class CourseReview < ActiveRecord::Base
   belongs_to :course_meta
   validates :course_meta_id, presence:true
   after_save{
-  	meta = self.course_meta
-  	meta.save
+  	self.course_meta.save
   }
 end

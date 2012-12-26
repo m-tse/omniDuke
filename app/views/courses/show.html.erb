@@ -1,30 +1,14 @@
 <title>OmniDUKE Courses</title>
 <!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Courses"=>courses_path, (@course.subject.abbr+@course.toSingleCode)=>'#'}} %-->
 
-<div class="container">
-  <div class="page-header">
-  <h1><%= @course.name %></h1>
-  </div>
-  <div class="tabbable"> <!-- Only required for left/right tabs -->
-    <ul class="nav nav-pills">
-      <li class="active">
-	<a href="#tab1" data-toggle="tab">Overview</a>
-      </li>
-      <li>
-	<a href="#tab2" data-toggle="tab">Reviews</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane fade in active" id="tab1">
-	<%= render 'courses/overview'%>
-      </div>
-      <div class = "tab-pane fade in" id="tab2">
-	<%= render 'courses/reviews' %>
-      </div>
+
+<%= render partial:'courses/course_detail_view_header', locals:{navHighlight:"Overview"}%>
+<%= render 'courses/overview'%>
+
       
 
 
-    </div>
-  </div>
 
-</div>
+
+
+
