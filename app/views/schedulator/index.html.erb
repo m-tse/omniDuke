@@ -13,10 +13,12 @@
             %>
         <% end %>
     </div>
-    <div class="span10">
-        <%= render partial: "schedulator/nav",
-            locals: { active: "new" } 
-        %>
+    <div class="span10" id="schedulatorContainer">
+        <% if false %> <!-- Block commented out for now  -->
+            <%= render partial: "schedulator/hvnav",
+                locals: {}
+            %>
+        <% end %>
         <%= render 'schedulator/show' %> 
     </div>
 </div>

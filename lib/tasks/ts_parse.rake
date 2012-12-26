@@ -1,9 +1,9 @@
 
 
-puts "Parsing time slot information..."
 namespace :ts do 
     desc "Parse time slots into information that can be used in views"
     task parse: :environment do
+        puts "Parsing time slot information..."
         parseTimeSlots()
         puts "COMPLETE: timeslot.css.scss generated in assets/stylesheets"
     end

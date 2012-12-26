@@ -13,6 +13,7 @@ OmniDuke::Application.routes.draw do
   match '/omni_results', to: 'searches#results'
   match '/subjects/instructors', to: 'subjects#show_instructors'
   match '/subjects/courses', to: 'subjects#show_courses'
+  match '/schedulator/saved', to: 'schedulator#show_saved'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :reviews, only: [:new, :show, :create]
@@ -20,6 +21,7 @@ OmniDuke::Application.routes.draw do
   resources :schedulator
   resources :bookbag_relationship, only: [:create, :destroy]
   resources :schedule_relationship, only: [:create, :destroy]
+  resources :schedulator_saved_relationships, only: [:create, :destroy]
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

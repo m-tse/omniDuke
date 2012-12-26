@@ -1,26 +1,8 @@
+        <%= render partial: "schedulator/nav",
+            locals: { active: "new" } 
+        %>
         <div class="schedule">
-            <div class="timeSlots">
-                <table>
-                    <thead>
-                        <th class="pad-left-small">|</th>
-                        <th> 8AM</th><th>|</th>
-                        <th> 9AM</th><th>|</th>
-                        <th>10AM</th><th>|</th>
-                        <th>11AM</th><th>|</th>
-                        <th>12PM</th><th>|</th>
-                        <th> 1PM</th><th>|</th>
-                        <th> 2PM</th><th>|</th>
-                        <th> 3PM</th><th>|</th>
-                        <th> 4PM</th><th>|</th>
-                        <th> 5PM</th><th>|</th>
-                        <th> 6PM</th><th>|</th>
-                        <th> 7PM</th><th>|</th>
-                        <th> 8PM</th><th>|</th>
-                        <th> 9PM</th><th>|</th>
-                        <th>10PM</th><th>|</th>
-                    </thead>
-                </table>
-            </div>
+            <%= render partial: "schedulator/timeTable" %>
             <% for i in (1..16) %>
                 <div class='test<%= i %>'>|</div>
             <% end %>
@@ -28,7 +10,7 @@
                 <div class="daySlot <%= day %>">
                     <div class="dayName"><%= day %></div>
                     <div class="timeSlots">
-                        <% current_or_guest_user.schedulator.sections.each do |section| %>
+                        <% current_or_guest_user.current_schedulator.sections.each do |section| %>
                             <% if section.hasDay?(day) %> 
                                 <%= render partial: 'schedulator/timeslot', 
                                 locals: { section: section }
@@ -39,3 +21,10 @@
                 </div>
             <% end %>
         </div>
+        <%= button_to "Save", {
+            controller: "schedulator_saved_relationships",
+            action: "create"
+        }, {
+            class: "btn btn-danger right",
+            method: :post
+        } %>
