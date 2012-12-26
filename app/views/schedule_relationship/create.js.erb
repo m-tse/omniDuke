@@ -1,0 +1,6 @@
+
+
+produceTimeSlotDiv = (day) ->
+    divClass = ".daySlot " + day
+    $(divClass).append("<%= j render('schedulator/timeslot', locals: {section: @section}) %>") 
+

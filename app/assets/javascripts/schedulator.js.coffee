@@ -7,5 +7,9 @@ loadEventHandlers = ->
 
 loadSectionBgColorChanger = ->
     $(".click-section").live('click', (e)->
-        $(this).css('background-color', '#33FF99')
+        section = $(this)
+        if section.hasClass('bg-light-green') 
+            section.removeClass('bg-light-green')
+        else
+            section.addClass('bg-light-green')
     )
