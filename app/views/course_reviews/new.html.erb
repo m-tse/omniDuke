@@ -17,26 +17,14 @@
 <% end %>
 
 
-
-
-
-
-
 <%= form_for @review do |f| %>
-<br>
-
-  Usefulness: <%= f.number_field :usefulness%><br>
-  Interesting: <%= f.number_field :stimulating %><br>
-  Quality of Content <%= f.number_field :content_quality %><br>
-
-  <br>
-  Homework Difficulty: <%= f.number_field :homework_difficulty %><br>
-  Lab Difficulty(If Applicable): <%= f.number_field :lab_difficulty %><br>
-  Midterm Difficulty: <%= f.number_field :midterm_difficulty %><br>
-  Final Difficulty: <%= f.number_field :final_difficulty %><br>
-
-
-
+  <%= f.hidden_field :usefulness%>
+  <%= f.hidden_field :stimulating %>
+  <%= f.hidden_field :content_quality %>
+  <%= f.hidden_field :homework_difficulty %>
+  <%= f.hidden_field :lab_difficulty %>
+  <%= f.hidden_field :midterm_difficulty %>
+  <%= f.hidden_field :final_difficulty %>
   <%= f.hidden_field :course_meta_id %>
   <%= f.submit "Submit", class:"btn" %>
 <% end %>
@@ -44,29 +32,44 @@
 <script>
 <% for criterion in criteria %>
 <% for level in 0..10 %>
+$("<%="#"+criterion+level.to_s%>").click(
+  function(){
+    $("<%="#course_review_"+criterion%>").val("<%=level%>");
+    unhighlightAll("<%=criterion%>", "grey");
+  }
+);
+
+
 $("<%="#"+criterion+level.to_s%>").hover(
   function(){
-  highlightToLeft("<%=criterion%>", <%=level%>);
+  highlightToLeft("<%=criterion%>", <%=level%>, "red");
   }, 
   function(){
-    unhighlightToLeft("<%=criterion%>", <%=level%>);
+    unhighlightAll("<%=criterion%>", "grey");
   }
 );
 <% end %>
 <% end %>
 
 
-function highlightToLeft(criteria, level){
+function highlightToLeft(criteria, level, color){
   for (var i=0;i<=level;i++){
     idTag = "#"+criteria+i.toString();
-    $(idTag).css("background-color", "red");
+    $(idTag).css("background-color", color);
   }
 };
 
-function unhighlightToLeft(criteria, level){
-  for (var i=0;i<=level;i++){
+function unhighlightAll(criteria, color){
+  for (var i=0;i<=10;i++){
+    criterionValue=0;
+    ratingString = $("#course_review_"+criteria).val();
+    if(ratingString!=""){
+      criterionValue = parseInt(ratingString);
+    }
     idTag = "#"+criteria+i.toString();
-    $(idTag).css("background-color", "grey");
+    if(criterionValue<i){
+      $(idTag).css("background-color", color);  
+    }
   }
 };
 
