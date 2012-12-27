@@ -7,23 +7,17 @@
 <% for criterion in criteria %>
 <h3><%=criterion%></h3>
 <div class="btn-group">
-  <% for level in (0..10) %>
+  <button class="rating_meter", id=<%=criterion+0.to_s%>>n/a</button>
+  <% for level in (1..10) %>
   <button class="rating_meter", id=<%=criterion+level.to_s%>><%=level%></button>
+  
+
   <% end %>
 </div>
 <% end %>
 
 
-<script>
-$("#usefulness1").hover(
-  function(){
-    $(this).css("background-color", "red");
-  }, 
-  function(){
-    $(this).css("background-color", "grey");
-  }
-);
-</script>
+
 
 
 
@@ -46,3 +40,34 @@ $("#usefulness1").hover(
   <%= f.hidden_field :course_meta_id %>
   <%= f.submit "Submit", class:"btn" %>
 <% end %>
+
+<script>
+<% for criterion in criteria %>
+<% for level in 0..10 %>
+$("<%="#"+criterion+level.to_s%>").hover(
+  function(){
+  highlightToLeft("<%=criterion%>", <%=level%>);
+  }, 
+  function(){
+    unhighlightToLeft("<%=criterion%>", <%=level%>);
+  }
+);
+<% end %>
+<% end %>
+
+
+function highlightToLeft(criteria, level){
+  for (var i=0;i<=level;i++){
+    idTag = "#"+criteria+i.toString();
+    $(idTag).css("background-color", "red");
+  }
+};
+
+function unhighlightToLeft(criteria, level){
+  for (var i=0;i<=level;i++){
+    idTag = "#"+criteria+i.toString();
+    $(idTag).css("background-color", "grey");
+  }
+};
+
+</script>
