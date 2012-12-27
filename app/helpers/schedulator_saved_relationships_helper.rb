@@ -1,0 +1,2 @@
+module SchedulatorSavedRelationshipsHelper
+end

@@ -1,4 +1,11 @@
 
+.redBack {
+    position:absolute;
+    height:35px;
+    background-color: red;
+    bottom:0px;
+}
+
 table thead th {
 	position: relative;
 	padding-left: 5px;
@@ -9,7 +16,7 @@ table thead th {
 	background-color: #33FF99;	
 }
 
-.red {
+.red { /* FOR TESTING */ 
 	background-color: red;
 }
 

@@ -3,8 +3,12 @@ class ScheduleRelationshipController < ApplicationController
     def create
         if !params[:section].blank?
             @section = Section.find(params[:section])
-            @schedulator = current_user.schedulator
+            @schedulator = current_or_guest_user.current_schedulator
             if !@schedulator.sections.include?(@section)
+                if @schedulator.conflictWith?(@section) # check for time conflict
+                    # CONFLICT RESOLUTION
+                    raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
+                end
                 @schedulator.sections << @section
             end
             @days = @section.getDaysAsStrArray
@@ -21,7 +25,7 @@ class ScheduleRelationshipController < ApplicationController
     def destroy
         if !params[:section].blank?
             @section = Section.find(params[:section])
-            @schedulator = current_user.schedulator
+            @schedulator = current_or_guest_user.current_schedulator
             if @schedulator.sections.include?(@section)
                 @schedulator.sections.delete(@section)
             end

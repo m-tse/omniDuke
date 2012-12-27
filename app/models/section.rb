@@ -40,6 +40,7 @@ class Section < ActiveRecord::Base
       return timeInfoCopy.split('-').join("to").gsub(/\s+/, "")
   end
 
+  # Does not work on aces values with multiple slots
   def getDaysAsStrArray
       dayAbbrs = { "Su" => "Sun", 
                    "M"  => "Mon", 
@@ -57,6 +58,7 @@ class Section < ActiveRecord::Base
       end
       return daysStrArray
   end
+
 
 
 
