@@ -4,18 +4,10 @@
   </div>
 
     <ul class="nav nav-pills">
-      <% if navHighlight=="Review" %>
-      <li>
-        <% else %>
-      <li class="active">
-        <% end %>
+      <li <% if navHighlight!="Review" %>class="active"<%end%>>
         <%= link_to "Overview", course_path(@course.id) %>
       </li>
-      <% if navHighlight!="Review" %>
-      <li>
-        <% else %>
-        <li class="active">
-          <% end %>
-        <%= link_to "Reviews", course_review_path(@course.id) %>
+      <li <% if navHighlight=="Review" %>class="active"<% end %>>
+        <%= link_to "Reviews", course_reviews_path(@course.id) %>
       </li>
     </ul>

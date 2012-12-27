@@ -43,7 +43,8 @@
 <% end %>
 
 <script>
-var colorLevels =[<%for color in color_gradient%>"<%= color %>",<% end %>]
+<!--hacky, I added the first color twice so math works out-->
+var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %>]
 
 <% for criterionIndex in 0..criteria.size-1 %>
 <% for level in 0..10 %>

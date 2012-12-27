@@ -12,7 +12,7 @@ class CourseReviewsController < ApplicationController
   end
 
   def index
-  	@course = Course.find(params[:id])
+  	@course = Course.find(params[:format])
   	@course_meta = CourseMeta.find(@course.course_meta_id)
   	@course_reviews = @course_meta.course_reviews
   end

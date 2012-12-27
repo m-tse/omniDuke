@@ -11,11 +11,15 @@
                 </div>
 
 
-                <div class="span6">
+                <div class="span4">
                     <strong>Attributes:</strong>
                         <% for attribute in course.course_attributes %>
                         <%= attribute.toString %>
                         <% end %>
+                </div>
+
+                <div class="span4">
+                    <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course} %>
                 </div>
             </div>
 
