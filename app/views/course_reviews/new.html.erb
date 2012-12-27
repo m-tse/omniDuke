@@ -1,10 +1,17 @@
 <h1>Review this course!</h1>
 <%= form_for @review do |f| %>
-  <%= f.label :first_name %>:
-  <%= f.text_field :first_name %><br />
+  Usefulness: <%= f.number_field :usefulness%><br>
+  Interesting: <%= f.number_field :stimulating %><br>
+  Quality of Content <%= f.number_field :content_quality %><br>
 
-  <%= f.label :last_name %>:
-  <%= f.text_field :last_name %><br />
+  <br>
+  Homework Difficulty: <%= f.number_field :homework_difficulty %><br>
+  Lab Difficulty(If Applicable): <%= f.number_field :lab_difficulty %><br>
+  Midterm Difficulty: <%= f.number_field :midterm_difficulty %><br>
+  Final Difficulty: <%= f.number_field :final_difficulty %><br>
 
-  <%= f.submit %>
+
+
+  <%= f.hidden_field :course_meta_id %>
+  <%= f.submit "Submit", class:"btn" %>
 <% end %>

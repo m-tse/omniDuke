@@ -7,6 +7,7 @@ class CourseReviewsController < ApplicationController
 
   def new
   	@review = CourseReview.new
+  	@course_meta_id = params[:course_meta_id]
   	@review.course_meta = CourseMeta.find(params[:course_meta_id])
   end
 
@@ -14,5 +15,16 @@ class CourseReviewsController < ApplicationController
   	@course = Course.find(params[:id])
   	@course_meta = CourseMeta.find(@course.course_meta_id)
   	@course_reviews = @course_meta.course_reviews
+  end
+
+  def create
+  	@review = CourseReview.new(params[:review])
+    if @review.save
+      flash[:success] = "Review created!"
+      redirect_to root_path
+    else
+    	flash[:error] = "review not created!"
+      render :new
+    end
   end
 end
