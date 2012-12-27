@@ -19,9 +19,16 @@ class SchedulatorController < ApplicationController
         $state = "current"
         @edit = true
         @schedulator = Schedulator.find(params[:id])
-        respond_to do |format|
-            format.html { render schedulator_index_path }
-            format.js
+        if request.xhr?
+            respond_to do |format|
+                format.html { render schedulator_index_path }
+                format.js
+            end
+        else
+            @name = @schedulator.name
+            if @schedulator == Schedulator.last
+                @name = "This is schedulator#index"
+            end
         end
     end
 
@@ -52,9 +59,16 @@ class SchedulatorController < ApplicationController
         end
         $state = "current"
         @schedulator = Schedulator.find(params[:schedulator])
-        respond_to do |format|
-            format.html { render schedulator_index_path }
-            format.js
+        if request.xhr?
+            respond_to do |format|
+                format.html { render schedulator_index_path }
+                format.js
+            end
+        else 
+            @name = @schedulator.name
+            if @schedulator == Schedulator.last
+                @name = "This is schedulator#index"
+            end
         end
     end
 
