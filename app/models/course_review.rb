@@ -1,5 +1,6 @@
 class CourseReview < ActiveRecord::Base
-#  attr_accessible :
+  attr_accessible :usefulness, :stimulating, :content_quality, :homework_difficulty, 
+  :lab_difficulty, :midterm_difficulty, :final_difficulty, :course_meta_id
   belongs_to :course_meta
   validates :course_meta_id, presence:true
   after_save{

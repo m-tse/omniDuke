@@ -18,8 +18,9 @@ class CourseReviewsController < ApplicationController
   end
 
   def create
-  	@review = CourseReview.new(params[:review])
-    if @review.save
+  	areview = CourseReview.new(params[:course_review])
+#  	areview.course_meta = CourseMeta.find(params[:course_review[:course_meta_id]])
+    if areview.save
       flash[:success] = "Review created!"
       redirect_to root_path
     else
