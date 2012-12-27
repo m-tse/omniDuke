@@ -6,14 +6,15 @@ class BookbagRelationshipController < ApplicationController
   	  if !current_or_guest_user.sections.include?(@section)
   	  	current_or_guest_user.sections << @section
   	  end
+      if !params[:course].blank?
+        @course = Course.find(params[:course])
+        respond_to do |format|
+          format.html { redirect_to @course }
+          format.js
+       end
+      end
   	end
-    if !params[:course].blank?
-  	 @course = Course.find(params[:course])
-  	 respond_to do |format|
-  	   format.html { redirect_to @course }
-       format.js
-  	 end
-    end
+    
   end
 
   def destroy 
@@ -22,12 +23,12 @@ class BookbagRelationshipController < ApplicationController
       if current_or_guest_user.sections.include?(@section)
         current_or_guest_user.sections.delete(@section)
       end
-    end
-    if !params[:course].blank?
-      @course = Course.find(params[:course])
-      respond_to do |format|
-        format.html { redirect_to @course }
-        format.js
+      if !params[:course].blank?
+        @course = Course.find(params[:course])
+        respond_to do |format|
+          format.html { redirect_to @course }
+          format.js
+        end
       end
     end
   end

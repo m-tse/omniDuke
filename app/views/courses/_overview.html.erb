@@ -30,6 +30,7 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
+      <th>Bookbag</th>
       <th>Name</th>
       <th>Times</th>
       <th>Instructor(s)</th>
@@ -42,10 +43,12 @@
     <% for section in @course.sections %>
     <tr>
       <td>
-        <%= section.list_description %>
         <%= render partial: 'courses/section',
             locals: { section: section } 
         %>
+      </td>      
+      <td>
+        <%= section.list_description %>
       </td>
       <td><%= section.time_slot.aces_value %></td>
       <td>
