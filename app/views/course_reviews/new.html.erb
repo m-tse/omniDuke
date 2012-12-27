@@ -1,6 +1,6 @@
 <h1>Review this course!</h1>
 
-
+<% colorLevels =['#EE5F5B', '#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462'] %>
 <% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
   "final_difficulty"] %>
 
@@ -42,7 +42,7 @@ $("<%="#"+criterion+level.to_s%>").click(
 
 $("<%="#"+criterion+level.to_s%>").hover(
   function(){
-  highlightToLeft("<%=criterion%>", <%=level%>, "red");
+  highlightToLeft("<%=criterion%>", <%=level%>, "<%=colorLevels[level]%>");
   }, 
   function(){
     unhighlightAll("<%=criterion%>", "grey");
