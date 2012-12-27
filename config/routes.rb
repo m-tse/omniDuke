@@ -14,12 +14,13 @@ OmniDuke::Application.routes.draw do
   match '/schedulator/current', to: 'schedulator#show_current'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
-  resources :reviews, only: [:new, :show, :create]
   resources :subjects, only: [:show, :index]
   resources :schedulator
   resources :bookbag_relationship, only: [:create, :destroy]
   resources :schedule_relationship, only: [:create, :destroy]
+  resources :course_reviews, only: [:show, :new, :index, :create]
   resources :schedulator_saved_relationships, only: [:create, :destroy]
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -70,3 +70,19 @@ def getBuildCourse(currentSubject, currentSession, new_number, old_number)
     return newCourse
   end
 end
+
+def getCreateCourseMeta(course_name)
+  foundCourseMeta = CourseMeta.find_by_course_name(course_name)
+  if foundCourseMeta!=nil
+    return foundCourseMeta
+  else
+    return CourseMeta.create!(course_name:course_name) 
+
+  end
+end
+
+
+
+
+
+

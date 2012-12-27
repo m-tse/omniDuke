@@ -1,0 +1,73 @@
+<h1>Review this course!</h1>
+
+
+<% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
+  "final_difficulty"] %>
+
+<% for criterion in criteria %>
+<h3><%=criterion%></h3>
+<div class="btn-group">
+  <button class="rating_meter", id=<%=criterion+0.to_s%>>n/a</button>
+  <% for level in (1..10) %>
+  <button class="rating_meter", id=<%=criterion+level.to_s%>><%=level%></button>
+  
+
+  <% end %>
+</div>
+<% end %>
+
+
+
+
+
+
+
+<%= form_for @review do |f| %>
+<br>
+
+  Usefulness: <%= f.number_field :usefulness%><br>
+  Interesting: <%= f.number_field :stimulating %><br>
+  Quality of Content <%= f.number_field :content_quality %><br>
+
+  <br>
+  Homework Difficulty: <%= f.number_field :homework_difficulty %><br>
+  Lab Difficulty(If Applicable): <%= f.number_field :lab_difficulty %><br>
+  Midterm Difficulty: <%= f.number_field :midterm_difficulty %><br>
+  Final Difficulty: <%= f.number_field :final_difficulty %><br>
+
+
+
+  <%= f.hidden_field :course_meta_id %>
+  <%= f.submit "Submit", class:"btn" %>
+<% end %>
+
+<script>
+<% for criterion in criteria %>
+<% for level in 0..10 %>
+$("<%="#"+criterion+level.to_s%>").hover(
+  function(){
+  highlightToLeft("<%=criterion%>", <%=level%>);
+  }, 
+  function(){
+    unhighlightToLeft("<%=criterion%>", <%=level%>);
+  }
+);
+<% end %>
+<% end %>
+
+
+function highlightToLeft(criteria, level){
+  for (var i=0;i<=level;i++){
+    idTag = "#"+criteria+i.toString();
+    $(idTag).css("background-color", "red");
+  }
+};
+
+function unhighlightToLeft(criteria, level){
+  for (var i=0;i<=level;i++){
+    idTag = "#"+criteria+i.toString();
+    $(idTag).css("background-color", "grey");
+  }
+};
+
+</script>

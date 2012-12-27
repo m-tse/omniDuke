@@ -5,7 +5,9 @@ class Instructor < ActiveRecord::Base
   has_many :courses, :through => :sections, :uniq => true
   validates :name, presence:true, uniqueness: { case_sensitive: false }
 
-  has_many :reviews
+  has_many :instructor_reviews
+
+  before_save :update_overall_rating
 
 
   def toString
@@ -41,4 +43,34 @@ class Instructor < ActiveRecord::Base
       subjects_by_count.map(&:name)
     end
   end
+
+  def update_overall_rating
+    sum = 0.0
+    numReviews = 0.0
+    for review in self.instructor_reviews(true)
+      numReviews+=1
+      reviewCriteria = [review.helpfulness, review.accessibility, review.clarity, review.fairness]
+      innerSum = 0.0
+      innerCounter = 0.0
+      for rating in courseCriteria
+        if rating!=nil
+          innerSum+=rating 
+          innerCounter+=1.0
+        end
+      end
+      if innerCounter == 0.0
+        innerCounter+=1.0
+      end
+      sum+=(innerSum/innerCounter).to_f
+
+    end
+    if numReviews ==0.0
+      numReviews += 1
+    end
+
+    self.overall_quality=(sum/numReviews).to_f
+  end
+
+
+
 end
