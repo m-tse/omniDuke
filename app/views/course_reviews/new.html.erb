@@ -22,12 +22,22 @@
 <% end %>
 </form>
 
-<%= form_for @review do |f| %>
+<%= form_for @review, html:{class:"form-horizontal"} do |f| %>
   <% for criterion in criteria %>
     <%= f.hidden_field criterion %>
   <% end %>
+  <div class="control-group">
+    <label class="control-label">Review Content</label>
+    <div class="controls">
+      <%= f.text_area :review_content, rows:5, class:"input-xlarge"%>
+    </div>
+  </div>
   <%= f.hidden_field :course_meta_id %>
-  <%= f.submit "Submit", class:"btn" %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Submit", class:"btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <script>
