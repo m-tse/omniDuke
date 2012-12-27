@@ -2,29 +2,30 @@
 
 
 <% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
-  "final_difficulty"] %>
+  "final_difficulty", "out_of_class_work_hours"] %>
+<% criteriaLabels=['Usefulness', 'Interesting/Stimulating', 'Quality of Content', 'Homework Difficulty',
+  'Lab Difficulty', 'Midterm Difficulty', 'Final Difficulty', 'Out of Class Work Time'] %>
 
-<% for criterion in criteria %>
-<h3><%=criterion%></h3>
-<div class="btn-group">
-  <button class="rating_meter" id=<%=criterion+0.to_s%>>n/a</button>
-  <% for level in (1..10) %>
-  <button class="rating_meter" id=<%=criterion+level.to_s%>><%=level%></button>
-  
-
-  <% end %>
-</div>
+<form class='form-horizontal'>
+<% for index in (0..criteria.size-1) %>
+  <div class="control-group">
+    <label class="control-label"><%=criteriaLabels[index]%></label>
+    <div class="controls">
+      <div class="btn-group">
+        <button class="rating_meter zero" type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
+        <% for level in (1..10) %>
+          <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
-
+</form>
 
 <%= form_for @review do |f| %>
-  <%= f.hidden_field :usefulness%>
-  <%= f.hidden_field :stimulating %>
-  <%= f.hidden_field :content_quality %>
-  <%= f.hidden_field :homework_difficulty %>
-  <%= f.hidden_field :lab_difficulty %>
-  <%= f.hidden_field :midterm_difficulty %>
-  <%= f.hidden_field :final_difficulty %>
+  <% for criterion in criteria %>
+    <%= f.hidden_field criterion %>
+  <% end %>
   <%= f.hidden_field :course_meta_id %>
   <%= f.submit "Submit", class:"btn" %>
 <% end %>
