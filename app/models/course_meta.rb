@@ -18,7 +18,7 @@ class CourseMeta < ActiveRecord::Base
   	  courseQualitySum = 0.0
   	  courseQualityCounter = 0.0
   	  for rating in courseCriteria
-  	  	if rating!=nil
+  	  	if rating!=nil&&rating!=0
   	  	  courseQualityCounter+=1
   	  	  courseQualitySum+=rating
   	  	end
@@ -33,7 +33,7 @@ class CourseMeta < ActiveRecord::Base
   	  diffSum = 0.0
   	  diffCounter = 0.0
   	  for rating in difficultyCriteria
-  	  	if rating!=nil
+  	  	if rating!=nil&&rating!=0
   	  	  diffCounter+=1
   	  	  diffSum+=rating
   	  	end

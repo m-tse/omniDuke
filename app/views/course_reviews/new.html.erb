@@ -2,53 +2,67 @@
 
 
 <% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
-  "final_difficulty"] %>
+  "final_difficulty", "out_of_class_work_hours"] %>
+<% criteriaLabels=['Usefulness', 'Interesting/Stimulating', 'Quality of Content', 'Homework Difficulty',
+  'Lab Difficulty', 'Midterm Difficulty', 'Final Difficulty', 'Out of Class Work Time'] %>
+  <% reverseColors=[false,false,false,true,true,true,true,true]%>
 
-<% for criterion in criteria %>
-<h3><%=criterion%></h3>
-<div class="btn-group">
-  <button class="rating_meter" id=<%=criterion+0.to_s%>>n/a</button>
-  <% for level in (1..10) %>
-  <button class="rating_meter" id=<%=criterion+level.to_s%>><%=level%></button>
-  
-
-  <% end %>
-</div>
+<form class='form-horizontal'>
+<% for index in (0..criteria.size-1) %>
+  <div class="control-group">
+    <label class="control-label"><%=criteriaLabels[index]%></label>
+    <div class="controls">
+      <div class="btn-group">
+        <button class="rating_meter <%= reverseColors[index]==true ? "green" : "red" %>" 
+          type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
+        <% for level in (1..10) %>
+          <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
+</form>
 
-
-<%= form_for @review do |f| %>
-  <%= f.hidden_field :usefulness%>
-  <%= f.hidden_field :stimulating %>
-  <%= f.hidden_field :content_quality %>
-  <%= f.hidden_field :homework_difficulty %>
-  <%= f.hidden_field :lab_difficulty %>
-  <%= f.hidden_field :midterm_difficulty %>
-  <%= f.hidden_field :final_difficulty %>
+<%= form_for @review, html:{class:"form-horizontal"} do |f| %>
+  <% for criterionIndex in 0..criteria.size-1 %>
+    <%= f.hidden_field criteria[criterionIndex] %>
+  <% end %>
+  <div class="control-group">
+    <label class="control-label">Review Content</label>
+    <div class="controls">
+      <%= f.text_area :review_content, rows:5, class:"input-xlarge"%>
+    </div>
+  </div>
   <%= f.hidden_field :course_meta_id %>
-  <%= f.submit "Submit", class:"btn" %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Submit", class:"btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <script>
-var colorLevels =['#EE5F5B', '#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462']
+<!--hacky, I added the first color twice so math works out-->
+var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %>]
 
-
-<% for criterion in criteria %>
+<% for criterionIndex in 0..criteria.size-1 %>
 <% for level in 0..10 %>
-$("<%="#"+criterion+level.to_s%>").click(
+$("<%="#"+criteria[criterionIndex]+level.to_s%>").click(
   function(){
-    $("<%="#course_review_"+criterion%>").val("<%=level%>");
-    unhighlightAll("<%=criterion%>");
+    $("<%="#course_review_"+criteria[criterionIndex]%>").val("<%=level%>");
+    unhighlightAll("<%=criteria[criterionIndex]%>", <%=reverseColors[criterionIndex]%>);
   }
 );
 
 
-$("<%="#"+criterion+level.to_s%>").hover(
+$("<%="#"+criteria[criterionIndex]+level.to_s%>").hover(
   function(){
-  highlightToLeft("<%=criterion%>", <%=level%>, colorLevels[<%=level%>]);
+  highlightToLeft("<%=criteria[criterionIndex]%>", <%=level%>, 
+    colorLevels[<%=reverseColors[criterionIndex] ? 10-level : level%>]);
   }, 
   function(){
-    unhighlightAll("<%=criterion%>");
+    unhighlightAll("<%=criteria[criterionIndex]%>", <%=reverseColors[criterionIndex]%>);
   }
 );
 <% end %>
@@ -62,20 +76,21 @@ function highlightToLeft(criteria, level, color){
   }
 };
 
-function unhighlightAll(criteria){
+function unhighlightAll(criteria, reverse){
   for (var i=0;i<=10;i++){
 
-    criterionValue=0;
+    criteriaValue=0;
     ratingString = $("#course_review_"+criteria).val();
     if(ratingString!=""){
-      criterionValue = parseInt(ratingString);
+      criteriaValue = parseInt(ratingString);
     }
     idTag = "#"+criteria+i.toString();
-    if(criterionValue<i){
+    if(criteriaValue<i){
       $(idTag).css("background-color", "whiteSmoke");  
     }
     else{
-      $(idTag).css("background-color", colorLevels[criterionValue]);  
+      criteriaValueAfterReverse = reverse ? (10-criteriaValue) : criteriaValue;
+      $(idTag).css("background-color", colorLevels[criteriaValueAfterReverse]);  
     }
   }
 };

@@ -32,4 +32,9 @@ module ApplicationHelper
   def omni_search_help_text
     "Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you."
   end
+
+  #10 levesl of colors from red to yellow to green
+  def color_gradient
+    ['#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462']
+  end
 end

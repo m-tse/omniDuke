@@ -12,14 +12,13 @@ class CourseReviewsController < ApplicationController
   end
 
   def index
-  	@course = Course.find(params[:id])
+  	@course = Course.find(params[:format])
   	@course_meta = CourseMeta.find(@course.course_meta_id)
   	@course_reviews = @course_meta.course_reviews
   end
 
   def create
   	areview = CourseReview.new(params[:course_review])
-#  	areview.course_meta = CourseMeta.find(params[:course_review[:course_meta_id]])
     if areview.save
       flash[:success] = "Review created!"
       redirect_to root_path

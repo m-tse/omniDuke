@@ -4,10 +4,12 @@
     
     <h3 class="list_course_title course_link"><%= link_to courseToString(course), course_path(course)  %></h3>
     <div class="list_course_content">
+        <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course} %>
+        <br>
     <strong>Professors:</strong> <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
     
     <br>
-    
+
     <strong>Attributes:</strong>
     <% for attribute in course.course_attributes %>
     <%= attribute.toString %>
