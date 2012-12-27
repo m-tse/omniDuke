@@ -1,6 +1,6 @@
 <h1>Review this course!</h1>
 
-<% colorLevels =['#EE5F5B', '#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462'] %>
+
 <% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
   "final_difficulty"] %>
 
@@ -30,22 +30,25 @@
 <% end %>
 
 <script>
+var colorLevels =['#EE5F5B', '#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462']
+
+
 <% for criterion in criteria %>
 <% for level in 0..10 %>
 $("<%="#"+criterion+level.to_s%>").click(
   function(){
     $("<%="#course_review_"+criterion%>").val("<%=level%>");
-    unhighlightAll("<%=criterion%>", "grey");
+    unhighlightAll("<%=criterion%>");
   }
 );
 
 
 $("<%="#"+criterion+level.to_s%>").hover(
   function(){
-  highlightToLeft("<%=criterion%>", <%=level%>, "<%=colorLevels[level]%>");
+  highlightToLeft("<%=criterion%>", <%=level%>, colorLevels[<%=level%>]);
   }, 
   function(){
-    unhighlightAll("<%=criterion%>", "grey");
+    unhighlightAll("<%=criterion%>");
   }
 );
 <% end %>
@@ -59,8 +62,9 @@ function highlightToLeft(criteria, level, color){
   }
 };
 
-function unhighlightAll(criteria, color){
+function unhighlightAll(criteria){
   for (var i=0;i<=10;i++){
+
     criterionValue=0;
     ratingString = $("#course_review_"+criteria).val();
     if(ratingString!=""){
@@ -68,7 +72,10 @@ function unhighlightAll(criteria, color){
     }
     idTag = "#"+criteria+i.toString();
     if(criterionValue<i){
-      $(idTag).css("background-color", color);  
+      $(idTag).css("background-color", "whiteSmoke");  
+    }
+    else{
+      $(idTag).css("background-color", colorLevels[criterionValue]);  
     }
   }
 };
