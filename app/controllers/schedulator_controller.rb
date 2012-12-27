@@ -4,13 +4,11 @@ class SchedulatorController < ApplicationController
     $state = "current"
 
     # CLEAN UP ALL THE @edits
-
     def index
-        @edit = false
-        if !params[:edit].blank?
-            @edit = true
-            raise "WLKJEAWLKJDAKJ"
+        if !params[:click_flag].blank?
+            $state = "current"
         end
+        @edit = false
         if current_or_guest_user.current_schedulator.nil?
             current_or_guest_user.create_current_schedulator
         end
@@ -22,7 +20,7 @@ class SchedulatorController < ApplicationController
         @edit = true
         @schedulator = Schedulator.find(params[:id])
         respond_to do |format|
-            format.html { redirect_to schedulator_index_path }
+            format.html { render schedulator_index_path }
             format.js
         end
     end
@@ -34,13 +32,16 @@ class SchedulatorController < ApplicationController
         end
         $state = "saved"
         @schedulator = Schedulator.find(params[:schedulator])
-        respond_to do |format|
-            if @edit 
-                format.html { redirect_to schedulator_index_path(edit: "true") }
-            else
-                format.html { redirect_to schedulator_index_path }
+        if request.xhr?
+            respond_to do |format|
+                format.html { render schedulator_index_path }
+                format.js
             end
-            format.js
+        else 
+            @name = @schedulator.name
+            if @schedulator == Schedulator.last
+                @name = "This is schedulator#index"
+            end
         end
     end
 
@@ -52,13 +53,12 @@ class SchedulatorController < ApplicationController
         $state = "current"
         @schedulator = Schedulator.find(params[:schedulator])
         respond_to do |format|
-            if @edit 
-                format.html { redirect_to schedulator_index_path(edit: "true") }
-            else
-                format.html { render schedulator_index_path }
-            end
+            format.html { render schedulator_index_path }
             format.js
         end
     end
+
+
+
 
 end

@@ -7,9 +7,9 @@
 <% for criterion in criteria %>
 <h3><%=criterion%></h3>
 <div class="btn-group">
-  <button class="rating_meter", id=<%=criterion+0.to_s%>>n/a</button>
+  <button class="rating_meter" id=<%=criterion+0.to_s%>>n/a</button>
   <% for level in (1..10) %>
-  <button class="rating_meter", id=<%=criterion+level.to_s%>><%=level%></button>
+  <button class="rating_meter" id=<%=criterion+level.to_s%>><%=level%></button>
   
 
   <% end %>

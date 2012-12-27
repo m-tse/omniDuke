@@ -19,3 +19,12 @@ scheduleNameUpdater = ->
     $(".scheduleNameUpdate").live("click", (e)->
         $("#scheduleName").html($(this).html())
     )
+
+if history && history.pushState
+    jQuery ->
+        $(".updateHistory a").live("click", (e)->
+            history.pushState(null, "", this.href)
+            e.preventDefault()
+        )
+        $(window).bind('popstate', ->
+        )

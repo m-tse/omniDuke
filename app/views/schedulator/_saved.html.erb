@@ -1,7 +1,7 @@
 <%= render partial: "schedulator/nav",
     locals: { active: "saved" }
 %>
-<div>
+<div class="updateHistory">
     <% current_or_guest_user.schedulators.each do |schedulator| %>
         <h3><%= link_to schedulator.getName, schedulator, {
                 class: "scheduleNameUpdate",

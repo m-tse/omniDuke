@@ -136,6 +136,21 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "reviews", :force => true do |t|
+    t.integer  "assignment_easiness"
+    t.integer  "test_easiness"
+    t.integer  "helpfulness"
+    t.integer  "clarity"
+    t.integer  "enthusiasm"
+    t.integer  "course_content"
+    t.integer  "textbook_usefulness"
+    t.text     "review_content"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "course_id"
+    t.integer  "instructor_id"
+  end
+
   create_table "schedulator_saved_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false

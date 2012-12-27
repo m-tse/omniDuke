@@ -1,0 +1,8 @@
+        <div class="classList span2">
+            <!-- FILL WITH SECTIONS -->
+            <% current_or_guest_user.sections.each do |section| %>
+                <%= render partial: 'schedulator/section',
+                    locals: { section: section }
+                %>
+            <% end %>
+        </div>

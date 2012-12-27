@@ -1,25 +1,27 @@
-<ul class="nav nav-tabs">
-    <% if isActiveClass(active, 1) %> 
-        <li class="active">
-            <%= link_to "Current", "", { remote: true } %>
-        </li>
-        <li>
-            <% if @edit %>
-                <%= link_to "Saved", schedulator_saved_path(schedulator: @schedulator.id, edit: "true"), { remote: true } %>
-            <% else %>
-                <%= link_to "Saved", schedulator_saved_path(schedulator: @schedulator.id), { remote: true } %>
-            <% end %>
-        </li>
-    <% elsif isActiveClass(active, 2) %>
-        <li>
-            <% if @edit %>
-                <%= link_to "Current", schedulator_current_path(schedulator: @schedulator.id, edit: "true"), { remote: true } %>
-            <% else %>
-                <%= link_to "Current", schedulator_current_path(schedulator: @schedulator.id), { remote: true } %>
-            <% end %>
-        </li>
-        <li class="active">
-            <%= link_to "Saved", "", { remote: true } %>
-        </li>
-    <% end %> 
-</ul>
+<div class="updateHistory">
+    <ul id="schedulatorNav" class="nav nav-tabs">
+        <% if isActiveClass(active, 1) %> 
+            <li class="active">
+                <%= link_to "Current", "", { remote: true } %>
+            </li>
+            <li>
+                <% if @edit %>
+                    <%= link_to "Saved", schedulator_saved_path(schedulator: @schedulator.id, edit: "true"), { remote: true } %>
+                <% else %>
+                    <%= link_to "Saved", schedulator_saved_path(schedulator: @schedulator.id), { remote: true } %>
+                <% end %>
+            </li>
+        <% elsif isActiveClass(active, 2) %>
+            <li>
+                <% if @edit %>
+                    <%= link_to "Current", schedulator_current_path(schedulator: @schedulator.id, edit: "true"), { remote: true } %>
+                <% else %>
+                    <%= link_to "Current", schedulator_current_path(schedulator: @schedulator.id), { remote: true } %>
+                <% end %>
+            </li>
+            <li class="active">
+                <%= link_to "Saved", "", { remote: true } %>
+            </li>
+        <% end %> 
+    </ul>
+</div>
