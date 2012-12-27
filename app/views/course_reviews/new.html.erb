@@ -5,6 +5,7 @@
   "final_difficulty", "out_of_class_work_hours"] %>
 <% criteriaLabels=['Usefulness', 'Interesting/Stimulating', 'Quality of Content', 'Homework Difficulty',
   'Lab Difficulty', 'Midterm Difficulty', 'Final Difficulty', 'Out of Class Work Time'] %>
+  <% reverseColors=[false,false,false,true,true,true,true,true]%>
 
 <form class='form-horizontal'>
 <% for index in (0..criteria.size-1) %>
@@ -12,7 +13,8 @@
     <label class="control-label"><%=criteriaLabels[index]%></label>
     <div class="controls">
       <div class="btn-group">
-        <button class="rating_meter zero" type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
+        <button class="rating_meter <%= reverseColors[index]==true ? "green" : "red" %>" 
+          type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
         <% for level in (1..10) %>
           <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
         <% end %>
@@ -23,8 +25,8 @@
 </form>
 
 <%= form_for @review, html:{class:"form-horizontal"} do |f| %>
-  <% for criterion in criteria %>
-    <%= f.hidden_field criterion %>
+  <% for criterionIndex in 0..criteria.size-1 %>
+    <%= f.hidden_field criteria[criterionIndex] %>
   <% end %>
   <div class="control-group">
     <label class="control-label">Review Content</label>
@@ -41,25 +43,25 @@
 <% end %>
 
 <script>
-var colorLevels =['#EE5F5B', '#EE5F5B','#F17059', '#F68254', '#F8A352', '#FBB450', '#DCB754', '#BEBA57', '#9FBE5B', '#81C15E', '#62C462']
+var colorLevels =[<%for color in color_gradient%>"<%= color %>",<% end %>]
 
-
-<% for criterion in criteria %>
+<% for criterionIndex in 0..criteria.size-1 %>
 <% for level in 0..10 %>
-$("<%="#"+criterion+level.to_s%>").click(
+$("<%="#"+criteria[criterionIndex]+level.to_s%>").click(
   function(){
-    $("<%="#course_review_"+criterion%>").val("<%=level%>");
-    unhighlightAll("<%=criterion%>");
+    $("<%="#course_review_"+criteria[criterionIndex]%>").val("<%=level%>");
+    unhighlightAll("<%=criteria[criterionIndex]%>", <%=reverseColors[criterionIndex]%>);
   }
 );
 
 
-$("<%="#"+criterion+level.to_s%>").hover(
+$("<%="#"+criteria[criterionIndex]+level.to_s%>").hover(
   function(){
-  highlightToLeft("<%=criterion%>", <%=level%>, colorLevels[<%=level%>]);
+  highlightToLeft("<%=criteria[criterionIndex]%>", <%=level%>, 
+    colorLevels[<%=reverseColors[criterionIndex] ? 10-level : level%>]);
   }, 
   function(){
-    unhighlightAll("<%=criterion%>");
+    unhighlightAll("<%=criteria[criterionIndex]%>", <%=reverseColors[criterionIndex]%>);
   }
 );
 <% end %>
@@ -73,20 +75,21 @@ function highlightToLeft(criteria, level, color){
   }
 };
 
-function unhighlightAll(criteria){
+function unhighlightAll(criteria, reverse){
   for (var i=0;i<=10;i++){
 
-    criterionValue=0;
+    criteriaValue=0;
     ratingString = $("#course_review_"+criteria).val();
     if(ratingString!=""){
-      criterionValue = parseInt(ratingString);
+      criteriaValue = parseInt(ratingString);
     }
     idTag = "#"+criteria+i.toString();
-    if(criterionValue<i){
+    if(criteriaValue<i){
       $(idTag).css("background-color", "whiteSmoke");  
     }
     else{
-      $(idTag).css("background-color", colorLevels[criterionValue]);  
+      criteriaValueAfterReverse = reverse ? (10-criteriaValue) : criteriaValue;
+      $(idTag).css("background-color", colorLevels[criteriaValueAfterReverse]);  
     }
   }
 };
