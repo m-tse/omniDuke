@@ -11,13 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20121226223218) do
-=======
-
 ActiveRecord::Schema.define(:version => 20121226225656) do
-
->>>>>>> b08f2a1ec8286675b44f51fa16cacdb4e2b97268
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -82,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.integer  "course_meta_id"
   end
 
+  create_table "download_relationships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "note_id"
+    t.integer  "user_id"
+  end
+
   create_table "instructor_reviews", :force => true do |t|
     t.integer  "helpfulness"
     t.integer  "accessbility"
@@ -90,13 +91,6 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.integer  "instructor_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "download_relationships", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "note_id"
-    t.integer  "user_id"
   end
 
   create_table "instructors", :force => true do |t|
@@ -142,14 +136,12 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.datetime "updated_at",      :null => false
   end
 
-
   create_table "schedulator_saved_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
     t.integer  "schedulator_id"
   end
-
 
   create_table "schedulators", :force => true do |t|
     t.datetime "created_at", :null => false
