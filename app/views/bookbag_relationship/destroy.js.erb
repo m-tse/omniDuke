@@ -1,2 +1,2 @@
 $("#section-<%= j(params[:section]) %>").html("").append(
-	"<i class='right icon-plus'></i>")
+    "<%= j(render partial: 'bookbag_relationship/addSection', locals: {section:@section}) %>")

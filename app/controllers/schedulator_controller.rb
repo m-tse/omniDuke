@@ -4,6 +4,7 @@ class SchedulatorController < ApplicationController
     $state = "current"
 
     # CLEAN UP ALL THE @edits
+    # Everything needs a big of refactoring, especially the shows
     def index
         if !params[:click_flag].blank?
             $state = "current"
@@ -13,6 +14,15 @@ class SchedulatorController < ApplicationController
             current_or_guest_user.create_current_schedulator
         end
         @schedulator = current_or_guest_user.current_schedulator
+        if request.xhr?
+            respond_to do |format|
+                format.js
+            end
+        else  
+            respond_to do |format|
+                format.html
+            end
+        end
     end
 
     def show
@@ -28,6 +38,9 @@ class SchedulatorController < ApplicationController
             @name = @schedulator.name
             if @schedulator == Schedulator.last
                 @name = "This is schedulator#index"
+            end
+            respond_to do |format|
+                format.html
             end
         end
     end
@@ -49,6 +62,9 @@ class SchedulatorController < ApplicationController
             if @schedulator == Schedulator.last
                 @name = "This is schedulator#index"
             end
+            respond_to do |format|
+                format.html
+            end
         end
     end
 
@@ -68,6 +84,9 @@ class SchedulatorController < ApplicationController
             @name = @schedulator.name
             if @schedulator == Schedulator.last
                 @name = "This is schedulator#index"
+            end
+            respond_to do |format|
+                format.html
             end
         end
     end
