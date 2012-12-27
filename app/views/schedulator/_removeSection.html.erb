@@ -1,13 +1,13 @@
     <%= link_to raw('
-            <div class="click-section bg-light-green">' +
-                section.name + section.time_slot.aces_value + 
+            <div class="click-section bg-light-green">' + section.name + section.time_slot.aces_value + 
             '</div>
             <br />
         '), {
             controller: "schedule_relationship",
             action: "destroy",
-            id: getRelationshipId(current_or_guest_user.current_schedulator, section),
-            section: section.id
+            id: getRelationshipId(@schedulator, section),
+            section: section.id,
+            schedulator: @schedulator.id
         }, {
             id: "section-slot-" + section.id.to_s,
             method: "delete",

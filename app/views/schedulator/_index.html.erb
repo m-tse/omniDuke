@@ -1,0 +1,20 @@
+    <div class="row">
+        <div class="classList span2">
+            <!-- FILL WITH SECTIONS -->
+            <% current_or_guest_user.sections.each do |section| %>
+                <%= render partial: 'schedulator/section',
+                    locals: { section: section }
+                %>
+            <% end %>
+        </div>
+        <div class="span10" id="schedulatorContainer">
+            <% if $state == "saved" %>
+                <%= render 'schedulator/saved' %> 
+            <% else %> <!-- state is current -->
+                <%= render partial: "schedulator/schedulator",
+                    locals: {schedulator: current_or_guest_user.current_schedulator}
+                %>
+            <% end %>
+            <%= render partial: 'schedulator/nameSchedule' %> 
+        </div>
+    </div>

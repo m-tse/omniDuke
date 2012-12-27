@@ -1,8 +1,5 @@
 OmniDuke::Application.routes.draw do
 
-  get "schedulator/schedule"
-  get "schedulator/unschedule"
-
   devise_for :users
   
   root :to => 'static_pages#home'
@@ -14,6 +11,7 @@ OmniDuke::Application.routes.draw do
   match '/subjects/instructors', to: 'subjects#show_instructors'
   match '/subjects/courses', to: 'subjects#show_courses'
   match '/schedulator/saved', to: 'schedulator#show_saved'
+  match '/schedulator/current', to: 'schedulator#show_current'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :reviews, only: [:new, :show, :create]

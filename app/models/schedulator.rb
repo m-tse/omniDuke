@@ -1,8 +1,18 @@
 class Schedulator < ActiveRecord::Base
+    attr_accessible :name
     belongs_to :user
     has_many :schedule_relationships
     has_many :sections, through: :schedule_relationships
     has_many :schedulator_saved_relationships
+
+
+    def getName
+        if self.name.nil?
+            return "No name"
+        else
+            return self.name
+        end
+    end
 
 
     $LOGGING = false

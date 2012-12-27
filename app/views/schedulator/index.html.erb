@@ -1,26 +1,11 @@
 <title>OmniDuke Schedulator</title>
-<h1>This is schedulator#index</h1>
+<h1 id="scheduleName">This is schedulator#index</h1>
 <br />
 
-<div class="container">
-
-<div class="row">
-    <div class="classList span2">
-        <!-- FILL WITH SECTIONS -->
-        <% current_or_guest_user.sections.each do |section| %>
-            <%= render partial: 'schedulator/section',
-                locals: { section: section }
-            %>
-        <% end %>
-    </div>
-    <div class="span10" id="schedulatorContainer">
-        <% if false %> <!-- Block commented out for now  -->
-            <%= render partial: "schedulator/hvnav",
-                locals: {}
-            %>
-        <% end %>
-        <%= render 'schedulator/show' %> 
-    </div>
-</div>
-
+<div class="container" id="omniContainer">
+    <% if @edit %>
+        <%= render partial: "schedulator/edit" %>   
+    <% else %>
+        <%= render partial: "schedulator/index" %>   
+    <% end %>
 </div>

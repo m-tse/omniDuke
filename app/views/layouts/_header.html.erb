@@ -13,7 +13,7 @@
 		<ul class="nav pull-right">
             <li class=<%=request.fullpath=="/" || request.fullpath=="/home" ? "active" : ""%>>
 	        <%= link_to( root_path) do -%><i class="icon-home icon-white"></i> Home<% end -%></li>
-	        <li><%= link_to "Schedulator", schedulator_index_path%></li>
+	        <li><%= link_to "Schedulator", schedulator_index_path(click_flag: "true") %></li>
 	        <% if !user_signed_in? %>
 	            <li><%= link_to "Sign In", new_user_session_path %></li>
 
