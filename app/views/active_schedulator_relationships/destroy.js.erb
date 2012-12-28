@@ -1,2 +1,7 @@
-$("#schedulator-li-<%= j(@sid.to_s) %>").remove()
-$("#omniContainer").html("").append("<%= j(render partial: 'schedulator/index') %>")
+$("#schedulator-li-<%= j(@sid.to_s) %>").remove();
+$("#omniContainer").html("").append("<%= j(render partial: 'schedulator/index') %>");
+if (history && history.pushState) {
+    link = $("#schedulator-li-<%= j(current_or_guest_user.current_schedulator.id.to_s) %>").children("a").attr("href");
+    history.pushState(null, "", link);
+}
+$("#scheduleName").html("").append("Untitled")
