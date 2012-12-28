@@ -1,5 +1,13 @@
 class Section < ActiveRecord::Base
-  attr_accessible :location, :enrollment, :capacity, :waitlist_enrollment, :waitlist_capacity, :class_number, :description, :synopsis, :parsedUnits, :name, :list_description, :room, :units, :career, :grading, :campus, :required_sections
+  attr_accessible :location, :enrollment, 
+                  :capacity, :waitlist_enrollment, 
+                  :waitlist_capacity, :class_number, 
+                  :description, :synopsis, 
+                  :parsedUnits, :name, 
+                  :list_description, :room, 
+                  :units, :career, 
+                  :grading, :campus, 
+                  :required_sections
 #  validates :suffix, :section_type, :location, :enrollment, :capacity, :waitlist_enrollment, :waitlist_capacity, :class_number, presence:true
 
   has_and_belongs_to_many :course_attributes

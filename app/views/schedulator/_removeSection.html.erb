@@ -1,11 +1,17 @@
-    <%= link_to raw('
-            <div class="click-section bg-light-green">' + section.name + section.time_slot.aces_value + 
+<!-- Requires locals: {section:@section} -->
+<% @srel = getScheduleRelationship(@schedulator, section) %> 
+<% divBg = "bg-light-green" %>
+<% if @srel.conflicting %>
+    <% divBg = "red" %>
+<% end %>
+    <%= link_to raw("
+            <div class='click-section #{divBg}'>" + section.name + section.time_slot.aces_value + 
             '</div>
             <br />
         '), {
             controller: "schedule_relationship",
             action: "destroy",
-            id: getRelationshipId(@schedulator, section),
+            id: @srel.id,
             section: section.id,
             schedulator: @schedulator.id
         }, {
