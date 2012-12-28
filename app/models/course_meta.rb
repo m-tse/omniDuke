@@ -12,38 +12,16 @@ class CourseMeta < ActiveRecord::Base
   	numOverallReviews = 0.0
     numDifficultyReviews = 0.0
   	for review in self.course_reviews(true)
-  	  courseCriteria = [review.stimulating, review.usefulness, review.content_quality]
-  	  difficultyCriteria = [review.midterm_difficulty, review.final_difficulty, 
-  	  	review.homework_difficulty, review.lab_difficulty, review.out_of_class_work_hours]
-  	  courseQualitySum = 0.0
-  	  courseQualityCounter = 0.0
-  	  for rating in courseCriteria
-  	  	if rating!=nil&&rating!=0
-  	  	  courseQualityCounter+=1
-  	  	  courseQualitySum+=rating
-  	  	end
-  	  end
-  	  if courseQualityCounter == 0.0
-  	  	courseQualityCounter+=1.0
-      else
+
+  	  if(review.average_quality>0)
         numOverallReviews+=1
   	  end
-  	  overallQualitySum+=(courseQualitySum/courseQualityCounter).to_f
+  	  overallQualitySum+=review.average_quality
 
-  	  diffSum = 0.0
-  	  diffCounter = 0.0
-  	  for rating in difficultyCriteria
-  	  	if rating!=nil&&rating!=0
-  	  	  diffCounter+=1
-  	  	  diffSum+=rating
-  	  	end
-  	  end
-  	  if diffCounter==0
-  	  	diffCounter = 1
-      else
+      if(review.average_difficulty>0)
         numDifficultyReviews+=1
   	  end
-  	  difficultySum+=(diffSum/diffCounter).to_f
+  	  difficultySum+=review.average_difficulty
   	end
   	if numOverallReviews ==0.0
   	  numOverallReviews=1

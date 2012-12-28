@@ -28,15 +28,16 @@
       </div>
     <% end %>
   </div>
-  <div class="span6">  
-    <label>How was this course?</label>
-      <%= f.text_area :review_content, rows:15, class:"input-xlarge"%>
+  <div class="span6">
+    <%= f.text_field :author, placeholder:"Reviewer Name (optional)", class:"input-xlarge" %>  
+    <br><br>
+    <%= f.text_area :review_content, rows:15, class:"input-xlarge", placeholder:"How was this course?"%>
   </div>  
 </div>
 <div class="row">
   <div class="span4 offset4">
     <% for criterionIndex in 0..criteria.size-1 %>
-      <%= f.hidden_field criteria[criterionIndex] %>
+      <%= f.hidden_field criteria[criterionIndex], value:"0" %>
     <% end %>
     <%= f.hidden_field :course_meta_id %>
     <%= f.submit "Submit", class:"btn btn-primary btn-block btn-large" %>

@@ -51,4 +51,8 @@ FactoryGirl.define do
     abbr {generate(:uniqueString)}
     name {generate(:uniqueString)}
   end
+
+  factory :course_meta do
+    course_name "Intro to Compsci"
+  end
 end
