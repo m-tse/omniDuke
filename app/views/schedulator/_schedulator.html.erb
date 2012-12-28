@@ -1,8 +1,8 @@
         <%= render partial: "schedulator/nav" %>
         <div class="schedule">
             <%= render partial: "schedulator/timeTable" %>
-            <% for i in (1..16) %>
-                <div class='test<%= i %> dotted-line'></div>
+            <% $timeStrs.each do |time| %>
+                <div class='<%= time %> dotted-line'></div>
             <% end %>
             <% $days.each do |day| %>
                 <div class="daySlot <%= day %>">

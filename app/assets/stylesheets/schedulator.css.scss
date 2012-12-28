@@ -1,12 +1,6 @@
 
-.redBack {
-    position:absolute;
-    height:35px;
-    background-color: red;
-    bottom:0px;
-}
 
-table thead th {
+table thead th.timetable {
 	position: relative;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -20,11 +14,16 @@ table thead th {
 	background-color: red;
 }
 
-/* CLASS LIST STYLING */
+/* SIDE MENU STYLING */
 
-.classList {
+.sideMenu {
+	margin-left: 10px;
+	margin-top: -15px;
+}
+
+#class-list {
+	height:470px;
 	background-color:#99FFFF;
-	height:400px;
 	overflow: scroll;
 }
 
@@ -37,16 +36,20 @@ div .click-section {
 
 /* SCHEDULATOR STYLING */
 
+#schedulatorContainer {
+	margin-top: -15px;
+}
 
 .schedule {
-	background-color:#33FFFF;
-	height:320px;
+	position: relative;
+	background-color:#FFFFFF;
+	height:470px;
 }
 
 .daySlot {
 	position: relative;
 	background-color:#FFFFFF;
-	height:35px;
+	height:58px;
 	top:10px;
 	border-right-style: solid;
 	border-bottom-style: solid;
@@ -54,11 +57,56 @@ div .click-section {
 	border-color: black;
 }
 
-.dayName {}
+.dayName {
+	position: relative;
+	top:38px;
+	left:2px;
+}
 
 .Sun {
 	border-top-width: 1px;
 	border-top-style: solid;
+}
+
+
+/* TIME SLOT STYLING */
+
+table.ts-content {
+	width:100%;
+
+}
+
+table.ts-content thead tr th {
+	background-color: #CC0000;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    -moz-border-top-left-radius:5px;
+    -moz-border-top-right-radius:5px;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -o-border-top-left-radius:5px;
+    -o-border-top-right-radius:5px;
+    font-size: xx-small;
+    color: #FFFFFF;
+}
+
+table.ts-content tbody tr td {
+    font-weight: bold;
+    font-size: xx-small;
+    color: #FFFFFF;
+}
+
+
+.timeslot {
+    position:absolute;
+    height:58px;
+    background-color: #FF3333;
+    bottom:0px;
+    border: none;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -o-border-radius:5px;
 }
 
 /* NAV STYLING */
@@ -100,109 +148,80 @@ a.schedulator-link {
 }
 */
 
+.time-string {
+	position: absolute;
+	top:-7px;
+	left:-2em;
+	font-size: small;
+}
 
 .dotted-line {
+	position: absolute;
 	border-right-style: dotted;
 	border-right-width: 1px;
-	height: 275px;
+	height: 450px;
+	color: red;	
 	z-index: 1000;
 }
 
 
-.test1 { /* 8AM */
-	position:absolute;
-	color: red;	
-	margin-left:50px;
+.eightAM {
+	margin-left:53px;
 }
 
-.test2 { /* 8AM to 9AM */
-	position:absolute;
-	color: red;	
-	margin-left:108px;
+.nineAM { 
+	margin-left:118px;
 }
 
-.test3 { /* 9AM to 10AM */
-	position:absolute;
-	color: red;	
-	margin-left:165px;
+.tenAM { 
+	margin-left:183px;
 }
 
-.test4 { /* 10AM to 11AM */
-	position:absolute;
-	color: red;	
-	margin-left:231px;
+.elevenAM {
+	margin-left:248px;
 }
 
-.test5 { /* 11AM to 12PM */
-	position:absolute;
-	color: red;	
-	margin-left:297px;
+.twelvePM { 
+	margin-left:313px;
 }
 
-.test6 { /* 12PM to 1PM */	
-	position:absolute;
-	color: red;	
-	margin-left:363px;
+.onePM { 
+	margin-left:378px;
 }
 
-.test7 { /* 1PM to 2PM */
-	position:absolute;
-	color: red;	
-	margin-left:420px;
+.twoPM { 
+	margin-left:443px;
 }
 
-.test8 { /* 2PM to 3PM */
-	position:absolute;
-	color: red;	
-	margin-left:477px;
+.threePM { 
+	margin-left:508px;
 }
 
-.test9 { /* 3PM to 4PM */
-	position:absolute;
-	color: red;	
-	margin-left:534px;
+.fourPM { 
+	margin-left:573px;
 }
 
-.test10 { /* 4PM to 5PM */
-	position:absolute;
-	color: red;	
-	margin-left:591px;
+.fivePM { 
+	margin-left:638px;
 }
 
-.test11 { /* 5PM to 6PM */
-	position:absolute;
-	color: red;	
-	margin-left:648px;
+.sixPM { 
+	margin-left:703px;
 }
 
-.test12 { /* 6PM to 7PM */
-	position:absolute;
-	color: red;	
-	margin-left:705px;
+.sevenPM { 
+	margin-left:768px;
 }
 
-.test13 { /* 7PM to 8PM */
-	position:absolute;
-	color: red;	
-	margin-left:762px;
+.eightPM { 
+	margin-left:833px;
 }
 
-.test14 { /* 8PM to 9PM */
-	position:absolute;
-	color: red;	
-	margin-left:819px;
+.ninePM { 
+	margin-left:898px;
 }
 
-.test15 { /* 9PM to 10PM */
-	position:absolute;
-	color: red;	
-	margin-left:876px;
+.tenPM {
+	margin-left:963px;
 }
-
-.test16 { /* 10PM */
-	position:absolute;
-	color: red;	
-	margin-left:942px;
-}
-
 

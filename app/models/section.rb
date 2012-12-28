@@ -32,6 +32,10 @@ class Section < ActiveRecord::Base
       return timeSlotToStr(times) 
   end
 
+  def getTimeSlotStrFormatted
+      time = String.new(self.time_slot.aces_value.split(" ",2)[1])
+      return time
+  end
 
   def dayToAbbr(dayName)
       if dayName.start_with?("T")
@@ -66,9 +70,5 @@ class Section < ActiveRecord::Base
       end
       return daysStrArray
   end
-
-
-
-
 
 end

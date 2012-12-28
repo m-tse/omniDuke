@@ -37,22 +37,21 @@ end
 
 
 def writeToCSS(filename, tinfo)
-    eightam = 50
-    nineam = 108
-    tenam = 165
-    elevenam = 231
-    twelvepm = 297
-    onepm = 363
-    twopm = 420
-    threepm = 477
-    fourpm = 534
-    fivepm = 591
-    sixpm = 648
-    sevenpm = 705
-    eightpm = 762
-    ninepm = 819
-    tenpm = 876
-    elevenpm = 942
+    eightam = 53
+    nineam = 118
+    tenam = 183
+    elevenam = 248
+    twelvepm = 313
+    onepm = 378
+    twopm = 443
+    threepm = 508
+    fourpm = 573
+    fivepm = 638
+    sixpm = 703
+    sevenpm = 768
+    eightpm = 833
+    ninepm = 898
+    tenpm = 963
     timeMap = {}
     timeMap['8A'] = eightam
     timeMap['9A'] = nineam

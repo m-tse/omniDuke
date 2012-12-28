@@ -1,22 +1,9 @@
             <div class="timeSlots">
                 <table>
-                    <thead>
-                        <th class="pad-left-small">|</th>
-                        <th> 8AM</th><th>|</th>
-                        <th> 9AM</th><th>|</th>
-                        <th>10AM</th><th>|</th>
-                        <th>11AM</th><th>|</th>
-                        <th>12PM</th><th>|</th>
-                        <th> 1PM</th><th>|</th>
-                        <th> 2PM</th><th>|</th>
-                        <th> 3PM</th><th>|</th>
-                        <th> 4PM</th><th>|</th>
-                        <th> 5PM</th><th>|</th>
-                        <th> 6PM</th><th>|</th>
-                        <th> 7PM</th><th>|</th>
-                        <th> 8PM</th><th>|</th>
-                        <th> 9PM</th><th>|</th>
-                        <th>10PM</th><th>|</th>
-                    </thead>
+                    <tr>
+                        <% $times.zip($timeStrs).each do |time, timeStr| %>
+                            <td class="<%= timeStr %> time-string"><%= time %></td>
+                        <% end %>
+                    </tr>
                 </table>            
             </div>
