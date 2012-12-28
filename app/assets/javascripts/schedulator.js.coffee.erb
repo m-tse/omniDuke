@@ -4,8 +4,8 @@ jQuery ->
 loadEventHandlers = ->
     sectionBgColorChanger()
     scheduleNameUpdater()
+    historyHandler()
     handleNavLinkClose()
-
 
 sectionBgColorChanger = ->
     $(".click-section").live('click', (e)->
@@ -26,12 +26,13 @@ historyHandler = ->
         jQuery ->
             $(".updateHistory a").live("click", (e)->
                 history.pushState(null, "", this.href)
+                ###
                 e.preventDefault()
+                ###
             )
             $(window).bind('popstate', ->
-                  $.getScript(location.href)
+                $.getScript(location.href)
             )
-
 
 handleNavLinkClose = ->
     $(".navLinkClose").live('click', (e)->
@@ -45,3 +46,5 @@ handleNavLinkClose = ->
             type:"delete"
         })
     )
+
+

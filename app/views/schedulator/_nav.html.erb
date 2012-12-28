@@ -1,7 +1,7 @@
-<div class="updateHistory">
+<div class="updateHistory updateHeader">
     <ul id="schedulatorNav" class="nav nav-tabs">
             <li id="schedulator-li-<%= current_or_guest_user.current_schedulator.id.to_s %>">
-                <%= link_to "Current", schedulator_current_path(schedulator: current_or_guest_user.current_schedulator, edit: @edit), { remote: true } %>
+                <%= link_to "Untitled", schedulator_current_path(schedulator: current_or_guest_user.current_schedulator, edit: @edit), { remote: true } %>
             </li>
             <% current_or_guest_user.active_schedulators.each do |active| %>
                 <%= render partial: "schedulator/navLink", locals: {schedulator: active} %>

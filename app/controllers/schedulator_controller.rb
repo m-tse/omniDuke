@@ -10,6 +10,7 @@ class SchedulatorController < ApplicationController
             $state = "current"
         end
         @edit = false
+        @name = "Untitled"
         if current_or_guest_user.current_schedulator.nil?
             current_or_guest_user.create_current_schedulator
         end
@@ -21,6 +22,7 @@ class SchedulatorController < ApplicationController
         else  
             respond_to do |format|
                 format.html
+                format.js
             end
         end
     end
@@ -29,16 +31,16 @@ class SchedulatorController < ApplicationController
         $state = "current"
         @edit = true
         @schedulator = Schedulator.find(params[:id])
+        @name = @schedulator.name
+        if @schedulator == Schedulator.last
+            @name = "Untitled"
+        end
         if request.xhr?
             respond_to do |format|
                 format.html { render schedulator_index_path }
                 format.js
             end
         else
-            @name = @schedulator.name
-            if @schedulator == Schedulator.last
-                @name = "This is schedulator#index"
-            end
             respond_to do |format|
                 format.html
             end
@@ -52,16 +54,13 @@ class SchedulatorController < ApplicationController
         end
         $state = "saved"
         @schedulator = Schedulator.find(params[:schedulator])
+        @name = "Saved"
         if request.xhr?
             respond_to do |format|
                 format.html { render schedulator_index_path }
                 format.js
             end
         else 
-            @name = @schedulator.name
-            if @schedulator == Schedulator.last
-                @name = "This is schedulator#index"
-            end
             respond_to do |format|
                 format.html
             end
@@ -72,16 +71,16 @@ class SchedulatorController < ApplicationController
         @edit = false
         $state = "current"
         @schedulator = Schedulator.find(params[:schedulator])
+        @name = @schedulator.name
+        if @schedulator == Schedulator.last
+            @name = "Untitled"
+        end
         if request.xhr?
             respond_to do |format|
                 format.html { render schedulator_index_path }
                 format.js
             end
         else 
-            @name = @schedulator.name
-            if @schedulator == Schedulator.last
-                @name = "This is schedulator#index"
-            end
             respond_to do |format|
                 format.html
             end

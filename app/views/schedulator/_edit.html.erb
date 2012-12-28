@@ -1,7 +1,9 @@
+<% sid = @schedulator.id.to_s %> 
     <div class="row">
         <%= render partial: "schedulator/classList" %>
         <div class="span10" id="schedulatorContainer">
             <% if $state == "saved" %>
+                <% sid = "saved" %>
                 <%= render 'schedulator/saved' %> 
             <% else %> <!-- state is current -->
                 <%= render partial: "schedulator/schedulator", locals: {schedulator:@schedulator}
@@ -14,5 +16,5 @@
     </div>
 
 <script type="text/javascript">
-    $("#schedulator-li-<%= @schedulator.id.to_s %>").addClass("active")
+    $("#schedulator-li-<%= sid %>").addClass("active")
 </script>
