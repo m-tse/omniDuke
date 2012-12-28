@@ -3,8 +3,13 @@
 %>
 <div class="updateHistory">
     <% current_or_guest_user.schedulators.each do |schedulator| %>
-        <h3><%= link_to schedulator.getName, schedulator, {
+        <h3><%= link_to schedulator.getName, {
+                controller: "active_schedulator_relationships",
+                action: "create",
+                schedulator: schedulator.id
+            }, {
                 class: "scheduleNameUpdate",
+                method: :post,
                 remote: true
             } %>
         </h3><br />

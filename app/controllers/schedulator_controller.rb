@@ -70,9 +70,6 @@ class SchedulatorController < ApplicationController
 
     def show_current
         @edit = false
-        if !params[:edit].blank?
-            @edit = true
-        end
         $state = "current"
         @schedulator = Schedulator.find(params[:schedulator])
         if request.xhr?

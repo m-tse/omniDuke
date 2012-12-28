@@ -1,16 +1,14 @@
-        <%= render partial: "schedulator/nav",
-            locals: { active: "current" } 
-        %>
+        <%= render partial: "schedulator/nav" %>
         <div class="schedule">
             <%= render partial: "schedulator/timeTable" %>
             <% for i in (1..16) %>
-                <div class='test<%= i %>'>|</div>
+                <div class='test<%= i %> dotted-line'></div>
             <% end %>
             <% $days.each do |day| %>
                 <div class="daySlot <%= day %>">
                     <div class="dayName"><%= day %></div>
                     <div class="timeSlots">
-                        <% @schedulator.sections.each do |section| %>
+                        <% schedulator.sections.each do |section| %>
                             <% if section.hasDay?(day) %> 
                                 <%= render partial: 'schedulator/timeslot', 
                                 locals: { section: section }

@@ -1,0 +1,2 @@
+$("#schedulator-li-<%= j(@sid.to_s) %>").remove()
+$("#omniContainer").html("").append("<%= j(render partial: 'schedulator/index') %>")

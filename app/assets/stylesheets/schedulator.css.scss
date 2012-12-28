@@ -54,13 +54,24 @@ div .click-section {
 	border-color: black;
 }
 
-.dayName {
-	
-}
+.dayName {}
 
 .Sun {
 	border-top-width: 1px;
 	border-top-style: solid;
+}
+
+/* NAV STYLING */
+
+button.navLinkClose {
+	position: relative;
+	float: right;
+	right: 6px;
+	top: 2px;
+
+}
+
+a.schedulator-link {
 }
 
 /*
@@ -89,6 +100,13 @@ div .click-section {
 }
 */
 
+
+.dotted-line {
+	border-right-style: dotted;
+	border-right-width: 1px;
+	height: 275px;
+	z-index: 1000;
+}
 
 
 .test1 { /* 8AM */

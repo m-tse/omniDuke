@@ -4,11 +4,15 @@
             <% if $state == "saved" %>
                 <%= render 'schedulator/saved' %> 
             <% else %> <!-- state is current -->
-                <%= render partial: "schedulator/schedulator"
+                <%= render partial: "schedulator/schedulator", locals: {schedulator:@schedulator}
                 %>
+                <!--%= link_to "Done", schedulator_index_path(click_flag: "true"), {
+                    class: "btn"
+                } %-->
             <% end %>
-            <%= link_to "Done", schedulator_index_path(click_flag: "true"), {
-                class: "btn"
-            } %>
         </div>
     </div>
+
+<script type="text/javascript">
+    $("#schedulator-li-<%= @schedulator.id.to_s %>").addClass("active")
+</script>
