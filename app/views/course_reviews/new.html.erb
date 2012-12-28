@@ -45,8 +45,8 @@
 </div>
     <% end %>
 <script>
-<!--hacky, I added the first color twice so math works out-->
-var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %>]
+<!--hacky, I added the first and last color twice so math works out-->
+var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %> "<%=color_gradient.last%>"]
 
 <% for criterionIndex in 0..criteria.size-1 %>
 <% for level in 0..10 %>
@@ -61,7 +61,7 @@ $("<%="#"+criteria[criterionIndex]+level.to_s%>").click(
 $("<%="#"+criteria[criterionIndex]+level.to_s%>").hover(
   function(){
   highlightToLeft("<%=criteria[criterionIndex]%>", <%=level%>, 
-    colorLevels[<%=reverseColors[criterionIndex] ? 10-level : level%>]);
+    colorLevels[<%=reverseColors[criterionIndex] ? 11-level : level%>]);
   }, 
   function(){
     unhighlightAll("<%=criteria[criterionIndex]%>", <%=reverseColors[criterionIndex]%>);
@@ -91,7 +91,7 @@ function unhighlightAll(criteria, reverse){
       $(idTag).css("background-color", "whiteSmoke");  
     }
     else{
-      criteriaValueAfterReverse = reverse ? (10-criteriaValue) : criteriaValue;
+      criteriaValueAfterReverse = reverse ? (11-criteriaValue) : criteriaValue;
       $(idTag).css("background-color", colorLevels[criteriaValueAfterReverse]);  
     }
   }
