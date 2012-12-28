@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226225656) do
+ActiveRecord::Schema.define(:version => 20121228074001) do
 
   create_table "bookbag_relationships", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.integer  "usefulness"
     t.integer  "content_quality"
     t.integer  "course_meta_id"
+    t.string   "author"
+    t.float    "average_quality"
+    t.float    "average_difficulty"
   end
 
   create_table "courses", :force => true do |t|
@@ -89,8 +92,9 @@ ActiveRecord::Schema.define(:version => 20121226225656) do
     t.integer  "clarity"
     t.integer  "fairness"
     t.integer  "instructor_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.float    "average_quality"
   end
 
   create_table "instructors", :force => true do |t|

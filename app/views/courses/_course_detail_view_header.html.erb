@@ -1,6 +1,8 @@
 <!-- must have @course from parent view -->
 <div class="page-header">
+  <h3><%= @course.subject.abbr+" "+courseToCode(@course)%></h3>
   <h1><%= @course.name %></h1>
+
   </div>
 
     <ul class="nav nav-pills">
