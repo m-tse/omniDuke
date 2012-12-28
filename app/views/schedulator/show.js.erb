@@ -1,2 +1,2 @@
 $("#omniContainer").html("").append("<%= j(render partial: 'schedulator/edit') %>");
-$("#schedulatorNav").append("<%= j(render partial: 'schedulator/navLink', locals: {schedulator:@schedulator}) %>")
+$("#scheduleName").html("").append("<%= j(@schedulator.name) %>")

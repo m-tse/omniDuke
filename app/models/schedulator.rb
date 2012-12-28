@@ -4,6 +4,7 @@ class Schedulator < ActiveRecord::Base
     has_many :schedule_relationships
     has_many :sections, through: :schedule_relationships
     has_many :schedulator_saved_relationships
+    has_many :active_schedulator_relationships
 
 
     def getName

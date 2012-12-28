@@ -1,0 +1,3 @@
+$("#schedulator-new-nav")
+    .replaceWith("<%= j(render partial: 'schedulator/navLink', locals: {schedulator:@schedulator}) %>" + "<li id='schedulator-new-nav'></li>");
+$("#omniContainer").html("").append("<%= j(render partial: 'schedulator/edit') %>");
