@@ -13,18 +13,18 @@ FactoryGirl.define do
   end
 
   factory :session do
-    season ["spring", "summer", "fall", "winter"].sample
+    season {["spring", "summer", "fall", "winter"].sample}
     year {rand(10)+2000}
   end
   factory :course do
-    name ["Advanced Compsci", "Music for Excellent people", "Biology of Aids", "orgo", "multivariable calculus", "linear algebra"].sample
+    name {Faker::Lorem.sentence}
     new_number {rand(100)+1}
     old_number {rand(300)+1}
   end
 
   factory :section do
-    location  Faker::Address.secondary_address
-    room Faker::Address.secondary_address
+    location  {Faker::Address.secondary_address}
+    room {Faker::Address.secondary_address}
     enrollment 15
     capacity 100
     waitlist_enrollment 0
@@ -44,7 +44,7 @@ FactoryGirl.define do
   end
 
   factory :course_attribute do
-    scrape_value ["Seminar", "(CCI) Cross Cultural Inquiry", "First Year Students Only", "(SS) Social Sciences", "(ALP) Arts, Literature & Performance", "(CZ) Civilizations", "(NS) Natural Sciences", "(QS) Quantitative Studies", "(EI) Ethical Inquiry", "(STS) Science, Technology, and Society", "(FL) Foreign Language", "(R) Research", "(W) Writing", "Service Learning Course", "Seminar"].sample
+    scrape_value {["Seminar", "(CCI) Cross Cultural Inquiry", "First Year Students Only", "(SS) Social Sciences", "(ALP) Arts, Literature & Performance", "(CZ) Civilizations", "(NS) Natural Sciences", "(QS) Quantitative Studies", "(EI) Ethical Inquiry", "(STS) Science, Technology, and Society", "(FL) Foreign Language", "(R) Research", "(W) Writing", "Service Learning Course", "Seminar"].sample}
   end
 
   factory :subject do

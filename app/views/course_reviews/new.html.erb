@@ -1,4 +1,6 @@
-<h1>Review this course!</h1>
+<div class="page-header">
+  <h1>Review for: <%=CourseMeta.find(@course_meta_id).course_name %></h1>
+</div>
 
 
 <% criteria=["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty",
@@ -7,41 +9,40 @@
   'Lab Difficulty', 'Midterm Difficulty', 'Final Difficulty', 'Out of Class Work Time'] %>
   <% reverseColors=[false,false,false,true,true,true,true,true]%>
 
-<form class='form-horizontal'>
-<% for index in (0..criteria.size-1) %>
-  <div class="control-group">
-    <label class="control-label"><%=criteriaLabels[index]%></label>
-    <div class="controls">
-      <div class="btn-group">
-        <button class="rating_meter <%= reverseColors[index]==true ? "green" : "red" %>" 
-          type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
-        <% for level in (1..10) %>
-          <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
-</form>
 
 <%= form_for @review, html:{class:"form-horizontal"} do |f| %>
-  <% for criterionIndex in 0..criteria.size-1 %>
-    <%= f.hidden_field criteria[criterionIndex] %>
-  <% end %>
-  <div class="control-group">
-    <label class="control-label">Review Content</label>
-    <div class="controls">
-      <%= f.text_area :review_content, rows:5, class:"input-xlarge"%>
-    </div>
+<div class="row">
+  <div class="span6">
+    <% for index in (0..criteria.size-1) %>
+      <div class="control-group">
+        <label class="control-label"><%=criteriaLabels[index]%></label>
+        <div class="controls">
+          <div class="btn-group">
+            <button class="rating_meter <%= reverseColors[index]==true ? "green" : "red" %>" 
+              type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
+            <% for level in (1..10) %>
+              <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%= f.hidden_field :course_meta_id %>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Submit", class:"btn btn-primary" %>
-    </div>
+  <div class="span6">  
+    <label>How was this course?</label>
+      <%= f.text_area :review_content, rows:15, class:"input-xlarge"%>
+  </div>  
+</div>
+<div class="row">
+  <div class="span4 offset4">
+    <% for criterionIndex in 0..criteria.size-1 %>
+      <%= f.hidden_field criteria[criterionIndex] %>
+    <% end %>
+    <%= f.hidden_field :course_meta_id %>
+    <%= f.submit "Submit", class:"btn btn-primary btn-block btn-large" %>
   </div>
-<% end %>
-
+</div>
+    <% end %>
 <script>
 <!--hacky, I added the first color twice so math works out-->
 var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %>]

@@ -1,5 +1,5 @@
 <!-- must pass in a course variable with the course to have a ratin-->
-
+<% if course.course_meta.overall_quality!=0&&course.course_meta.overall_difficulty!=0 %>
 <% colorLevels = color_gradient;
 overallQuality = course.course_meta.overall_quality; 
 overallDifficulty = course.course_meta.overall_difficulty;
@@ -10,3 +10,4 @@ difficultyColorIndex = overallDifficulty.ceil;
 	class:"rating_button", style:"background-color:"+colorLevels[qualityColorIndex] %>
 <%= link_to "Difficulty "+overallDifficulty.to_s[0,4]+"/10", course_reviews_path(course.id),
 	 class:"rating_button", style:"background-color:"+colorLevels[10-difficultyColorIndex]%>
+<% end %>	
