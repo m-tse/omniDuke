@@ -1,34 +1,28 @@
 class BookbagRelationshipController < ApplicationController
 
   def create
-  	if !params[:section].blank?
-  	  @section = Section.find(params[:section])
-  	  if !current_or_guest_user.sections.include?(@section)
-  	  	current_or_guest_user.sections << @section
+  	if !params[:course].blank?
+  	  @course = Course.find(params[:course])
+  	  if !current_or_guest_user.courses.include?(@course)
+  	  	current_or_guest_user.courses << @course
   	  end
-      if !params[:course].blank?
-        @course = Course.find(params[:course])
-        respond_to do |format|
-          format.html { redirect_to @course }
-          format.js
-       end
-      end
+      respond_to do |format|
+        format.html { redirect_to @course }
+        format.js
+     end
   	end
     
   end
 
   def destroy 
-    if !params[:section].blank?
-      @section = Section.find(params[:section])
-      if current_or_guest_user.sections.include?(@section)
-        current_or_guest_user.sections.delete(@section)
+    if !params[:course].blank?
+      @course = Course.find(params[:course])
+      if current_or_guest_user.courses.include?(@course)
+        current_or_guest_user.courses.delete(@course)
       end
-      if !params[:course].blank?
-        @course = Course.find(params[:course])
-        respond_to do |format|
-          format.html { redirect_to @course }
-          format.js
-        end
+      respond_to do |format|
+        format.html { redirect_to @course }
+        format.js
       end
     end
   end

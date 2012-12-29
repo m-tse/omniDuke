@@ -1,8 +1,16 @@
-        <div class="classList span2">
-            <!-- FILL WITH SECTIONS -->
-            <% current_or_guest_user.sections.each do |section| %>
-                <%= render partial: 'schedulator/section',
-                    locals: { section: section }
-                %>
-            <% end %>
-        </div>
+        <div class="sideMenu span3">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="">Classes</a></li>
+                <li><a href="">Saved</a></li>
+                <li><a href="">Search</a></li>
+            </ul>
+            <div id="class-list">
+                <!-- FILL WITH SECTIONS -->
+                <% current_or_guest_user.courses.each do |course| %>
+                    <%= render partial: 'schedulator/course',
+                        locals: { course: course }
+                    %>
+                <% end %>
+            </div>
+        </div>        
+

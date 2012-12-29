@@ -1,7 +1,6 @@
 <% sid = @schedulator.id.to_s %> 
     <div class="row">
-        <%= render partial: "schedulator/classList" %>
-        <div class="span10" id="schedulatorContainer">
+        <div class="span9" id="schedulatorContainer">
             <% if $state == "saved" %>
                 <% sid = "saved" %>
                 <%= render 'schedulator/saved' %> 
@@ -13,6 +12,7 @@
                 } %-->
             <% end %>
         </div>
+        <%= render partial: "schedulator/classList" %>
     </div>
 
 <script type="text/javascript">

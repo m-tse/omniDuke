@@ -1,2 +1,2 @@
-$("#section-<%= j(params[:section]) %>").html("").append(
-	"<%= j(render partial: 'bookbag_relationship/removeSection', locals: {section:@section}) %>")
+$("#bookbag-course-<%= j(params[:course]) %>").html("").append(
+	"<%= j(render partial: 'bookbag_relationship/removeCourse', locals: {course:@course}) %>")

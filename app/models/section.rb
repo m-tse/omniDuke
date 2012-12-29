@@ -1,10 +1,17 @@
 class Section < ActiveRecord::Base
-  attr_accessible :location, :enrollment, :capacity, :waitlist_enrollment, :waitlist_capacity, :class_number, :description, :synopsis, :parsedUnits, :name, :list_description, :room, :units, :career, :grading, :campus, :required_sections
+  attr_accessible :location, :enrollment, 
+                  :capacity, :waitlist_enrollment, 
+                  :waitlist_capacity, :class_number, 
+                  :description, :synopsis, 
+                  :parsedUnits, :name, 
+                  :list_description, :room, 
+                  :units, :career, 
+                  :grading, :campus, 
+                  :required_sections, :abbr
 #  validates :suffix, :section_type, :location, :enrollment, :capacity, :waitlist_enrollment, :waitlist_capacity, :class_number, presence:true
 
   has_and_belongs_to_many :course_attributes
   has_and_belongs_to_many :instructors
-  has_many :bookbag_relationship
   has_many :schedulator_relationship
   belongs_to :course
   belongs_to :time_slot
@@ -24,6 +31,10 @@ class Section < ActiveRecord::Base
       return timeSlotToStr(times) 
   end
 
+  def getTimeSlotStrFormatted
+      time = String.new(self.time_slot.aces_value.split(" ",2)[1])
+      return time
+  end
 
   def dayToAbbr(dayName)
       if dayName.start_with?("T")
@@ -58,9 +69,5 @@ class Section < ActiveRecord::Base
       end
       return daysStrArray
   end
-
-
-
-
 
 end

@@ -37,43 +37,23 @@ end
 
 
 def writeToCSS(filename, tinfo)
-    eightam = 50
-    nineam = 108
-    tenam = 165
-    elevenam = 231
-    twelvepm = 297
-    onepm = 363
-    twopm = 420
-    threepm = 477
-    fourpm = 534
-    fivepm = 591
-    sixpm = 648
-    sevenpm = 705
-    eightpm = 762
-    ninepm = 819
-    tenpm = 876
-    elevenpm = 942
+    helperFilename = "#{Rails.root}/lib/assets/timeCssInfo.txt"
+    timeKeys = [
+        '8A', '9A', '10A',
+        '11A', '12P', '1P', 
+        '2P', '3P', '4P',
+        '5P', '6P', '7P',
+        '8P', '9P', '10P' 
+    ]  
+    timePositions = Array.new
     timeMap = {}
-    timeMap['8A'] = eightam
-    timeMap['9A'] = nineam
-    timeMap['10A'] = tenam
-    timeMap['11A'] = elevenam
-    timeMap['12P'] = twelvepm
-    timeMap['1P'] = onepm
-    timeMap['2P'] = twopm
-    timeMap['3P'] = threepm
-    timeMap['4P'] = fourpm
-    timeMap['5P'] = fivepm
-    timeMap['6P'] = sixpm
-    timeMap['7P'] = sevenpm
-    timeMap['8P'] = eightpm
-    timeMap['9P'] = ninepm
-    timeMap['10P'] = tenpm
-    timeKeys = Array.new
-
-    timeMap.keys.each do |key|
-        timeKeys << key
+    File.open(helperFilename, 'r').each_line do |line|
+        timePositions << line.chomp.to_i
     end
+    timeKeys.zip(timePositions).each do |key,value|
+        timeMap[key] = value
+    end
+
     # e.g. range: [1: '8A']
     range = Array.new # Indexes for time keys
     offsets = Array.new
@@ -133,7 +113,7 @@ end
 def removeFileIfExists(filename)
     if File.exists? filename
         File.delete(filename)
-        puts "Overwriting previous timeslot.css.scss"
+        puts "Overwriting previous"
     end
 end
 

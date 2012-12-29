@@ -2,19 +2,9 @@ jQuery ->
     loadEventHandlers()
 
 loadEventHandlers = ->
-    sectionBgColorChanger()
-    scheduleNameUpdater()
     historyHandler()
     handleNavLinkClose()
-
-sectionBgColorChanger = ->
-    $(".click-section").live('click', (e)->
-        section = $(this)
-        if section.hasClass('bg-light-green') 
-            section.removeClass('bg-light-green')
-        else
-            section.addClass('bg-light-green')
-    )
+    sidemenuCourseHandler()
 
 scheduleNameUpdater = ->
     $(".scheduleNameUpdate").live("click", (e)->
@@ -47,4 +37,13 @@ handleNavLinkClose = ->
         })
     )
 
-
+sidemenuCourseHandler = ->
+    $(".sidemenu-course").live('click', (e)->
+        courseDiv = $(this)
+        if courseDiv.children(".course-header").hasClass("bg-dark-green")
+            courseDiv.children(".course-header").removeClass("bg-dark-green")
+            courseDiv.children(".sidemenu-sections").hide('slow')
+        else
+            courseDiv.children(".course-header").addClass("bg-dark-green")
+            courseDiv.children(".sidemenu-sections").show('slow')
+    )

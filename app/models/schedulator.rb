@@ -15,7 +15,7 @@ class Schedulator < ActiveRecord::Base
         end
     end
 
-
+    # Set $LOGGING true for debugging
     $LOGGING = false
     $filename = "#{Rails.root}/timeConflict.log"
     $log = nil

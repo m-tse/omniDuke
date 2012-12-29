@@ -1,0 +1,19 @@
+<!-- Requires locals: {course:@course} -->
+<div id="sidemenu-course-<%= course.id %>" class="sidemenu-course">
+    <table class="course-header"><thead><tr><th>
+        <%= course.subject.abbr + course.new_number %>
+        <br>
+        <%= course.truncatedName %>
+        <br>
+    </th></tr></thead></table>
+
+    <div class="sidemenu-sections">
+        <% course.sections.each do |section| %>
+            <div class="sidemenu-section" id="sidemenu-sections-<%= section.id %>">
+                <%= render partial: "schedulator/section", 
+                    locals: {section:section}
+                %>
+            </div>
+        <% end %>
+    </div>
+</div>

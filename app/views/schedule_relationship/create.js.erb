@@ -4,11 +4,9 @@ days = section.data("days");
 
 for (_i = 0, _len = days.length; _i < _len; _i++) {
   day = days[_i];
-  var divArr, divClass, timeslot;
+  var divClass;
   divClass = ['.', day, ' .timeSlots'].join("");
-  timeslot = section.data("timeslot");
-  divArr = ['<div class="redBack ts', timeslot, '"></div>'];
-  $(divClass).append(divArr.join(""));
+  $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {section:@section}) %>");
 }
 
 section.replaceWith("<%= j(render partial: 'schedulator/removeSection', locals: { section: @section }) %>")

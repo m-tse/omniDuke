@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   belongs_to :session
   has_many :bookbag_relationships
-  has_many :sections, through: :bookbag_relationships, uniq: :true
+  has_many :courses, through: :bookbag_relationships, uniq: :true
   has_many :schedulator_saved_relationships
   has_many :schedulators, through: :schedulator_saved_relationships, uniq: true 
   has_many :active_schedulator_relationships
