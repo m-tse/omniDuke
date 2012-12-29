@@ -2,9 +2,9 @@ jQuery ->
     loadEventHandlers()
 
 loadEventHandlers = ->
-    scheduleNameUpdater()
     historyHandler()
     handleNavLinkClose()
+    sidemenuCourseHandler()
 
 scheduleNameUpdater = ->
     $(".scheduleNameUpdate").live("click", (e)->
@@ -37,4 +37,13 @@ handleNavLinkClose = ->
         })
     )
 
-
+sidemenuCourseHandler = ->
+    $(".sidemenu-course").live('click', (e)->
+        courseDiv = $(this)
+        if courseDiv.children(".course-header").hasClass("bg-dark-green")
+            courseDiv.children(".course-header").removeClass("bg-dark-green")
+            courseDiv.children(".sidemenu-sections").hide('slow')
+        else
+            courseDiv.children(".course-header").addClass("bg-dark-green")
+            courseDiv.children(".sidemenu-sections").show('slow')
+    )

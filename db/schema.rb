@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228091433) do
+ActiveRecord::Schema.define(:version => 20121228233004) do
 
   create_table "active_schedulator_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(:version => 20121228091433) do
   end
 
   create_table "bookbag_relationships", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
-    t.integer  "section_id"
+    t.integer  "course_id"
+    t.boolean  "viewing",    :default => false
   end
 
   create_table "course_attributes", :force => true do |t|

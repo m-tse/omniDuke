@@ -5,9 +5,8 @@
     <% divBg = "red" %>
 <% end %>
     <%= link_to raw("
-            <div class='click-section #{divBg}'>" + section.name + section.time_slot.aces_value + 
+            <div class='click-section #{divBg}'>" + section.time_slot.aces_value + 
             '</div>
-            <br />
         '), {
             controller: "schedule_relationship",
             action: "destroy",

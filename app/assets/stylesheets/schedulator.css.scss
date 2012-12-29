@@ -6,12 +6,20 @@ table thead th.timetable {
 	padding-right: 5px;
 }
 
+.bg-dark-green {
+    background-color: #33FF66;  
+}
+
 .bg-light-green {
 	background-color: #33FF99;	
 }
 
 .red { /* FOR TESTING */ 
 	background-color: red;
+}
+
+
+#omniContainer {
 }
 
 /* SIDE MENU STYLING */
@@ -24,7 +32,24 @@ table thead th.timetable {
 #class-list {
 	height:470px;
 	background-color:#99FFFF;
-	overflow: scroll;
+	overflow-y: scroll;
+    font-size: small;
+}
+
+.sidemenu-course {
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.sidemenu-sections {
+    /* Enable display through javascript */
+    display:none;
+}
+
+.sidemenu-section {
+    border-style: dotted;
+    border-width: 1px;
 }
 
 div .click-section {
@@ -32,6 +57,13 @@ div .click-section {
 	border: dotted;
 	border-width: 1px;
 	border-color: red;
+}
+
+.sideMenu ul.nav-tabs li a {
+    /*
+	font-size: small;
+	padding: 8px 5px 8px 5px;
+    */
 }
 
 /* SCHEDULATOR STYLING */
@@ -86,7 +118,8 @@ table.ts-content thead tr th {
     -webkit-border-top-right-radius:5px;
     -o-border-top-left-radius:5px;
     -o-border-top-right-radius:5px;
-    font-size: xx-small;
+    font-size: 53%;
+    font-weight: bold;
     color: #FFFFFF;
 }
 
@@ -122,32 +155,6 @@ button.navLinkClose {
 a.schedulator-link {
 }
 
-/*
-.Mon {
-	top:20px;
-}
-
-.Tue {
-	top:30px;
-}
-
-.Wed {
-	top:40px;
-}
-
-.Thu {
-	top:50px;
-}
-
-.Fri {
-	top:60px;
-}
-
-.Sat {
-	top:70px;
-}
-*/
-
 .time-string {
 	position: absolute;
 	top:-7px;
@@ -156,6 +163,7 @@ a.schedulator-link {
 }
 
 .dotted-line {
+    display:block;
 	position: absolute;
 	border-right-style: dotted;
 	border-right-width: 1px;
@@ -163,65 +171,3 @@ a.schedulator-link {
 	color: red;	
 	z-index: 1000;
 }
-
-
-.eightAM {
-	margin-left:53px;
-}
-
-.nineAM { 
-	margin-left:118px;
-}
-
-.tenAM { 
-	margin-left:183px;
-}
-
-.elevenAM {
-	margin-left:248px;
-}
-
-.twelvePM { 
-	margin-left:313px;
-}
-
-.onePM { 
-	margin-left:378px;
-}
-
-.twoPM { 
-	margin-left:443px;
-}
-
-.threePM { 
-	margin-left:508px;
-}
-
-.fourPM { 
-	margin-left:573px;
-}
-
-.fivePM { 
-	margin-left:638px;
-}
-
-.sixPM { 
-	margin-left:703px;
-}
-
-.sevenPM { 
-	margin-left:768px;
-}
-
-.eightPM { 
-	margin-left:833px;
-}
-
-.ninePM { 
-	margin-left:898px;
-}
-
-.tenPM {
-	margin-left:963px;
-}
-

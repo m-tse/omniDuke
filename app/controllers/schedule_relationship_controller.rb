@@ -7,6 +7,9 @@ class ScheduleRelationshipController < ApplicationController
             if !@schedulator.sections.include?(@section)
                 if @schedulator.conflictWith?(@section) # check for time conflict
                     # CONFLICT RESOLUTION
+                    raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
+
+                    
                     @schedulator.sections << @section
                     srel = ScheduleRelationship.where("""
                         schedulator_id = #{@schedulator.id} 

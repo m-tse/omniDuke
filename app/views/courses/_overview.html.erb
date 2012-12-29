@@ -9,7 +9,7 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Bookbag</th>
+      <!--th>Bookbag</th-->
       <th>Name</th>
       <th>Times</th>
       <th>Instructor(s)</th>
@@ -22,9 +22,9 @@
     <% for section in @course.sections %>
     <tr>
       <td>
-        <%= render partial: 'courses/section',
+        <!--%= render partial: 'courses/section',
             locals: { section: section } 
-        %>
+        %-->
       </td>      
       <td>
         <%= section.list_description %>
