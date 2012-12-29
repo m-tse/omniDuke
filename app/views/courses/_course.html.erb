@@ -2,10 +2,9 @@
 
 <div class = "list_courses">
     
-    <h3 class="list_course_title course_link"><%= link_to courseToString(course), course_path(course)  %></h3>
+    <h3 class="list_course_title course_link"><%= link_to courseToString(course), course_path(course)  %>
+        <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course, class_name:"course_rating_in_omnisearch"} %></h3>
     <div class="list_course_content">
-        <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course} %>
-        <br>
     <strong>Professors:</strong> <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
     
     <br>

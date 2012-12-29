@@ -2,23 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+/*CSS for the omniSearch results*/
 .list_courses{
-padding-bottom: 10px;
+
 h3{
-line-height: 21px;
+line-height: 28px;
+margin-top: 0px;
+margin-bottom:0px;
 }
 .list_course_content{
-#padding-left: 10px;
+
 }
 
-#padding-bottom:20px; 
 }
 
+
+
+
+
+/*CSS for the list of courses in subjects index*/
 .list_courses_in_subject{
 	
 
 	h3{
-	line-height: 10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	line-height: 28px;
 	}
 }
+
