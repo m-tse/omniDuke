@@ -1,7 +1,9 @@
 <div class = "list_courses_in_subject">
     
+
     <div class="row">
         <h3 class="list_course_title course_link span10"><%= link_to courseToStringWithoutSubject(course), course_path(course)  %>
+            <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course, class_name:"course_rating_in_subject_list"} %>
         </h3>
         <div class="span2" id="bookbag-course-<%= course.id.to_s %>">
             <% if current_or_guest_user.courses.include?(course) %>
@@ -15,6 +17,7 @@
             <% end %>
         </div>
     </div>
+
 
         <div class="list_course_content">
 
@@ -33,7 +36,7 @@
                 </div>
 
                 <div class="span4">
-                    <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course} %>
+                    
                 </div>
             </div>
 

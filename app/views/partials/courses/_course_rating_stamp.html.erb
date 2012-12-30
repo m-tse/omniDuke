@@ -7,7 +7,7 @@ qualityColorIndex = overallQuality.ceil;
 difficultyColorIndex = overallDifficulty.ceil;
 %>
 <%= link_to "Quality "+overallQuality.to_s[0,4]+"/10", course_reviews_path(course.id), 
-	class:"rating_button", style:"background-color:"+colorLevels[qualityColorIndex] %>
+	class:"default_rating_button "+class_name, style:"background-color:"+colorLevels[qualityColorIndex] %>
 <%= link_to "Difficulty "+overallDifficulty.to_s[0,4]+"/10", course_reviews_path(course.id),
-	 class:"rating_button", style:"background-color:"+colorLevels[10-difficultyColorIndex]%>
+	 class:"default_rating_button "+class_name, style:"background-color:"+colorLevels[10-difficultyColorIndex]%>
 <% end %>	
