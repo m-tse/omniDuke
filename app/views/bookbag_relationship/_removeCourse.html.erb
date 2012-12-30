@@ -2,7 +2,7 @@
         <%= link_to raw("<button class='btn btn-danger'>Remove</button>"), {
                 controller: "bookbag_relationship",
                 action: "destroy",
-                id: getBookbagRelationshipId(current_or_guest_user, course),
+                id: getBookbagRelationship(current_or_guest_user, course).id,
                 course: course.id
             }, {
                 method: :delete,
