@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs">
+    <li id="side-nav-li-classes"><%= link_to "Classes", "", {data: {sidelink:"classes"}, class: "side-nav-link"} %></li>
+    <li id="side-nav-li-saved"><%= link_to "Saved", "", {data: {sidelink:"saved"}, class: "side-nav-link"} %> 
+
+    <!--%=schedulator_saved_path(schedulator: @schedulator.id, edit: @edit), { remote: true } %-->
+    </li>
+    <li id="side-nav-li-classes"><%= link_to "Search", "", {data: {sidelink: "search"}, class: "side-nav-link"} %></li>
+</ul>
+<script type="text/javascript">
+    <% if $sideState == "saved" %> 
+        $("#side-nav-li-saved").addClass("active") 
+    <% elsif $sideState == "search" %>
+        $("#side-nav-li-search").addClass("active") 
+    <% else %>
+        $("#side-nav-li-classes").addClass("active") 
+    <% end %>
+</script>

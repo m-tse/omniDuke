@@ -1,9 +1,12 @@
-<%= render partial: "schedulator/nav",
-    locals: { active: "saved" }
-%>
-<div class="updateHistory updateHeader">
+<%= render partial: "schedulator/side-nav" %>
+<div id="saved-schedules" class="updateHistory updateHeader">
     <% current_or_guest_user.schedulators.each do |schedulator| %>
-        <h3><%= link_to schedulator.getName, {
+        <% if schedulator == current_or_guest_user.schedulators.first %>
+            <div class="first-sidemenu-schedule-name">
+        <% else %>
+            <div class="sidemenu-schedule-name">
+        <% end %>
+            <%= link_to schedulator.getName, {
                 controller: "active_schedulator_relationships",
                 action: "create",
                 schedulator: schedulator.id
@@ -12,6 +15,7 @@
                 method: :post,
                 remote: true
             } %>
-        </h3><br />
+            <button type="button" class="close right">&times;</button> 
+        </div>
     <% end %>
 </div>

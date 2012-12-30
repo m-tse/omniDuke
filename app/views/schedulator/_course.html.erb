@@ -1,13 +1,21 @@
 <!-- Requires locals: {course:@course} -->
-<div id="sidemenu-course-<%= course.id %>" class="sidemenu-course">
-    <table class="course-header"><thead><tr><th>
-        <%= course.subject.abbr + course.new_number %>
-        <br>
-        <%= course.truncatedName %>
-        <br>
-    </th></tr></thead></table>
+<% @bookbagRel = getBookbagRelationship(current_or_guest_user, course) %>
+<% sectionStyle = "display:none;" %>
+<% headerBg = "" %>
+<% view = true %>
+<% if @bookbagRel.viewing %>
+    <% headerBg = "bg-dark-green" %> 
+    <% sectionStyle = "display:block;" %>
+    <% view = false %>
+<% end %>
 
-    <div class="sidemenu-sections">
+<div id="sidemenu-course-<%= course.id %>" class="sidemenu-course">
+    <div class="course-header <%= headerBg %>" data-id=<%= @bookbagRel.id %>>
+        <%= course.subject.abbr + course.new_number %>
+        <%= course.name %>
+    </div>
+
+    <div class="sidemenu-sections" style="<%= sectionStyle %>">
         <% course.sections.each do |section| %>
             <div class="sidemenu-section" id="sidemenu-sections-<%= section.id %>">
                 <%= render partial: "schedulator/section", 

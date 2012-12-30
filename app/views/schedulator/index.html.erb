@@ -1,13 +1,1 @@
-<title>OmniDuke Schedulator</title>
-<% if false %>
-<h1 id="scheduleName"><%= @name %></h1>
-<% end %>
-<br />
-
-<div class="container" id="omniContainer">
-    <% if @edit %>
-        <%= render partial: "schedulator/edit" %>   
-    <% else %>
-        <%= render partial: "schedulator/index" %>   
-    <% end %>
-</div>
+<%= render partial: "schedulator/master_html" %>

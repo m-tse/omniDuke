@@ -13,11 +13,11 @@ $logger = Logging.logger['scrape-logger'] #any name can go in here
 
 namespace :db do
   desc "Scrape data from ACES and enter it into the database"
-  task populate: :environment do
+  task scrape: :environment do
 
-#    spider = Spider::Google.new
-#    spider.login()
-#    spider.search()
+     spider = Spider::Google.new
+     spider.login()
+     spider.search()
   end
 end
 
@@ -25,7 +25,7 @@ $wait_time = 10
 $username = ''
 $password = ''
 #put the path of the elementsIds.temp file here
-$projectPath = ''
+$projectPath = "#{Rails.root}/elementIds.temp"
 
 
 Capybara.run_server = false
@@ -227,6 +227,8 @@ module Spider
               sectionids = Array.new
               for element in sectionElements
                   sectionids << element[:id]
+                  puts element
+                  return
               end
               if sectionids.length == 0
                   puts "RAISE ERROR: Sections length is 0"

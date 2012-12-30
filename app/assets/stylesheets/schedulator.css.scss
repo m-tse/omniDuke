@@ -1,5 +1,4 @@
 
-
 table thead th.timetable {
 	position: relative;
 	padding-left: 5px;
@@ -18,18 +17,19 @@ table thead th.timetable {
 	background-color: red;
 }
 
-
 #omniContainer {
+    position: relative;
+    top: 20px;
 }
 
 /* SIDE MENU STYLING */
 
-.sideMenu {
+#side-menu {
 	margin-left: 10px;
 	margin-top: -15px;
 }
 
-#class-list {
+#side-content {
 	height:470px;
 	background-color:#99FFFF;
 	overflow-y: scroll;
@@ -44,7 +44,6 @@ table thead th.timetable {
 
 .sidemenu-sections {
     /* Enable display through javascript */
-    display:none;
 }
 
 .sidemenu-section {
@@ -65,6 +64,35 @@ div .click-section {
 	padding: 8px 5px 8px 5px;
     */
 }
+
+#saved-schedules {
+    border-style: solid;
+    border-color: #D0D0D0;
+    border-width: 1px;
+    border-top-style: none;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    -moz-border-bottom-left-radius:5px;
+    -moz-border-bottom-right-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -o-border-bottom-left-radius:5px;
+    -o-border-bottom-right-radius:5px;
+    height: 437px;
+}
+
+#saved-schedules .first-sidemenu-schedule-name {
+    border-top: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+    padding-left: 20px;
+}
+
+#saved-schedules .sidemenu-schedule-name {
+    border-bottom: 1px solid #D0D0D0;
+    padding-left: 20px;
+}
+
+
 
 /* SCHEDULATOR STYLING */
 
@@ -99,6 +127,14 @@ div .click-section {
 	border-top-width: 1px;
 	border-top-style: solid;
 }
+
+a#save-modal-button {
+    position:relative;
+    float:right;
+    right: 10px;
+    top:-525px;
+}
+
 
 
 /* TIME SLOT STYLING */
@@ -144,7 +180,7 @@ table.ts-content tbody tr td {
 
 /* NAV STYLING */
 
-button.navLinkClose {
+button.nav-link-close {
 	position: relative;
 	float: right;
 	right: 6px;

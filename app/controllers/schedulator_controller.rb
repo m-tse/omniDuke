@@ -11,6 +11,15 @@ class SchedulatorController < ApplicationController
         "eightPM", "ninePM", "tenPM"
     ]
     $state = "current"
+    $sideState = "classes"
+
+    before_filter :check_params
+
+    def check_params
+        if !params[:sidelink].blank?
+            $sideState = params[:sidelink]
+        end
+    end
 
     # CLEAN UP ALL THE @edits
     # Everything needs a big of refactoring, especially the shows
@@ -31,7 +40,6 @@ class SchedulatorController < ApplicationController
         else  
             respond_to do |format|
                 format.html
-                format.js
             end
         end
     end
@@ -46,7 +54,6 @@ class SchedulatorController < ApplicationController
         end
         if request.xhr?
             respond_to do |format|
-                format.html { render schedulator_index_path }
                 format.js
             end
         else
@@ -55,48 +62,5 @@ class SchedulatorController < ApplicationController
             end
         end
     end
-
-    def show_saved
-        @edit = false
-        if !params[:edit].blank?
-            @edit = true
-        end
-        $state = "saved"
-        @schedulator = Schedulator.find(params[:schedulator])
-        @name = "Saved"
-        if request.xhr?
-            respond_to do |format|
-                format.html { render schedulator_index_path }
-                format.js
-            end
-        else 
-            respond_to do |format|
-                format.html
-            end
-        end
-    end
-
-    def show_current
-        @edit = false
-        $state = "current"
-        @schedulator = Schedulator.find(params[:schedulator])
-        @name = @schedulator.name
-        if @schedulator == Schedulator.last
-            @name = "Untitled"
-        end
-        if request.xhr?
-            respond_to do |format|
-                format.html { render schedulator_index_path }
-                format.js
-            end
-        else 
-            respond_to do |format|
-                format.html
-            end
-        end
-    end
-
-
-
 
 end

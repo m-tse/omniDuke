@@ -1,0 +1,7 @@
+<% if $sideState == "saved" %>
+    $("#side-menu").html("").append("<%= j(render partial: 'schedulator/saved') %>");
+<% elsif $sideState == "search" %>
+    $("#side-menu").html("").append("<%= j(render partial: 'schedulator/search') %>");
+<% else %>
+    $("#side-menu").html("").append("<%= j(render partial: 'schedulator/class-list') %>");
+<% end %>

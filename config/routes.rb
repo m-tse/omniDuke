@@ -11,12 +11,12 @@ OmniDuke::Application.routes.draw do
   match '/subjects/instructors', to: 'subjects#show_instructors'
   match '/subjects/courses', to: 'subjects#show_courses'
   match '/schedulator/saved', to: 'schedulator#show_saved'
-  match '/schedulator/current', to: 'schedulator#show_current'
+  match '/schedulator/classes', to: 'schedulator#show_current'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :subjects, only: [:show, :index]
   resources :schedulator
-  resources :bookbag_relationship, only: [:create, :destroy]
+  resources :bookbag_relationship, only: [:edit, :create, :destroy]
   resources :schedule_relationship, only: [:create, :destroy]
   resources :course_reviews, only: [:show, :new, :index, :create]
   resources :schedulator_saved_relationships, only: [:create, :destroy]

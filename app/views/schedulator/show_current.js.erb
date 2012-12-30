@@ -1,6 +1,5 @@
 <% if @edit %>
-    $("#omniContainer").html("").append("<%= j(render partial: 'schedulator/edit') %>");
+    $("#scheduleContainer").html("").append("<%= j(render partial: 'schedulator/edit') %>");
 <% else %>
-    $("#omniContainer").html("").append("<%= j(render partial: 'schedulator/index') %>");
+    $("#scheduleContainer").html("").append("<%= j(render partial: 'schedulator/index') %>");
 <% end %>
-$("#scheduleName").html("").append("Untitled")

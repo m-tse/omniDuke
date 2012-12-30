@@ -1,8 +1,18 @@
 class ActiveSchedulatorRelationshipsController < ApplicationController
 
+    $sideState = "classes"
+
+    before_filter :check_params
+
+    def check_params
+        if !params[:sidelink].blank?
+            $sideState = params[:sidelink]
+        end
+    end
+
     def index
-        @schedulator = Schedulator.find(params[:schedulator])
-        redirect_to @schedulator        
+        redirect_to schedulator_path(id: params[:schedulator], sidelink: $sideState)      
+
     end
 
     def create
