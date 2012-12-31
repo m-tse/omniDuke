@@ -1,5 +1,0 @@
-<% if @edit %>
-    $("#scheduleContainer").html("").append("<%= j(render partial: 'schedulator/edit') %>");
-<% else %>
-    $("#scheduleContainer").html("").append("<%= j(render partial: 'schedulator/index') %>");
-<% end %>
