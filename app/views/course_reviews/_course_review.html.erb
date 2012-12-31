@@ -1,2 +1,3 @@
-<h3>Review by <%=course_review.author%></h3>
+<% reviewDate = course_review.updated_at %>
+<h3>Review by <%=course_review.author%> on <%=Date::MONTHNAMES[reviewDate.month].to_s+" "+reviewDate.year.to_s%></h3>
 <%= course_review.review_content %>
