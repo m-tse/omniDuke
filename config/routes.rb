@@ -12,6 +12,7 @@ OmniDuke::Application.routes.draw do
   match '/subjects/courses', to: 'subjects#show_courses'
   match '/schedulator/saved', to: 'schedulator#show_saved'
   match '/schedulator/classes', to: 'schedulator#show_current'
+  match '/courses/side_results', to: 'courses#side_results', via: :post
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :subjects, only: [:show, :index]

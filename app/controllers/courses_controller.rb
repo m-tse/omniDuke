@@ -31,8 +31,18 @@ class CoursesController < ApplicationController
       end
     end
     @courses = @search.results
-
   end
+
+  def side_results
+    @search = Course.search do
+      fulltext params[:class_search]
+    end
+    @courses = @search.results
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
 
 

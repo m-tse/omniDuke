@@ -29,7 +29,7 @@ table thead th.timetable {
 	margin-top: -15px;
 }
 
-#side-content {
+#class-list {
 	height:470px;
 	background-color:#99FFFF;
 	overflow-y: scroll;
@@ -65,7 +65,7 @@ div .click-section {
     */
 }
 
-#saved-schedules {
+#side-content {
     border-style: solid;
     border-color: #D0D0D0;
     border-width: 1px;
@@ -92,7 +92,27 @@ div .click-section {
     padding-left: 20px;
 }
 
+#side-nav-search {
+    position: relative;
+    padding-left: 20px;
+}
 
+div.divider {
+    position: relative;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #D0D0D0;
+}
+
+#side-content #search-content {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+#side-content .course {
+    border-bottom: solid 1px #D0D0D0;
+    cursor: pointer;
+}
 
 /* SCHEDULATOR STYLING */
 

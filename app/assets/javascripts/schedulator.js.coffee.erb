@@ -7,6 +7,7 @@ loadEventHandlers = ->
     sidemenuCourseHandler()
     flashHandler()
     sideNavLinkHandler()  
+    courseBookbagHandler()
 
 scheduleNameUpdater = ->
     $(".scheduleNameUpdate").live("click", (e)->
@@ -96,4 +97,31 @@ sideNavLinkHandler = ->
         })
     )
 
-
+courseBookbagHandler = ->
+    $("#side-content .add-course").live("click", (e)->
+        courseDiv = $(this)
+        urlBuilder = [
+            "<%= j(Rails.root) %>" 
+            "/bookbag_relationship"
+            "?course="
+            courseDiv.data("course")
+        ]
+        $.ajax({
+            url: urlBuilder.join("")
+            type:"post"
+        })
+    )
+    $("#side-content .remove-course").live("click", (e)->
+        courseDiv = $(this)
+        urlBuilder = [
+            "<%= j(Rails.root) %>" 
+            "/bookbag_relationship/"
+            courseDiv.data("id")
+            "?course="
+            courseDiv.data("course")
+        ]
+        $.ajax({
+            url: urlBuilder.join("")
+            type:"delete"
+        })
+    )

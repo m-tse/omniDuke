@@ -21,7 +21,6 @@ class BookbagRelationshipController < ApplicationController
   	  	current_or_guest_user.courses << @course
   	  end
       respond_to do |format|
-        format.html { redirect_to @course }
         format.js
      end
   	end
@@ -35,7 +34,6 @@ class BookbagRelationshipController < ApplicationController
         current_or_guest_user.courses.delete(@course)
       end
       respond_to do |format|
-        format.html { redirect_to @course }
         format.js
       end
     end

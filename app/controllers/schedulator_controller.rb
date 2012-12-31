@@ -21,8 +21,6 @@ class SchedulatorController < ApplicationController
         end
     end
 
-    # CLEAN UP ALL THE @edits
-    # Everything needs a big of refactoring, especially the shows
     def index
         if !params[:click_flag].blank?
             $state = "current"

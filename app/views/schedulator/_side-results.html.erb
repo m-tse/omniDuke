@@ -1,0 +1,10 @@
+<!-- REQUIRES locals: {courses: @courses} -->
+<% courses.each do |course| %>
+    <div class="course" id="course-<%= course.id %>">
+    <% if current_or_guest_user.courses.include?(course) %>
+        <%= render partial: "schedulator/side-remove-course", locals: {course: course} %>
+    <% else %>
+        <%= render partial: "schedulator/side-add-course", locals: {course: course} %>
+    <% end %>
+    </div>
+<% end %>

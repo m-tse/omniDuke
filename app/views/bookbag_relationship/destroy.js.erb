@@ -1,2 +1,4 @@
 $("#bookbag-course-<%= j(params[:course]) %>").html("").append(
     "<%= j(render partial: 'bookbag_relationship/addCourse', locals: {course:@course}) %>")
+$("#course-<%= j(params[:course]) %>").html("").append(
+    "<%= j(render partial: 'schedulator/side-add-course', locals: {course:@course}) %>");
