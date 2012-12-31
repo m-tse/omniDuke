@@ -3,7 +3,7 @@
         <div class="schedule">
             <%= render partial: "schedulator/timeTable" %>
             <% $timeStrs.each do |time| %>
-                <div class='<%= time %> dotted-line'></div>
+                <div class='<%= time %> tick-mark'>|</div>
             <% end %>
             <% $days.each do |day| %>
                 <div class="daySlot <%= day %>">

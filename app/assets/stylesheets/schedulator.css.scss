@@ -104,6 +104,8 @@ div .click-section {
 
 #saved-schedules .sidemenu-schedule-name {
     border-bottom: 1px solid #D0D0D0;
+    padding-top: 5px;   
+    padding-bottom: 5px;   
     padding-left: 20px;
 }
 
@@ -237,17 +239,23 @@ a.schedulator-link {
 
 .time-string {
 	position: absolute;
-	top:-7px;
-	left:-2em;
+	top: -14px;
+	left: -20px;
 	font-size: small;
 }
 
 .dotted-line {
-    display:block;
+    display: block;
 	position: absolute;
 	border-right-style: dotted;
 	border-right-width: 1px;
 	height: 450px;
 	color: red;	
 	z-index: 1000;
+}
+ 
+.tick-mark {
+    position: absolute;
+    display: block;
+    top: 0px;
 }

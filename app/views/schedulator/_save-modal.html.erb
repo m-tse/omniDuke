@@ -2,7 +2,7 @@
         <a href="#saveModal" id="save-modal-button" role="button" class="btn btn-primary" data-toggle="modal">Save</a>
 
         <!-- MODAL -->
-        <div id="saveModal" class="modal hide fade">
+        <div id="saveModal" class="modal hide fade" tabindex="-1" role="dialog">
             <%= form_tag("/schedulator_saved_relationships", method: :post, remote: true, id: "save-modal-form") do %>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

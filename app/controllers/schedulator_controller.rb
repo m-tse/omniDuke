@@ -1,9 +1,9 @@
 class SchedulatorController < ApplicationController
 
     $days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    $times = ["08AM", "09AM", "10AM", "11AM", "12PM",
-        "01PM", "02PM", "03PM", "04PM", "05PM", "06PM",
-        "07PM", "08PM", "09PM", "10PM"
+    $times = ["8AM", "9AM", "10AM", "11AM", "12PM",
+        "1PM", "2PM", "3PM", "4PM", "5PM", "6PM",
+        "7PM", "8PM", "9PM", "10PM"
     ]
     $timeStrs = ["eightAM","nineAM","tenAM","elevenAM",
         "twelvePM", "onePM", "twoPM", "threePM",

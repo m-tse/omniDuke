@@ -5,7 +5,7 @@
     <div id="saved-schedules" class="updateHistory updateHeader">
         <div class="divider"></div>
         <% current_or_guest_user.schedulators.each do |schedulator| %>
-                <div id="schedule-<%= schedulator.id %>" class="sidemenu-schedule-name">
+            <div id="schedule-<%= schedulator.id %>" class="sidemenu-schedule-name">
                 <%= link_to schedulator.getName, {
                     controller: "active_schedulator_relationships",
                     action: "create",
