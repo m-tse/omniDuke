@@ -1,3 +1,52 @@
 <% reviewDate = course_review.updated_at %>
 <h3>Review by <%=course_review.author%> on <%=Date::MONTHNAMES[reviewDate.month].to_s+" "+reviewDate.year.to_s%></h3>
-<%= course_review.review_content %>
+
+<div class="row">
+	<div class="span6">
+		<%= course_review.review_content %>
+	</div>
+	<div class="span6">
+<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>Overall Quality</th>
+				<th><%=course_review.thisReviewAverageQuality%></th>
+				<th>Overall Difficulty</th>
+				<th><%=course_review.thisReviewAverageDifficulty%></th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<td>Usefulness</td>
+				<td><%=course_review.usefulness%></td>
+				<td>Homework</td>
+				<td><%=course_review.homework_difficulty%></td>
+			</tr>
+			<tr>
+				<td>Interesting/Stimulating</td>
+				<td><%=course_review.stimulating%></td>
+				<td>Labs</td>
+				<td><%=course_review.lab_difficulty%></td>
+			</tr>
+			<tr>	
+				<td>Content</td>
+				<td><%=course_review.content_quality%></td>
+				<td>Midterms</td>
+				<td><%=course_review.midterm_difficulty%></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>Finals</td>
+				<td><%=course_review.final_difficulty%></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>Out of Class Work Time</td>
+				<td><%=course_review.out_of_class_work_hours%></td>
+			</tr>
+		</tbody>
+</table>
+	</div>
+</div>
