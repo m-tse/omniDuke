@@ -9,7 +9,7 @@ class SchedulatorSavedRelationshipsController < ApplicationController
         end
         respond_to do |format|
             flash[:success] = "Saved schedule"
-            format.html { redirect_to schedulator_index_path }
+            format.js
         end
     end
 

@@ -3,7 +3,7 @@
 
         <!-- MODAL -->
         <div id="saveModal" class="modal hide fade">
-            <%= form_tag("/schedulator_saved_relationships", method: :post) do %>
+            <%= form_tag("/schedulator_saved_relationships", method: :post, remote: true, id: "save-modal-form") do %>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3>Save schedule</h3>

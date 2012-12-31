@@ -3,12 +3,9 @@
 </div>
 <div id="side-content">
     <div id="saved-schedules" class="updateHistory updateHeader">
+        <div class="divider"></div>
         <% current_or_guest_user.schedulators.each do |schedulator| %>
-            <% if schedulator == current_or_guest_user.schedulators.first %>
-                <div id="schedule-<%= schedulator.id %>" class="first-sidemenu-schedule-name">
-            <% else %>
                 <div id="schedule-<%= schedulator.id %>" class="sidemenu-schedule-name">
-            <% end %>
                 <%= link_to schedulator.getName, {
                     controller: "active_schedulator_relationships",
                     action: "create",
