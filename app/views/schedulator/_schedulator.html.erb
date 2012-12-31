@@ -1,4 +1,5 @@
-        <%= render partial: "schedulator/nav" %>
+<!-- REQUIRES locals; {schedulator: @schedulator} -->
+        <%= render partial: "schedulator/nav", locals: {schedulator: schedulator}%>
         <div class="schedule">
             <%= render partial: "schedulator/timeTable" %>
             <% $timeStrs.each do |time| %>
@@ -8,7 +9,7 @@
                 <div class="daySlot <%= day %>">
                     <div class="dayName"><%= day %></div>
                     <div class="timeSlots">
-                        <% @schedulator.sections.each do |section| %>
+                        <% schedulator.sections.each do |section| %>
                             <% if section.hasDay?(day) %> 
                                 <%= render partial: 'schedulator/timeslot', 
                                 locals: { section: section }

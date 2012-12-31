@@ -20,13 +20,16 @@ table thead th.timetable {
 #omniContainer {
     position: relative;
     top: 20px;
+    width:1180px;
 }
 
 /* SIDE MENU STYLING */
 
 #side-menu {
+    float: right;
 	margin-left: 10px;
 	margin-top: -15px;
+    width: 290px;
 }
 
 #class-list {
@@ -117,7 +120,9 @@ div.divider {
 /* SCHEDULATOR STYLING */
 
 #schedulatorContainer {
+    float:left;
 	margin-top: -15px;
+    width: 870px;
 }
 
 .schedule {

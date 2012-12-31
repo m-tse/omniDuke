@@ -18,17 +18,15 @@ historyHandler = ->
     if history && history.pushState
         jQuery ->
             $(".updateHistory a").live("click", (e)->
-                history.pushState(null, "", this.href)
-                ###
-                e.preventDefault()
-                ###
+                if !$(this).hasClass("ignore-history")
+                    history.pushState(null, "", this.href)
             )
             $(window).bind('popstate', ->
                 $.getScript(location.href)
             )
 
 handleNavLinkClose = ->
-    $(".navLinkClose").live('click', (e)->
+    $(".nav-link-close").live('click', (e)->
         urlStrs = [
             "<%= j(Rails.root) %>"
             "active_schedulator_relationships"
@@ -125,3 +123,4 @@ courseBookbagHandler = ->
             type:"delete"
         })
     )
+

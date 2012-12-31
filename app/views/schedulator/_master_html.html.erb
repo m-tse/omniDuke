@@ -3,23 +3,21 @@
 </h1-->
 <!--%= @name %-->
 
-<div class="container" id="omniContainer">
-    <div class="row">
-        <div class="span9" id="schedulatorContainer">
-            <% if @edit %>
-                <%= render partial: "schedulator/edit" %>   
-            <% else %>
-                <%= render partial: "schedulator/index" %>   
-            <% end %>
-        </div>
-        <div class="span3" id="side-menu">
-            <% if $sideState == "saved" %>
-                <%= render partial: "schedulator/saved" %>
-            <% elsif $sideState == "search" %>
-                <%= render partial: "schedulator/search" %>
-            <% else %> 
-                <%= render partial: "schedulator/class-list" %>
-            <% end %>
-        </div>
+<div id="omniContainer">
+    <div id="schedulatorContainer">
+        <% if @edit %>
+            <%= render partial: "schedulator/edit" %>   
+        <% else %>
+            <%= render partial: "schedulator/index" %>   
+        <% end %>
+    </div>
+    <div id="side-menu">
+        <% if $sideState == "saved" %>
+            <%= render partial: "schedulator/saved" %>
+        <% elsif $sideState == "search" %>
+            <%= render partial: "schedulator/search" %>
+        <% else %> 
+            <%= render partial: "schedulator/class-list" %>
+        <% end %>
     </div>
 </div>

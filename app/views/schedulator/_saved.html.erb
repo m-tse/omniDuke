@@ -5,9 +5,9 @@
     <div id="saved-schedules" class="updateHistory updateHeader">
         <% current_or_guest_user.schedulators.each do |schedulator| %>
             <% if schedulator == current_or_guest_user.schedulators.first %>
-                <div class="first-sidemenu-schedule-name">
+                <div id="schedule-<%= schedulator.id %>" class="first-sidemenu-schedule-name">
             <% else %>
-                <div class="sidemenu-schedule-name">
+                <div id="schedule-<%= schedulator.id %>" class="sidemenu-schedule-name">
             <% end %>
                 <%= link_to schedulator.getName, {
                     controller: "active_schedulator_relationships",
@@ -18,7 +18,18 @@
                     method: :post,
                     remote: true
                 } %>
-                <button type="button" class="close right">&times;</button> 
+                <% rid = getSchedulatorSavedRelationship(current_or_guest_user, schedulator).id
+                %>
+                <%= link_to raw('<button type="button" class="close right">&times;</button>'), {
+                        controller: "schedulator_saved_relationships",
+                        action: "destroy",
+                        id: rid
+                    }, {
+                        class: "ignore-history destroy-saved",
+                        method: :delete,
+                        remote: true
+                    }
+                %>
             </div>
         <% end %>
     </div>

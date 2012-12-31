@@ -45,7 +45,12 @@ class SchedulatorController < ApplicationController
     def show
         $state = "current"
         @edit = true
-        @schedulator = Schedulator.find(params[:id])
+        begin
+            @schedulator = Schedulator.find(params[:id])
+        rescue
+            redirect_to schedulator_index_path
+            return
+        end
         @name = @schedulator.name
         if @schedulator == Schedulator.last
             @name = "Untitled"
