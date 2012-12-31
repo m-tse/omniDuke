@@ -3,6 +3,6 @@
 <%= link_to "Review This Course", {controller:"course_reviews", action:"new", course_meta_id:@course_meta.id}, class:"btn btn-primary" %>
 
 
-<%= render partial:'partials/courses/course_rating_stamp', locals:{course:@course} %>
+<%= render partial:'partials/courses/course_rating_stamp', locals:{course:@course, class_name:"rating_stamp_in_course_overview"} %>
 
 <%= render @course_meta.course_reviews %>
