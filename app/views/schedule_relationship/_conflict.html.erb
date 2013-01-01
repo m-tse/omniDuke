@@ -4,22 +4,37 @@
     </div>
     <div class="sections">
         <div class="row">
-            <div class="span4 clickable rounded-border grey-border">
-                <h2>Just added</h2>
-                <p><%= @section.name %></p>
-            </div>
-            <div class="span4 clickable rounded-border grey-border">
-                <h2>Conflicting with</h2>
-                <% @conflicts.each do |conflict| %>
-                    <p><%= conflict.name %></p>
-                <% end %>
-            </div>
+            <%= link_to raw(
+                "<div id='just-added' class='span4 clickable rounded-border grey-border'>
+                    <h2>Just added</h2>
+                    <p>#{@section.name}</p>
+                </div>"
+                ), {
+                    controller: "schedule_relationship",
+                    action: "replace",
+                    schedulator: @schedulator.id,
+                    added: @section.id,
+                    conflicts: getIds(@conflicts).to_json
+                }, {
+                    remote: true
+                }
+            %>
+            <%= link_to raw(
+                    "<div id='conflicting-with' class='span4 clickable rounded-border grey-border'>
+                        <h2>Conflicting with</h2>
+                        <p>#{@conflictsStr}</p>
+                    </div>"), @schedulator, {
+                        remote: true
+                    }
+            %>
         </div>
     </div> 
     <h2>What would you like to do?</h2>
     <div class="row middle-row">
-        <div class="span4 clickable rounded-border grey-border">
-            <h3>Decide for yourself</h3>
+        <div id="trigger-point-up" class="span4 clickable rounded-border grey-border">
+            <h3>
+                Decide for yourself
+            </h3>
             <p>Choose which section(s) to keep. Click above for the section(s) you want to keep.</p>
         </div>
         <div class="span4 clickable rounded-border grey-border">

@@ -12,6 +12,10 @@
     border-color: #D0D0D0;
 }
 
+.red-border {
+    border-color: #CC0000;
+}
+
 .hovered-over {
     padding: 16px;
     background-color: #F8F8F8; 
@@ -31,6 +35,9 @@ div.row .left {
     float: left;
 }
 
+div#conflict-resolution a {
+    color: #333333;
+}
 /* CONFLICT STYLINGS */
 
 div#conflict-resolution {
@@ -61,5 +68,4 @@ div#conflict-resolution .clickable {
 div.middle-row div {
     height: 120px;
 }
-
 

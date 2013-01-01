@@ -7,4 +7,12 @@ module ScheduleRelationshipHelper
             """)[0]
     end
 
+    def getIds(models)
+        ids = Array.new
+        models.each do |mod|
+            ids << mod.id
+        end
+        return ids
+    end
+
 end

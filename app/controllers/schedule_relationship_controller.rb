@@ -11,13 +11,11 @@ class ScheduleRelationshipController < ApplicationController
                     # raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
                     @conflicts = @schedulator.getConflictingSections(@section)
                     @conflict = true 
-                    #@schedulator.sections << @section
-                    #srel = ScheduleRelationship.where("""
-                    #    schedulator_id = #{@schedulator.id} 
-                    #    AND section_id = #{@section.id}
-                    #""")[0]
-                    #srel.conflicting = true
-                    #srel.save
+                    conflictsStrBuilder = Array.new
+                    @conflicts.each do |con|
+                        conflictsStrBuilder << con.name
+                    end
+                    @conflictsStr = conflictsStrBuilder.join("<br>")
                 else                    
                     @schedulator.sections << @section
                 end
@@ -50,4 +48,27 @@ class ScheduleRelationshipController < ApplicationController
         end
     end
     
+    def replace
+        @added = Section.find(params[:added])        
+        @schedulator = Schedulator.find(params[:schedulator])
+        @conflicts = Array.new
+        JSON.parse(params[:conflicts]).each do |id|
+            @conflicts << Section.find(id)
+        end
+        if !@schedulator.sections.include?(@added)
+            @schedulator.sections << @added
+            @conflicts.each do |con|
+                if @schedulator.sections.include?(con)
+                    @schedulator.sections.delete(con)
+                end
+            end
+        end
+        if @schedulator != current_or_guest_user.current_schedulator
+            redirect_to @schedulator
+        else
+            redirect_to schedulator_index_path
+        end
+    end
+
+
 end
