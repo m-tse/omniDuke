@@ -32,4 +32,30 @@ class SchedulatorSavedRelationshipsController < ApplicationController
         end
     end
 
+    def diverge
+        @added = Section.find(params[:added])        
+        @schedulator = Schedulator.find(params[:schedulator])
+        @conflicts = Array.new
+        JSON.parse(params[:conflicts]).each do |id|
+            @conflicts << Section.find(id)
+        end
+        @schedulator.name = params[:original_name]
+        @schedulator.save
+        current_or_guest_user.schedulators << @schedulator
+        @divergent = Schedulator.new
+        @schedulator.sections.each do |sec|
+            if !@conflicts.include?(sec)
+                @divergent.sections << sec   
+            end
+        end
+        @divergent.sections << @added
+        @divergent.name = params[:divergent_name]
+        @divergent.save
+        current_or_guest_user.schedulators << @divergent
+        current_or_guest_user.create_current_schedulator  
+        respond_to do |format|
+            format.js
+        end
+    end
+
 end

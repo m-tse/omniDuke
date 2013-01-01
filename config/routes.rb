@@ -14,6 +14,7 @@ OmniDuke::Application.routes.draw do
   match '/schedulator/classes', to: 'schedulator#show_current'
   match '/courses/side_results', to: 'courses#side_results', via: :post
   match '/schedule_relationship/replace', to: 'schedule_relationship#replace'
+  match '/schedulator_saved_relationships/diverge', to: 'schedulator_saved_relationships#diverge'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :subjects, only: [:show, :index]

@@ -30,17 +30,21 @@
         </div>
     </div> 
     <h2>What would you like to do?</h2>
-    <div class="row middle-row">
-        <div id="trigger-point-up" class="span4 clickable rounded-border grey-border">
+    <div class="row">
+        <div id="trigger-point-up" class="span4 clickable rounded-border grey-border mid">
             <h3>
                 Decide for yourself
             </h3>
             <p>Choose which section(s) to keep. Click above for the section(s) you want to keep.</p>
         </div>
-        <div class="span4 clickable rounded-border grey-border">
+        <%= link_to raw("<div class='span4 clickable rounded-border grey-border mid'>
             <h3>Decide later</h3>
             <p>Create two schedules, one with the conflicting section(s) the other with the just added section (other sections will appear in both schedules).</p>
-        </div>
+            </div>"), "#diverge-modal", {
+                data: {toggle: "modal"}
+            }
+        %>
+        <%= render partial: "schedule_relationship/diverge-modal" %>
     </div>
     <div class="row"><h1 class="span8 coin-flip rounded-border grey-border clickable">Flip a coin</h1></div>
 </div>

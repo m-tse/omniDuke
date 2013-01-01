@@ -1,0 +1,27 @@
+
+        <div id="diverge-modal" class="modal hide fade" tabindex="-1" role="dialog">
+            <%= form_tag({
+                    controller: "schedulator_saved_relationships",
+                    action: "diverge",
+                    schedulator: @schedulator.id,
+                    added: @section.id,
+                    conflicts: getIds(@conflicts).to_json
+                }, {
+                    id: "diverge-modal-form",
+                    method: :get, 
+                    remote: true
+            }) do %>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Name schedules</h3>
+                </div>
+                <div class="modal-body">
+                    Just added: <input type="text" name="divergent_name"><br>
+                    Original: <input class="text-align" type="text" name="original_name">
+                </div>
+                <div class="modal-footer">
+                   <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button> 
+                    <input type="submit" class="btn btn-primary" value="Confirm">
+                </div>
+            <% end %>
+        </div>
