@@ -19,7 +19,7 @@ OmniDuke::Application.routes.draw do
   resources :schedulator
   resources :bookbag_relationship, only: [:edit, :create, :destroy]
   resources :schedule_relationship, only: [:create, :destroy]
-  resources :course_reviews, only: [:show, :new, :index, :create]
+  resources :course_reviews, only: [:new, :index, :create]
   resources :schedulator_saved_relationships, only: [:create, :destroy]
   resources :active_schedulator_relationships, only: [:index, :create, :destroy]
 

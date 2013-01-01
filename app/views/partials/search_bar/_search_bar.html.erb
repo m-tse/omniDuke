@@ -4,15 +4,21 @@
   <%= text_field_tag :search, params[:search], :class=>"span4" %>
   <%= button_tag "Search",  :class => "btn" %>
 
-<%= content_tag("a", {:href=>"#", :id=>"omniSearchBarHelp", :class=>"btn btn-info", :rel=>"popover", "data-content"=>help_text, "data-original-title"=>"Confused?", "data-trigger"=>"hover"})  do -%>
-
+<%= content_tag("a", {:href=>"#", :id=>"omniSearchBarHelp", :class=>"btn btn-info", :rel=>"popover", "data-content"=>help_text, "data-title"=>"Confused?"})  do -%>
 <i class="icon-info-sign icon-white"></i>
 <% end -%>
+
+
+
 </div>
-<script type="text/javascript">
-  $("#omniSearchBarHelp").popover({placement: "bottom"});
-</script>
+
 
 
 
 <% end %>
+
+<script type="text/javascript">
+
+  $("#omniSearchBarHelp").popover({placement: 'bottom', animation: 'true', trigger: 'hover'});
+
+</script>
