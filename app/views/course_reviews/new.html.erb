@@ -18,7 +18,7 @@
         <label class="control-label"><%=criteriaLabels[index]%></label>
         <div class="controls">
           <div class="btn-group">
-            <button class="rating_meter <%= reverseColors[index]==true ? "green" : "red" %>" 
+            <button class="rating_meter grey" 
               type='button' id=<%=criteria[index]+0.to_s%>>n/a</button>
             <% for level in (1..10) %>
               <button class="rating_meter" type='button' id=<%=criteria[index]+level.to_s%>><%=level%></button>
@@ -46,7 +46,7 @@
     <% end %>
 <script>
 <!--hacky, I added the first and last color twice so math works out-->
-var colorLevels =["<%=color_gradient.first %>",  <%for color in color_gradient%>"<%= color %>",<% end %> "<%=color_gradient.last%>"]
+var colorLevels =["lightgrey",  <%for color in color_gradient%>"<%= color %>",<% end %> "lightgrey"]
 
 <% for criterionIndex in 0..criteria.size-1 %>
 <% for level in 0..10 %>

@@ -7,16 +7,18 @@ class CourseReview < ActiveRecord::Base
   :lab_difficulty, :midterm_difficulty, :final_difficulty, :out_of_class_work_hours,
    :inclusion => {:in => [nil,0,1,2,3,4,5,6,7,8,9,10]}
 
+  validates :author, :length => { :maximum => 30 }
   belongs_to :course_meta
   validates :course_meta_id, presence:true
 
   before_save{
-    if self.author==nil||""
+    if self.author==nil||self.author==""
       self.author="Anonymous"
     end
     update_average_scores
   }
   after_save{
+
   	self.course_meta.save
   }
   def thisReviewAverageQuality

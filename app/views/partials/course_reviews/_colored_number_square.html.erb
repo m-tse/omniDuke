@@ -1,8 +1,11 @@
 <!--pass in a local variable called number, which will be either a float or an integer also pass in a boolean for reverse color gradient or not reverse-->
-<% colorIndex = number.ceil %>
+<% number = number==nil ? 0 : number %>
+<% colorIndex = (number.ceil==10 ? 9:number.ceil)%>
 <% styleBackgroundColor = color_gradient[colorIndex] %>
-<text class = "color_number_square" style="background-color:<%=colorIndex==0 ? "lightgrey":styleBackgroundColor%>">
-	<% if number>0 %>
+<text class = "color_number_square" style="background-color:<%=colorIndex==0 ? "lightgrey":styleBackgroundColor%>;">
+	<% if number>=10%>
+	<%= number.to_f.to_s[0,2] %>
+	<% elsif number>0 %>
 	<%= number.to_f.to_s[0,3] %>
 	<% else %>
 	<%= "n/a" %>
