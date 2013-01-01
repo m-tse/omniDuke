@@ -15,6 +15,100 @@ class Schedulator < ActiveRecord::Base
         end
     end
 
+
+    def getConflictingSections(section)
+        conflictingSections = Array.new
+        self.sections.each do |sec|
+            if sectionsConflict?(sec, section)
+                conflictingSections << sec
+            end
+        end
+        return conflictingSections
+    end
+
+
+    def sectionsConflict?(s1, s2)
+
+        days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
+        timeHash = {} 
+        days.each do |day|
+            timeHash[day] = Array.new
+        end
+        count = 0
+        sectionDays = Array.new
+        timeSlot = Array.new
+        # Parse first section time information
+        s1.time_slot.aces_value.split(' ').each do |tinfo|
+            if tinfo != "-"
+                if tinfo.include?("AM") || tinfo.include?("PM")
+                    timeInfo = createTime(tinfo)
+                    timeSlot << timeInfo
+                    count += 1
+                else # is day information
+                    days.each do |day|
+                        if tinfo.slice(day)
+                            sectionDays << day
+                        end
+                    end
+                end
+                if count == 2
+                    count = 0
+                    sectionDays.each do |day|
+                        timeHash[day] << timeSlot
+                    end
+                    sectionDays = Array.new
+                    timeSlot = Array.new
+                end
+            end
+        end
+
+        count = 0
+        sectionDays = Array.new
+        timeSlot = Array.new
+        timeHashSec = {}
+        days.each do |day|
+            timeHashSec[day] = Array.new
+        end
+        # Parse second section time information
+        s2.time_slot.aces_value.split(' ').each do |tinfo|
+            if tinfo != "-"
+                if tinfo.include?("AM") || tinfo.include?("PM")
+                    timeInfo = createTime(tinfo)
+                    timeSlot << timeInfo
+                    count += 1
+                else # is day information
+                    days.each do |day|
+                        if tinfo.slice(day)
+                            sectionDays << day
+                        end
+                    end
+                end
+                if count == 2
+                    count = 0
+                    sectionDays.each do |day|
+                        timeHashSec[day] << timeSlot
+                    end
+                    sectionDays = Array.new
+                    timeSlot = Array.new
+                end
+            end
+        end
+
+        # Check constraint
+        timeHash.keys.each do |day|
+            timeHash[day].each do |dateArray|
+                timeHashSec[day].each do |dateArraySec|
+                    if intervalsConflict?(dateArray, dateArraySec)
+                        return true
+                    end
+                end
+            end
+        end
+
+        return false
+    end
+
+
     # Set $LOGGING true for debugging
     $LOGGING = false
     $filename = "#{Rails.root}/timeConflict.log"
@@ -186,18 +280,7 @@ class Schedulator < ActiveRecord::Base
 
     # da = dateArray
     def intervalsConflict?(da1, da2) 
-        #test = Array.new
         return (da1[0] < da2[1] && da1[1] >= da2[0] || (da1[0] == da2[0] && da1[1] == da2[1]) || (da1[0] < da2[1] && da1[1] >= da2[1])) 
-        #da1.each do |da|
-        #    test << "#{da}}"
-        #end
-        #da2.each do |da|
-        #    test << "#{da}}"
-        #end
-        #raise test.join("")
-        #end
-        #return false
-        
     end
 
 end

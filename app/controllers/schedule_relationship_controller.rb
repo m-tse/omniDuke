@@ -5,18 +5,19 @@ class ScheduleRelationshipController < ApplicationController
             @section = Section.find(params[:section])
             @schedulator = Schedulator.find(params[:schedulator])
             if !@schedulator.sections.include?(@section)
+                @conflict = false
                 if @schedulator.conflictWith?(@section) # check for time conflict
                     # CONFLICT RESOLUTION
-                    raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
-
-                    
-                    @schedulator.sections << @section
-                    srel = ScheduleRelationship.where("""
-                        schedulator_id = #{@schedulator.id} 
-                        AND section_id = #{@section.id}
-                    """)[0]
-                    srel.conflicting = true
-                    srel.save
+                    # raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
+                    @conflicts = @schedulator.getConflictingSections(@section)
+                    @conflict = true 
+                    #@schedulator.sections << @section
+                    #srel = ScheduleRelationship.where("""
+                    #    schedulator_id = #{@schedulator.id} 
+                    #    AND section_id = #{@section.id}
+                    #""")[0]
+                    #srel.conflicting = true
+                    #srel.save
                 else                    
                     @schedulator.sections << @section
                 end

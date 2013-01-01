@@ -1,3 +1,21 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+    loadEventHandlers()
+
+loadEventHandlers = ->
+    hoverHandler()
+
+hoverHandler = ->
+    $(".clickable").hover((->
+            hoverInHandler($(this))
+        ),(->
+            hoverOutHandler($(this))
+        )
+    )
+    
+hoverInHandler = (clickable) ->
+    clickable.addClass("padding", 1000)
+    alert("WORKING")
+
+hoverOutHandler = (clickable) ->
+    clickable.removeClass("padding", 1000)
+    alert("WORKING")

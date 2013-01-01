@@ -1,12 +1,16 @@
-var day, days, section, _i, _len;
-section = $("#section-slot-<%= j(params[:section]) %>");
-days = section.data("days");
+<% if @conflict %>
+    $("#schedulatorContainer .schedule").html("").append("<%= j(render partial: 'schedule_relationship/conflict') %>");
+<% else %>
+    var day, days, section, _i, _len;
+    section = $("#section-slot-<%= j(params[:section]) %>");
+    days = section.data("days");
 
-for (_i = 0, _len = days.length; _i < _len; _i++) {
-  day = days[_i];
-  var divClass;
-  divClass = ['.', day, ' .timeSlots'].join("");
-  $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {section:@section}) %>");
-}
+    for (_i = 0, _len = days.length; _i < _len; _i++) {
+      day = days[_i];
+      var divClass;
+      divClass = ['.', day, ' .timeSlots'].join("");
+      $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {section:@section}) %>");
+    }
 
-section.replaceWith("<%= j(render partial: 'schedulator/removeSection', locals: { section: @section }) %>")
+    section.replaceWith("<%= j(render partial: 'schedulator/removeSection', locals: { section: @section }) %>")
+<% end %>

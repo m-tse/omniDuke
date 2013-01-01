@@ -1,3 +1,65 @@
-// Place all the styles related to the schedule_relationship controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rounded-border {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-style: solid;
+    padding: 5px;
+}
+
+.grey-border {
+    border-color: #D0D0D0;
+}
+
+.hovered-over {
+    padding: 16px;
+    background-color: #F8F8F8; 
+}
+
+.coin-flip {
+    text-align: center;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+div.row .right {
+    float: right;
+}
+
+div.row .left {
+    float: left;
+}
+
+/* CONFLICT STYLINGS */
+
+div#conflict-resolution {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+div#conflict-resolution .row {
+    position: relative;
+    left: 20px;
+}
+
+div#conflict-warning {
+    border-color: #FFCC33;
+    background-color: #FFFF66;
+    margin-bottom: 20px;
+}
+
+div#conflict-resolution .sections {
+    height: 115px;
+}
+
+div#conflict-resolution .clickable {
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+div.middle-row div {
+    height: 120px;
+}
+
+

@@ -1,0 +1,39 @@
+<div id="conflict-resolution">
+    <div id="conflict-warning" class="rounded-border">
+        There is a conflict in your schedule. <br>
+    </div>
+    <div class="sections">
+        <div class="row">
+            <div class="span4 clickable rounded-border grey-border">
+                <h2>Just added</h2>
+                <p><%= @section.name %></p>
+            </div>
+            <div class="span4 clickable rounded-border grey-border">
+                <h2>Conflicting with</h2>
+                <% @conflicts.each do |conflict| %>
+                    <p><%= conflict.name %></p>
+                <% end %>
+            </div>
+        </div>
+    </div> 
+    <h2>What would you like to do?</h2>
+    <div class="row middle-row">
+        <div class="span4 clickable rounded-border grey-border">
+            <h3>Decide for yourself</h3>
+            <p>Choose which section(s) to keep. Click above for the section(s) you want to keep.</p>
+        </div>
+        <div class="span4 clickable rounded-border grey-border">
+            <h3>Decide later</h3>
+            <p>Create two schedules, one with the conflicting section(s) the other with the just added section (other sections will appear in both schedules).</p>
+        </div>
+    </div>
+    <div class="row"><h1 class="span8 coin-flip rounded-border grey-border clickable">Flip a coin</h1></div>
+</div>
+
+<script type="text/javascript">
+    $(".clickable").hover((function() {
+        $(this).addClass("hovered-over", 500);
+    }), (function() {
+        $(this).removeClass("hovered-over", 500);
+    }));
+</script>
