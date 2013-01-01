@@ -19,7 +19,7 @@ class CourseReviewsController < ApplicationController
       redirect_to root_path
     else
     	flash[:error] = "review not created!"
-      render :new
+      redirect_to :action => :new
     end
   end
 end
