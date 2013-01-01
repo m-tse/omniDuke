@@ -1,4 +1,11 @@
 <% reviewDate = course_review.updated_at %>
+<% 
+	course_quality_criteria = [course_review.usefulness, course_review.stimulating, course_review.content_quality];
+	course_quality_display_names = ["Usefulness", "Interesting", "Quality of Content"];
+	course_difficulty_criteria = [course_review.homework_difficulty, course_review.lab_difficulty, course_review.midterm_difficulty, course_review.final_difficulty, course_review.out_of_class_work_hours];
+	course_difficulty_display_names = ["Homework", "Labs", "Midterms", "Finals", "Out of Class Work Hours"];
+	greaterMaxIndex = [course_quality_criteria.size, course_difficulty_criteria.size].max;
+	 %>
 <h3>Review by <%=course_review.author%> on <%=Date::MONTHNAMES[reviewDate.month].to_s+" "+reviewDate.year.to_s%></h3>
 
 <div class="row">
@@ -10,42 +17,32 @@
 		<thead>
 			<tr>
 				<th>Overall Quality</th>
-				<th><%=course_review.thisReviewAverageQuality%></th>
+				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageQuality, reverse:"false"} %></th>
 				<th>Overall Difficulty</th>
-				<th><%=course_review.thisReviewAverageDifficulty%></th>
+				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageDifficulty, reverse:"false"} %></th>
 			</tr>
 		</thead>	
 		<tbody>
+
+			<% for index in 0..(greaterMaxIndex-1) %>
 			<tr>
-				<td>Usefulness</td>
-				<td><%=course_review.usefulness%></td>
-				<td>Homework</td>
-				<td><%=course_review.homework_difficulty%></td>
+				<% if(index<course_quality_criteria.size) %>
+					<td><%=course_quality_display_names[index]%></td>
+					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_quality_criteria[index], reverse:"false"} %></td>
+				<% else %>
+					<td></td><td></td>
+				<% end %>
+
+				<% if(index<course_difficulty_criteria.size) %>
+					<td><%=course_difficulty_display_names[index]%></td>
+					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_difficulty_criteria[index], reverse:"true"} %></td>
+
+				<% else %>
+					<td></td><td></td>
+				<% end %>
 			</tr>
-			<tr>
-				<td>Interesting/Stimulating</td>
-				<td><%=course_review.stimulating%></td>
-				<td>Labs</td>
-				<td><%=course_review.lab_difficulty%></td>
-			</tr>
-			<tr>	
-				<td>Content</td>
-				<td><%=course_review.content_quality%></td>
-				<td>Midterms</td>
-				<td><%=course_review.midterm_difficulty%></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td>Finals</td>
-				<td><%=course_review.final_difficulty%></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td>Out of Class Work Time</td>
-				<td><%=course_review.out_of_class_work_hours%></td>
-			</tr>
+			<% end %>
+			
 		</tbody>
 </table>
 	</div>
