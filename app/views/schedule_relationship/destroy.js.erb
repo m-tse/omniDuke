@@ -1,13 +1,9 @@
-var day, days, section, _i, _len;
-section = $("#section-slot-<%= j(params[:section]) %>");
-days = section.data("days");
-for (_i = 0, _len = days.length; _i < _len; _i++) {
-  day = days[_i];
-  var divArr, divClass, timeslot;
-  divClass = ['.', day, ' .timeSlots'].join("");
-  timeslot = section.data("timeslot");
-  timeDiv = [divClass, ' .ts', timeslot].join("");
+var section = $("#section-slot-<%= j(params[:section]) %>");
+<% @days.each do |day| %>
+  var divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
+  var timeslot = "<%= j(@section.getTimeSlotStr(day)) %>";
+  var timeDiv = [divClass, ' .ts', timeslot].join("");
   $(timeDiv).remove();
-}
+<% end %>
 
 section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { section: @section }) %>")

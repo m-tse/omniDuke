@@ -1,11 +1,12 @@
-<!-- Requires locals: {section:@section} -->
+<!-- Requires locals: {section:@section, day: @day} -->
 <!-- Think about implementing loop to deal with multiple slots per section -->
 
-<div class="timeslot ts<%= section.getTimeSlotStr %>">
+<div class="timeslot ts<%= section.getTimeSlotStr(day) %>">
     <table class="ts-content">
-        <thead><tr><th><%= section.getTimeSlotStrFormatted %></th></tr></thead>
+        <thead><tr><th><%= section.getTimeSlotStrFormatted(day) %></th></tr></thead>
         <tbody>
             <tr><td><%= section.name %></td></tr>
         </tbody>
     </table>
 </div>
+

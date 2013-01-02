@@ -20,19 +20,62 @@ class Section < ActiveRecord::Base
     self.required_sections=="n/a"
   end
 
+  # Refactor out the info inlucde logic into own method
   def hasDay?(day)
-      days = self.time_slot.aces_value.split(" ",2)[0]
-      return days.include?(dayToAbbr(day)) 
+      tinfo = self.time_slot.aces_value.split(" ")
+      tinfo.each do |info|
+          if !info.include?("AM") && !info.include?("PM")
+              if info.include?(dayToAbbr(day))
+                  return true
+              end
+          end
+      end
+      return false
   end
 
-
-  def getTimeSlotStr
-      times = self.time_slot.aces_value.split(" ",2)[1]
-      return timeSlotToStr(times) 
+  def is_i?(str)
+      !!(str =~ /^[-+]?[0-9]+$/)
   end
 
-  def getTimeSlotStrFormatted
-      time = String.new(self.time_slot.aces_value.split(" ",2)[1])
+  def getAllTimeSlotStrs
+      strs = Array.new
+      days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      days.each do |day|
+        if self.hasDay?(day)
+          str = self.getTimeSlotStrFormatted(day)
+          if !strs.include?(str)
+            strs << str
+          end
+        end
+      end 
+      return strs
+  end
+
+  def getTimeSlotStr(day)
+      dayAbbrs = { "Su" => "Sun", 
+                   "M"  => "Mon", 
+                   "Tu" => "Tue", 
+                   "W"  => "Wed", 
+                   "Th" => "Thu", 
+                   "F"  => "Fri", 
+                   "Sa" => "Sat" }
+      timeRegex = /(\d+:\d\d((AM)|(PM)) \- \d+:\d\d((AM)|(PM)))/
+      tinfo = self.time_slot.aces_value.split(dayAbbrs.key(day), 2)[1]
+      time = timeRegex.match(tinfo)[0]
+      return timeSlotToStr(time) 
+  end
+
+  def getTimeSlotStrFormatted(day)
+      dayAbbrs = { "Su" => "Sun", 
+                   "M"  => "Mon", 
+                   "Tu" => "Tue", 
+                   "W"  => "Wed", 
+                   "Th" => "Thu", 
+                   "F"  => "Fri", 
+                   "Sa" => "Sat" }
+      timeRegex = /(\d+:\d\d((AM)|(PM)) \- \d+:\d\d((AM)|(PM)))/
+      tinfo = self.time_slot.aces_value.split(dayAbbrs.key(day), 2)[1]
+      time = timeRegex.match(tinfo)[0]
       return time
   end
 
@@ -51,7 +94,7 @@ class Section < ActiveRecord::Base
       return timeInfoCopy.split('-').join("to").gsub(/\s+/, "")
   end
 
-  # Does not work on aces values with multiple slots
+  # Make more efficient with regexes
   def getDaysAsStrArray
       dayAbbrs = { "Su" => "Sun", 
                    "M"  => "Mon", 
@@ -60,13 +103,18 @@ class Section < ActiveRecord::Base
                    "Th" => "Thu", 
                    "F"  => "Fri", 
                    "Sa" => "Sat" }
-      days = self.time_slot.aces_value.split(" ",2)[0]
       daysStrArray = Array.new
-      dayAbbrs.keys.each do |abbr|
-          if days.slice(abbr) 
-            daysStrArray << dayAbbrs[abbr]
+      tinfo = self.time_slot.aces_value.split(" ")
+      puts tinfo
+      tinfo.each do |info|
+          dayAbbrs.keys.each do |abbr|
+              if !info.include?("PM") && !info.include?("AM")
+                  if info.slice(abbr)  
+                      daysStrArray << dayAbbrs[abbr]
+                  end
+              end
           end
-      end
+      end 
       return daysStrArray
   end
 

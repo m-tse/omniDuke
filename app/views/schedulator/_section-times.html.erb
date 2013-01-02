@@ -1,0 +1,13 @@
+<!-- REQUIRES locals: {section:@section, remove: boolean} -->
+<div class="click-section" >
+    <% strArray = section.getAllTimeSlotStrs %>
+    <% strArray.each do |str| %>
+        <%= str %>
+        <% if str != strArray.last %>
+            <br>
+        <% end %>
+    <% end %>
+    <% if remove %>
+        <i class="right icon-ok"></i>
+    <% end %>
+</div>

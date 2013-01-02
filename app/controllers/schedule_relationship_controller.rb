@@ -38,6 +38,7 @@ class ScheduleRelationshipController < ApplicationController
             if @schedulator.sections.include?(@section)
                 @schedulator.sections.delete(@section)
             end
+            @days = @section.getDaysAsStrArray
             respond_to do |format|
                 format.html { redirect_to schedulator_index_path }
                 format.js

@@ -4,10 +4,8 @@
 <% if @srel.conflicting %>
     <% divBg = "red" %>
 <% end %>
-    <%= link_to raw("
-            <div class='click-section #{divBg}'>" + section.time_slot.aces_value + 
-            '<i class="right icon-ok"></i></div>
-        '), {
+    <%= link_to raw("#{render partial: "schedulator/section-times", locals: {section: section, remove: true}}"), 
+        {
             controller: "schedule_relationship",
             action: "destroy",
             id: @srel.id,
@@ -17,8 +15,5 @@
             id: "section-slot-" + section.id.to_s,
             method: "delete",
             remote: true,
-            data: { days: section.getDaysAsStrArray.to_json.to_s,
-                timeslot: section.getTimeSlotStr 
-            }
         }
     %>

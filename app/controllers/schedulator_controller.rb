@@ -51,6 +51,10 @@ class SchedulatorController < ApplicationController
             redirect_to schedulator_index_path
             return
         end
+        if @schedulator == current_or_guest_user.current_schedulator
+            redirect_to schedulator_index_path
+            return
+        end
         @name = @schedulator.name
         if @schedulator == Schedulator.last
             @name = "Untitled"

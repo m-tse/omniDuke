@@ -12,7 +12,7 @@
                         <% schedulator.sections.each do |section| %>
                             <% if section.hasDay?(day) %> 
                                 <%= render partial: 'schedulator/timeslot', 
-                                locals: { section: section }
+                                locals: { section: section, day: day }
                                 %>
                             <% end %>
                         <% end %>
