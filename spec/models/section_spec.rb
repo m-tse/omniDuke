@@ -9,9 +9,7 @@ describe Section do
 
 
   subject { @section }
-  it { should respond_to(:instructors)}
-  it { should respond_to(:course)}
-  it { should respond_to(:time_slot)}
+
   it { should be_valid}
 
   #skipped all the useless validations of all the fields, they should all be there when it is created
