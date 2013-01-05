@@ -1,0 +1,15 @@
+<!-- pass in the following variables:
+	id, id of the link tag
+	content, content of the popover
+	title, title of the popover
+	placement, placement of the popover, top, right, left, bottom
+
+-->
+
+<%= content_tag("a", {:href=>"#", :id=>id, :class=>"btn btn-info", :rel=>"popover", "data-content"=>content, "data-title"=>title})  do -%>
+<i class="icon-info-sign icon-white"></i>
+<% end -%>
+
+<script type="text/javascript">
+  $(<%=id%>).popover({placement: '<%=placement%>', animation: 'true', trigger: 'hover'});
+</script>

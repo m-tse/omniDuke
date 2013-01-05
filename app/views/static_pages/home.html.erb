@@ -1,10 +1,12 @@
 <title>OmniDUKE</title>
-<!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path}} %-->
+
+<%  help_text="Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you."
+%>
 
 
 <h1 class="center", id="homeSearchLogo">OmniDUKE</h1>
 <div class="center">
-<%= render partial:"partials/search_bar/search_bar", locals:{redirect:omni_results_path, help_text:omni_search_help_text, advanced_options_partial:"partials/null"} %>
+<%= render partial:"partials/search_bar/search_bar", locals:{redirect:omni_results_path, help_text:help_text, advanced_options_partial:"partials/null"} %>
 <%= render partial:"partials/search_bar/pill_links", locals:{pill_id:"home_page_pills"} %>
 
 
