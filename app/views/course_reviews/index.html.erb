@@ -12,8 +12,8 @@
 		<h2>Course Ratings<%= render partial:"partials/miscellaneous/info_popover", locals:{id:"courseRatingInfoPopover", content:help_text, title:"How do we calculate this rating?", placement:"bottom"} %></h2>	
 
 
-		<h3>Overall Quality: <%= @course.course_meta.overall_quality%></h3>
-		<h3>Overall Difficulty: <%= @course.course_meta.overall_difficulty%></h3>
+		<h3>Overall Quality: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@course.course_meta.overall_quality, reverse:false}%></h3>
+		<h3>Overall Difficulty: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@course.course_meta.overall_difficulty, reverse:true}%></h3>
 	</div>
 
 	<div class="span6">

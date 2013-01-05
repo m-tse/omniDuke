@@ -17,9 +17,9 @@
 		<thead>
 			<tr>
 				<th>Overall Quality</th>
-				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageQuality, reverse:"false"} %></th>
+				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageQuality, reverse:false} %></th>
 				<th>Overall Difficulty</th>
-				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageDifficulty, reverse:"false"} %></th>
+				<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_review.thisReviewAverageDifficulty, reverse:true} %></th>
 			</tr>
 		</thead>	
 		<tbody>
@@ -28,14 +28,14 @@
 			<tr>
 				<% if(index<course_quality_criteria.size) %>
 					<td><%=course_quality_display_names[index]%></td>
-					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_quality_criteria[index], reverse:"false"} %></td>
+					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_quality_criteria[index], reverse:false} %></td>
 				<% else %>
 					<td></td><td></td>
 				<% end %>
 
 				<% if(index<course_difficulty_criteria.size) %>
 					<td><%=course_difficulty_display_names[index]%></td>
-					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_difficulty_criteria[index], reverse:"true"} %></td>
+					<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:course_difficulty_criteria[index], reverse:true} %></td>
 
 				<% else %>
 					<td></td><td></td>
