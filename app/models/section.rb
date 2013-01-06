@@ -51,6 +51,9 @@ class Section < ActiveRecord::Base
       return strs
   end
 
+  # Get time slot string methods do not work if the
+  # section does not have the given day
+  # Must call section.hasDay?(day) before  
   def getTimeSlotStr(day)
       dayAbbrs = { "Su" => "Sun", 
                    "M"  => "Mon", 

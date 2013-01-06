@@ -2,6 +2,16 @@ $("#bookbag-course-<%= j(params[:course]) %>").html("").append(
     "<%= j(render partial: 'bookbag_relationship/addCourse', locals: {course:@course}) %>")
 $("#course-<%= j(params[:course]) %>").html("").append(
     "<%= j(render partial: 'schedulator/side-add-course', locals: {course:@course}) %>");
+$("#sidemenu-course-<%= j(params[:course]) %>").remove();
+<% @days.each do |day| %>
+    <% @deleted_sections.each do |sec| %>
+        <% if @sections.include?(sec) && sec.hasDay?(day) %>
+            <% str = sec.getTimeSlotStr(day) %>
+            timeSlot = $(".<%= j(day) %>").children(".timeSlots").children(".ts<%= j(str) %>");
+            timeSlot.remove();
+        <% end %>
+    <% end %>
+<% end %>
 var bookbagTab = $("#side-nav-li-classes");
 setTimeout(function() {
     bookbagTab.removeClass("bg-yellow", 1000);

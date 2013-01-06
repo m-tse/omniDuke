@@ -30,6 +30,16 @@ class BookbagRelationshipController < ApplicationController
   def destroy 
     if !params[:course].blank?
       @course = Course.find(params[:course])
+      @sections = @course.sections
+      @deleted_sections = Array.new
+      schedulator = current_or_guest_user.current_schedulator
+      schedulator.sections.each do |sec|
+        if @sections.include?(sec) 
+          schedulator.sections.delete(sec)
+          @deleted_sections << sec
+        end
+      end
+      @days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
       if current_or_guest_user.courses.include?(@course)
         current_or_guest_user.courses.delete(@course)
       end

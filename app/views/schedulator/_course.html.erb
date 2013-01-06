@@ -11,6 +11,18 @@
 
 <div id="sidemenu-course-<%= course.id %>" class="sidemenu-course">
     <div class="course-header <%= headerBg %>" data-id=<%= @bookbagRel.id %>>
+        <%= link_to({
+            controller: "bookbag_relationship",
+            action: "destroy",
+            id: @bookbagRel.id,
+            course: course.id
+        },{
+            method: :delete,
+            remote: true,
+            class: "destroy-sidemenu-course"
+        }) do %>
+            <button type="button" class="close sidemenu-course-close">&times;</button>
+        <% end %>
         <%= course.subject.abbr + course.new_number %>
         <%= course.name %>
     </div>

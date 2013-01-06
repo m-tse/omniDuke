@@ -1,22 +1,22 @@
 <!-- REQUIRES locals; {schedulator: @schedulator} -->
-        <%= render partial: "schedulator/nav", locals: {schedulator: schedulator}%>
-        <div class="schedule">
-            <%= render partial: "schedulator/timeTable" %>
-            <% $timeStrs.each do |time| %>
-                <div class='<%= time %> tick-mark'>|</div>
-            <% end %>
-            <% $days.each do |day| %>
-                <div class="daySlot <%= day %>">
-                    <div class="dayName"><%= day %></div>
-                    <div class="timeSlots">
-                        <% schedulator.sections.each do |section| %>
-                            <% if section.hasDay?(day) %> 
-                                <%= render partial: 'schedulator/timeslot', 
-                                locals: { section: section, day: day }
-                                %>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
-            <% end %>
+<%= render partial: "schedulator/nav", locals: {schedulator: schedulator}%>
+<div class="schedule">
+    <%= render partial: "schedulator/timeTable" %>
+    <% $timeStrs.each do |time| %>
+        <div class='<%= time %> tick-mark'>|</div>
+    <% end %>
+    <% $days.each do |day| %>
+        <div class="daySlot <%= day %>">
+            <div class="dayName"><%= day %></div>
+            <div class="timeSlots">
+                <% schedulator.sections.each do |section| %>
+                    <% if section.hasDay?(day) %> 
+                        <%= render partial: 'schedulator/timeslot', 
+                        locals: { section: section, day: day }
+                        %>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
+    <% end %>
+</div>
