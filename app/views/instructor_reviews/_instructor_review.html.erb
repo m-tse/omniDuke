@@ -1,0 +1,19 @@
+<% reviewDate = instructor_review.updated_at %>
+<% 
+	column_names=['Quality']
+	overall_values=[instructor_review.average_quality]
+	reverse_colors=[false]
+	column_values=[[instructor_review.helpfulness, instructor_review.accessibility, instructor_review.clarity, instructor_review.fairness]]
+	column_value_labels=[["Helpfulness", "Accessibility", "Clarity", "Fairness"]]
+
+	 %>
+<h4>Review by <%=instructor_review.author%> on <%=Date::MONTHNAMES[reviewDate.month].to_s+" "+reviewDate.year.to_s%></h4>
+
+<div class="row">
+	<div class="span6">
+		<%= instructor_review.review_content %>
+	</div>
+	<div class="span6">
+		<%= render partial:'partials/reviews/uni_or_multi_column_ratings_table', locals:{column_names:column_names, overall_values:overall_values, reverse_colors:reverse_colors, column_values:column_values, column_value_labels:column_value_labels} %>
+	</div>
+</div>
