@@ -5,6 +5,9 @@ criteriaLables, corresponding labels for these values
 criteriaReverse, array of booleans for whether these values should have their color reversed, green to red instead of red->green
 reviewTypeLabel, string of the review type, i.e. course or professor
 parent_id, string for the name of the parent ID, i.e. course_meta_id, instructor_id
+model_underscore_name, name of the model we're building this to, course_review, or instructor_review
+
+note: review table must have a string field named :author, and a text field named :review_content
 -->
 
 
@@ -56,7 +59,7 @@ var colorLevels =["lightgrey",  <%for color in color_gradient%>"<%= color %>",<%
 <% for level in 0..10 %>
 $("<%="#"+criteria[criterionIndex]+level.to_s%>").click(
   function(){
-    $("<%="#course_review_"+criteria[criterionIndex]%>").val("<%=level%>");
+    $("<%="#"+model_underscore_name+"_"+criteria[criterionIndex]%>").val("<%=level%>");
     unhighlightAll("<%=criteria[criterionIndex]%>", <%=criteriaReverse[criterionIndex]%>);
   }
 );
@@ -86,7 +89,7 @@ function unhighlightAll(criteria, reverse){
   for (var i=0;i<=10;i++){
 
     criteriaValue=0;
-    ratingString = $("#course_review_"+criteria).val();
+    ratingString = $("<%="#"+model_underscore_name+"_"%>"+criteria).val();
     if(ratingString!=""){
       criteriaValue = parseInt(ratingString);
     }

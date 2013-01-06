@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106060526) do
+ActiveRecord::Schema.define(:version => 20130106064052) do
 
   create_table "active_schedulator_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(:version => 20130106060526) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.float    "average_quality"
+    t.string   "author"
+    t.text     "review_content"
   end
 
   create_table "instructors", :force => true do |t|
