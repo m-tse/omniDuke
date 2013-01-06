@@ -52,7 +52,7 @@ class Instructor < ActiveRecord::Base
       reviewCriteria = [review.helpfulness, review.accessibility, review.clarity, review.fairness]
       innerSum = 0.0
       innerCounter = 0.0
-      for rating in courseCriteria
+      for rating in reviewCriteria
         if rating!=nil
           innerSum+=rating 
           innerCounter+=1.0
