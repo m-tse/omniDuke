@@ -29,9 +29,6 @@ module ApplicationHelper
     courseToCode(course)+" "+course.name
   end
 
-  def omni_search_help_text
-    "Search by keywords to find courses and professors, e.g., type 'dance' to find courses about dance!  I'm smart enough to figure it out for you."
-  end
 
   #10 levesl of colors from red to yellow to green
   def color_gradient
