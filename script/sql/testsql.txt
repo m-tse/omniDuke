@@ -1,0 +1,16 @@
+Tables_in_db/development
+course_attributes
+course_attributes_sections
+course_numberings
+courses
+instructors
+instructors_sections
+prerequisite_relations
+reviews
+schema_migrations
+sections
+sessions
+subjects
+time_periods
+time_slots
+users

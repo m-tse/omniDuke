@@ -1,19 +1,44 @@
 #!/usr/bin/env ruby
 
 
-command = "rake db:populate --trace"
-puts command
-count = 0
-begin
-    status = system(command)
-    if not status
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+threads = {}
+commands = {}
+alphabet.each_char do |letter|
+  threads[letter] = Thread.new do
+    commands[letter] = "rake db:populate[#{letter}] --trace"
+    puts commands[letter]
+    count = 0
+    begin
+      status = system(commands[letter])
+      if not status
         raise
-    end
-rescue
-    if count >= 10
+      end
+    rescue
+=begin
+      if count >= 10
         exit
+      end
+      count += 1
+=end
+      retry
     end
-    count += 1
-    retry
+  end
+  if letter == "P"
+    threads["P15"] = Thread.new do
+      begin
+        commands["P15"] = "rake db:populate[#{letter},15] --trace"
+        status = system(commands["P15"])
+        if not status
+          raise
+        end
+      rescue
+        retry
+      end
+    end
+  end
+end
+threads.each_value do |thread|
+    thread.join
 end
 

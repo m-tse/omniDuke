@@ -1,0 +1,46 @@
+name	abbr	created_at	updated_at	scrape_value
+NULL	NULL	2012-11-20 22:16:21	2012-11-20 22:16:21	Seminar
+Cross Cultural Inquiry	CCI	2012-11-20 22:16:21	2012-11-20 22:16:21	(CCI) Cross Cultural Inquiry
+Ethical Inquiry	EI	2012-11-20 22:16:21	2012-11-20 22:16:21	(EI) Ethical Inquiry
+NULL	NULL	2012-11-20 22:16:21	2012-11-20 22:16:21	First Year Students Only
+Arts, Literature & Performance	ALP	2012-11-20 22:16:21	2012-11-20 22:16:21	(ALP) Arts, Literature & Performance
+Civilizations	CZ	2012-11-20 22:16:21	2012-11-20 22:16:21	(CZ) Civilizations
+Social Sciences	SS	2012-11-20 22:19:47	2012-11-20 22:19:47	(SS) Social Sciences
+Research	R	2012-11-20 22:19:56	2012-11-20 22:19:56	(R) Research
+NULL	NULL	2012-11-20 22:19:56	2012-11-20 22:19:56	Cross-listed in another department
+NULL	NULL	2012-11-20 22:20:44	2012-11-20 22:20:44	Course has lab
+Science, Technology, and Society	STS	2012-11-20 22:21:57	2012-11-20 22:21:57	(STS) Science, Technology, and Society
+NULL	NULL	2012-11-20 22:48:10	2012-11-20 22:48:10	Junior and/or Senior only
+NULL	NULL	2012-11-20 22:48:28	2012-11-20 22:48:28	Majors only
+NULL	NULL	2012-11-20 22:48:37	2012-11-20 22:48:37	Graduate students and seniors
+NULL	NULL	2012-11-20 22:49:07	2012-11-20 22:49:07	Graduate/professional students only
+NULL	NULL	2012-11-20 22:49:07	2012-11-20 22:49:07	Core Course, Cannot Add/Drop, Fuqua only
+NULL	NULL	2012-11-20 22:49:44	2012-11-20 22:49:44	Check prerequisite
+NULL	NULL	2012-11-20 22:49:55	2012-11-20 22:49:55	Satisfactory/Unsatisfactory Only
+NULL	NULL	2012-11-20 22:50:07	2012-11-20 22:50:07	Freshmen and/or sophomores only
+Writing	W	2012-11-20 22:50:33	2012-11-20 22:50:33	(W) Writing
+NULL	NULL	2012-11-20 22:50:33	2012-11-20 22:50:33	Freshmen & Soph only during pre-registration
+Foreign Language	FL	2012-11-20 23:35:27	2012-11-20 23:35:27	(FL) Foreign Language
+NULL	NULL	2012-11-20 23:35:33	2012-11-20 23:35:33	Skill Course
+NULL	NULL	2012-11-20 23:35:37	2012-11-20 23:35:37	Cannot Drop
+NULL	NULL	2012-11-20 23:35:44	2012-11-20 23:35:44	Taught off campus
+Natural Sciences	NS	2012-11-20 23:35:52	2012-11-20 23:35:52	(NS) Natural Sciences
+NULL	NULL	2012-11-20 23:35:54	2012-11-20 23:35:54	4 Semester Hours
+Foreign Language	FL	2012-11-20 23:40:26	2012-11-20 23:40:26	Foreign Languages curriculum course
+Quantitative Studies	QS	2012-11-20 23:40:28	2012-11-20 23:40:28	(QS) Quantitative Studies
+NULL	NULL	2012-11-20 23:41:09	2012-11-20 23:41:09	Undergraduates only
+NULL	NULL	2012-11-20 23:41:36	2012-11-20 23:41:36	Cannot Add
+NULL	NULL	2012-11-20 23:42:15	2012-11-20 23:42:15	Course has recitation
+Service Learning Course	SLC	2012-11-20 23:42:20	2012-11-20 23:42:20	Service Learning Course
+NULL	NULL	2012-11-20 23:42:37	2012-11-20 23:42:37	Permission number required to register
+Research	R	2012-11-20 23:42:38	2012-11-20 23:42:38	Register for lab section; lecture automatic
+NULL	NULL	2012-11-20 23:43:46	2012-11-20 23:43:46	Check for additional times
+NULL	NULL	2012-11-20 23:46:35	2012-11-20 23:46:35	Seniors Only
+NULL	NULL	2012-11-20 23:50:00	2012-11-20 23:50:00	Juniors Only
+NULL	NULL	2012-11-20 23:53:36	2012-11-20 23:53:36	Fee payable in class
+NULL	NULL	2012-11-21 00:07:01	2012-11-21 00:07:01	Course has a lecture
+NULL	NULL	2012-11-21 00:08:51	2012-11-21 00:08:51	Course has lab and recitation
+NULL	NULL	2012-11-21 00:12:51	2012-11-21 00:12:51	Apply to Marine Lab - Beaufort, N.C.
+NULL	NULL	2012-11-21 00:38:29	2012-11-21 00:38:29	Internet Course
+NULL	NULL	2012-11-21 00:48:53	2012-11-21 00:48:53	Additional fee required
+Natural Sciences	NS	2012-11-21 01:03:08	2012-11-21 01:03:08	NSOE students only

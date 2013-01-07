@@ -1,57 +1,68 @@
 require_relative "../../util/util"
 require 'capybara'
 require 'capybara/dsl'
-
+require 'thread'
 
 
 Logging.logger.root.level = :debug
 Logging.logger.root.appenders = Logging.appenders.file('scrape-out.log')
 
 $logger = Logging.logger['scrape-logger'] #any name can go in here
-
+mutex = Mutex.new
 
 
 namespace :db do
   desc "Scrape data from ACES and enter it into the database"
-  task populate: :environment do
-
-#    spider = Spider::Google.new
-#    spider.login()
-#    spider.search()
+  task :populate, :letter, :subject, :environment do |t, args|
+=begin
+    alphabet = "AB"
+    spiders = {}
+    threads = {}
+    alphabet.each_char do |letter|
+      threads[letter] = Thread.new do
+    threads["A"].join
+    threads["B"].join
+=end
+    spider = Spider::Google.new
+    spider.login()
+    spider.search(args[:letter], args[:subject])
   end
 end
 
 $wait_time = 10
-$username = ''
-$password = ''
+$username = 'aks35'
+$password = '6EF81ba8c2'
 #put the path of the elementsIds.temp file here
 $projectPath = ''
 
 
-Capybara.run_server = false
-Capybara.current_driver = :selenium
-Capybara.app_host = "http://aces.duke.edu/"
-Capybara.default_wait_time = $wait_time
-Capybara.automatic_reload = false
 
 
 module Spider
   class Google
     include Capybara::DSL
 
+    Capybara.run_server = false
+    Capybara.current_driver = :selenium
+    Capybara.app_host = "http://aces.duke.edu/"
+    Capybara.default_wait_time = $wait_time
+    Capybara.automatic_reload = false
     def login()
-
       visit ('/')
       find_field('j_username')
       fill_in("j_username", :with => $username)
       fill_in('j_password', :with => $password)
       click_button('Enter')
-
     end
 
 
-    def search()
+    def search(letter, subjectArg=-1)
 
+      if subjectArg == -1
+        $projectPath = "/home/ark5/projects/omniDuke/scrape_output/#{letter}scrape.out"
+      else 
+        $projectPath = "/home/ark5/projects/omniDuke/scrape_output/#{letter}#{subjectArg}scrape.out"
+      end
       $logger.debug "BEGIN SCRAPING"
 
       previousLetterId = 0
@@ -59,48 +70,42 @@ module Spider
       previousCourseId = 0
       previousSectionId = 0
  
+      if subjectArg != -1
+        previousSubjectId = subjectArg.to_i
+      end
+
       if File.exists? $projectPath
         lines = File.open($projectPath).readlines
 
-        previousLetterId = Integer(lines[0].delete("\n"))
-        previousSubjectId = Integer(lines[1].delete("\n"))
-        previousCourseId = Integer(lines[2].delete("\n"))
-        previousSectionId = Integer(lines[3].delete("\n"))
+        previousSubjectId = Integer(lines[0].delete("\n"))
+        previousCourseId = Integer(lines[1].delete("\n"))
+        previousSectionId = Integer(lines[2].delete("\n"))
       end
       puts previousLetterId
       puts previousSubjectId
       puts previousCourseId
       puts previousSectionId
 
-      $logger.debug "Previous letter id: #{previousLetterId}"
       $logger.debug "Previous subject id: #{previousSubjectId}"
       $logger.debug "Previous course id: #{previousCourseId}"
       $logger.debug "Previous section id: #{previousSectionId}"
 
 
       find_link('Registration').click
-      
-      alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      letters = Array.new
-      alphabet.each_char do |letter|
-        letters << letter
-      end
-      
 
       #fix this eventually
-      currentSession = getCreateSession("fall", 2012)
+      currentSession = getCreateSession("spring", 2013)
 
       ind = true
       begin
         # Loop through A - Z
-        letterId = 0
         subjectId = 0
         courseId = 0
         sectionId = 0
 
         find("iframe#ptifrmtgtframe")
         page.driver.browser.switch_to.frame 'ptifrmtgtframe'
-        letters.each do |letter|
+=begin
           $logger.debug "Starting letter: #{letter}"
           if ind
             if previousLetterId >= letters.length
@@ -116,6 +121,7 @@ module Spider
                     previous letter id #{previousLetterId}"
             end
           end
+=end
           sleep(1)
           find_link(letter).click   
           sleep(1)
@@ -124,8 +130,7 @@ module Spider
               find("a[id^='DU_SEARCH_WRK_SSR_EXPAND_COLLAP2$']")
           rescue
               if tries >= 3
-                  $logger.debug "Could not find subjects for letter #{letterId}, skipping this letter"
-                  next
+                  exit(0)
               end
               tries += 1
               puts "Trying #{tries}, letter: #{letter}"
@@ -255,7 +260,6 @@ module Spider
                 sectionCSSTag = "a[id='"+sectionid+"']"
                 find(sectionCSSTag)
 
-                puts letterId
                 puts subjectId
                 puts courseId
                 puts sectionId 
@@ -296,12 +300,9 @@ module Spider
           subjectId = 0
           writeId(subject: subjectId)
           sleep(1)    
-          letterId += 1
           puts "OVERWRITING PREVIOUS"
           puts "OVERWRITING PREVIOUS"
-          writeId(letter: letterId)
  
-        end 
 
       rescue => e
         $logger.debug "BROKEN"
@@ -309,7 +310,7 @@ module Spider
         $logger.debug "ERROR: #{e.inspect}"
         $logger.debug "BROKEN"
         $logger.debug "BROKEN"
-        writeId(letter: letterId, subject: subjectId, course: courseId, section: sectionId)
+        writeId(subject: subjectId, course: courseId, section: sectionId)
         raise
       end
     end
@@ -318,21 +319,21 @@ module Spider
 end
 
 
-def writeId(options = {letter: nil, subject: nil, course: nil, section: nil})
+def writeId(options = {subject: nil, course: nil, section: nil})
 
-  previousIds = [0,0,0,0]
+  previousIds = [0,0,0]
 
   if File.exists? $projectPath
     lines = File.open($projectPath).readlines
-    for i in (0..3)
+    for i in (0..2)
         previousIds[i] = Integer(lines[i].delete("\n"))
     end
   end
 
-  writtenIds = [0,0,0,0]
-  keys = [:letter, :subject, :course, :section]
+  writtenIds = [0,0,0]
+  keys = [:subject, :course, :section]
   File.open($projectPath,'w') do |f|
-      for i in (0..3)
+      for i in (0..2)
         value = options[keys[i]]
         if value.nil?
           f.puts previousIds[i]
@@ -348,10 +349,9 @@ def writeId(options = {letter: nil, subject: nil, course: nil, section: nil})
   p previousIds
 
   $logger.debug "Wrote ids to elementsIds.temp
-    letter:     #{writtenIds[0]}
-    subject:    #{writtenIds[1]}
-    course:     #{writtenIds[2]}
-    section:    #{writtenIds[3]}
+    subject:    #{writtenIds[0]}
+    course:     #{writtenIds[1]}
+    section:    #{writtenIds[2]}
   "
 
 end
