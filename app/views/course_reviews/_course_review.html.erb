@@ -1,7 +1,7 @@
 <% reviewDate = course_review.updated_at %>
 <% 
 	column_names=['Quality', 'Difficulty']
-	overall_values=[course_review.thisReviewAverageQuality, course_review.thisReviewAverageDifficulty]
+	overall_values=[course_review.average_quality, course_review.average_difficulty]
 	reverse_colors=[false, true]
 	column_values=[[course_review.usefulness, course_review.stimulating, course_review.content_quality],[course_review.homework_difficulty, course_review.lab_difficulty, course_review.midterm_difficulty, course_review.final_difficulty, course_review.out_of_class_work_hours]]
 	column_value_labels=[["Usefulness", "Interesting", "Quality of Content"],["Homework", "Labs", "Midterms", "Finals", "Out of Class Work Hours"]]
