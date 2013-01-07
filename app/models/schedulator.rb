@@ -39,6 +39,17 @@ class Schedulator < ActiveRecord::Base
     end
 
 
+    def getResolvedSections(section) 
+        @all = self.getAllConflictingSections
+        @conflicts = self.getConflictingSections(section)
+        @conflicts.each do |con|
+            @all.delete(con)
+        end
+        @all.delete(section)
+        return @all
+    end
+
+
     def sectionsConflict?(s1, s2)
 
         days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]

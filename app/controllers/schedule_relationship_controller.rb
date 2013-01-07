@@ -6,6 +6,7 @@ class ScheduleRelationshipController < ApplicationController
             @schedulator = Schedulator.find(params[:schedulator])
             if !@schedulator.sections.include?(@section)
                 @conflict = false
+                @schedulator.sections << @section
                 if @schedulator.conflictWith?(@section) # check for time conflict
                     @conflict = true
                     # CONFLICT RESOLUTION
@@ -17,8 +18,11 @@ class ScheduleRelationshipController < ApplicationController
                 #    end
                 #    @conflictsStr = conflictsStrBuilder.join("<br>")
                 #else                    
+                    getScheduleRelationship(@schedulator, @section).conflicting = true
+                    @conflicts.each do |con|
+                        getScheduleRelationship(@schedulator, con).conflicting = true
+                    end
                 end
-                @schedulator.sections << @section
             end
             @days = @section.getDaysAsStrArray
             respond_to do |format|
@@ -39,6 +43,12 @@ class ScheduleRelationshipController < ApplicationController
             @schedulator.sections.delete(@section)
         end
         @days = @section.getDaysAsStrArray
+        @resolvedIds = Array.new
+        if @schedrel.conflicting 
+            @schedulator.getResolvedSections(@section).each do |res|
+                @resolvedIds << getScheduleRelationship(@schedulator, res).id.to_s
+            end
+        end
         respond_to do |format|
             format.html { redirect_to schedulator_index_path }
             format.js

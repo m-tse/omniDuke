@@ -1,7 +1,15 @@
+var tid;
 var section = $("#section-slot-<%= j(@section.id.to_s) %>");
+section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { section: @section }) %>")
 <% @days.each do |day| %>
   var divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
-  var tid = ".<%= day %> .timeSlots .schedrel-<%= j(@schedrel.id.to_s) %>";
+  tid = ".<%= day %> .timeSlots .schedrel-<%= j(@schedrel.id.to_s) %>";
   $(tid).remove();
+  <% @resolvedIds.each do |res| %>
+    tid = ".<%= day %> .timeSlots .schedrel-<%= j(res) %>";
+    div = $(tid);
+    if (div.hasClass("conflict")) {
+        div.removeClass("conflict");
+    }
+  <% end %>
 <% end %>
-section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { section: @section }) %>")
