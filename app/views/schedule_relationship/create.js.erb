@@ -1,0 +1,18 @@
+var section = $("#section-slot-<%= j(params[:section]) %>");
+section.replaceWith("<%= j(render partial: 'schedulator/removeSection', locals: { section: @section }) %>")
+var divClass;
+<% @days.each do |day| %>
+    divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
+    $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:@section, day:day, conflict:@conflict}) %>");
+<% end %>
+<% if @conflict %>
+    <% @conflicts.each do |con| %>
+        <% @days.each do |day| %>
+            var tid = ".<%= day %> .timeSlots .schedrel-<%= j(getScheduleRelationship(@schedulator, con).id.to_s) %>";
+            $(tid).remove();
+            divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
+            $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:con, day:day, conflict:@conflict}) %>");
+        <% end %>
+    <% end %>
+<% end %>
+

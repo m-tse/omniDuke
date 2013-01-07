@@ -1,0 +1,15 @@
+<%= render partial: "schedulator/side-nav" %>
+<div id="side-content">
+    <div id="search-form">
+        <%= form_tag courses_side_results_path, {remote: true, id: "side-nav-search"} do %>
+            Class search: <input type="text" name="class_search" id="class-search">
+        <% end %>
+    </div>
+    <div class="divider"></div>
+    <div id="search-content"></div>
+</div>
+<script type="text/javascript">
+    $("#class-search").keyup(function() {
+        $("#side-nav-search").submit();
+    });
+</script>

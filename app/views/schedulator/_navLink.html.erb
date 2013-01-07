@@ -1,0 +1,7 @@
+<!-- Requires locals: {schedulator:@schedulator} -->
+<li id="schedulator-li-<%= schedulator.id.to_s %>">
+    <button type="button" class="close nav-link-close" data-active-rel="<%= getActiveSchedulatorRelationshipId(current_or_guest_user, schedulator)%>">&times;</button> 
+    <%= link_to(schedulator, class: "schedulator-link", remote: true) do %>
+        <%= schedulator.name %><%= raw("&nbsp;"*3) %>
+    <% end %>
+</li>

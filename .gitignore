@@ -34,3 +34,8 @@ elementIds.temp
 
 #ignore scrapelog
 scrape-out.log
+
+timeConflict.log
+
+timeCssInfo.txt
+

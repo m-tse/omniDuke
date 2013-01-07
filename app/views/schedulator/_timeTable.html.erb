@@ -1,0 +1,7 @@
+<table>
+    <tr>
+        <% $times.zip($timeStrs).each do |time, timeStr| %>
+            <td class="<%= timeStr %> time-string"><%= time %></td>
+        <% end %>
+    </tr>
+</table>            

@@ -1,14 +1,46 @@
-
-<h3>Course numbers</h3>
-<p><%= courseToCode(@course) %></p>
-
-
 <h3>Description</h3>
 <% if @course.descriptions.size==1 %>
 <%= @course.descriptions.first %>
 <% else %>
 <p>Find the different descriptions in each section.</p>
 <% end %>
+
+<h3>Sections</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <!--th>Bookbag</th-->
+      <th>Name</th>
+      <th>Times</th>
+      <th>Instructor(s)</th>
+      <th>Room</th>
+      <th>Enrollment</th>
+      <th>Waitlist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for section in @course.sections %>
+    <tr>
+      <!--td>
+        <!--%= render partial: 'courses/section',
+            locals: { section: section } 
+        %-->
+      </td-->      
+      <td>
+        <%= section.list_description %>
+      </td>
+      <td><%= section.time_slot.aces_value %></td>
+      <td>
+  <% instructor = section.instructors.first %>
+  <%= link_to instructor.toString, instructor_path(instructor.id), class:"instructor_link" %>
+      </td>
+      <td><%= section.room %></td>
+      <td><%= section.enrollment.to_s + "/" +section.capacity.to_s %></td>
+      <td><%= section.waitlist_enrollment.to_s+"/" + section.waitlist_capacity.to_s %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <h3>Attributes</h3>
  
@@ -26,31 +58,4 @@
 <% end %>
 
 
-<h3>Sections</h3>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Times</th>
-      <th>Instructor(s)</th>
-      <th>Room</th>
-      <th>Enrollment</th>
-      <th>Waitlist</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for section in @course.sections %>
-    <tr>
-      <td><%= section.list_description %></td>
-      <td><%= section.time_slot.aces_value %></td>
-      <td>
-	<% instructor = section.instructors.first %>
-	<%= link_to instructor.toString, instructor_path(instructor.id), class:"instructor_link" %>
-      </td>
-      <td><%= section.room %></td>
-      <td><%= section.enrollment.to_s + "/" +section.capacity.to_s %></td>
-      <td><%= section.waitlist_enrollment.to_s+"/" + section.waitlist_capacity.to_s %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+

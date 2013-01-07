@@ -1,0 +1,125 @@
+jQuery ->
+    loadEventHandlers()
+
+loadEventHandlers = ->
+    historyHandler()
+    handleNavLinkClose()
+    sidemenuCourseHandler()
+    flashHandler()
+    sideNavLinkHandler()  
+    courseBookbagHandler()
+
+scheduleNameUpdater = ->
+    $(".scheduleNameUpdate").live("click", (e)->
+        $("#scheduleName").html($(this).html())
+    )
+
+historyHandler = ->
+    if history && history.pushState
+        jQuery ->
+            $(".updateHistory a").live("click", (e)->
+                if !$(this).hasClass("ignore-history")
+                    history.pushState(null, "", this.href)
+            )
+            $(window).bind('popstate', ->
+                $.getScript(location.href)
+            )
+
+handleNavLinkClose = ->
+    $(".nav-link-close").live('click', (e)->
+        urlStrs = [
+            "<%= j(Rails.root) %>"
+            "active_schedulator_relationships"
+            $(this).data("active-rel") 
+        ]
+        $.ajax({
+            url: urlStrs.join("/"),
+            type:"delete"
+        })
+    )
+
+sidemenuCourseHandler = ->
+    $(".sidemenu-course").live('click', (e)->
+        courseDiv = $(this)
+        courseHeader = courseDiv.children(".course-header")
+        sectionsDiv = courseDiv.children(".sidemenu-sections")
+        if courseHeader.hasClass("bg-dark-green")
+            courseHeader.removeClass("bg-dark-green")
+            sectionsDiv.hide()
+            urlBuilder = [
+                "<%= j(Rails.root) %>"
+                "bookbag_relationship"
+                courseHeader.data("id").toString()
+                "edit?viewing=false"
+            ]
+            $.ajax({
+                url: urlBuilder.join("/")
+            })
+        else
+            courseHeader.addClass("bg-dark-green")
+            sectionsDiv.show()
+            urlBuilder = [
+                "<%= j(Rails.root) %>"
+                "bookbag_relationship"
+                courseHeader.data("id").toString()
+                "edit?viewing=true"
+            ]
+            $.ajax({
+                url: urlBuilder.join("/")
+            })
+    )
+
+flashHandler = -> 
+    $(".alert").delay(2000).hide("slow")
+
+sideNavLinkHandler = ->
+    $(".side-nav-link").live("click", (e)->
+        e.preventDefault()
+        link = $(this)
+        current = window.location.href
+        if current.indexOf("?") == -1
+            urlBuilder = [
+                window.location.href
+                "?sidelink="
+                link.data("sidelink")
+            ]
+        else 
+            urlBuilder = [
+                window.location.href
+                "&sidelink="
+                link.data("sidelink")
+            ]
+        $.ajax({
+            url: urlBuilder.join("")
+        })
+    )
+
+courseBookbagHandler = ->
+    $("#side-content .add-course").live("click", (e)->
+        courseDiv = $(this)
+        urlBuilder = [
+            "<%= j(Rails.root) %>" 
+            "/bookbag_relationship"
+            "?course="
+            courseDiv.data("course")
+        ]
+        $.ajax({
+            url: urlBuilder.join("")
+            type:"post"
+        })
+    )
+    $("#side-content .remove-course").live("click", (e)->
+        courseDiv = $(this)
+        urlBuilder = [
+            "<%= j(Rails.root) %>" 
+            "/bookbag_relationship/"
+            courseDiv.data("id")
+            "?course="
+            courseDiv.data("course")
+        ]
+        $.ajax({
+            url: urlBuilder.join("")
+            type:"delete"
+        })
+    )
+

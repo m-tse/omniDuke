@@ -1,7 +1,9 @@
-<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Professors"=>instructors_path}} %>
-<div class="page-header"><h1>Explore Professors</h1></div>
+<title>OmniDUKE Professors</title>
+<!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Professors"=>instructors_path}} %-->
+
 
 <%= render partial:"partials/search_bar/search_bar", locals:{redirect:instructors_results_path, help_text:instructor_search_help_text, advanced_options_partial:"partials/null"} %>
+<%= render partial:"partials/search_bar/pill_links", locals:{pill_id:"instructor_pills"} %>
 
 <h3>Browse By</h3>
 <div class="tabbable"> <!-- Only required for left/right tabs -->

@@ -1,0 +1,58 @@
+<div id="conflict-resolution">
+    <div id="conflict-warning" class="rounded-border">
+        There is a conflict in your schedule. <br>
+    </div>
+    <div class="sections">
+        <div class="row">
+            <%= link_to raw(
+                "<div id='just-added' class='span4 clickable rounded-border grey-border'>
+                    <h2>Just added</h2>
+                    <p>#{@section.name}</p>
+                </div>"
+                ), {
+                    controller: "schedule_relationship",
+                    action: "replace",
+                    schedulator: @schedulator.id,
+                    added: @section.id,
+                    conflicts: getIds(@conflicts).to_json
+                }, {
+                    remote: true
+                }
+            %>
+            <%= link_to raw(
+                    "<div id='conflicting-with' class='span4 clickable rounded-border grey-border'>
+                        <h2>Conflicting with</h2>
+                        <p>#{@conflictsStr}</p>
+                    </div>"), @schedulator, {
+                        remote: true
+                    }
+            %>
+        </div>
+    </div> 
+    <h2>What would you like to do?</h2>
+    <div class="row">
+        <div id="trigger-point-up" class="span4 clickable rounded-border grey-border mid">
+            <h3>
+                Decide for yourself
+            </h3>
+            <p>Choose which section(s) to keep. Click above for the section(s) you want to keep.</p>
+        </div>
+        <%= link_to raw("<div class='span4 clickable rounded-border grey-border mid'>
+            <h3>Decide later</h3>
+            <p>Create two schedules, one with the conflicting section(s) the other with the just added section (other sections will appear in both schedules).</p>
+            </div>"), "#diverge-modal", {
+                data: {toggle: "modal"}
+            }
+        %>
+        <%= render partial: "schedule_relationship/diverge-modal" %>
+    </div>
+    <div id="coin-flip" class="row"><h1 class="span8 coin-flip rounded-border grey-border clickable">Flip a coin</h1></div>
+</div>
+
+<script type="text/javascript">
+    $(".clickable").hover((function() {
+        $(this).addClass("hovered-over", 500);
+    }), (function() {
+        $(this).removeClass("hovered-over", 500);
+    }));
+</script>

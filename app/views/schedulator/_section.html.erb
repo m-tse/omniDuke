@@ -1,0 +1,10 @@
+<!-- REQUIRES locals: {section:@section} -->
+<% if !@schedulator.sections.include?(section) %>
+    <%= render partial: "schedulator/addSection",
+        locals: { section: section }
+    %> 
+<% else %> 
+    <%= render partial: "schedulator/removeSection",
+        locals: { section: section }
+    %> 
+<% end %>

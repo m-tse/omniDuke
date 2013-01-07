@@ -1,0 +1,10 @@
+<%= render partial:"partials/reviews/new_review", locals:{:reviewObjectName=>CourseMeta.find(@course_meta_id).course_name, 
+  :criteria=>["usefulness", "stimulating", "content_quality", "homework_difficulty", "lab_difficulty", "midterm_difficulty", "final_difficulty", "out_of_class_work_hours"], 
+  :criteriaLabels=>['Usefulness', 'Interesting/Stimulating', 'Quality of Content', 'Homework Difficulty',
+  'Lab Difficulty', 'Midterm Difficulty', 'Final Difficulty', 'Out of Class Work Time'], 
+:criteriaReverse=>[false,false,false,true,true,true,true,true],
+:reviewTypeLabel=>"course",
+:parent_id=>"course_meta_id",
+:model_underscore_name=>"course_review"} %>
+
+

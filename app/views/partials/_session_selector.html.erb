@@ -3,11 +3,11 @@
 
 
 
-<div class="dropdown">
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Session: <%= current_or_guest_user.session.name%></a>
-<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-  <% for session in Session.all %>  
-  <li><%= link_to session.name, send(path, :currentSession => session.name)%></li>
-  <% end %>
-</ul>
-</div>
+
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Current Session: <%= current_or_guest_user.session.name%><span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <% for session in Session.all %>  
+    <li><%= link_to session.name, send(path, :currentSession => session.name)%></li>
+    <% end %>
+  </ul>
+

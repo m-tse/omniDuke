@@ -1,0 +1,17 @@
+<!-- Requires locals: {section:@section} -->
+<% @srel = getScheduleRelationship(@schedulator, section) %> 
+<% divBg = "" %>
+<% if @srel.conflicting %>
+    <% divBg = "red" %>
+<% end %>
+    <%= link_to raw("#{render partial: "schedulator/section-times", locals: {section: section, remove: true}}"), 
+        {
+            controller: "schedule_relationship",
+            action: "destroy",
+            id: @srel.id
+        }, {
+            id: "section-slot-" + section.id.to_s,
+            method: "delete",
+            remote: true,
+        }
+    %>

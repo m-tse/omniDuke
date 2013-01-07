@@ -1,8 +1,9 @@
-<%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Subjects"=>subjects_path}} %>
+<title>OmniDUKE Subjects</title>
+<!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Subjects"=>subjects_path}} %-->
 
-<div class="page-header"><h1>Explore Subjects</h1></div>
-<%= render partial:"partials/search_bar/search_bar", locals:{redirect:subjects_results_path, help_text:subject_search_help_text, advanced_options_partial:"partials/null"} %>
 
+<%= render partial:"partials/search_bar/search_bar", locals:{redirect:subjects_results_path, help_text:subject_search_help_text} %>
+<%= render partial:"partials/search_bar/pill_links", locals:{pill_id:"subject_pills"} %>
 <%= render partial:"partials/session_selector", locals:{path:"subjects_path"} %>
 
 

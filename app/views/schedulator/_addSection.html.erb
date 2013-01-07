@@ -1,0 +1,12 @@
+    <%= link_to raw("#{render partial: "schedulator/section-times", locals: {section: section, remove: false}}"), 
+        {
+            controller: "schedule_relationship",
+            action: "create",
+            section: section.id,
+            schedulator: @schedulator.id
+        }, {
+            id: "section-slot-" + section.id.to_s,
+            method: "post",
+            remote: true
+        }
+    %>

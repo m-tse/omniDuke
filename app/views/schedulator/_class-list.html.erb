@@ -1,0 +1,12 @@
+<%= render partial: "schedulator/side-nav" %>
+<div id="side-content">
+    <div id="class-list">
+        <!-- FILL WITH SECTIONS -->
+        <% current_or_guest_user.courses.each do |course| %>
+            <%= render partial: 'schedulator/course',
+                locals: { course: course }
+            %>
+        <% end %>
+    </div>
+</div>
+

@@ -1,0 +1,5 @@
+<!-- REQUIRES locals: {course: @course} -->
+<div class="remove-course" data-id="<%= getBookbagRelationship(current_or_guest_user, course).id %>" data-course="<%= course.id %>">
+    <i class="icon-ok"></i>
+    <%= course.name %>
+</div>

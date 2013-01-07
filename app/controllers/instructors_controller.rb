@@ -7,6 +7,7 @@ class InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find_by_id(params[:id])
+    @reviews = @instructor.instructor_reviews
   end
 
   def results

@@ -1,0 +1,9 @@
+<% if !current_or_guest_user.sections.include?(section) %>
+	<div id="section-<%= "#{section.id}" %>">
+		<%= render partial: "bookbag_relationship/addSection", locals: {section:section} %>
+	</div>
+<% else %>
+	<div id="section-<%= "#{section.id}" %>">
+		<%= render partial: "bookbag_relationship/removeSection", locals: {section:section} %>
+	</div>
+<% end %>

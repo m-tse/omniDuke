@@ -1,0 +1,17 @@
+jQuery ->
+    loadEventHandlers()
+
+loadEventHandlers = ->
+    triggerUpPointer()
+
+triggerUpPointer = ->
+    $("div#trigger-point-up").live("click", (e)->
+        justAdded = $("#just-added")
+        conflictingWith = $("#conflicting-with")
+        setTimeout((->
+            justAdded.removeClass("red-border", 1000)
+            conflictingWith.removeClass("red-border", 1000)
+        ), 1000);
+        justAdded.addClass("red-border", 1000)
+        conflictingWith.addClass("red-border", 1000)
+    )

@@ -1,0 +1,299 @@
+
+table thead th.timetable {
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* you might want to rename this .__. */ 
+.bg-dark-green {
+    background-color: lightgrey;  
+}
+
+.bg-light-green {
+	background-color: #33FF99;	
+}
+
+li.bg-light-green {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -o-border-radius:5px;
+    background-color: #33FF99;  
+    color: #FFFFFF;
+}
+
+li.bg-yellow {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -o-border-radius:5px;
+    background-color: #FFFF66;  
+    color: #FFFFFF;
+}
+
+.red { /* FOR TESTING */ 
+	background-color: red;
+}
+
+#omniContainer {
+    position: relative;
+    top: 20px;
+    width:1180px;
+}
+
+/* SIDE MENU STYLING */
+
+#side-menu {
+    float: right;
+	margin-left: 10px;
+	margin-top: -15px;
+    width: 290px;
+}
+
+#class-list {
+	height:470px;
+	background-color: #F8F8F8;
+	overflow-y: scroll;
+    font-size: small;
+    border-top: solid 1px #D0D0D0;
+}
+
+
+.sidemenu-course {
+    cursor: pointer;
+    border-left: solid 1px #D0D0D0;
+    border-right: solid 1px #D0D0D0;
+    border-bottom: solid 1px #D0D0D0;
+}
+
+.course-header {
+    padding-right: 12px;
+}
+
+button.sidemenu-course-close {
+    position: relative;
+    right: -8px;
+    top: 1px;
+}
+
+.sidemenu-sections {
+    /* Enable display through javascript */
+}
+
+.sidemenu-section {
+    background-color: #F0F0F0;  
+    border-style: dotted;
+    border-width: 1px;
+}
+
+div .click-section {
+	cursor: pointer;
+	border: dotted;
+	border-width: 1px;
+	border-color: red;
+}
+
+.sideMenu ul.nav-tabs li a {
+    /*
+	font-size: small;
+	padding: 8px 5px 8px 5px;
+    */
+}
+
+#side-content {
+    border-style: solid;
+    border-color: #D0D0D0;
+    border-width: 1px;
+    border-top-style: none;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    -moz-border-bottom-left-radius:5px;
+    -moz-border-bottom-right-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -o-border-bottom-left-radius:5px;
+    -o-border-bottom-right-radius:5px;
+    height: 437px;
+}
+
+#saved-schedules .sidemenu-schedule-name {
+    border-bottom: 1px solid #D0D0D0;
+    padding-top: 5px;   
+    padding-bottom: 5px;   
+    padding-left: 20px;
+}
+
+#side-nav-search {
+    position: relative;
+    padding-left: 20px;
+}
+
+div.divider {
+    position: relative;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #D0D0D0;
+}
+
+#saved-schedules div.divider {
+    position: relative;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #D0D0D0;
+}
+
+#side-content #search-content {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+#side-content .course {
+    border-bottom: solid 1px #D0D0D0;
+    cursor: pointer;
+}
+
+/* SCHEDULATOR STYLING */
+
+#schedulatorContainer {
+    float:left;
+	margin-top: -15px;
+    width: 870px;
+}
+
+.schedule {
+	position: relative;
+	background-color:#FFFFFF;
+    border-style: solid;
+    border-color: #D0D0D0;
+    border-width: 1px;
+    border-top-style: none;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    -moz-border-bottom-left-radius:5px;
+    -moz-border-bottom-right-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -o-border-bottom-left-radius:5px;
+    -o-border-bottom-right-radius:5px;
+	height:470px;
+}
+
+.daySlot {
+	position: relative;
+	background-color:#FFFFFF;
+	height:65px;
+	top:10px;
+	border-bottom-style: solid;
+	border-bottom-color: #D0D0D0;
+    border-bottom-width: 1px;
+}
+
+.dayName {
+	position: relative;
+	top:45px;
+	left:2px;
+}
+
+.Sun {
+	border-top: solid 1px #D0D0D0;
+}
+
+a#save-modal-button {
+    position:relative;
+    float:right;
+    right: 10px;
+    top:-525px;
+}
+
+
+
+/* TIME SLOT STYLING */
+
+table.ts-content {
+	width:100%;
+
+}
+
+table.ts-content thead tr th {
+	background-color: #000099;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    -moz-border-top-left-radius:5px;
+    -moz-border-top-right-radius:5px;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -o-border-top-left-radius:5px;
+    -o-border-top-right-radius:5px;
+    font-size: 53%;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+table.ts-content tbody tr td {
+    font-weight: bold;
+    font-size: xx-small;
+    color: #FFFFFF;
+}
+
+.timeslot {
+    position:absolute;
+    height:63px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #0033FF;
+    bottom:0px;
+    border: none;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -o-border-radius:5px;
+}
+
+.conflict {
+    background-color: #FF3333;
+    opacity: 0.5
+}
+
+.conflict table thead tr th {
+    background-color: #CC0000;
+    opacity: 0.5
+}
+
+
+
+/* NAV STYLING */
+
+button.nav-link-close {
+	position: relative;
+	float: right;
+	right: 6px;
+	top: 2px;
+
+}
+
+a.schedulator-link {
+}
+
+.time-string {
+	position: absolute;
+	top: -14px;
+	left: -20px;
+	font-size: small;
+}
+
+.dotted-line {
+    display: block;
+	position: absolute;
+	border-right-style: dotted;
+	border-right-width: 1px;
+	height: 450px;
+	color: red;	
+	z-index: 1000;
+}
+ 
+.tick-mark {
+    position: absolute;
+    display: block;
+    top: 0px;
+}

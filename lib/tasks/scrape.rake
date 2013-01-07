@@ -13,7 +13,7 @@ mutex = Mutex.new
 
 namespace :db do
   desc "Scrape data from ACES and enter it into the database"
-  task :populate, :letter, :subject, :environment do |t, args|
+  task :scrape, :letter, :subject, :environment do |t, args|
 =begin
     alphabet = "AB"
     spiders = {}
@@ -33,7 +33,7 @@ $wait_time = 10
 $username = 'aks35'
 $password = '6EF81ba8c2'
 #put the path of the elementsIds.temp file here
-$projectPath = ''
+$projectPath = "#{Rails.root}/elementIds.temp"
 
 
 
@@ -232,6 +232,8 @@ module Spider
               sectionids = Array.new
               for element in sectionElements
                   sectionids << element[:id]
+                  puts element
+                  return
               end
               if sectionids.length == 0
                   puts "RAISE ERROR: Sections length is 0"

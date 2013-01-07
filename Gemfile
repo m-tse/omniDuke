@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'faker'   
 gem 'devise'
 gem 'execjs'
@@ -14,6 +14,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'factory_girl_rails'	
 gem 'progress_bar'
+gem 'libv8', '~> 3.11.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

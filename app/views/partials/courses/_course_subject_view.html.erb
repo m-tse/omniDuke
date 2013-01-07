@@ -1,0 +1,54 @@
+<div class = "list_courses_in_subject">
+    
+
+    <div class="row">
+        <h3 class="list_course_title course_link span10"><%= link_to courseToStringWithoutSubject(course), course_path(course)  %>
+            <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course, class_name:"course_rating_in_subject_list"} %>
+        </h3>
+        <div class="span2" id="bookbag-course-<%= course.id.to_s %>">
+            <% if current_or_guest_user.courses.include?(course) %>
+                <%= render partial: "bookbag_relationship/removeCourse", 
+                    locals: {course:course} 
+                %>  
+            <% else %>
+                <%= render partial: "bookbag_relationship/addCourse",
+                    locals: {course:course}
+                 %>  
+            <% end %>
+        </div>
+    </div>
+
+
+        <div class="list_course_content">
+
+            <div class="row">
+                <div class="span4">
+                    <strong>Professors:</strong> 
+                        <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
+                </div>
+
+
+                <div class="span4">
+                    <strong>Attributes:</strong>
+                        <% for attribute in course.course_attributes %>
+                        <%= attribute.toString %>
+                        <% end %>
+                </div>
+
+                <div class="span4">
+                    
+                </div>
+            </div>
+
+
+        <strong>Description:</strong> 
+        <% for description in course.descriptions %>
+        <% if description!=nil %>
+        <%= description.truncate(150) %>
+        <% end %>
+        <% end %>
+        </div>
+
+</div>  
+
+

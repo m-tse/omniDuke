@@ -1,0 +1,7 @@
+<% sid = @schedulator.id.to_s %> 
+<%= render partial: "schedulator/schedulator", 
+    locals: {schedulator: @schedulator}
+%>   
+<!--%= link_to "Done", schedulator_index_path(click_flag: "true"), {
+    class: "btn"
+} %-->

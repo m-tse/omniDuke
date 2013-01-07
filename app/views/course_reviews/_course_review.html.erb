@@ -1,0 +1,19 @@
+<% reviewDate = course_review.updated_at %>
+<% 
+	column_names=['Quality', 'Difficulty']
+	overall_values=[course_review.average_quality, course_review.average_difficulty]
+	reverse_colors=[false, true]
+	column_values=[[course_review.usefulness, course_review.stimulating, course_review.content_quality],[course_review.homework_difficulty, course_review.lab_difficulty, course_review.midterm_difficulty, course_review.final_difficulty, course_review.out_of_class_work_hours]]
+	column_value_labels=[["Usefulness", "Interesting", "Quality of Content"],["Homework", "Labs", "Midterms", "Finals", "Out of Class Work Hours"]]
+
+	 %>
+<h4>Review by <%=course_review.author%> on <%=Date::MONTHNAMES[reviewDate.month].to_s+" "+reviewDate.year.to_s%></h4>
+
+<div class="row">
+	<div class="span6">
+		<%= course_review.review_content %>
+	</div>
+	<div class="span6">
+		<%= render partial:'partials/reviews/uni_or_multi_column_ratings_table', locals:{column_names:column_names, overall_values:overall_values, reverse_colors:reverse_colors, column_values:column_values, column_value_labels:column_value_labels} %>
+	</div>
+</div>

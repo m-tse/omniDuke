@@ -1,6 +1,6 @@
 OmniDuke::Application.routes.draw do
-  devise_for :users
 
+  devise_for :users
   
   root :to => 'static_pages#home'
   match '/home', to: 'static_pages#home'
@@ -10,10 +10,23 @@ OmniDuke::Application.routes.draw do
   match '/omni_results', to: 'searches#results'
   match '/subjects/instructors', to: 'subjects#show_instructors'
   match '/subjects/courses', to: 'subjects#show_courses'
+  match '/schedulator/saved', to: 'schedulator#show_saved'
+  match '/schedulator/classes', to: 'schedulator#show_current'
+  match '/courses/side_results', to: 'courses#side_results', via: :post
+  match '/schedule_relationship/replace', to: 'schedule_relationship#replace'
+  match '/schedulator_saved_relationships/diverge', to: 'schedulator_saved_relationships#diverge'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
-  resources :reviews, only: [:new, :show, :create]
   resources :subjects, only: [:show, :index]
+  resources :schedulator
+  resources :bookbag_relationship, only: [:edit, :create, :destroy]
+  resources :schedule_relationship, only: [:create, :destroy]
+  resources :course_reviews, only: [:new, :index, :create]
+  resources :instructor_reviews, only: [:new, :create]
+  resources :schedulator_saved_relationships, only: [:create, :destroy]
+  resources :active_schedulator_relationships, only: [:index, :create, :destroy]
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

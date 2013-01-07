@@ -1,0 +1,30 @@
+        <%= render partial: "schedulator/nav",
+            locals: { active: "new" } 
+        %>
+        <div class="schedule">
+            <%= render partial: "schedulator/timeTable" %>
+            <% for i in (1..16) %>
+                <div class='test<%= i %>'>|</div>
+            <% end %>
+            <% @days.each do |day| %>
+                <div class="daySlot <%= day %>">
+                    <div class="dayName"><%= day %></div>
+                    <div class="timeSlots">
+                        <% current_or_guest_user.current_schedulator.sections.each do |section| %>
+                            <% if section.hasDay?(day) %> 
+                                <%= render partial: 'schedulator/timeslot', 
+                                locals: { section: section }
+                                %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <%= button_to "Save", {
+            controller: "schedulator_saved_relationships",
+            action: "create"
+        }, {
+            class: "btn btn-danger right",
+            method: :post
+        } %>

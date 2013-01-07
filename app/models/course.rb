@@ -5,12 +5,13 @@ class Course < ActiveRecord::Base
   has_many :prerequisites, :through => :prerequisite_relations
   belongs_to :advanced_course, :class_name => "Course"
 
+  has_many :bookbag_relationship
   has_many :sections
   has_many :instructors, :through => :sections, :uniq => :true
 
   belongs_to :session, :inverse_of => :courses
   belongs_to :subject
-  has_many :reviews
+  belongs_to :course_meta
 
 
 
@@ -21,6 +22,10 @@ class Course < ActiveRecord::Base
       return self.old_number
     end
   end
+
+  def truncatedName
+    return self.name[0..17].upcase
+  end 
 
   def descriptions
     set = Set.new []

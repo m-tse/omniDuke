@@ -8,14 +8,47 @@ body{
   padding-top: 50px;
   font-size:100%;
 }
-
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
 .center{
 text-align: center;
 }
 
 .searchbar{
 padding-top: 15px;
+}
 
+.left {
+  position: relative;
+  float: left;
+  margin-left: 15px;
+}
+
+.right {
+	position: relative;
+	float: right;
+	margin-right: 15px;
+}
+
+.pad-left-small {
+  padding-left: 53px
+}
+
+
+
+/* needed for some reason for nav pills to center */
+#home_page_pills{
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
+}
+
+
+.title_of_horizontal_form{
+margin-left: 180px;
 }
 
 li.alpha_button{
@@ -25,48 +58,11 @@ margin-right: 0px;
 }
 }
 
-h1.non_home_title{
-
-}
-
-.course_link{
-a{
-color:$course_link_color;
-&:hover{color: lighten($course_link_color, 20%);}
-}
-
-}
-
-a.course_link{
-color:$course_link_color;
-&:hover{color: lighten($course_link_color, 20%);}
+div.popover-content{
+  p{
+  font-size: 14px;
+  white-space: normal;
+  }
 }
 
 
-#course_navbar_button{
-color:$course_link_color;
-&:hover{color: lighten($course_link_color, 20%);}
-}
-
-
-#instructor_navbar_button{
-color:$instructor_link_color;
-&:hover{color: lighten($instructor_link_color, 10%);}
-}
-
-
-#subject_navbar_button{
-color:$subject_link_color;
-&:hover{color: lighten($subject_link_color, 20%);}
-}
-
-
-a.instructor_link{
-color:$instructor_link_color;
-&:hover{color: lighten($instructor_link_color, 10%);}
-}
-
-a.subject_link{
-color:$subject_link_color;
-&:hover{color: lighten($subject_link_color, 20%);}
-}

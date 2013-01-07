@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #exposes methods as helper methods to controllers and views
   helper_method :current_or_guest_user
   protect_from_forgery
  # if user is logged in, return current_user, else return guest_user
@@ -42,5 +43,32 @@ class ApplicationController < ActionController::Base
     u
   end
 
+  def getActiveSchedulatorRelationshipId(user, schedulator)
+      return ActiveSchedulatorRelationship.where("""
+          user_id = #{user.id} 
+          AND schedulator_id = #{schedulator.id}
+          """)[0].id
+  end
+
+  def getBookbagRelationship(user, course)
+      return BookbagRelationship.where("""
+          user_id = #{user.id} 
+          AND course_id = #{course.id}
+          """)[0]
+  end
+
+  def getSchedulatorSavedRelationship(user, schedulator)
+      return SchedulatorSavedRelationship.where("""
+          user_id = #{user.id} AND 
+          schedulator_id = #{schedulator.id}
+      """)[0]
+  end
+  
+  def getScheduleRelationship(schedulator, section)
+      return ScheduleRelationship.where("""
+          schedulator_id = #{schedulator.id} 
+          AND section_id = #{section.id}
+          """)[0]
+  end
 
 end
