@@ -21,40 +21,7 @@ class CourseReview < ActiveRecord::Base
 
   	self.course_meta.save
   }
-  def thisReviewAverageQuality
-    sum=0.0
-    counter=0
-    qualityCriteria=[self.stimulating, self.usefulness, self.content_quality]
-    for element in qualityCriteria
-      if element!=nil&&element!=0
-        sum+=element
-        counter+=1
-      end
-    end
-    if counter==0
-      return 0
-    else 
-      return (sum/counter).to_f
-    end
-  end
 
-    def thisReviewAverageDifficulty
-    sum=0.0
-    counter=0
-    difficultyCriteria=[self.midterm_difficulty, self.final_difficulty, 
-        self.homework_difficulty, self.lab_difficulty, self.out_of_class_work_hours]
-    for element in difficultyCriteria
-      if element!=nil&&element!=0
-        sum+=element
-        counter+=1
-      end
-    end
-    if counter==0
-      return 0
-    else 
-      return (sum/counter).to_f
-    end
-  end
 
   def update_average_scores
     courseQualitySum = 0.0

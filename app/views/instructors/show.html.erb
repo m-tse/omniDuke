@@ -1,7 +1,9 @@
 <title>OmniDUKE Professors</title>
 <!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Professors"=>instructors_path, @instructor.toString=>'#'}} %-->
 <div class="page-header">
-<h1><%= @instructor.toString %></h1>
+<h1><%= @instructor.toString %>
+<%= link_to "Review This Professor", {controller:"instructor_reviews", action:"new", instructor_id:@instructor.id}, class:"btn btn-large btn-primary", style:"float:right;" %>
+</h1>
 </div>
 <h4>Courses Taught:
 <% for course in @instructor.courses %>
@@ -13,3 +15,6 @@
 <%= link_to subject.name, subject_path(subject) , class:"subject_link"%>
 <% end %>
 </h4>
+<h3>Overall Quality: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@instructor.overall_quality, reverse:false}%></h3>
+
+<%= render @reviews %>

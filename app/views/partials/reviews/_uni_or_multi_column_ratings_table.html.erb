@@ -1,0 +1,45 @@
+<!-- pass into this partial:
+column_names, array of column names, i.e. ['Quality', 'Difficulty']
+overall_values, array of overall ratings, i.e. [2.5, 5.2]
+reverse_colors, array of whether the color gradient should reverse in direction from red->green to green->red, i.e. [true, true]
+column_values, array of arrays of rating values,(columns can be of different size) i.e. [ [3.5,3.45,3.7,8.5], [8.5,3.2,7.6] ]
+column_value_labels, array of arrays of labels for the rating values(match the indexes of column_values), i.e. [['difficulty', 'easiness'],['usefulness']]
+
+
+-->
+<% maxValuesSize = 0;
+for subarray in column_values
+	if subarray.size>maxValuesSize
+		maxValuesSize=subarray.size
+	end
+end
+	%>
+
+<table class="table table-condensed">
+		<thead>
+			<tr>
+				<% for index in (0..column_names.size-1) %>
+					<th><%="Overall "+column_names[index]%></th>
+					<th><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:overall_values[index], reverse:reverse_colors[index]} %></th>
+				<% end %>
+			</tr>
+		</thead>	
+		<tbody>
+			<% for index in 0..(maxValuesSize-1) %>
+			<tr>
+				<%for subindex in (0..column_values.size-1)%>
+					<% if(index<column_values[subindex].size) %>
+						<td><%=column_value_labels[subindex][index]%></td>
+						<td><%= render partial:'partials/course_reviews/colored_number_square', locals:{number:column_values[subindex][index], reverse:reverse_colors[subindex]} %></td>
+					<% else %>
+						<td></td><td></td>
+					<% end %>
+
+
+				<%end %>
+
+			</tr>
+			<% end %>
+			
+		</tbody>
+</table>

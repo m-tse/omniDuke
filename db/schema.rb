@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228233004) do
+ActiveRecord::Schema.define(:version => 20130106071120) do
 
   create_table "active_schedulator_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -96,13 +96,15 @@ ActiveRecord::Schema.define(:version => 20121228233004) do
 
   create_table "instructor_reviews", :force => true do |t|
     t.integer  "helpfulness"
-    t.integer  "accessbility"
+    t.integer  "accessibility"
     t.integer  "clarity"
     t.integer  "fairness"
     t.integer  "instructor_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.float    "average_quality"
+    t.string   "author"
+    t.text     "review_content"
   end
 
   create_table "instructors", :force => true do |t|
@@ -146,21 +148,6 @@ ActiveRecord::Schema.define(:version => 20121228233004) do
     t.integer  "prerequisite_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-  end
-
-  create_table "reviews", :force => true do |t|
-    t.integer  "assignment_easiness"
-    t.integer  "test_easiness"
-    t.integer  "helpfulness"
-    t.integer  "clarity"
-    t.integer  "enthusiasm"
-    t.integer  "course_content"
-    t.integer  "textbook_usefulness"
-    t.text     "review_content"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "course_id"
-    t.integer  "instructor_id"
   end
 
   create_table "schedulator_saved_relationships", :force => true do |t|

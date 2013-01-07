@@ -1,0 +1,7 @@
+<%= render partial:"partials/reviews/new_review", locals:{:reviewObjectName=>Instructor.find(@instructor_id).name, 
+  :criteria=>["helpfulness", "accessibility", "clarity", "fairness"], 
+  :criteriaLabels=>['Helpfulness', 'Accessibility', 'Clarity', 'Fairness'], 
+:criteriaReverse=>[false,false,false,false],
+:reviewTypeLabel=>"professor",
+:parent_id=>"instructor_id",
+:model_underscore_name=>"instructor_review"} %>
