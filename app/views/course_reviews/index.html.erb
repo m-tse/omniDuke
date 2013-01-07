@@ -18,6 +18,11 @@
 
 	<div class="span6">
 		<h2>Instructor Ratings</h2>
+		<% for instructor in @course.instructors %>
+			<h3><%= link_to instructor.name, instructor_path(instructor.id)%>
+				<%= render partial:"partials/course_reviews/colored_number_square", locals:{number:instructor.overall_quality, reverse:false}%>
+			</h3>
+		<% end %>
 	</div>
 
 </div>

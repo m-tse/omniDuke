@@ -15,4 +15,6 @@
 <%= link_to subject.name, subject_path(subject) , class:"subject_link"%>
 <% end %>
 </h4>
+<h3>Overall Quality: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@instructor.overall_quality, reverse:false}%></h3>
+
 <%= render @reviews %>
