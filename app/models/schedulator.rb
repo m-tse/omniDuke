@@ -16,6 +16,18 @@ class Schedulator < ActiveRecord::Base
     end
 
 
+    def getAllConflictingSections
+        conflicts = Array.new
+        self.sections.each do |sec|
+            self.getConflictingSections(sec).each do |s|
+                if !conflicts.include?(s)
+                    conflicts << s
+                end
+            end
+        end
+        return conflicts
+    end
+
     def getConflictingSections(section)
         conflictingSections = Array.new
         self.sections.each do |sec|

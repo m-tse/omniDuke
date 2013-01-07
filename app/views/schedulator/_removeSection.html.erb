@@ -8,9 +8,7 @@
         {
             controller: "schedule_relationship",
             action: "destroy",
-            id: @srel.id,
-            section: section.id,
-            schedulator: @schedulator.id
+            id: @srel.id
         }, {
             id: "section-slot-" + section.id.to_s,
             method: "delete",

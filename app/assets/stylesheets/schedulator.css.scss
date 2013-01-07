@@ -5,8 +5,9 @@ table thead th.timetable {
 	padding-right: 5px;
 }
 
+/* you might want to rename this .__. */ 
 .bg-dark-green {
-    background-color: #33FF66;  
+    background-color: lightgrey;  
 }
 
 .bg-light-green {
@@ -52,7 +53,7 @@ li.bg-yellow {
 
 #class-list {
 	height:470px;
-	background-color:#99FFFF;
+	background-color: #F8F8F8;
 	overflow-y: scroll;
     font-size: small;
     border-top: solid 1px #D0D0D0;
@@ -81,6 +82,7 @@ button.sidemenu-course-close {
 }
 
 .sidemenu-section {
+    background-color: #F0F0F0;  
     border-style: dotted;
     border-width: 1px;
 }
@@ -180,7 +182,7 @@ div.divider {
 .daySlot {
 	position: relative;
 	background-color:#FFFFFF;
-	height:58px;
+	height:65px;
 	top:10px;
 	border-bottom-style: solid;
 	border-bottom-color: #D0D0D0;
@@ -189,7 +191,7 @@ div.divider {
 
 .dayName {
 	position: relative;
-	top:38px;
+	top:45px;
 	left:2px;
 }
 
@@ -214,7 +216,7 @@ table.ts-content {
 }
 
 table.ts-content thead tr th {
-	background-color: #CC0000;
+	background-color: #000099;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     -moz-border-top-left-radius:5px;
@@ -234,11 +236,12 @@ table.ts-content tbody tr td {
     color: #FFFFFF;
 }
 
-
 .timeslot {
     position:absolute;
-    height:58px;
-    background-color: #FF3333;
+    height:63px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #0033FF;
     bottom:0px;
     border: none;
     border-radius:5px;
@@ -246,6 +249,18 @@ table.ts-content tbody tr td {
     -webkit-border-radius:5px;
     -o-border-radius:5px;
 }
+
+.conflict {
+    background-color: #FF3333;
+    opacity: 0.5
+}
+
+.conflict table thead tr th {
+    background-color: #CC0000;
+    opacity: 0.5
+}
+
+
 
 /* NAV STYLING */
 

@@ -1,7 +1,11 @@
 <!-- Requires locals: {section:@section, day: @day} -->
 <!-- Think about implementing loop to deal with multiple slots per section -->
-
-<div class="timeslot ts<%= section.getTimeSlotStr(day) %>">
+<% conflict ||= false %>
+<% ts_class = "" %>
+<% if conflict %>
+    <% ts_class = "conflict" %>
+<% end %>
+<div class="timeslot schedrel-<%= getScheduleRelationship(schedulator, section).id %> ts<%= section.getTimeSlotStr(day) %> <%= ts_class %>">
     <table class="ts-content">
         <thead><tr><th><%= section.getTimeSlotStrFormatted(day) %></th></tr></thead>
         <tbody>
