@@ -18,7 +18,6 @@ gem 'libv8', '~> 3.11.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
 group :development, :test do	
   gem 'rspec-rails'
 end
@@ -27,8 +26,6 @@ group :test do
 
 
 end
-
-
 
 
 # Gems used only for assets and not required

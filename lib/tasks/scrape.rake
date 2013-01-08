@@ -90,8 +90,8 @@ module Spider
       $logger.debug "Previous course id: #{previousCourseId}"
       $logger.debug "Previous section id: #{previousSectionId}"
 
-
-      find_link('Registration').click
+      # Find the 'Registation' link
+      find_link('DERIVED_SSS_SCR_SSS_LINK_ANCHOR2').click
 
       #fix this eventually
       currentSession = getCreateSession("spring", 2013)
@@ -242,6 +242,7 @@ module Spider
               puts sectionids 
               for sectionid in sectionids
                 $logger.debug "Current section: #{sectionid}"
+                $logger.debug page.find(sectionid).text
                 if ind
                   if previousSectionId >= sectionids.length
                       $logger.debug "Previous section id too big, continuing"

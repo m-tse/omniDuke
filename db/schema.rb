@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106071120) do
+ActiveRecord::Schema.define(:version => 20130108035712) do
 
   create_table "active_schedulator_relationships", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20130106071120) do
     t.decimal  "units",                   :precision => 10, :scale => 0
     t.string   "room"
     t.string   "required_sections"
+    t.string   "view_detail"
   end
 
   create_table "sessions", :force => true do |t|

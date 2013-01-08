@@ -6,7 +6,7 @@ threads = {}
 commands = {}
 alphabet.each_char do |letter|
   threads[letter] = Thread.new do
-    commands[letter] = "rake db:populate[#{letter}] --trace"
+    commands[letter] = "rake db:scrape[#{letter}] --trace"
     puts commands[letter]
     count = 0
     begin
@@ -27,7 +27,7 @@ alphabet.each_char do |letter|
   if letter == "P"
     threads["P15"] = Thread.new do
       begin
-        commands["P15"] = "rake db:populate[#{letter},15] --trace"
+        commands["P15"] = "rake db:scrape[#{letter},15] --trace"
         status = system(commands["P15"])
         if not status
           raise
