@@ -7,7 +7,7 @@ gem 'execjs'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'mysql2'
-gem "capybara"
+gem "capybara", '<= 2.0.0'
 gem 'logging'
 gem 'capistrano'	
 gem 'will_paginate'

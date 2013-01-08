@@ -13,7 +13,7 @@ mutex = Mutex.new
 
 namespace :db do
   desc "Scrape data from ACES and enter it into the database"
-  task :scrape, :letter, :subject, :environment do |t, args|
+  task :scrape, [:letter, :subject] => :environment do |t, args|
 =begin
     alphabet = "AB"
     spiders = {}
@@ -30,8 +30,8 @@ namespace :db do
 end
 
 $wait_time = 10
-$username = ''
-$password = ''
+$username = 'aks35'
+$password = '6EF81ba8c2'
 #put the path of the elementsIds.temp file here
 $projectPath = "#{Rails.root}/elementIds.temp"
 
@@ -91,7 +91,7 @@ module Spider
       $logger.debug "Previous section id: #{previousSectionId}"
 
       # Find the 'Registation' link
-      find_link('DERIVED_SSS_SCR_SSS_LINK_ANCHOR2').click
+      find_link('Registration').click
 
       #fix this eventually
       currentSession = getCreateSession("spring", 2013)
@@ -214,8 +214,7 @@ module Spider
                     courseId += 1
                     next
                 elsif courseId == previousCourseId
-                  $logger.debug "Current course id #{courseId} = 
-                      previous course id #{previousCourseId}"
+                  $logger.debug "Current course id #{courseId} = previous course id #{previousCourseId}"
                 end
               end
 
@@ -233,7 +232,6 @@ module Spider
               for element in sectionElements
                   sectionids << element[:id]
                   puts element
-                  return
               end
               if sectionids.length == 0
                   puts "RAISE ERROR: Sections length is 0"
@@ -242,7 +240,9 @@ module Spider
               puts sectionids 
               for sectionid in sectionids
                 $logger.debug "Current section: #{sectionid}"
-                $logger.debug page.find(sectionid).text
+                view_detail = find_link(sectionid).text.gsub("\n", " ")
+                $logger.debug "View detail: #{view_detail}"
+
                 if ind
                   if previousSectionId >= sectionids.length
                       $logger.debug "Previous section id too big, continuing"
@@ -253,8 +253,7 @@ module Spider
                       sectionId += 1
                       next
                   elsif sectionId == previousSectionId
-                      $logger.debug "Current section id #{sectionId} = 
-                        previous section id #{previousSectionId}"
+                      $logger.debug "Current section id #{sectionId} = previous section id #{previousSectionId}"
                       $logger.debug "Indicator turned OFF"
                       ind = false
                   end
@@ -282,6 +281,7 @@ module Spider
                 page.driver.browser.switch_to.frame 'TargetContent'
                 sleep(1)
                 p section
+                section.view_detail = view_detail
                 course.sections<< section
                 section.save
                 sectionId += 1
@@ -445,6 +445,9 @@ def createCourseInListScreen(courseNUM, currentSubject, currentSession)
   courseCSSTag = createCSSExp("DU_SS_SUBJ_CAT_DESCR$",courseNUM)
   course.name = find(courseCSSTag).text
 
+  courseMeta = getCreateCourseMeta(course.name)
+  course.course_meta=courseMeta
+    
   course.save
   return course
 end

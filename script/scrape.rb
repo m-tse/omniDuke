@@ -2,6 +2,7 @@
 
 
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#alphabet = "A"
 threads = {}
 commands = {}
 alphabet.each_char do |letter|
