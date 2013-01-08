@@ -1,5 +1,7 @@
 class ScheduleRelationshipController < ApplicationController
 
+    $allDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
     def create
         if !params[:section].blank?
             @section = Section.find(params[:section])
@@ -18,9 +20,13 @@ class ScheduleRelationshipController < ApplicationController
                 #    end
                 #    @conflictsStr = conflictsStrBuilder.join("<br>")
                 #else                    
-                    getScheduleRelationship(@schedulator, @section).conflicting = true
+                    schedrel = getScheduleRelationship(@schedulator, @section)
+                    schedrel.conflicting = true
+                    schedrel.save
                     @conflicts.each do |con|
-                        getScheduleRelationship(@schedulator, con).conflicting = true
+                        schedrel = getScheduleRelationship(@schedulator, @section)
+                        schedrel.conflicting = true
+                        schedrel.save
                     end
                 end
             end
@@ -45,8 +51,8 @@ class ScheduleRelationshipController < ApplicationController
         @days = @section.getDaysAsStrArray
         @resolvedIds = Array.new
         if @schedrel.conflicting 
-            @schedulator.getResolvedSections(@section).each do |res|
-                @resolvedIds << getScheduleRelationship(@schedulator, res).id.to_s
+            @schedulator.getConflictingSections(@section).each do |res|
+                @resolvedIds << res.id.to_s
             end
         end
         respond_to do |format|

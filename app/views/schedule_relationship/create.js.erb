@@ -7,11 +7,13 @@ var divClass;
 <% end %>
 <% if @conflict %>
     <% @conflicts.each do |con| %>
-        <% @days.each do |day| %>
-            var tid = ".<%= day %> .timeSlots .schedrel-<%= j(getScheduleRelationship(@schedulator, con).id.to_s) %>";
-            $(tid).remove();
-            divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
-            $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:con, day:day, conflict:@conflict}) %>");
+        <% $allDays.each do |day| %>
+            <% if con.hasDay?(day) %>
+                var tid = ".<%= day %> .timeSlots .schedrel-<%= j(getScheduleRelationship(@schedulator, con).id.to_s) %>";
+                $(tid).remove();
+                divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
+                $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:con, day:day, conflict:@conflict}) %>");
+            <% end %>
         <% end %>
     <% end %>
 <% end %>

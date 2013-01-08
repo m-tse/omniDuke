@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   before_validation do
     if(self.session==nil)
-      self.session=Session.find_by_name("fall2012"); #eventually change this to a default global constant
+      self.session=Session.find_by_name("spring2013"); #eventually change this to a default global constant
     end
   end
 

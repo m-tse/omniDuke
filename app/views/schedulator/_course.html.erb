@@ -23,8 +23,33 @@
         }) do %>
             <button type="button" class="close sidemenu-course-close">&times;</button>
         <% end %>
-        <%= course.subject.abbr + course.new_number %>
-        <%= course.name %>
+        <% if @bookbagRel.viewing %>
+            <%= link_to({
+                controller: "bookbag_relationship",
+                action: "edit",
+                id: @bookbagRel.id,
+                viewing: false
+            }, {
+                method: :get,
+                remote: true
+            }) do %>
+                <%= course.subject.abbr + course.new_number %>
+                <%= course.name %>
+            <% end %>
+        <% else %>
+            <%= link_to({
+                controller: "bookbag_relationship",
+                action: "edit",
+                id: @bookbagRel.id,
+                viewing: true
+            }, {
+                method: :get,
+                remote: true
+            }) do %>
+                <%= course.subject.abbr + course.new_number %>
+                <%= course.name %>
+            <% end %>
+        <% end %>
     </div>
 
     <div class="sidemenu-sections" style="<%= sectionStyle %>">

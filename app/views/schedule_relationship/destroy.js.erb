@@ -1,7 +1,7 @@
-var tid;
+var tid, div;
 var section = $("#section-slot-<%= j(@section.id.to_s) %>");
 section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { section: @section }) %>")
-<% @days.each do |day| %>
+<% $allDays.each do |day| %>
   var divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
   tid = ".<%= day %> .timeSlots .schedrel-<%= j(@schedrel.id.to_s) %>";
   $(tid).remove();
@@ -11,5 +11,6 @@ section.replaceWith("<%= j(render partial: 'schedulator/addSection', locals: { s
     if (div.hasClass("conflict")) {
         div.removeClass("conflict");
     }
+    alert(tid)
   <% end %>
 <% end %>

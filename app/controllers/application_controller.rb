@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def create_guest_user
     u = User.create(:email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
     #line to set the current session
-    u.session=Session.find_by_name("fall2012");
+    u.session=Session.find_by_name("spring2013");
     u.save(:validate => false)
     u
   end
