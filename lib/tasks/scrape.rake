@@ -30,8 +30,8 @@ namespace :db do
 end
 
 $wait_time = 10
-$username = 'aks35'
-$password = '6EF81ba8c2'
+$username = ''
+$password = ''
 #put the path of the elementsIds.temp file here
 $projectPath = "#{Rails.root}/elementIds.temp"
 
