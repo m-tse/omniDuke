@@ -6,28 +6,26 @@ class ScheduleRelationshipController < ApplicationController
         if !params[:section].blank?
             @section = Section.find(params[:section])
             @schedulator = Schedulator.find(params[:schedulator])
-            if !@schedulator.sections.include?(@section)
-                @conflict = false
-                @schedulator.sections << @section
-                if @schedulator.conflictWith?(@section) # check for time conflict
-                    @conflict = true
-                    # CONFLICT RESOLUTION
-                    # raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
-                    @conflicts = @schedulator.getConflictingSections(@section)
-                #    conflictsStrBuilder = Array.new
-                #    @conflicts.each do |con|
-                #        conflictsStrBuilder << con.name
-                #    end
-                #    @conflictsStr = conflictsStrBuilder.join("<br>")
-                #else                    
-                    schedrel = getScheduleRelationship(@schedulator, @section)
+            @conflict = false
+            @schedulator.sections << @section
+            if @schedulator.conflictWith?(@section) # check for time conflict
+                @conflict = true
+                # CONFLICT RESOLUTION
+                # raise "CONFLICT RESOLUTION TIME in ScheduleRelationshipController"
+                @conflicts = @schedulator.getConflictingSections(@section)
+            #    conflictsStrBuilder = Array.new
+            #    @conflicts.each do |con|
+            #        conflictsStrBuilder << con.name
+            #    end
+            #    @conflictsStr = conflictsStrBuilder.join("<br>")
+            #else                    
+                schedrel = getScheduleRelationship(@schedulator, @section)
+                schedrel.conflicting = true
+                schedrel.save
+                @conflicts.each do |con|
+                    schedrel = getScheduleRelationship(@schedulator, con)
                     schedrel.conflicting = true
                     schedrel.save
-                    @conflicts.each do |con|
-                        schedrel = getScheduleRelationship(@schedulator, @section)
-                        schedrel.conflicting = true
-                        schedrel.save
-                    end
                 end
             end
             @days = @section.getDaysAsStrArray
@@ -52,9 +50,13 @@ class ScheduleRelationshipController < ApplicationController
         @resolvedIds = Array.new
         if @schedrel.conflicting 
             @schedulator.getConflictingSections(@section).each do |res|
-                @resolvedIds << res.id.to_s
+                srel = getScheduleRelationship(@schedulator,res)
+                @resolvedIds << srel.id.to_s
+                srel.conflicting = false
+                srel.save
             end
         end
+
         respond_to do |format|
             format.html { redirect_to schedulator_index_path }
             format.js

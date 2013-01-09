@@ -12,7 +12,7 @@ var divClass;
                 var tid = ".<%= day %> .timeSlots .schedrel-<%= j(getScheduleRelationship(@schedulator, con).id.to_s) %>";
                 $(tid).remove();
                 divClass = ['.', '<%= day %>', ' .timeSlots'].join("");
-                $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:con, day:day, conflict:@conflict}) %>");
+                $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:con, day:day, conflict:true}) %>");
             <% end %>
         <% end %>
     <% end %>

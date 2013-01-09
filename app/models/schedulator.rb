@@ -15,7 +15,6 @@ class Schedulator < ActiveRecord::Base
         end
     end
 
-
     def getAllConflictingSections
         conflicts = Array.new
         self.sections.each do |sec|
@@ -29,17 +28,18 @@ class Schedulator < ActiveRecord::Base
     end
 
     def getConflictingSections(section)
+        openLog
         conflictingSections = Array.new
         self.sections.each do |sec|
             if sectionsConflict?(sec, section)
                 conflictingSections << sec
             end
         end
+        closeLog("Close")
         return conflictingSections
     end
 
     def sectionsConflict?(s1, s2)
-
         days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
         timeHash = {} 
         days.each do |day|
@@ -154,6 +154,11 @@ class Schedulator < ActiveRecord::Base
     def conflictWith?(section)
 
         openLog
+
+        if self.sections.include?(section)
+            closeLog("FALSE")
+            return true
+        end
 
         # Init data structs
         timeSlotStrs = Array.new
