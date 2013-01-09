@@ -206,7 +206,27 @@ a#save-modal-button {
     top:-525px;
 }
 
+#schedule-conflict-message {
+    display: none;
+    position: relative;
+    left: 227px;
+    bottom: 7px;
+    width: 406px;
+    height: 2em;
+    text-align: center;
+    background-color: #FF6666;
+    border: solid 4px #CC0000;
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    -o-border-radius:10px;
+    color: #FFFFFF;
+}
 
+#schedule-conflict-message .text {
+    margin-top: 5px;
+    font-weight: bold;
+}
 
 /* TIME SLOT STYLING */
 
@@ -251,12 +271,12 @@ table.ts-content tbody tr td {
 }
 
 .conflict {
-    background-color: #FF3333;
+    background-color: #CC0000;
     opacity: 0.5
 }
 
 .conflict table thead tr th {
-    background-color: #CC0000;
+    background-color: #990000;
     opacity: 0.5
 }
 

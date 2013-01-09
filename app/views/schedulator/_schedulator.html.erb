@@ -8,6 +8,13 @@
     <% $days.each do |day| %>
         <div class="daySlot <%= day %>">
             <div class="dayName"><%= day %></div>
+            <% if day == "Sun" %>
+                <div id="schedule-conflict-message">
+                    <% if schedulator.hasConflict? %>
+                        <%= render partial: "schedulator/conflict-message" %>
+                    <% end %>
+                </div>
+            <% end %>
             <div class="timeSlots">
                 <% schedulator.sections.each do |section| %>
                     <% if section.hasDay?(day) %> 
