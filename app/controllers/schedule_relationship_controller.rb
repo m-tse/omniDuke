@@ -48,12 +48,16 @@ class ScheduleRelationshipController < ApplicationController
         end
         @days = @section.getDaysAsStrArray
         @resolvedIds = Array.new
+        @conflicts = Array.new
         if @schedrel.conflicting 
-            @schedulator.getConflictingSections(@section).each do |res|
+            @conflicts = @schedulator.getConflictingSections(@section)
+            @conflicts.each do |res|
                 srel = getScheduleRelationship(@schedulator,res)
-                @resolvedIds << srel.id.to_s
-                srel.conflicting = false
-                srel.save
+                if !@schedulator.conflicts?(res)
+                    @resolvedIds << srel.id.to_s
+                    srel.conflicting = false
+                    srel.save
+                end
             end
         end
 

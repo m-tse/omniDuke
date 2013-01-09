@@ -85,13 +85,12 @@ button.sidemenu-course-close {
     background-color: #F0F0F0;  
     border-style: dotted;
     border-width: 1px;
+    border-top: none;
 }
 
 div .click-section {
 	cursor: pointer;
-	border: dotted;
-	border-width: 1px;
-	border-color: red;
+    padding-left: 1em;
 }
 
 .sideMenu ul.nav-tabs li a {

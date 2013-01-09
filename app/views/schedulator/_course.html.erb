@@ -1,20 +1,20 @@
 <!-- Requires locals: {course:@course} -->
-<% @bookbagRel = getBookbagRelationship(current_or_guest_user, course) %>
+<% bookbagRel = getBookbagRelationship(current_or_guest_user, course) %>
 <% sectionStyle = "display:none;" %>
 <% headerBg = "" %>
 <% view = true %>
-<% if @bookbagRel.viewing %>
+<% if bookbagRel.viewing %>
     <% headerBg = "bg-dark-green" %> 
     <% sectionStyle = "display:block;" %>
     <% view = false %>
 <% end %>
 
 <div id="sidemenu-course-<%= course.id %>" class="sidemenu-course">
-    <div class="course-header <%= headerBg %>" data-id=<%= @bookbagRel.id %>>
+    <div class="<%= headerBg %> course-header">
         <%= link_to({
             controller: "bookbag_relationship",
             action: "destroy",
-            id: @bookbagRel.id,
+            id: bookbagRel.id,
             course: course.id
         },{
             method: :delete,
@@ -23,33 +23,13 @@
         }) do %>
             <button type="button" class="close sidemenu-course-close">&times;</button>
         <% end %>
-        <% if @bookbagRel.viewing %>
-            <%= link_to({
-                controller: "bookbag_relationship",
-                action: "edit",
-                id: @bookbagRel.id,
-                viewing: false
-            }, {
-                method: :get,
-                remote: true
-            }) do %>
-                <%= course.subject.abbr + course.new_number %>
-                <%= course.name %>
+        <div id="bookbag-rel-<%= bookbagRel.id %>">
+            <% if bookbagRel.viewing %>
+                <%= render partial: "schedulator/course-viewing", locals: {bookbagRel:bookbagRel, course:course, viewing:false} %>
+            <% else %>
+                <%= render partial: "schedulator/course-viewing", locals: {bookbagRel:bookbagRel, course:course, viewing:true} %>
             <% end %>
-        <% else %>
-            <%= link_to({
-                controller: "bookbag_relationship",
-                action: "edit",
-                id: @bookbagRel.id,
-                viewing: true
-            }, {
-                method: :get,
-                remote: true
-            }) do %>
-                <%= course.subject.abbr + course.new_number %>
-                <%= course.name %>
-            <% end %>
-        <% end %>
+        </div>
     </div>
 
     <div class="sidemenu-sections" style="<%= sectionStyle %>">

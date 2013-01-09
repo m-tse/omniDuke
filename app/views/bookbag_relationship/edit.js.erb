@@ -1,0 +1,12 @@
+var courseDiv = $("#sidemenu-course-<%= j(@course.id.to_s) %>")
+var courseHeader = courseDiv.children(".course-header")
+var sectionsDiv = courseDiv.children(".sidemenu-sections")
+<% if @bookbagRel.viewing %>
+    courseHeader.addClass("bg-dark-green")
+    sectionsDiv.show()
+    $("#bookbag-rel-<%= j(params[:id]) %>").html("").append("<%= j(render partial: 'schedulator/course-viewing', locals: {bookbagRel:@bookbagRel, course:@course, viewing:false}) %>")
+<% else %>
+    courseHeader.removeClass("bg-dark-green")
+    sectionsDiv.hide()
+    $("#bookbag-rel-<%= j(params[:id]) %>").html("").append("<%= j(render partial: 'schedulator/course-viewing', locals: {bookbagRel:@bookbagRel, course:@course, viewing:true}) %>")
+<% end %>

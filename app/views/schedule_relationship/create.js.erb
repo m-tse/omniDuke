@@ -7,7 +7,15 @@ var divClass;
     $(divClass).append("<%= j(render partial: 'schedulator/timeslot', locals: {schedulator:@schedulator, section:@section, day:day, conflict:@conflict}) %>");
 <% end %>
 <% if @conflict %>
+    $("#section-slot-<%= j(@section.id.to_s) %>")
+        .children(".click-section")
+        .css({"background-color":"#CC0000", "color":"#FFFFFF"})
+        .children(".icon-ok").addClass("icon-white")
     <% @conflicts.each do |con| %>
+        $("#section-slot-<%= j(con.id.to_s) %>")
+            .children(".click-section")
+            .css({"background-color":"#CC0000", "color":"#FFFFFF"})
+            .children(".icon-ok").addClass("icon-white")
         <% $allDays.each do |day| %>
             <% if con.hasDay?(day) %>
                 var tid = ".<%= day %> .timeSlots .schedrel-<%= j(getScheduleRelationship(@schedulator, con).id.to_s) %>";

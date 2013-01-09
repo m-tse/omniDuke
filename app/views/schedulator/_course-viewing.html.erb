@@ -1,0 +1,14 @@
+<%= link_to({
+    controller: "bookbag_relationship",
+    action: "edit",
+    id: bookbagRel.id,
+    viewing: viewing
+}, {
+    method: :get,
+    remote: true
+}) do %>
+    <div>
+        <%= course.subject.abbr + course.new_number %>
+        <%= course.name %>
+    </div>
+<% end %>

@@ -52,6 +52,30 @@ class Section < ActiveRecord::Base
       return strs
   end
 
+
+  def getAllDayAndTimeSlotStrs
+      strs = Array.new
+      dayStrs = Hash.new
+      dayAbbrs = { "Su" => "Sun", 
+                   "M"  => "Mon", 
+                   "Tu" => "Tue", 
+                   "W"  => "Wed", 
+                   "Th" => "Thu", 
+                   "F"  => "Fri", 
+                   "Sa" => "Sat" }
+      self.getDaysAsStrArray.each do |day|
+        str = self.getTimeSlotStrFormatted(day)
+        if !dayStrs.keys.include?(str)
+          dayStrs[str] = Array.new
+        end
+        dayStrs[str] << dayAbbrs.key(day)
+      end
+      dayStrs.keys.each do |timeStr|
+        strs << [dayStrs[timeStr].join(""), timeStr].join(" ")
+      end
+      return strs
+  end
+
   # Get time slot string methods do not work if the
   # section does not have the given day
   # Must call section.hasDay?(day) before  

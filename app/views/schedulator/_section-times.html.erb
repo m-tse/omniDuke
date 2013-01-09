@@ -1,10 +1,11 @@
 <!-- REQUIRES locals: {section:@section, remove: boolean} -->
 <div class="click-section" >
-    <% strArray = section.getAllTimeSlotStrs %>
+    <% strArray = section.getAllDayAndTimeSlotStrs %>
+    <%= section.view_detail %><br>
     <% strArray.each do |str| %>
         <%= str %>
         <% if str != strArray.last %>
-            <br>
+            &nbsp;
         <% end %>
     <% end %>
     <% if remove %>

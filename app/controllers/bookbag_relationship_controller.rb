@@ -2,6 +2,7 @@ class BookbagRelationshipController < ApplicationController
 
   def edit
     @bookbagRel = BookbagRelationship.find(params[:id])
+    @course = @bookbagRel.course
     if params[:viewing] == "true"
       @bookbagRel.viewing = true
     else
@@ -10,6 +11,7 @@ class BookbagRelationshipController < ApplicationController
     @bookbagRel.save
     respond_to do |format|
       format.html { redirect_to schedulator_index_path } 
+      format.js
     end
   end
 

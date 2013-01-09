@@ -4,7 +4,6 @@ jQuery ->
 loadEventHandlers = ->
     historyHandler()
     handleNavLinkClose()
-    sidemenuCourseHandler()
     flashHandler()
     sideNavLinkHandler()  
     courseBookbagHandler()
@@ -39,16 +38,41 @@ handleNavLinkClose = ->
     )
 
 sidemenuCourseHandler = ->
-    $(".sidemenu-course").on('click', (e)->
+    $(".sidemenu-course-viewing").live('click', (e)->
         courseDiv = $(this)
+        courseDiv.removeClass("sidemenu-course-viewing")
+        courseDiv.addClass("sidemenu-course-not-viewing") 
         courseHeader = courseDiv.children(".course-header")
         sectionsDiv = courseDiv.children(".sidemenu-sections")
-        if courseHeader.hasClass("bg-dark-green")
-            courseHeader.removeClass("bg-dark-green")
-            sectionsDiv.hide()
-        else
-            courseHeader.addClass("bg-dark-green")
-            sectionsDiv.show()
+        courseHeader.removeClass("bg-dark-green")
+        sectionsDiv.hide()
+        urlBuilder = [
+            "<%= j(Rails.root) %>"
+            "bookbag_relationship"
+            courseHeader.data("id").toString()
+            "edit?viewing=false"
+        ]
+        $.ajax({
+            url: urlBuilder.join("/")
+        })
+    )
+    $(".sidemenu-course-not-viewing").live('click', (e)->
+        courseDiv = $(this)
+        courseDiv.removeClass("sidemenu-course-not-viewing") 
+        courseDiv.addClass("sidemenu-course-viewing")
+        courseHeader = courseDiv.children(".course-header")
+        sectionsDiv = courseDiv.children(".sidemenu-sections")
+        courseHeader.addClass("bg-dark-green")
+        sectionsDiv.show()
+        urlBuilder = [
+            "<%= j(Rails.root) %>"
+            "bookbag_relationship"
+            courseHeader.data("id").toString()
+            "edit?viewing=true"
+        ]
+        $.ajax({
+            url: urlBuilder.join("/")
+        })
     )
 
 flashHandler = -> 
