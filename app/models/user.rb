@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   #a user must always have a current session he/she is browsing to/from
   validates :session, presence:true
+  validates :email, :format => { :with => /(@)(duke)(.)(edu)/,
+    :message => "Only @duke.edu emails are allowed."}
 
   before_validation do
     if(self.session==nil)
