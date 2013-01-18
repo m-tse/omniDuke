@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   #exposes methods as helper methods to controllers and views
   helper_method :current_or_guest_user
   protect_from_forgery
+
  # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user
@@ -37,8 +38,7 @@ class ApplicationController < ActionController::Base
 
   def create_guest_user
     u = User.create(:email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
-    #line to set the current session
-    u.session=Session.find_by_name("spring2013");
+
     u.save(:validate => false)
     u
   end

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   before_validation do
     if(self.session==nil)
-      self.session=Session.find_by_name("spring2012"); #eventually change this to a default global constant
+      self.session=default_session; 
     end
   end
 
@@ -26,4 +26,15 @@ class User < ActiveRecord::Base
   has_many :active_schedulator_relationships
   has_many :active_schedulators, through: :active_schedulator_relationships, source: :schedulator, uniq: true
   has_one :current_schedulator, class_name: "Schedulator"
+
+  private
+  
+  def default_session
+    returnSession = Session.find_by_name("spring2012")
+    if returnSession==nil
+      return Session.create(name:"spring", year:2012)
+    end
+    returnSession
+  end
+
 end
