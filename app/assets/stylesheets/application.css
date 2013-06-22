@@ -12,5 +12,6 @@
  *= require_self
  *= require_tree
  *= require full_control/index
+ *= require jquery.ui.all
 
  */

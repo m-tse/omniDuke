@@ -18,9 +18,13 @@ This is a web application built using Ruby on Rails 3.2.7 that aims to be an "om
 
 - navigate to http://localhost:3000 to see the app running
 
-# Commands to do
-rake db:populate - populates the database with sample data
-rake db:scrape[{#letter}] will scrape aces for that letter
+# Commands
+- rake db:populate
+    populates the database with sample data
+- rake db:scrape[{#letter}]
+    will scrape aces for that letter
+- rails s
+    starts the server
 
 # Possible errors
 
