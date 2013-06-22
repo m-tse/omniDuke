@@ -32,7 +32,7 @@
 
             <% else %>
 
-              <li class=<%=request.fullpath.start_with?("/users") ? "active" : ""%>>
+              <li class=<%= "active" if request.fullpath.start_with?("/users") %>>
                 <%= link_to "Account Settings", edit_user_registration_path%>
               </li>
 

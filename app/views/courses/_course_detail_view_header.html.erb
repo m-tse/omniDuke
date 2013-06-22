@@ -1,19 +1,24 @@
-<!-- must have @course from parent view, 
+<!-- must have @course from parent view,
   passively pass down a @course_meta variable if you want the "review this course" button to appear,
   pass in a string called navHighlight which will be the name of the page we are on for pill navigation -->
 <div class="page-header">
-  <h3><%= @course.subject.abbr+" "+courseToCode(@course)%></h3>
-  <h1><%= @course.name %> <% if @course_meta!=nil %>
+
+  <h3><%="#{@course.subject.abbr} #{courseToCode(@course)}"%></h3>
+
+  <h1>
+    <%= @course.name %>
+    <% if @course_meta!=nil %>
       <%= link_to "Review This Course", {controller:"course_reviews", action:"new", course_meta_id:@course_meta.id}, class:"btn btn-large btn-primary", style:"float:right;" %>
-        <% end %></h1>
+    <% end %>
+  </h1>
 
-  </div>
+</div>
 
-    <ul class="nav nav-pills">
-      <li <% if navHighlight=="Overview" %>class="active"<%end%>>
-        <%= link_to "Overview", course_path(@course.id) %>
-      </li>
-      <li <% if navHighlight=="Review" %>class="active"<% end %>>
-        <%= link_to "Ratings", course_reviews_path(@course.id) %>
-      </li>
-    </ul>
+<ul class="nav nav-pills">
+  <li <%= "class=active" if navHighlight=="Overview"%>>
+    <%= link_to "Overview", course_path(@course.id) %>
+  </li>
+  <li <%= "class=active" if navHighlight=="Review"%>>
+    <%= link_to "Ratings", course_reviews_path(@course.id) %>
+  </li>
+</ul>

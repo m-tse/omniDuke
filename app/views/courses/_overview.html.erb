@@ -1,8 +1,8 @@
 <h3>Description</h3>
 <% if @course.descriptions.size==1 %>
-<%= @course.descriptions.first %>
+  <%= @course.descriptions.first %>
 <% else %>
-<p>Find the different descriptions in each section.</p>
+  <p>Find the different descriptions in each section.</p>
 <% end %>
 
 <h3>Sections</h3>
@@ -23,16 +23,16 @@
     <tr>
       <!--td>
         <!--%= render partial: 'courses/section',
-            locals: { section: section } 
+            locals: { section: section }
         %-->
-      </td-->      
+      </td-->
       <td>
         <%= section.list_description %>
       </td>
       <td><%= section.time_slot.aces_value %></td>
       <td>
-  <% instructor = section.instructors.first %>
-  <%= link_to instructor.toString, instructor_path(instructor.id), class:"instructor_link" %>
+      <% instructor = section.instructors.first %>
+      <%= link_to instructor.toString, instructor_path(instructor.id), class:"instructor_link" %>
       </td>
       <td><%= section.room %></td>
       <td><%= section.enrollment.to_s + "/" +section.capacity.to_s %></td>
@@ -43,7 +43,7 @@
 </table>
 
 <h3>Attributes</h3>
- 
+
       <% for attribute in @course.course_attributes %>
       <%= attribute.toString %>
       <% end %>

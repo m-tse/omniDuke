@@ -1,12 +1,12 @@
 
 
 <div class = "list_courses">
-    
+
     <h3 class="list_course_title course_link"><%= link_to courseToString(course), course_path(course)  %>
         <%= render :partial => "partials/courses/course_rating_stamp", :locals=> {course:course, class_name:"course_rating_in_omnisearch"} %></h3>
     <div class="list_course_content">
     <strong>Professors:</strong> <%= render :partial => "partials/instructors", :locals => { :instructors => course.instructors} %>
-    
+
     <br>
 
     <strong>Attributes:</strong>
@@ -14,13 +14,13 @@
     <%= attribute.toString %>
     <% end %>
     <br>
-    
+
     <strong>Description:</strong> <% for description in course.descriptions %>
     <% if description!=nil %>
     <%= description.truncate(250) %>
     <% end %><% end %>
     </div>
 
-</div>  
+</div>
 
 
