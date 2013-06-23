@@ -9,7 +9,7 @@
 
 	<div class="span6">
 
-		<h2>Course Ratings<%= render partial:"partials/miscellaneous/info_popover", locals:{id:"courseRatingInfoPopover", content:help_text, title:"How do we calculate this rating?", placement:"bottom"} %></h2>	
+		<h2>Course Ratings<%= render partial:"partials/miscellaneous/info_popover", locals:{id:"courseRatingInfoPopover", content:help_text, title:"How do we calculate this rating?", placement:"bottom"} %></h2>
 
 
 		<h3>Overall Quality: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@course.course_meta.overall_quality, reverse:false}%></h3>

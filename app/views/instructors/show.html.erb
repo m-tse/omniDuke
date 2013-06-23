@@ -1,20 +1,28 @@
 <title>OmniDUKE Professors</title>
-<!--%= render partial:"partials/breadcrumbs", locals:{breadCrumbHash:{"Home"=>root_path, "Professors"=>instructors_path, @instructor.toString=>'#'}} %-->
+
 <div class="page-header">
-<h1><%= @instructor.toString %>
-<%= link_to "Review This Professor", {controller:"instructor_reviews", action:"new", instructor_id:@instructor.id}, class:"btn btn-large btn-primary", style:"float:right;" %>
-</h1>
+  <h1>
+    <%= @instructor.toString %>
+    <% if user_signed_in? %>
+      <%= link_to "Review This Professor", {controller:"instructor_reviews", action:"new", instructor_id:@instructor.id}, class:"btn btn-large btn-primary", style:"float:right;" %>
+    <% else %>
+      <%= link_to "Sign in to Review Instructors", new_user_session_path, class:"btn btn-large btn-warning" %>
+    <% end %>
+  </h1>
 </div>
+
 <h4>Courses Taught:
-<% for course in @instructor.courses %>
-<%= link_to courseToCode(course), course_path(course) , class:"course_link"%>
-<% end %>
+  <% for course in @instructor.courses %>
+    <%= link_to courseToCode(course), course_path(course) , class:"course_link"%>
+  <% end %>
 </h4>
-<h4>Subjects Taught: 
-<% for subject in @instructor.subjects_by_count %>
-<%= link_to subject.name, subject_path(subject) , class:"subject_link"%>
-<% end %>
+
+<h4>Subjects Taught:
+  <% for subject in @instructor.subjects_by_count %>
+    <%= link_to subject.name, subject_path(subject) , class:"subject_link"%>
+  <% end %>
 </h4>
+
 <h3>Overall Quality: <%= render partial:"partials/course_reviews/colored_number_square", locals:{number:@instructor.overall_quality, reverse:false}%></h3>
 
 <%= render @reviews %>

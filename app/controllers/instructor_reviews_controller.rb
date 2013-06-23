@@ -1,5 +1,9 @@
 class InstructorReviewsController < ApplicationController
   def new
+    if !user_signed_in?
+      flash[:error] = "Must be signed in to review an instructor."
+      redirect_to root_path
+    end
   	@review = InstructorReview.new
   	@instructor_id = params[:instructor_id]
     @review.instructor = Instructor.find(params[:instructor_id])

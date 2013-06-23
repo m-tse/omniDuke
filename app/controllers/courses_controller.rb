@@ -1,12 +1,13 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find_by_id(params[:id])
+    @course_meta = CourseMeta.find(@course.course_meta_id)
     #@reviews = Review.where("course_id = ?", params[:id])
   end
 
   def index
     currentUser = current_or_guest_user
-    if(params[:currentSession]!=nil) 
+    if(params[:currentSession]!=nil)
       currentUser.session=Session.find_by_name(params[:currentSession])
       currentUser.save
     end

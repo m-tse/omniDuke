@@ -4,11 +4,12 @@
 <div class="page-header">
 
   <h3><%="#{@course.subject.abbr} #{courseToCode(@course)}"%></h3>
-
   <h1>
     <%= @course.name %>
-    <% if @course_meta!=nil %>
-      <%= link_to "Review This Course", {controller:"course_reviews", action:"new", course_meta_id:@course_meta.id}, class:"btn btn-large btn-primary", style:"float:right;" %>
+    <% if user_signed_in? %>
+      <%= link_to "Review This Course", {controller:"course_reviews", action:"new", course_meta_id:@course_meta.id}, class:"btn btn-large btn-primary" %>
+    <% else %>
+      <%= link_to "Sign in to Review Courses", new_user_session_path, class:"btn btn-large btn-warning" %>
     <% end %>
   </h1>
 
