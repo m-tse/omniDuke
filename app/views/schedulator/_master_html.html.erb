@@ -6,9 +6,9 @@
 <div id="omniContainer">
     <div id="schedulatorContainer">
         <% if @edit %>
-            <%= render partial: "schedulator/edit" %>   
+            <%= render partial: "schedulator/edit" %>
         <% else %>
-            <%= render partial: "schedulator/index" %>   
+            <%= render partial: "schedulator/index" %>
         <% end %>
     </div>
     <div id="side-menu">
@@ -16,8 +16,8 @@
             <%= render partial: "schedulator/saved" %>
         <% elsif $sideState == "search" %>
             <%= render partial: "schedulator/search" %>
-        <% else %> 
-            <%= render partial: "schedulator/class-list" %>
+        <% else %>
+            <%= render partial: "schedulator/class_list" %>
         <% end %>
     </div>
 </div>
