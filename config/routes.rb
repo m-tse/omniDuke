@@ -1,20 +1,20 @@
 OmniDuke::Application.routes.draw do
 
   devise_for :users
-  
+
   root :to => 'static_pages#home'
-  match '/home', to: 'static_pages#home'
-  match '/courses/results', to: 'courses#results'
-  match '/instructors/results', to: 'instructors#results'
-  match '/subjects/results', to: 'subjects#results'
-  match '/omni_results', to: 'searches#results'
-  match '/subjects/instructors', to: 'subjects#show_instructors'
-  match '/subjects/courses', to: 'subjects#show_courses'
-  match '/schedulator/saved', to: 'schedulator#show_saved'
-  match '/schedulator/classes', to: 'schedulator#show_current'
-  match '/courses/side_results', to: 'courses#side_results', via: :post
-  match '/schedule_relationship/replace', to: 'schedule_relationship#replace'
-  match '/schedulator_saved_relationships/diverge', to: 'schedulator_saved_relationships#diverge'
+  get '/home', to: 'static_pages#home'
+  get '/courses/results', to: 'courses#results'
+  get '/instructors/results', to: 'instructors#results'
+  get '/subjects/results', to: 'subjects#results'
+  get '/omni_results', to: 'searches#results'
+  get '/subjects/instructors', to: 'subjects#show_instructors'
+  get '/subjects/courses', to: 'subjects#show_courses'
+  get '/schedulator/saved', to: 'schedulator#show_saved'
+  get '/schedulator/classes', to: 'schedulator#show_current'
+  get '/courses/side_results', to: 'courses#side_results', via: :post
+  get '/schedule_relationship/replace', to: 'schedule_relationship#replace'
+  get '/schedulator_saved_relationships/diverge', to: 'schedulator_saved_relationships#diverge'
   resources :courses, only: [:index, :show]
   resources :instructors, only: [:index, :show]
   resources :subjects, only: [:show, :index]
@@ -26,7 +26,7 @@ OmniDuke::Application.routes.draw do
   resources :schedulator_saved_relationships, only: [:create, :destroy]
   resources :active_schedulator_relationships, only: [:index, :create, :destroy]
 
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

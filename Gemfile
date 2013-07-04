@@ -1,24 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
-gem 'faker'   
-gem 'devise'
+gem 'rails', '4.0.0'
+gem 'faker'
+gem 'devise', '3.0.0.rc'
 gem 'execjs'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'mysql2'
 gem "capybara", '<= 2.0.0'
 gem 'logging'
-gem 'capistrano'	
+gem 'capistrano'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'factory_girl_rails'	
+gem 'factory_girl_rails'
 gem 'progress_bar'
 gem 'libv8', '~> 3.11.8'
+gem 'coffee-rails'
+# when I upgraded to rails 4.0, it said protected attributes is deprecated, extracted into this gem, we should eventually
+# remove all the attr_accessible from all models, but its here temporarily
+gem 'protected_attributes'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development, :test do	
+group :development, :test do
   gem 'rspec-rails'
 end
 
@@ -32,8 +36,7 @@ end
 # in production environments by default.
 group :assets do
   gem 'less-rails-bootstrap'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
